@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ca.on.oicr.pde.config</groupId>
+        <artifactId>workflows</artifactId>
+        <version>3</version>
+    </parent>
+
+    <groupId>ca.on.oicr.pde.workflows</groupId>
+    <artifactId>GATK3</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>${display-name}</name>
+
+    <properties>
+        <workflow-name>GATK3</workflow-name>
+        <tabix-version>0.2.6</tabix-version>
+        <gatk-version>3.3-0</gatk-version>
+        <picard-version>1.89</picard-version>
+        <samtools-version>0.1.19</samtools-version>
+        <workflow-description>Need a description</workflow-description>
+    </properties>
+
+    <dependencies>
+<!--        <dependency>
+            <groupId>samtools</groupId>
+            <artifactId>samtools</artifactId>
+            <version>${samtools-version}</version>
+            <type>zip</type>
+            <scope>provided</scope>
+        </dependency>-->
+        <dependency>
+            <groupId>picard</groupId>
+            <artifactId>picard-tools</artifactId>
+            <version>${picard-version}</version>
+            <type>zip</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>GenomeAnalysisTK</groupId>
+            <artifactId>GenomeAnalysisTK</artifactId>
+            <version>${gatk-version}</version>
+            <type>zip</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>tabix</groupId>
+            <artifactId>tabix</artifactId>
+            <version>${tabix-version}</version>
+            <type>zip</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito</artifactId>
+            <version>1.6.2</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.pyx4j</groupId>
+                <artifactId>maven-junction-plugin</artifactId>
+                <configuration>
+                    <links>
+                        <link>
+                            <dst>${bundleDirectory}/data/resources</dst>
+                            <src>${basedir}/links/resources</src>
+                        </link>
+                        <link>
+                            <dst>${bundleDirectory}/data/test</dst>
+                            <src>${basedir}/links/test</src>
+                        </link>
+                        <!--<link>
+                          <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/noarch/GenomeAnalysisTK-1.3-16-g6a5d5e7</dst>
+                          <src>${basedir}/links/GenomeAnalysisTK-1.3-16-g6a5d5e7</src>
+                        </link>-->
+                    </links>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

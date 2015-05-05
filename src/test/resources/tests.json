@@ -1,0 +1,18 @@
+{
+    "defaults": {
+        "description": "GATK3 workflow test",
+        "metrics_calculate": "calculate.sh",
+        "metrics_compare": "compare.sh",
+        "input_config_dir": "/.mounts/labs/PDE/data/RegressionTests/GATK3/workflow/input_config/",
+        "output_metrics_dir": "/.mounts/labs/PDE/data/RegressionTests/GATK3/workflow/output_expectation/"
+    },
+    "tests": [
+        {
+            "id": "EX_gatk3",
+            "parameters": {
+                "identifier": "gatk.ex",
+                "bam_inputs": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bam"
+            }
+        }
+    ]
+}
