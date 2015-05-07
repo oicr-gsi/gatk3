@@ -1,5 +1,6 @@
 package ca.on.oicr.pde.commands.gatk3;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +18,9 @@ public abstract class AbstractGatkBuilder<T> {
     protected final String outputDir;
 
     protected String referenceSequence;
-    protected String intervals;
+    protected List<String> intervals = new LinkedList<>();
+    protected List<String> intervalFiles = new LinkedList<>();
+    protected SetRule intervalSetRule = SetRule.UNION;
     protected String numThreads;
 
     public AbstractGatkBuilder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
@@ -34,8 +37,28 @@ public abstract class AbstractGatkBuilder<T> {
         return (T) this;
     }
 
-    public T setIntervals(String intervals) {
-        this.intervals = intervals;
+    public T addInterval(String interval) {
+        this.intervals.add(interval);
+        return (T) this;
+    }
+
+    public T addIntervals(Collection<String> intervals) {
+        this.intervals.addAll(intervals);
+        return (T) this;
+    }
+
+    public T addIntervalFile(String intervalFile) {
+        this.intervalFiles.add(intervalFile);
+        return (T) this;
+    }
+
+    public T addIntervalFiles(Collection<String> intervalFiles) {
+        this.intervalFiles.addAll(intervalFiles);
+        return (T) this;
+    }
+
+    public T setIntervalSetRule(SetRule setRule) {
+        this.intervalSetRule = setRule;
         return (T) this;
     }
 
@@ -46,7 +69,7 @@ public abstract class AbstractGatkBuilder<T> {
 
     protected List<String> build(String type) {
         List<String> c = new LinkedList<>();
-        
+
         c.add(javaPath);
         c.add("-Xmx" + maxHeapSize);
         c.add("-Djava.io.tmpdir=" + tmpDir);
@@ -65,10 +88,18 @@ public abstract class AbstractGatkBuilder<T> {
         c.add("--reference_sequence");
         c.add(referenceSequence);
 
-        if (intervals != null) {
+        for (String interval : intervals) {
             c.add("--intervals"); //aka -L
-            c.add(intervals);
+            c.add(interval);
         }
+
+        for (String intervalFile : intervalFiles) {
+            c.add("--intervals"); //aka -L
+            c.add(intervalFile);
+        }
+
+        c.add("--interval_set_rule");
+        c.add(intervalSetRule.toString());
 
         if (numThreads != null) {
             c.add("--num_threads");
@@ -76,6 +107,11 @@ public abstract class AbstractGatkBuilder<T> {
         }
 
         return c;
+    }
+
+    public enum SetRule {
+
+        UNION, INTERSECTION;
     }
 
 }

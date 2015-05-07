@@ -58,8 +58,10 @@ public class RealignerTargetCreator extends AbstractCommand {
                 outputFilePath = outputDir + outputFileName;
             } else {
                 outputFilePath = outputDir + "gatk";
-                if (intervals != null) {
-                    outputFilePath += "." + intervals.replace(":", "-");
+                if (!intervals.isEmpty()) {
+                    for (String interval : intervals) {
+                        outputFilePath += "." + interval.replace(":", "-");
+                    }
                 } else {
                     outputFilePath += "." + RandomStringUtils.randomAlphanumeric(4);
                 }

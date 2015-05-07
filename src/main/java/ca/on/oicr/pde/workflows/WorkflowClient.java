@@ -5,6 +5,7 @@ import ca.on.oicr.pde.commands.gatk3.UnifiedGenotyper;
 import ca.on.oicr.pde.commands.gatk3.VariantFiltration;
 import ca.on.oicr.pde.commands.MergeVcf;
 import ca.on.oicr.pde.commands.SortVcf;
+import ca.on.oicr.pde.commands.gatk3.AbstractGatkBuilder;
 import ca.on.oicr.pde.commands.gatk3.BaseRecalibrator;
 import ca.on.oicr.pde.commands.gatk3.IndelRealigner;
 import ca.on.oicr.pde.commands.gatk3.PrintReads;
@@ -41,7 +42,9 @@ public class WorkflowClient extends OicrWorkflow {
     private String gatkKey;
 
     private Integer gatkCountCovariateMem = null;
-    private String[] chrSizes = null;
+
+    private final List<String> chrSizes = new LinkedList<>();
+    private final List<String> intervalFiles = new LinkedList<>();
 
     private String picardDir = null;
 
@@ -99,7 +102,9 @@ public class WorkflowClient extends OicrWorkflow {
         refFasta = getProperty("ref_fasta");
         dbsnpVcf = getProperty("gatk_dbsnp_vcf");
 
-        chrSizes = StringUtils.split(getProperty("chr_sizes"), ",");
+        chrSizes.addAll(Arrays.asList(StringUtils.split(getProperty("chr_sizes"), ",")));
+        intervalFiles.addAll(Arrays.asList(StringUtils.split(getOptionalProperty("interval_files", ""), ",")));
+
         annotateParams = getProperty("annotate_params");
         gatkUnifiedGenotyperThreads = Integer.parseInt(getProperty("gatk_unified_genotyper_threads"));
 
@@ -139,11 +144,8 @@ public class WorkflowClient extends OicrWorkflow {
     @Override
     public void buildWorkflow() {
 
-        Job join1 = getWorkflow().createBashJob("Join");
-        join1.setCommand("true");
-        join1.setLocal(true);
-
         List<String> reorderedBams = new LinkedList<>();
+        List<Job> reorderedBamJobs = new LinkedList<>();
 
         for (SqwFile inputFile : Arrays.asList(inputBamFiles)) {
             ReorderSam reorder = new ReorderSam.Builder(java, picardReorderSamMem + "g", tmpDir, picardDir, dataDir)
@@ -158,37 +160,47 @@ public class WorkflowClient extends OicrWorkflow {
             j.getCommand().setArguments(reorder.getCommand());
 
             reorderedBams.add(reorder.getOutputFile());
-
-            join1.addParent(j);
+            reorderedBamJobs.add(j);
 
         }
 
-        Map<String, String> intervalFiles = new HashMap<>();
+        Map<String, String> filesSplitByIntervals = new HashMap<>();
+        List<Job> filesSplitsByIntervalJobs = new LinkedList<>();
 
-        Job join2 = getWorkflow().createBashJob("Join");
-        join2.setCommand("true");
+        // one chrSize record is required
+        if (chrSizes.isEmpty()) {
+            chrSizes.add(null);
+        }
 
         for (String chrSize : chrSizes) {
 
-            RealignerTargetCreator target = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorMem + "g", tmpDir, gatk, gatkKey, dataDir)
-                    .setIntervals(chrSize)
+            RealignerTargetCreator.Builder targetBuilder = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(reorderedBams)
-                    .setKnownIndels(dbsnpVcf)
-                    .build();
+                    .setKnownIndels(dbsnpVcf);
+            if (chrSize != null) {
+                targetBuilder.addInterval(chrSize);
+            }
+            if (!filesSplitByIntervals.isEmpty()) {
+                targetBuilder.addIntervalFiles(intervalFiles);
+                targetBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+            }
+            RealignerTargetCreator target = targetBuilder.build();
 
             Job id20 = getWorkflow().createBashJob("GATKRealignerTargetCreator")
                     .setMaxMemory(Integer.toString((gatkRealignTargetCreatorMem + gatkOverhead) * 1024))
-                    .setQueue(queue)
-                    .addParent(join1);
+                    .setQueue(queue);
+            id20.getParents().addAll(reorderedBamJobs);
             id20.getCommand().setArguments(target.getCommand());
 
-            IndelRealigner realign = new IndelRealigner.Builder(java, gatkIndelRealignerMem + "g", tmpDir, gatk, gatkKey, dataDir)
-                    .setIntervals(chrSize)
+            IndelRealigner.Builder realignBuilder = new IndelRealigner.Builder(java, gatkIndelRealignerMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(reorderedBams)
-                    .setTargetIntervalFile(target.getOutputFile())
-                    .build();
+                    .setTargetIntervalFile(target.getOutputFile());
+            if (chrSize != null) {
+                realignBuilder.addInterval(chrSize); //just used for naming... fix this!
+            }
+            IndelRealigner realign = realignBuilder.build();
 
             Job id30 = getWorkflow().createBashJob("GATKIndelRealigner")
                     .setMaxMemory(Integer.toString((gatkIndelRealignerMem + gatkOverhead) * 1024))
@@ -208,11 +220,11 @@ public class WorkflowClient extends OicrWorkflow {
                     .addParent(id30);
             id35.getCommand().setArguments(sort.getCommand());
 
-            if (intervalFiles.put(chrSize, sort.getOutputFile()) != null) {
+            if (filesSplitByIntervals.put(chrSize, sort.getOutputFile()) != null) {
                 throw new RuntimeException("Unexpected state: Duplicate interval key.");
             }
 
-            join2.addParent(id35);
+            filesSplitsByIntervalJobs.add(id35);
         }
 
         BaseRecalibrator recalibrator = new BaseRecalibrator.Builder(java, gatkCountCovariateMem + "g", tmpDir, gatk, gatkKey, dataDir)
@@ -222,19 +234,20 @@ public class WorkflowClient extends OicrWorkflow {
                 .addCovariate("CycleCovariate")
                 .addCovariate("ContextCovariate") //gatk_recal_base_recal_params=-cov ContextCovariate
                 .addKnownSite(dbsnpVcf)
-                .addInputFiles(intervalFiles.values())
+                .addInputFiles(filesSplitByIntervals.values())
                 .build();
 
         Job id60 = getWorkflow().createBashJob("BaseRecalibrator")
                 .setMaxMemory(Integer.toString((gatkCountCovariateMem + gatkOverhead) * 1024))
-                .setQueue(queue)
-                .addParent(join2);
+                .setQueue(queue);
+
+        id60.getParents().addAll(filesSplitsByIntervalJobs);
         id60.getCommand().setArguments(recalibrator.getCommand());
 
         Map<String, Job> snvFiles = new HashMap<>();
         Map<String, Job> indelFiles = new HashMap<>();
 
-        for (Entry<String, String> e : intervalFiles.entrySet()) {
+        for (Entry<String, String> e : filesSplitByIntervals.entrySet()) {
 
             String chrSize = e.getKey();
             String inputBam = e.getValue();
@@ -253,17 +266,24 @@ public class WorkflowClient extends OicrWorkflow {
                     .addParent(id60);
             id70.getCommand().setArguments(recalibrate.getCommand());
 
+            
             //INDELS
-            UnifiedGenotyper rawIndels = new UnifiedGenotyper.Builder(java, Integer.toString(gatkIndelGenotyperMem) + "g", tmpDir, gatk, gatkKey, dataDir)
+            UnifiedGenotyper.Builder rawIndelsBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkIndelGenotyperMem) + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setInputBamFile(recalibrate.getOutputFile())
                     .setReferenceSequence(refFasta)
                     .setDbsnpFilePath(dbsnpVcf)
-                    .setIntervals(chrSize)
                     .setStandardCallConfidence(standCallConf)
                     .setStandardEmitConfidence(standEmitConf)
                     .setGenotypeLikelihoodsModel("INDEL")
-                    .setGroup("Standard")
-                    .build();
+                    .setGroup("Standard");
+            if (chrSize != null && !chrSize.isEmpty()) {
+                rawIndelsBuilder.addInterval(chrSize);
+            }
+            if (!intervalFiles.isEmpty()) {
+                rawIndelsBuilder.addIntervalFiles(intervalFiles);
+                rawIndelsBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+            }
+            UnifiedGenotyper rawIndels = rawIndelsBuilder.build();
 
             Job id100 = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndel")
                     .setMaxMemory(Integer.toString((gatkIndelGenotyperMem + gatkOverhead) * 1024))
@@ -271,17 +291,23 @@ public class WorkflowClient extends OicrWorkflow {
                     .addParent(id70);
             id100.getCommand().setArguments(rawIndels.getCommand());
 
-            VariantFiltration filterIndels = new VariantFiltration.Builder(java, variantFilterMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            VariantFiltration.Builder filterIndelsBuilder = new VariantFiltration.Builder(java, variantFilterMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setInputVcfFile(rawIndels.getOutputFile())
-                    .setIntervals(chrSize)
                     .setReferenceSequence(refFasta)
                     .addFilter("Indel_HARD_VALIDATE", "MQ0 >= 4 && ((MQ0 / (1.0 * DP)) > 0.1)")
                     .addFilter("Indel_StrandBias", "SB > -10.0")
                     .addFilter("Indel_VeryLowQual", "QUAL < 30")
                     .addFilter("Indel_LowCoverage", "DP < 5")
                     .addFilter("Indel_StrandBiasFishers", "FS > 60.0")
-                    .addFilter("Indel_LowQual", "QUAL > 30.0 && QUAL < 50.0")
-                    .build();
+                    .addFilter("Indel_LowQual", "QUAL > 30.0 && QUAL < 50.0");
+            if (chrSize != null && !chrSize.isEmpty()) {
+                filterIndelsBuilder.addInterval(chrSize);
+            }
+            if (!intervalFiles.isEmpty()) {
+                filterIndelsBuilder.addIntervalFiles(intervalFiles);
+                filterIndelsBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+            }
+            VariantFiltration filterIndels = filterIndelsBuilder.build();
 
             Job id110 = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndelFilter")
                     .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
@@ -291,16 +317,24 @@ public class WorkflowClient extends OicrWorkflow {
 
             indelFiles.put(filterIndels.getOutputFile(), id110);
 
+            
             //SNVS
-            UnifiedGenotyper rawSnvs = new UnifiedGenotyper.Builder(java, Integer.toString(gatkIndelGenotyperMem) + "g", tmpDir, gatk, gatkKey, dataDir)
+            UnifiedGenotyper.Builder rawSnvsBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkIndelGenotyperMem) + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setInputBamFile(recalibrate.getOutputFile())
                     .setReferenceSequence(refFasta)
                     .setDbsnpFilePath(dbsnpVcf)
-                    .setIntervals(chrSize)
                     .setNumThreads(Integer.toString(gatkUnifiedGenotyperThreads))
                     .setStandardCallConfidence(standCallConf)
                     .setStandardEmitConfidence(standEmitConf)
-                    .setGenotypeLikelihoodsModel("SNP").build();
+                    .setGenotypeLikelihoodsModel("SNP");
+            if (chrSize != null && !chrSize.isEmpty()) {
+                rawSnvsBuilder.addInterval(chrSize);
+            }
+            if (!intervalFiles.isEmpty()) {
+                rawSnvsBuilder.addIntervalFiles(intervalFiles);
+                rawSnvsBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+            }
+            UnifiedGenotyper rawSnvs = rawSnvsBuilder.build();
 
             Job id90 = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNV")
                     .setMaxMemory(Integer.toString((gatkIndelGenotyperMem + gatkOverhead) * 1024))
@@ -308,9 +342,8 @@ public class WorkflowClient extends OicrWorkflow {
                     .addParent(id70);
             id90.getCommand().setArguments(rawSnvs.getCommand());
 
-            VariantFiltration filterSnvs = new VariantFiltration.Builder(java, variantFilterMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            VariantFiltration.Builder filterSnvsBuilder = new VariantFiltration.Builder(java, variantFilterMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setInputVcfFile(rawSnvs.getOutputFile())
-                    .setIntervals(chrSize)
                     .setReferenceSequence(refFasta)
                     .setClusterWindowSize("10")
                     .setClusterSize("3")
@@ -321,8 +354,15 @@ public class WorkflowClient extends OicrWorkflow {
                     .addFilter("LowQD", "QD < 2.0 ")
                     .addFilter("StrandBiasFishers", "FS > 60.0")
                     .addFilter("StrandBias", "SB > -10.0")
-                    .addMask("InDel", rawIndels.getOutputFile())
-                    .build();
+                    .addMask("InDel", rawIndels.getOutputFile());
+            if (chrSize != null && !chrSize.isEmpty()) {
+                filterSnvsBuilder.addInterval(chrSize);
+            }
+            if (!intervalFiles.isEmpty()) {
+                filterSnvsBuilder.addIntervalFiles(intervalFiles);
+                filterSnvsBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+            }
+            VariantFiltration filterSnvs = filterSnvsBuilder.build();
 
             Job id120 = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNVFilter")
                     .setMaxMemory(Integer.toString((variantFilterMem + gatkOverhead) * 1024))
@@ -376,7 +416,7 @@ public class WorkflowClient extends OicrWorkflow {
         VariantAnnotator annotateVcf = new VariantAnnotator.Builder(java, annotationMem + "g", tmpDir, gatk, gatkKey, dataDir)
                 .setReferenceSequence(refFasta)
                 .setInputVcfFile(sortVcf.getOutputFile())
-                .setIntervals(sortVcf.getOutputFile())
+                .addIntervalFile(sortVcf.getOutputFile())
                 .setAdditionalParams(annotateParams)
                 .build();
         CompressFile compressVcf = new CompressFile.Builder(dataDir)
@@ -396,6 +436,7 @@ public class WorkflowClient extends OicrWorkflow {
                 .addParent(id180);
         job12.getCommand().setArguments(cmd);
 
+        //final output file
         job12.addFile(createOutputFile(compressVcf.getOutputFile(), "application/vcf-4-gzip", manualOutput));
 
     }

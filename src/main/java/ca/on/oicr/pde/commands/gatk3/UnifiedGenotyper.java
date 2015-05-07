@@ -3,6 +3,7 @@ package ca.on.oicr.pde.commands.gatk3;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -86,8 +87,12 @@ public class UnifiedGenotyper {
                 if (genotypeLikelihoodsModel != null) {
                     outputFilePath += "." + StringUtils.lowerCase(genotypeLikelihoodsModel) + ".raw";
                 }
-                if (intervals != null) {
-                    outputFilePath += "." + intervals.replace(":", "-");
+                if (!intervals.isEmpty()) {
+                    for (String interval : intervals) {
+                        outputFilePath += "." + interval.replace(":", "-");
+                    }
+                } else {
+                    outputFilePath += "." + RandomStringUtils.randomAlphanumeric(4);
                 }
                 outputFilePath += ".vcf";
             }

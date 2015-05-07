@@ -52,10 +52,6 @@ public class VariantAnnotator extends AbstractCommand {
             } else {
                 outputFilePath = outputDir + FilenameUtils.getBaseName(inputVcfFile) + ".annotated.vcf";
             }
-            
-            if(intervals == null){
-                setIntervals(inputVcfFile);
-            }
 
             List<String> c = build("VariantAnnotator");
 
