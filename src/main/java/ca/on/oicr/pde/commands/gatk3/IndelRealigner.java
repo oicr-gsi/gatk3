@@ -50,16 +50,6 @@ public class IndelRealigner extends AbstractCommand {
             this.outputFileName = outputFileName;
             return this;
         }
-        
-        private String targetIntervalsDescriptor;
-        @Override
-        public Builder addInterval(String intervals) {
-            // "IR will only try to realign the regions output from RealignerTargetCreator, 
-            // so there is nothing to be gained by providing the capture targets."
-            // quote from http://gatkforums.broadinstitute.org/discussion/4133/when-should-i-use-l-to-pass-in-a-list-of-intervals
-            this.targetIntervalsDescriptor = intervals;
-            return this;
-        }
 
         public IndelRealigner build() {
 
