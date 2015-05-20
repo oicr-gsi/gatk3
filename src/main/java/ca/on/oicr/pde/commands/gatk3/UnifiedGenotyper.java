@@ -1,7 +1,6 @@
 package ca.on.oicr.pde.commands.gatk3;
 
-import java.util.Collections;
-import java.util.LinkedList;
+import ca.on.oicr.pde.commands.AbstractCommand;
 import java.util.List;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -10,17 +9,11 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author mlaszloffy
  */
-public class UnifiedGenotyper {
-
-    private final List<String> command = new LinkedList<>();
+public class UnifiedGenotyper extends AbstractCommand {
 
     private String outputFile;
 
     private UnifiedGenotyper() {
-    }
-
-    public List<String> getCommand() {
-        return Collections.unmodifiableList(command);
     }
 
     public String getOutputFile() {
@@ -79,11 +72,10 @@ public class UnifiedGenotyper {
         public UnifiedGenotyper build() {
 
             String outputFilePath;
-            //String outputFilePath = outputDir + FilenameUtils.getBaseName(inputBamFile) + ".filtered.vcf";
             if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName;
+                outputFilePath = outputDir + outputFileName + ".vcf";
             } else {
-                outputFilePath = outputDir + "gatk"; //FilenameUtils.getBaseName(inputBamFile);
+                outputFilePath = outputDir + "gatk";
                 if (genotypeLikelihoodsModel != null) {
                     outputFilePath += "." + StringUtils.lowerCase(genotypeLikelihoodsModel) + ".raw";
                 }
@@ -130,11 +122,11 @@ public class UnifiedGenotyper {
             c.add("--out");
             c.add(outputFilePath);
 
-            UnifiedGenotyper filter = new UnifiedGenotyper();
-            filter.command.addAll(c);
-            filter.outputFile = outputFilePath;
+            UnifiedGenotyper cmd = new UnifiedGenotyper();
+            cmd.command.addAll(c);
+            cmd.outputFile = outputFilePath;
 
-            return filter;
+            return cmd;
         }
     }
 

@@ -9,10 +9,10 @@ import org.apache.commons.io.FilenameUtils;
  * @author mlaszloffy
  */
 public class VariantAnnotator extends AbstractCommand {
-    
+
     private String outputFile;
-    
-    private VariantAnnotator(){
+
+    private VariantAnnotator() {
     }
 
     public String getOutputFile() {
@@ -33,7 +33,7 @@ public class VariantAnnotator extends AbstractCommand {
             this.inputVcfFile = inputVcfFile;
             return this;
         }
-        
+
         public Builder setAdditionalParams(String additionalParams) {
             this.additionalParams = additionalParams;
             return this;
@@ -48,7 +48,7 @@ public class VariantAnnotator extends AbstractCommand {
 
             String outputFilePath;
             if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName;
+                outputFilePath = outputDir + outputFileName + ".vcf";
             } else {
                 outputFilePath = outputDir + FilenameUtils.getBaseName(inputVcfFile) + ".annotated.vcf";
             }
@@ -57,14 +57,11 @@ public class VariantAnnotator extends AbstractCommand {
 
             c.add("--variant");
             c.add(inputVcfFile);
-            
+
             c.add("--out");
             c.add(outputFilePath);
-            
-            //c.add("-l");
-            //c.add("INFO");
-            
-            if(additionalParams != null){
+
+            if (additionalParams != null) {
                 c.add(additionalParams);
             }
 

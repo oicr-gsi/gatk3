@@ -65,11 +65,13 @@ public class IndelRealigner extends AbstractCommand {
 
             String outputFilePath;
             if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName;
+                outputFilePath = outputDir + outputFileName + ".bam";
             } else {
                 outputFilePath = outputDir + "gatk.realigned";
-                if (targetIntervalsDescriptor != null) {
-                    outputFilePath += "." + targetIntervalsDescriptor.replace(":", "-");
+                if (intervals != null) {
+                    for (String interval : intervals) {
+                        outputFilePath += "." + interval.replace(":", "-");
+                    }
                 } else {
                     outputFilePath += "." + RandomStringUtils.randomAlphanumeric(4);
                 }
@@ -85,10 +87,10 @@ public class IndelRealigner extends AbstractCommand {
 
             c.add("--targetIntervals");
             c.add(targetIntervalFile);
-            
+
             c.add("--bam_compression"); //aka -compress
             c.add("0");
-            
+
             c.add("--out");
             c.add(outputFilePath);
 

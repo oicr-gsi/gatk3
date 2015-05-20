@@ -55,7 +55,7 @@ public class RealignerTargetCreator extends AbstractCommand {
 
             String outputFilePath;
             if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName;
+                outputFilePath = outputDir + outputFileName + ".intervals";
             } else {
                 outputFilePath = outputDir + "gatk";
                 if (!intervals.isEmpty()) {
