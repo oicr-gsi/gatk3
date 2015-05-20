@@ -20,8 +20,9 @@ public abstract class AbstractGatkBuilder<T> {
     protected String referenceSequence;
     protected List<String> intervals = new LinkedList<>();
     protected List<String> intervalFiles = new LinkedList<>();
-    protected SetRule intervalSetRule = SetRule.UNION;
-    protected String numThreads;
+    protected SetRule intervalSetRule;// = SetRule.UNION;
+    protected Integer numDataThreads;
+    protected Integer numCpuThreadsPerDataThread;
 
     public AbstractGatkBuilder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
         this.javaPath = javaPath;
@@ -62,8 +63,13 @@ public abstract class AbstractGatkBuilder<T> {
         return (T) this;
     }
 
-    public T setNumThreads(String numThreads) {
-        this.numThreads = numThreads;
+    public T setNumDataThreads(int numDataThreads) {
+        this.numDataThreads = numDataThreads;
+        return (T) this;
+    }
+
+    public T setNumCpuThreadsPerDataThread(int numCpuThreadsPerDataThread) {
+        this.numCpuThreadsPerDataThread = numCpuThreadsPerDataThread;
         return (T) this;
     }
 
@@ -85,6 +91,9 @@ public abstract class AbstractGatkBuilder<T> {
         c.add("--gatk_key");
         c.add(gatkKey);
 
+        c.add("--logging_level");
+        c.add("INFO");
+
         c.add("--reference_sequence");
         c.add(referenceSequence);
 
@@ -98,12 +107,19 @@ public abstract class AbstractGatkBuilder<T> {
             c.add(intervalFile);
         }
 
-        c.add("--interval_set_rule");
-        c.add(intervalSetRule.toString());
+        if (intervalSetRule != null) {
+            c.add("--interval_set_rule");
+            c.add(intervalSetRule.toString());
+        }
 
-        if (numThreads != null) {
-            c.add("--num_threads");
-            c.add(numThreads);
+        if (numDataThreads != null) {
+            c.add("--num_threads"); //-nt
+            c.add(numDataThreads.toString());
+        }
+
+        if (numCpuThreadsPerDataThread != null) {
+            c.add("--num_cpu_threads_per_data_thread"); //-nct
+            c.add(numCpuThreadsPerDataThread.toString());
         }
 
         return c;
