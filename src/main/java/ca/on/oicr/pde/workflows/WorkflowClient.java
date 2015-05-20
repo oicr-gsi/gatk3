@@ -1,23 +1,25 @@
 package ca.on.oicr.pde.workflows;
 
-import ca.on.oicr.pde.commands.CompressFile;
+import ca.on.oicr.pde.commands.CompressAndIndexVcf;
 import ca.on.oicr.pde.commands.gatk3.UnifiedGenotyper;
-import ca.on.oicr.pde.commands.gatk3.VariantFiltration;
 import ca.on.oicr.pde.commands.MergeVcf;
 import ca.on.oicr.pde.commands.SortVcf;
 import ca.on.oicr.pde.commands.gatk3.AbstractGatkBuilder;
+import ca.on.oicr.pde.commands.gatk3.ApplyRecalibration;
 import ca.on.oicr.pde.commands.gatk3.BaseRecalibrator;
+import ca.on.oicr.pde.commands.gatk3.HaplotypeCaller;
 import ca.on.oicr.pde.commands.gatk3.IndelRealigner;
 import ca.on.oicr.pde.commands.gatk3.PrintReads;
 import ca.on.oicr.pde.commands.gatk3.RealignerTargetCreator;
-import ca.on.oicr.pde.commands.gatk3.VariantAnnotator;
-import ca.on.oicr.pde.commands.picard.ReorderSam;
-import ca.on.oicr.pde.commands.picard.SortSam;
+import ca.on.oicr.pde.commands.gatk3.VariantRecalibrator;
 import ca.on.oicr.pde.utilities.workflows.OicrWorkflow;
+import com.google.common.collect.Iterables;
 import java.util.*;
 import java.util.Map.Entry;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
 import net.sourceforge.seqware.pipeline.workflowV2.model.SqwFile;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -28,47 +30,57 @@ public class WorkflowClient extends OicrWorkflow {
     private String dataDir;
 
     private boolean manualOutput;
-    private String identifier = null;
-    private String java = null;
-    private String gatk = null;
-
-    private String refFasta = null;
-    private String dbsnpVcf = null;
-    private Integer picardOverhead;
-    private Integer gatkOverhead;
-    private SqwFile[] inputBamFiles;
     private String queue;
+
+    private String perl = null;
+    private String java = null;
+    private String tabixDir;
+    private String gatk = null;
+    private String mergeVCFScript;
 
     private String gatkKey;
 
-    private Integer gatkCountCovariateMem = null;
+    private String identifier = null;
+
+    private final List<String> inputBamFiles = new LinkedList<>();
+
+    private String refFasta = null;
+    private String dbsnpVcf = null;
 
     private final List<String> chrSizes = new LinkedList<>();
     private final List<String> intervalFiles = new LinkedList<>();
-
-    private String picardDir = null;
-
-    private Integer picardReorderSamMem = null;
-    private Integer picardSortMem = null;
-    private Integer gatkRealignTargetCreatorMem = null;
-    private Integer gatkIndelRealignerMem = null;
-
-    private String annotateParams = null;
-    private Integer annotationMem = null;
-
-    private String perl = null;
-
-    private Integer gatkUnifiedGenotyperMem = null;
-    private Integer gatkUnifiedGenotyperThreads = null;
-    private Integer gatkIndelGenotyperMem = null;
-    private Integer variantFilterMem = null;
 
     private String standCallConf = null;
     private String standEmitConf = null;
 
     private String preserveQscoresLessThan = null;
 
-    private String mergeVCFScript;
+    private VariantCaller variantCaller;
+
+    private final List<String> vqsrResources = new LinkedList<>();
+    private final List<String> vqsrAnnotations = new LinkedList<>();
+
+    private Double truthSensitivityLevel;
+
+    private String vqsrMaxGaussians;
+
+    private Integer gatkRealignTargetCreatorMem;
+    private Integer gatkIndelRealignerMem;
+    private Integer gatkPrintReadsMem;
+    private Integer gatkHaplotypeCallerMem;
+    private Integer gatkHaplotypeCallerThreads;
+    private Integer gatkUnifiedGenotyperMem;
+    private Integer gatkUnifiedGenotyperThreads;
+    private Integer gatkBaseRecalibratorXmx;
+    private Integer gatkBaseRecalibratorMem;
+    private Integer gatkBaseRecalibratorNct;
+    private Integer gatkBaseRecalibratorSmp;
+    private Integer gatkOverhead;
+
+    public enum VariantCaller {
+
+        HAPLOTYPE_CALLER, UNIFIED_GENOTYPER;
+    }
 
     public WorkflowClient() {
         super();
@@ -92,11 +104,11 @@ public class WorkflowClient extends OicrWorkflow {
 
         perl = getProperty("perl");
         java = getProperty("java");
+        tabixDir = getProperty("tabix_dir");
         gatk = getProperty("gatk_jar");
-
         mergeVCFScript = binDir + "sw_module_merge_GATK_VCF.pl";
 
-        picardDir = getProperty("picard_dir");
+        gatkKey = getProperty("gatk_key");
 
         identifier = getProperty("identifier");
         refFasta = getProperty("ref_fasta");
@@ -105,29 +117,35 @@ public class WorkflowClient extends OicrWorkflow {
         chrSizes.addAll(Arrays.asList(StringUtils.split(getProperty("chr_sizes"), ",")));
         intervalFiles.addAll(Arrays.asList(StringUtils.split(getOptionalProperty("interval_files", ""), ",")));
 
-        annotateParams = getProperty("annotate_params");
-        gatkUnifiedGenotyperThreads = Integer.parseInt(getProperty("gatk_unified_genotyper_threads"));
-
         standCallConf = getProperty("stand_call_conf");
         standEmitConf = getProperty("stand_emit_conf");
         preserveQscoresLessThan = getProperty("preserve_qscores_less_than");
 
-        picardOverhead = Integer.parseInt(getProperty("picard_sched_overhead_mem"));
-        gatkOverhead = Integer.parseInt(getProperty("gatk_sched_overhead_mem"));
-
-        gatkUnifiedGenotyperMem = Integer.parseInt(getProperty("gatk_unified_genotyper_mem"));
-        annotationMem = Integer.valueOf(getProperty("annotation_mem_gb"));
-
-        variantFilterMem = Integer.parseInt(getProperty("gatk_variant_filter_mem"));
-        picardReorderSamMem = Integer.parseInt(getProperty("picard_reorder_sam_mem"));
-        picardSortMem = Integer.parseInt(getProperty("picard_sort_mem"));
         gatkRealignTargetCreatorMem = Integer.parseInt(getProperty("gatk_realign_target_creator_mem"));
         gatkIndelRealignerMem = Integer.parseInt(getProperty("gatk_indel_realigner_mem"));
+        gatkPrintReadsMem = Integer.parseInt(getProperty("gatk_print_reads_mem"));
+        gatkHaplotypeCallerThreads = Integer.parseInt(getProperty("gatk_haplotype_caller_threads"));
+        gatkHaplotypeCallerMem = Integer.parseInt(getProperty("gatk_haplotype_caller_mem"));
+        gatkUnifiedGenotyperMem = Integer.parseInt(getProperty("gatk_unified_genotyper_mem"));
+        gatkUnifiedGenotyperThreads = Integer.parseInt(getProperty("gatk_unified_genotyper_threads"));
+        gatkBaseRecalibratorXmx = Integer.parseInt(getProperty("gatk_baserecalibrator_xmx"));
+        gatkBaseRecalibratorMem = Integer.parseInt(getProperty("gatk_baserecalibrator_mem"));
+        gatkBaseRecalibratorNct = Integer.parseInt(getProperty("gatk_baserecalibrator_nct"));
+        gatkBaseRecalibratorSmp = Integer.parseInt(getProperty("gatk_baserecalibrator_smp"));
+        gatkOverhead = Integer.parseInt(getProperty("gatk_sched_overhead_mem"));
 
-        gatkCountCovariateMem = Integer.parseInt(getProperty("gatk_count_covariate_mem"));
-        gatkIndelGenotyperMem = Integer.parseInt(getProperty("gatk_indel_genotyper_mem"));
+        variantCaller = VariantCaller.valueOf(StringUtils.upperCase(getProperty("variant_caller")));
 
-        gatkKey = getProperty("gatk_key");
+        //FIXME: vqsrResources.addAll(Arrays.asList(StringUtils.split(getProperty("vqsr_resources"), ":::")));
+        for (String vqsrResourceEscaped : StringUtils.split(getProperty("vqsr_resources"), ":::")) {
+            vqsrResources.add(vqsrResourceEscaped.replace("&#61;", "="));
+        }
+
+        vqsrAnnotations.addAll(Arrays.asList(StringUtils.split(getProperty("vqsr_annotations"), ",")));
+
+        truthSensitivityLevel = Double.parseDouble(getProperty("truth_sensitivity_level"));
+
+        vqsrMaxGaussians = getOptionalProperty("vqsr_max_gaussians", null);
 
     }
 
@@ -137,308 +155,382 @@ public class WorkflowClient extends OicrWorkflow {
 
     @Override
     public Map<String, SqwFile> setupFiles() {
-        inputBamFiles = provisionInputFiles("bam_inputs");
+
+        List<String> inputFilesList = Arrays.asList(StringUtils.split(getProperty("input_files"), ","));
+        Set<String> inputFilesSet = new HashSet<>(inputFilesList);
+
+        if (inputFilesList.size() != inputFilesSet.size()) {
+            throw new RuntimeException("Duplicate files detected in input_files");
+        }
+
+        if ((inputFilesSet.size() % 2) != 0) {
+            throw new RuntimeException("Each bam should have a corresponding index");
+        }
+
+        Map<String, String> bams = new HashMap<>();
+        Map<String, String> bais = new HashMap<>();
+        for (String f : inputFilesSet) {
+            String fileExtension = FilenameUtils.getExtension(f);
+            String fileKey = FilenameUtils.removeExtension(f);
+            if (null != fileExtension) {
+                switch (fileExtension) {
+                    case "bam":
+                        bams.put(fileKey, f);
+                        break;
+                    case "bai":
+                        bais.put(fileKey, f);
+                        break;
+                    default:
+                        throw new RuntimeException("Unsupported input file type");
+                }
+            }
+        }
+
+        int id = 0;
+        for (Entry<String, String> e : bams.entrySet()) {
+            String key = e.getKey();
+            String bamFilePath = e.getValue();
+
+            String baiFilePath = bais.get(key);
+            if (baiFilePath == null) {
+                throw new RuntimeException("Missing index for " + FilenameUtils.getName(bamFilePath));
+            }
+
+            SqwFile bam = this.createFile("file_in_" + id++);
+            bam.setSourcePath(bamFilePath);
+            bam.setIsInput(true);
+
+            SqwFile bai = this.createFile("file_in_" + id++);
+            bai.setSourcePath(baiFilePath);
+            bai.setIsInput(true);
+
+            //FIXME: this seems to work for now, it would be better to be able to set the provisionedPath as
+            //bai.getProvisionedPath != bai.getOutputPath ...
+            //at least with seqware 1.1.0, setting output path changes where the output file will be stored,
+            //but the commonly used get provisioned path will return the incorrect path to the file
+            bai.setOutputPath(FilenameUtils.getPath(bam.getProvisionedPath()));
+
+            inputBamFiles.add(bam.getProvisionedPath());
+        }
+
         return this.getFiles();
     }
 
     @Override
     public void buildWorkflow() {
-
-        List<String> reorderedBams = new LinkedList<>();
-        List<Job> reorderedBamJobs = new LinkedList<>();
-
-        for (SqwFile inputFile : Arrays.asList(inputBamFiles)) {
-            ReorderSam reorder = new ReorderSam.Builder(java, picardReorderSamMem + "g", tmpDir, picardDir, dataDir)
-                    .setInputFile(inputFile.getProvisionedPath())
-                    .setReferenceSequence(refFasta)
-                    .setCreateIndex(true)
-                    .build();
-
-            Job j = getWorkflow().createBashJob("PicardReorderAndIndexBam")
-                    .setMaxMemory(Integer.toString((picardReorderSamMem + picardOverhead) * 1024))
-                    .setQueue(queue);
-            j.getCommand().setArguments(reorder.getCommand());
-
-            reorderedBams.add(reorder.getOutputFile());
-            reorderedBamJobs.add(j);
-
-        }
-
         Map<String, String> filesSplitByIntervals = new HashMap<>();
         List<Job> filesSplitsByIntervalJobs = new LinkedList<>();
+        Map<String, Job> snvFiles = new HashMap<>();
+        Map<String, Job> indelFiles = new HashMap<>();
+        Map<String, Job> finalFiles = new HashMap<>();
 
-        // one chrSize record is required
+        // one chrSize record is required, null will result in no parallelization
         if (chrSizes.isEmpty()) {
             chrSizes.add(null);
         }
 
         for (String chrSize : chrSizes) {
 
-            RealignerTargetCreator.Builder targetBuilder = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            //GATK Realigner Target Creator (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_RealignerTargetCreator.php)
+            RealignerTargetCreator.Builder realignerTargetCreatorBuilder = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
-                    .addInputBamFiles(reorderedBams)
+                    .addInputBamFiles(inputBamFiles)
                     .setKnownIndels(dbsnpVcf);
             if (chrSize != null) {
-                targetBuilder.addInterval(chrSize);
+                realignerTargetCreatorBuilder.addInterval(chrSize);
             }
-            if (!filesSplitByIntervals.isEmpty()) {
-                targetBuilder.addIntervalFiles(intervalFiles);
-                targetBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+            if (!intervalFiles.isEmpty()) {
+                realignerTargetCreatorBuilder.addIntervalFiles(intervalFiles);
             }
-            RealignerTargetCreator target = targetBuilder.build();
-
-            Job id20 = getWorkflow().createBashJob("GATKRealignerTargetCreator")
+            if (chrSize != null && !intervalFiles.isEmpty()) {
+                realignerTargetCreatorBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+            }
+            RealignerTargetCreator realignerTargetCreatorCommand = realignerTargetCreatorBuilder.build();
+            Job realignerTargetCreatorJob = getWorkflow().createBashJob("GATKRealignerTargetCreator")
                     .setMaxMemory(Integer.toString((gatkRealignTargetCreatorMem + gatkOverhead) * 1024))
                     .setQueue(queue);
-            id20.getParents().addAll(reorderedBamJobs);
-            id20.getCommand().setArguments(target.getCommand());
+            realignerTargetCreatorJob.getCommand().setArguments(realignerTargetCreatorCommand.getCommand());
 
-            IndelRealigner.Builder realignBuilder = new IndelRealigner.Builder(java, gatkIndelRealignerMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            //GATK Indel Realigner (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_IndelRealigner.php)
+            IndelRealigner.Builder indelRealignerBuilder = new IndelRealigner.Builder(java, gatkIndelRealignerMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
-                    .addInputBamFiles(reorderedBams)
-                    .setTargetIntervalFile(target.getOutputFile());
+                    .addInputBamFiles(inputBamFiles)
+                    .setTargetIntervalFile(realignerTargetCreatorCommand.getOutputFile());
             if (chrSize != null) {
-                realignBuilder.addInterval(chrSize); //just used for naming... fix this!
+                indelRealignerBuilder.addInterval(chrSize);
             }
-            IndelRealigner realign = realignBuilder.build();
-
-            Job id30 = getWorkflow().createBashJob("GATKIndelRealigner")
+            IndelRealigner indelRealignerCommand = indelRealignerBuilder.build();
+            Job indelRealignerJob = getWorkflow().createBashJob("GATKIndelRealigner")
                     .setMaxMemory(Integer.toString((gatkIndelRealignerMem + gatkOverhead) * 1024))
                     .setQueue(queue)
-                    .addParent(id20);
-            id30.getCommand().setArguments(realign.getCommand());
+                    .addParent(realignerTargetCreatorJob);
+            indelRealignerJob.getCommand().setArguments(indelRealignerCommand.getCommand());
 
-            SortSam sort = new SortSam.Builder(java, picardSortMem + "g", tmpDir, picardDir, dataDir)
-                    .setInputFile(realign.getOutputFile())
-                    .setSortOrder("coordinate")
-                    .setCreateIndex(true)
-                    .build();
-
-            Job id35 = getWorkflow().createBashJob("PicardSortAndIndexByQuery")
-                    .setMaxMemory(Integer.toString((picardSortMem + picardOverhead) * 1024))
-                    .setQueue(queue)
-                    .addParent(id30);
-            id35.getCommand().setArguments(sort.getCommand());
-
-            if (filesSplitByIntervals.put(chrSize, sort.getOutputFile()) != null) {
+            if (filesSplitByIntervals.put(chrSize, indelRealignerCommand.getOutputFile()) != null) {
                 throw new RuntimeException("Unexpected state: Duplicate interval key.");
             }
-
-            filesSplitsByIntervalJobs.add(id35);
+            filesSplitsByIntervalJobs.add(indelRealignerJob);
         }
 
-        BaseRecalibrator recalibrator = new BaseRecalibrator.Builder(java, gatkCountCovariateMem + "g", tmpDir, gatk, gatkKey, dataDir)
+        //GATK Base Recalibrator (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_bqsr_BaseRecalibrator.php)
+        BaseRecalibrator.Builder baseRecalibratorBuilder = new BaseRecalibrator.Builder(java, gatkBaseRecalibratorXmx + "m", tmpDir, gatk, gatkKey, dataDir)
                 .setReferenceSequence(refFasta)
                 .addCovariate("ReadGroupCovariate")
                 .addCovariate("QualityScoreCovariate")
                 .addCovariate("CycleCovariate")
-                .addCovariate("ContextCovariate") //gatk_recal_base_recal_params=-cov ContextCovariate
+                .addCovariate("ContextCovariate")
                 .addKnownSite(dbsnpVcf)
                 .addInputFiles(filesSplitByIntervals.values())
-                .build();
-
-        Job id60 = getWorkflow().createBashJob("BaseRecalibrator")
-                .setMaxMemory(Integer.toString((gatkCountCovariateMem + gatkOverhead) * 1024))
+                .setNumCpuThreadsPerDataThread(gatkBaseRecalibratorNct);
+        if (!intervalFiles.isEmpty()) {
+            //"This excludes off-target sequences and sequences that may be poorly mapped, which have a higher error rate. 
+            // Including them could lead to a skewed model and bad recalibration."
+            // https://www.broadinstitute.org/gatk/guide/article?id=4133
+            baseRecalibratorBuilder.addIntervalFiles(intervalFiles);
+        }
+        BaseRecalibrator baseRecalibratorCommand = baseRecalibratorBuilder.build();
+        Job baseRecalibratorJob = getWorkflow().createBashJob("BaseRecalibrator")
+                .setMaxMemory(gatkBaseRecalibratorMem.toString())
+                .setThreads(gatkBaseRecalibratorSmp)
                 .setQueue(queue);
-
-        id60.getParents().addAll(filesSplitsByIntervalJobs);
-        id60.getCommand().setArguments(recalibrator.getCommand());
-
-        Map<String, Job> snvFiles = new HashMap<>();
-        Map<String, Job> indelFiles = new HashMap<>();
+        baseRecalibratorJob.getParents().addAll(filesSplitsByIntervalJobs);
+        baseRecalibratorJob.getCommand().setArguments(baseRecalibratorCommand.getCommand());
 
         for (Entry<String, String> e : filesSplitByIntervals.entrySet()) {
 
             String chrSize = e.getKey();
             String inputBam = e.getValue();
 
-            PrintReads recalibrate = new PrintReads.Builder(java, gatkCountCovariateMem + "g", tmpDir, gatk, gatkKey, dataDir)
-                    //.setIntervals(chrSize) //http://gatkforums.broadinstitute.org/discussion/4133/when-should-i-use-l-to-pass-in-a-list-of-intervals
+            //GATK Print Reads (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php)
+            PrintReads printReadsCommand = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
-                    .setCovariatesTablesFile(recalibrator.getOutputFile())
+                    .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
                     .setPreserveQscoresLessThan(preserveQscoresLessThan)
                     .setInputFile(inputBam)
                     .build();
-
-            Job id70 = getWorkflow().createBashJob("TableRecalibration")
-                    .setMaxMemory(Integer.toString((gatkCountCovariateMem + gatkOverhead) * 1024))
+            Job printReadsJob = getWorkflow().createBashJob("TableRecalibration")
+                    .setMaxMemory(Integer.toString((gatkPrintReadsMem + gatkOverhead) * 1024))
                     .setQueue(queue)
-                    .addParent(id60);
-            id70.getCommand().setArguments(recalibrate.getCommand());
+                    .addParent(baseRecalibratorJob);
+            printReadsJob.getCommand().setArguments(printReadsCommand.getCommand());
 
-            
-            //INDELS
-            UnifiedGenotyper.Builder rawIndelsBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkIndelGenotyperMem) + "g", tmpDir, gatk, gatkKey, dataDir)
-                    .setInputBamFile(recalibrate.getOutputFile())
-                    .setReferenceSequence(refFasta)
-                    .setDbsnpFilePath(dbsnpVcf)
-                    .setStandardCallConfidence(standCallConf)
-                    .setStandardEmitConfidence(standEmitConf)
-                    .setGenotypeLikelihoodsModel("INDEL")
-                    .setGroup("Standard");
-            if (chrSize != null && !chrSize.isEmpty()) {
-                rawIndelsBuilder.addInterval(chrSize);
+            if (VariantCaller.HAPLOTYPE_CALLER == variantCaller) {
+
+                //GATK Haplotype Caller (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.php)
+                HaplotypeCaller.Builder haplotypeCallerBuilder = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerMem) + "g", tmpDir, gatk, gatkKey, dataDir)
+                        .setInputBamFile(printReadsCommand.getOutputFile())
+                        .setReferenceSequence(refFasta)
+                        .setDbsnpFilePath(dbsnpVcf)
+                        .setStandardCallConfidence(standCallConf)
+                        .setStandardEmitConfidence(standEmitConf);
+                if (chrSize != null) {
+                    haplotypeCallerBuilder.addInterval(chrSize);
+                }
+                if (!intervalFiles.isEmpty()) {
+                    haplotypeCallerBuilder.addIntervalFiles(intervalFiles);
+                }
+                if (chrSize != null && !intervalFiles.isEmpty()) {
+                    haplotypeCallerBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+                }
+                HaplotypeCaller haplotypeCallerCommand = haplotypeCallerBuilder.build();
+                Job haplotypeCallerJob = this.getWorkflow().createBashJob("GATKHaplotypeCaller")
+                        .setMaxMemory(Integer.toString((gatkHaplotypeCallerMem + gatkOverhead) * 1024))
+                        .setQueue(queue)
+                        .addParent(printReadsJob);
+                haplotypeCallerJob.getCommand().setArguments(haplotypeCallerCommand.getCommand());
+
+                finalFiles.put(haplotypeCallerCommand.getOutputFile(), haplotypeCallerJob);
+
+            } else if (VariantCaller.UNIFIED_GENOTYPER == variantCaller) {
+
+                //GATK Unified Genotyper (INDELS) (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php)
+                UnifiedGenotyper.Builder indelsUnifiedGenotyperBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, dataDir)
+                        .setInputBamFile(printReadsCommand.getOutputFile())
+                        .setReferenceSequence(refFasta)
+                        .setDbsnpFilePath(dbsnpVcf)
+                        .setStandardCallConfidence(standCallConf)
+                        .setStandardEmitConfidence(standEmitConf)
+                        .setGenotypeLikelihoodsModel("INDEL")
+                        .setGroup("Standard");
+                if (chrSize != null) {
+                    indelsUnifiedGenotyperBuilder.addInterval(chrSize);
+                }
+                if (!intervalFiles.isEmpty()) {
+                    indelsUnifiedGenotyperBuilder.addIntervalFiles(intervalFiles);
+                }
+                if (chrSize != null && !intervalFiles.isEmpty()) {
+                    indelsUnifiedGenotyperBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+                }
+                UnifiedGenotyper indelsUnifiedGenotyperCommand = indelsUnifiedGenotyperBuilder.build();
+                Job indelsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndel")
+                        .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
+                        .setQueue(queue)
+                        .addParent(printReadsJob);
+                indelsUnifiedGenotyperJob.getCommand().setArguments(indelsUnifiedGenotyperCommand.getCommand());
+
+                indelFiles.put(indelsUnifiedGenotyperCommand.getOutputFile(), indelsUnifiedGenotyperJob);
+
+                //GATK Unified Genotyper (SNVS) (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php)
+                UnifiedGenotyper.Builder snvsUnifiedGenotyperBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, dataDir)
+                        .setInputBamFile(printReadsCommand.getOutputFile())
+                        .setReferenceSequence(refFasta)
+                        .setDbsnpFilePath(dbsnpVcf)
+                        .setStandardCallConfidence(standCallConf)
+                        .setStandardEmitConfidence(standEmitConf)
+                        .setGenotypeLikelihoodsModel("SNP");
+                if (chrSize != null) {
+                    snvsUnifiedGenotyperBuilder.addInterval(chrSize);
+                }
+                if (!intervalFiles.isEmpty()) {
+                    snvsUnifiedGenotyperBuilder.addIntervalFiles(intervalFiles);
+                }
+                if (chrSize != null && !intervalFiles.isEmpty()) {
+                    snvsUnifiedGenotyperBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+                }
+                UnifiedGenotyper snvsUnifiedGenotyperCommand = snvsUnifiedGenotyperBuilder.build();
+                Job snvsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNV")
+                        .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
+                        .setQueue(queue)
+                        .addParent(printReadsJob);
+                snvsUnifiedGenotyperJob.getCommand().setArguments(snvsUnifiedGenotyperCommand.getCommand());
+
+                snvFiles.put(snvsUnifiedGenotyperCommand.getOutputFile(), snvsUnifiedGenotyperJob);
+
+            } else {
+                throw new RuntimeException("Unsupported mode: " + variantCaller.toString());
             }
-            if (!intervalFiles.isEmpty()) {
-                rawIndelsBuilder.addIntervalFiles(intervalFiles);
-                rawIndelsBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
-            }
-            UnifiedGenotyper rawIndels = rawIndelsBuilder.build();
-
-            Job id100 = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndel")
-                    .setMaxMemory(Integer.toString((gatkIndelGenotyperMem + gatkOverhead) * 1024))
-                    .setQueue(queue)
-                    .addParent(id70);
-            id100.getCommand().setArguments(rawIndels.getCommand());
-
-            VariantFiltration.Builder filterIndelsBuilder = new VariantFiltration.Builder(java, variantFilterMem + "g", tmpDir, gatk, gatkKey, dataDir)
-                    .setInputVcfFile(rawIndels.getOutputFile())
-                    .setReferenceSequence(refFasta)
-                    .addFilter("Indel_HARD_VALIDATE", "MQ0 >= 4 && ((MQ0 / (1.0 * DP)) > 0.1)")
-                    .addFilter("Indel_StrandBias", "SB > -10.0")
-                    .addFilter("Indel_VeryLowQual", "QUAL < 30")
-                    .addFilter("Indel_LowCoverage", "DP < 5")
-                    .addFilter("Indel_StrandBiasFishers", "FS > 60.0")
-                    .addFilter("Indel_LowQual", "QUAL > 30.0 && QUAL < 50.0");
-            if (chrSize != null && !chrSize.isEmpty()) {
-                filterIndelsBuilder.addInterval(chrSize);
-            }
-            if (!intervalFiles.isEmpty()) {
-                filterIndelsBuilder.addIntervalFiles(intervalFiles);
-                filterIndelsBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
-            }
-            VariantFiltration filterIndels = filterIndelsBuilder.build();
-
-            Job id110 = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndelFilter")
-                    .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
-                    .setQueue(queue)
-                    .addParent(id100);
-            id110.getCommand().setArguments(filterIndels.getCommand());
-
-            indelFiles.put(filterIndels.getOutputFile(), id110);
-
-            
-            //SNVS
-            UnifiedGenotyper.Builder rawSnvsBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkIndelGenotyperMem) + "g", tmpDir, gatk, gatkKey, dataDir)
-                    .setInputBamFile(recalibrate.getOutputFile())
-                    .setReferenceSequence(refFasta)
-                    .setDbsnpFilePath(dbsnpVcf)
-                    .setNumThreads(Integer.toString(gatkUnifiedGenotyperThreads))
-                    .setStandardCallConfidence(standCallConf)
-                    .setStandardEmitConfidence(standEmitConf)
-                    .setGenotypeLikelihoodsModel("SNP");
-            if (chrSize != null && !chrSize.isEmpty()) {
-                rawSnvsBuilder.addInterval(chrSize);
-            }
-            if (!intervalFiles.isEmpty()) {
-                rawSnvsBuilder.addIntervalFiles(intervalFiles);
-                rawSnvsBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
-            }
-            UnifiedGenotyper rawSnvs = rawSnvsBuilder.build();
-
-            Job id90 = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNV")
-                    .setMaxMemory(Integer.toString((gatkIndelGenotyperMem + gatkOverhead) * 1024))
-                    .setQueue(queue)
-                    .addParent(id70);
-            id90.getCommand().setArguments(rawSnvs.getCommand());
-
-            VariantFiltration.Builder filterSnvsBuilder = new VariantFiltration.Builder(java, variantFilterMem + "g", tmpDir, gatk, gatkKey, dataDir)
-                    .setInputVcfFile(rawSnvs.getOutputFile())
-                    .setReferenceSequence(refFasta)
-                    .setClusterWindowSize("10")
-                    .setClusterSize("3")
-                    .addFilter("HARD_TO_VALIDATE", "MQ0 >= 4 && ((MQ0 / (1.0 * DP)) > 0.1)")
-                    .addFilter("LowCoverage", "DP < 5")
-                    .addFilter("VeryLowQual", "QUAL < 30.0")
-                    .addFilter("LowQual", "QUAL > 30.0 && QUAL < 50.0")
-                    .addFilter("LowQD", "QD < 2.0 ")
-                    .addFilter("StrandBiasFishers", "FS > 60.0")
-                    .addFilter("StrandBias", "SB > -10.0")
-                    .addMask("InDel", rawIndels.getOutputFile());
-            if (chrSize != null && !chrSize.isEmpty()) {
-                filterSnvsBuilder.addInterval(chrSize);
-            }
-            if (!intervalFiles.isEmpty()) {
-                filterSnvsBuilder.addIntervalFiles(intervalFiles);
-                filterSnvsBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
-            }
-            VariantFiltration filterSnvs = filterSnvsBuilder.build();
-
-            Job id120 = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNVFilter")
-                    .setMaxMemory(Integer.toString((variantFilterMem + gatkOverhead) * 1024))
-                    .setQueue(queue)
-                    .addParent(id90) //rawSnvs
-                    .addParent(id100); //rawIndels
-            id120.getCommand().setArguments(filterSnvs.getCommand());
-
-            snvFiles.put(filterSnvs.getOutputFile(), id120);
-
         }
 
-        MergeVcf mergeSnvs = new MergeVcf.Builder(perl, mergeVCFScript, dataDir)
-                .addInputFiles(snvFiles.keySet())
-                .setOutputFileName("gatk.snps.filtered.merged.vcf")
+        if (!snvFiles.isEmpty()) {
+            MergeVcf mergeSnvsCommand = new MergeVcf.Builder(perl, mergeVCFScript, dataDir)
+                    .addInputFiles(snvFiles.keySet())
+                    //.setOutputFileName("gatk.snps.filtered.merged.vcf")
+                    .build();
+            Job mergeSnvsJob = this.getWorkflow().createBashJob("MergeRawSNVs")
+                    .setMaxMemory("4096")
+                    .setQueue(queue);
+            mergeSnvsJob.getParents().addAll(snvFiles.values());
+            mergeSnvsJob.getCommand().setArguments(mergeSnvsCommand.getCommand());
+
+            snvFiles.clear();
+            snvFiles.put(mergeSnvsCommand.getOutputFile(), mergeSnvsJob);
+        }
+
+        if (!indelFiles.isEmpty()) {
+            MergeVcf mergeIndelsCommand = new MergeVcf.Builder(perl, mergeVCFScript, dataDir)
+                    .addInputFiles(indelFiles.keySet())
+                    //.setOutputFileName("gatk.indels.filtered.merged.vcf")
+                    .build();
+            Job mergeIndelsJob = this.getWorkflow().createBashJob("MergeRawIndels")
+                    .setMaxMemory("4096")
+                    .setQueue(queue);
+            mergeIndelsJob.getParents().addAll(indelFiles.values());
+            mergeIndelsJob.getCommand().setArguments(mergeIndelsCommand.getCommand());
+
+            indelFiles.clear();
+            indelFiles.put(mergeIndelsCommand.getOutputFile(), mergeIndelsJob);
+        }
+
+        if (!snvFiles.isEmpty() && !indelFiles.isEmpty() && finalFiles.isEmpty()) {
+            MergeVcf mergeFinalCommand = new MergeVcf.Builder(perl, mergeVCFScript, dataDir)
+                    .addInputFiles(snvFiles.keySet())
+                    .addInputFiles(indelFiles.keySet())
+                    .build();
+            Job mergeFinalJob = this.getWorkflow().createBashJob("MergeFinal")
+                    .setMaxMemory("4096")
+                    .setQueue(queue);
+            mergeFinalJob.getParents().addAll(snvFiles.values());
+            mergeFinalJob.getParents().addAll(indelFiles.values());
+            mergeFinalJob.getCommand().setArguments(mergeFinalCommand.getCommand());
+
+            finalFiles.put(mergeFinalCommand.getOutputFile(), mergeFinalJob);
+        } else if (snvFiles.isEmpty() && indelFiles.isEmpty() && !finalFiles.isEmpty()) {
+            if (finalFiles.size() > 1) {
+                MergeVcf mergeFinalCommand = new MergeVcf.Builder(perl, mergeVCFScript, dataDir)
+                        .addInputFiles(finalFiles.keySet())
+                        .build();
+                Job mergeFinalJob = this.getWorkflow().createBashJob("MergeFinal")
+                        .setMaxMemory("4096")
+                        .setQueue(queue);
+                mergeFinalJob.getParents().addAll(finalFiles.values());
+                mergeFinalJob.getCommand().setArguments(mergeFinalCommand.getCommand());
+
+                finalFiles.clear();
+                finalFiles.put(mergeFinalCommand.getOutputFile(), mergeFinalJob);
+            } else {
+                //there is one vcf, no need to merge
+            }
+        } else {
+            throw new RuntimeException(String.format("Unexpected state: snvs file = [%s], indels size = [%s], final size = [%s]",
+                    ArrayUtils.getLength(snvFiles), ArrayUtils.getLength(indelFiles), ArrayUtils.getLength(finalFiles)));
+        }
+
+        //Sort the vcf (variant recalibrator fails otherwise)
+        SortVcf sortMergedVcfCommand = new SortVcf.Builder(dataDir)
+                .setInputFile(Iterables.getOnlyElement(finalFiles.keySet()))
+                .setOutputFileName(identifier)
                 .build();
-
-        Job id140 = this.getWorkflow().createBashJob("MergeFilteredSNV")
-                .setMaxMemory("4096")
-                .setQueue(queue);
-        id140.getParents().addAll(snvFiles.values());
-        id140.getCommand().setArguments(mergeSnvs.getCommand());
-
-        MergeVcf mergeIndels = new MergeVcf.Builder(perl, mergeVCFScript, dataDir)
-                .addInputFiles(indelFiles.keySet())
-                .setOutputFileName("gatk.indels.filtered.merged.vcf")
-                .build();
-
-        Job id160 = this.getWorkflow().createBashJob("MergeFilteredIndel")
-                .setMaxMemory("4096")
-                .setQueue(queue);
-        id160.getParents().addAll(indelFiles.values());
-        id160.getCommand().setArguments(mergeIndels.getCommand());
-
-        MergeVcf mergeFinal = new MergeVcf.Builder(perl, mergeVCFScript, dataDir)
-                .addInputFile(mergeSnvs.getOutputFile())
-                .addInputFile(mergeIndels.getOutputFile())
-                .setOutputFileName(identifier + ".merged.vcf")
-                .build();
-
-        Job id180 = this.getWorkflow().createBashJob("MergeFilteredVariants")
-                .setMaxMemory("4096")
+        Job sortMergedVcfJob = getWorkflow().createBashJob("SortMergedVcf")
+                .setMaxMemory(Integer.toString(4096))
                 .setQueue(queue)
-                .addParent(id140)
-                .addParent(id160);
-        id180.getCommand().setArguments(mergeFinal.getCommand());
+                .addParent(Iterables.getOnlyElement(finalFiles.values()));
+        sortMergedVcfJob.getCommand().setArguments(sortMergedVcfCommand.getCommand());
 
-        SortVcf sortVcf = new SortVcf.Builder(dataDir)
-                .setInputFile(mergeFinal.getOutputFile())
-                .build();
-        VariantAnnotator annotateVcf = new VariantAnnotator.Builder(java, annotationMem + "g", tmpDir, gatk, gatkKey, dataDir)
+        //GATK Variant Recalibrator (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_variantrecalibration_VariantRecalibrator.php) 
+        VariantRecalibrator.Builder variantRecalibratorBuilder = new VariantRecalibrator.Builder(java, Integer.toString(4) + "g", tmpDir, gatk, gatkKey, dataDir)
+                .setInputVcfFile(sortMergedVcfCommand.getOutputFile())
                 .setReferenceSequence(refFasta)
-                .setInputVcfFile(sortVcf.getOutputFile())
-                .addIntervalFile(sortVcf.getOutputFile())
-                .setAdditionalParams(annotateParams)
-                .build();
-        CompressFile compressVcf = new CompressFile.Builder(dataDir)
-                .setInputFile(annotateVcf.getOutputFile())
-                .build();
-
-        List<String> cmd = new LinkedList<>();
-        cmd.addAll(sortVcf.getCommand());
-        cmd.add("&&");
-        cmd.addAll(annotateVcf.getCommand());
-        cmd.add("&&");
-        cmd.addAll(compressVcf.getCommand());
-
-        Job job12 = getWorkflow().createBashJob("SortAnnotateCompressVcf")
-                .setMaxMemory(Integer.toString(Collections.max(Arrays.asList(annotationMem, annotationMem, annotationMem * 2)) * 1024))
+                .addResources(vqsrResources)
+                .addAnnotations(vqsrAnnotations);
+        if (vqsrMaxGaussians != null) {
+            variantRecalibratorBuilder.setMaxGaussians(Integer.parseInt(vqsrMaxGaussians));
+        }
+        VariantRecalibrator variantRecalibratorCommand = variantRecalibratorBuilder.build();
+        Job variantRecalibratorJob = getWorkflow().createBashJob("GATKVariantRecalibrator")
+                .setMaxMemory(Integer.toString((4 + gatkOverhead) * 1024))
                 .setQueue(queue)
-                .addParent(id180);
-        job12.getCommand().setArguments(cmd);
+                .addParent(sortMergedVcfJob);
+        variantRecalibratorJob.getCommand().setArguments(variantRecalibratorCommand.getCommand());
+        variantRecalibratorJob.addFile(createOutputFile(variantRecalibratorCommand.getRscriptOutputFile(), "text/plain", manualOutput));
+
+        //GATK Apply Recalibration (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_variantrecalibration_ApplyRecalibration.php)
+        ApplyRecalibration applyRecalibrationCommand = new ApplyRecalibration.Builder(java, Integer.toString(4) + "g", tmpDir, gatk, gatkKey, dataDir)
+                .setInputVcfFile(sortMergedVcfCommand.getOutputFile())
+                .setReferenceSequence(refFasta)
+                .setRecalFile(variantRecalibratorCommand.getRecalOutputFile())
+                .setTranchesFile(variantRecalibratorCommand.getTranchesOutputFile())
+                .setTruthSensitivityLevel(truthSensitivityLevel)
+                .build();
+        Job applyRecalibrationJob = getWorkflow().createBashJob("GATKApplyRecalibration")
+                .setMaxMemory(Integer.toString((4 + gatkOverhead) * 1024))
+                .setQueue(queue)
+                .addParent(variantRecalibratorJob);
+        applyRecalibrationJob.getCommand().setArguments(applyRecalibrationCommand.getCommand());
+
+        //Sort and compress the final vcf
+        SortVcf sortVcfCommand = new SortVcf.Builder(dataDir)
+                .setInputFile(applyRecalibrationCommand.getOutputFile())
+                .build();
+        CompressAndIndexVcf compressVcfCommand = new CompressAndIndexVcf.Builder(tabixDir, dataDir)
+                .setInputFile(sortVcfCommand.getOutputFile())
+                .build();
+        List<String> cmd = new LinkedList<>();
+        cmd.addAll(sortVcfCommand.getCommand());
+        cmd.add("&&");
+        cmd.addAll(compressVcfCommand.getCommand());
+        Job sortCompressVcfJob = getWorkflow().createBashJob("SortCompressVcf")
+                .setMaxMemory(Integer.toString(4096))
+                .setQueue(queue)
+                .addParent(applyRecalibrationJob);
+        sortCompressVcfJob.getCommand().setArguments(cmd);
 
         //final output file
-        job12.addFile(createOutputFile(compressVcf.getOutputFile(), "application/vcf-4-gzip", manualOutput));
-
+        SqwFile vcf = createOutputFile(compressVcfCommand.getOutputVcfFile(), "application/vcf-4-gzip", manualOutput);
+        SqwFile tbi = createOutputFile(compressVcfCommand.getOutputTabixFile(), "application/tbi", manualOutput);
+        vcf.getAnnotations().put("variant_caller", variantCaller.toString());
+        tbi.getAnnotations().put("variant_caller", variantCaller.toString());
+        sortCompressVcfJob.addFile(vcf);
+        sortCompressVcfJob.addFile(tbi);
     }
 
 }
