@@ -44,7 +44,7 @@ public class SortVcf extends AbstractCommand {
 
             String outputFilePath;
             if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName;
+                outputFilePath = outputDir + outputFileName + ".vcf";
             } else {
                 outputFilePath = outputDir + FilenameUtils.getBaseName(inputFile) + ".sorted.vcf";
             }

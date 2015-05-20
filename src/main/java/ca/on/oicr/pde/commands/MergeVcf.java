@@ -54,9 +54,9 @@ public class MergeVcf extends AbstractCommand {
 
             String outputFilePath;
             if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName;
+                outputFilePath = outputDir + outputFileName + ".vcf";
             } else {
-                outputFilePath = outputDir + "merged_" + RandomStringUtils.randomAlphanumeric(4) + ".vcf";
+                outputFilePath = outputDir + RandomStringUtils.randomAlphanumeric(4) + ".merged.vcf";
             }
             
             List<String> c = new LinkedList<>();
