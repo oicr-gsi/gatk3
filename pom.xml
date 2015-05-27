@@ -11,7 +11,7 @@
 
     <groupId>ca.on.oicr.pde.workflows</groupId>
     <artifactId>GATK3</artifactId>
-    <version>1.0-beta.1</version>
+    <version>1.0-beta.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>${display-name}</name>
@@ -20,26 +20,10 @@
         <workflow-name>GATK3</workflow-name>
         <tabix-version>0.2.6</tabix-version>
         <gatk-version>3.3-0</gatk-version>
-        <picard-version>1.89</picard-version>
-        <samtools-version>0.1.19</samtools-version>
         <workflow-description>Need a description</workflow-description>
     </properties>
 
     <dependencies>
-<!--        <dependency>
-            <groupId>samtools</groupId>
-            <artifactId>samtools</artifactId>
-            <version>${samtools-version}</version>
-            <type>zip</type>
-            <scope>provided</scope>
-        </dependency>-->
-        <dependency>
-            <groupId>picard</groupId>
-            <artifactId>picard-tools</artifactId>
-            <version>${picard-version}</version>
-            <type>zip</type>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>GenomeAnalysisTK</groupId>
             <artifactId>GenomeAnalysisTK</artifactId>
@@ -84,6 +68,26 @@
                         </link>-->
                     </links>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-provided-dependencies</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${bundleDirectory}/bin</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <includeScope>provided</includeScope>
+                            <includeTypes>zip,tar.gz,gz</includeTypes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

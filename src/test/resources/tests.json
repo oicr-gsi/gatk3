@@ -13,8 +13,7 @@
                 "identifier": "gatk.ex",
                 "input_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bai",
                 "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY",
-                "variant_caller": "unified_genotyper",
-                "vqsr_max_gaussians": "1"
+                "variant_caller": "unified_genotyper"
             }
         }, {
             "id": "EX_gatk3_UG",
@@ -23,17 +22,7 @@
                 "input_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bai",
                 "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
                 "interval_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022.val.bed",
-                "variant_caller": "unified_genotyper",
-                "vqsr_max_gaussians": "1"
-            }
-        }, {
-            "id": "EX_gatk3_no_parallelism_no_intervals_UG",
-            "parameters": {
-                "identifier": "gatk.ex",
-                "input_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bai",
-                "chr_sizes": "",
-                "variant_caller": "unified_genotyper",
-                "vqsr_max_gaussians": "1"
+                "variant_caller": "unified_genotyper"
             }
         }, {
             "id": "EX_gatk3_no_parallelism_UG",
@@ -42,8 +31,7 @@
                 "input_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bai",
                 "chr_sizes": "",
                 "interval_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022.val.bed",
-                "variant_caller": "unified_genotyper",
-                "vqsr_max_gaussians": "1"
+                "variant_caller": "unified_genotyper"
             }
         },
         {
@@ -52,8 +40,7 @@
                 "identifier": "gatk.ex",
                 "input_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bai",
                 "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY",
-                "variant_caller": "haplotype_caller",
-                "vqsr_max_gaussians": "1"
+                "variant_caller": "haplotype_caller"
             }
         }, {
             "id": "EX_gatk3_HC",
@@ -62,17 +49,7 @@
                 "input_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bai",
                 "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
                 "interval_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022.val.bed",
-                "variant_caller": "haplotype_caller",
-                "vqsr_max_gaussians": "1"
-            }
-        }, {
-            "id": "EX_gatk3_no_parallelism_no_intervals_HC",
-            "parameters": {
-                "identifier": "gatk.ex",
-                "input_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bai",
-                "chr_sizes": "",
-                "variant_caller": "haplotype_caller",
-                "vqsr_max_gaussians": "1"
+                "variant_caller": "haplotype_caller"
             }
         }, {
             "id": "EX_gatk3_no_parallelism_HC",
@@ -81,8 +58,7 @@
                 "input_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bam,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022P.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022R.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022X.val.bai,${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022C.val.bai",
                 "chr_sizes": "",
                 "interval_files": "${workflow_bundle_dir}/Workflow_Bundle_GATK3/${project.version}/data/test/PCSI0022.val.bed",
-                "variant_caller": "haplotype_caller",
-                "vqsr_max_gaussians": "1"
+                "variant_caller": "haplotype_caller"
             }
         }
     ]

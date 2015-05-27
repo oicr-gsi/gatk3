@@ -15,6 +15,8 @@ public class VariantRecalibrator extends AbstractCommand {
     private String recalOutputFile;
     private String tranchesOutputFile;
     private String rscriptOutputFile;
+    private String plotsReportOutputFile;
+    private String tranchesReportOutputFile;
 
     private VariantRecalibrator() {
     }
@@ -31,16 +33,26 @@ public class VariantRecalibrator extends AbstractCommand {
         return rscriptOutputFile;
     }
 
+    public String getPlotsReportOutputFile() {
+        return plotsReportOutputFile;
+    }
+
+    public String getTranchesReportOutputFile() {
+        return tranchesReportOutputFile;
+    }
+
     public static class Builder extends AbstractGatkBuilder<Builder> {
 
+        private final String rDir;
         private String inputVcfFile;
         private String outputFileName;
         private final List<String> resources = new LinkedList<>();
         private final List<String> annotations = new LinkedList<>();
         private Integer maxGaussians;
 
-        public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
+        public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String rDir, String outputDir) {
             super(javaPath, maxHeapSize, tmpDir, gatkJarPath, gatkKey, outputDir);
+            this.rDir = rDir;
         }
 
         public Builder setInputVcfFile(String inputVcfFile) {
@@ -83,17 +95,28 @@ public class VariantRecalibrator extends AbstractCommand {
             String recalOutputFilePath;
             String tranchesOutputFilePath;
             String rscriptOutputFilePath;
+            String plotsReportOutputFilePath;
+            String tranchesReportOutputFilePath;
             if (outputFileName != null) {
                 recalOutputFilePath = outputDir + outputFileName + ".recal";
                 tranchesOutputFilePath = outputDir + outputFileName + ".tranches";
+
                 rscriptOutputFilePath = outputDir + outputFileName + ".plots.R";
+                plotsReportOutputFilePath = outputDir + outputFileName + ".plots.R.pdf";
+                tranchesReportOutputFilePath = outputDir + outputFileName + ".tranches.pdf";
             } else {
                 recalOutputFilePath = outputDir + FilenameUtils.getBaseName(inputVcfFile) + ".recal";
                 tranchesOutputFilePath = outputDir + FilenameUtils.getBaseName(inputVcfFile) + ".tranches";
+
                 rscriptOutputFilePath = outputDir + FilenameUtils.getBaseName(inputVcfFile) + ".plots.R";
+                plotsReportOutputFilePath = outputDir + FilenameUtils.getBaseName(inputVcfFile) + ".plots.R.pdf";
+                tranchesReportOutputFilePath = outputDir + FilenameUtils.getBaseName(inputVcfFile) + ".tranches.pdf";
             }
 
-            List<String> c = build("VariantRecalibrator");
+            List<String> c = new LinkedList<>();
+            c.add("PATH=" + rDir + "bin/" + "$PATH");
+
+            c.addAll(build("VariantRecalibrator"));
 
             c.add("--input");
             c.add(inputVcfFile);
@@ -133,6 +156,8 @@ public class VariantRecalibrator extends AbstractCommand {
             cmd.recalOutputFile = recalOutputFilePath;
             cmd.tranchesOutputFile = tranchesOutputFilePath;
             cmd.rscriptOutputFile = rscriptOutputFilePath;
+            cmd.plotsReportOutputFile = plotsReportOutputFilePath;
+            cmd.tranchesReportOutputFile = tranchesReportOutputFilePath;
             return cmd;
         }
     }

@@ -5,13 +5,11 @@ import ca.on.oicr.pde.commands.gatk3.UnifiedGenotyper;
 import ca.on.oicr.pde.commands.MergeVcf;
 import ca.on.oicr.pde.commands.SortVcf;
 import ca.on.oicr.pde.commands.gatk3.AbstractGatkBuilder;
-import ca.on.oicr.pde.commands.gatk3.ApplyRecalibration;
 import ca.on.oicr.pde.commands.gatk3.BaseRecalibrator;
 import ca.on.oicr.pde.commands.gatk3.HaplotypeCaller;
 import ca.on.oicr.pde.commands.gatk3.IndelRealigner;
 import ca.on.oicr.pde.commands.gatk3.PrintReads;
 import ca.on.oicr.pde.commands.gatk3.RealignerTargetCreator;
-import ca.on.oicr.pde.commands.gatk3.VariantRecalibrator;
 import ca.on.oicr.pde.utilities.workflows.OicrWorkflow;
 import com.google.common.collect.Iterables;
 import java.util.*;
@@ -57,13 +55,6 @@ public class WorkflowClient extends OicrWorkflow {
 
     private VariantCaller variantCaller;
 
-    private final List<String> vqsrResources = new LinkedList<>();
-    private final List<String> vqsrAnnotations = new LinkedList<>();
-
-    private Double truthSensitivityLevel;
-
-    private String vqsrMaxGaussians;
-
     private Integer gatkRealignTargetCreatorMem;
     private Integer gatkIndelRealignerMem;
     private Integer gatkPrintReadsMem;
@@ -89,7 +80,6 @@ public class WorkflowClient extends OicrWorkflow {
     @Override
     public void setupDirectory() {
         init();
-        setupCommands();
         this.addDirectory(dataDir);
     }
 
@@ -135,21 +125,6 @@ public class WorkflowClient extends OicrWorkflow {
         gatkOverhead = Integer.parseInt(getProperty("gatk_sched_overhead_mem"));
 
         variantCaller = VariantCaller.valueOf(StringUtils.upperCase(getProperty("variant_caller")));
-
-        //FIXME: vqsrResources.addAll(Arrays.asList(StringUtils.split(getProperty("vqsr_resources"), ":::")));
-        for (String vqsrResourceEscaped : StringUtils.split(getProperty("vqsr_resources"), ":::")) {
-            vqsrResources.add(vqsrResourceEscaped.replace("&#61;", "="));
-        }
-
-        vqsrAnnotations.addAll(Arrays.asList(StringUtils.split(getProperty("vqsr_annotations"), ",")));
-
-        truthSensitivityLevel = Double.parseDouble(getProperty("truth_sensitivity_level"));
-
-        vqsrMaxGaussians = getOptionalProperty("vqsr_max_gaussians", null);
-
-    }
-
-    public void setupCommands() {
 
     }
 
@@ -198,10 +173,12 @@ public class WorkflowClient extends OicrWorkflow {
 
             SqwFile bam = this.createFile("file_in_" + id++);
             bam.setSourcePath(bamFilePath);
+            bam.setType("application/bam");
             bam.setIsInput(true);
 
             SqwFile bai = this.createFile("file_in_" + id++);
             bai.setSourcePath(baiFilePath);
+            bai.setType("application/bam-index");
             bai.setIsInput(true);
 
             //FIXME: this seems to work for now, it would be better to be able to set the provisionedPath as
@@ -465,72 +442,31 @@ public class WorkflowClient extends OicrWorkflow {
                     ArrayUtils.getLength(snvFiles), ArrayUtils.getLength(indelFiles), ArrayUtils.getLength(finalFiles)));
         }
 
-        //Sort the vcf (variant recalibrator fails otherwise)
-        SortVcf sortMergedVcfCommand = new SortVcf.Builder(dataDir)
+        //Sort and compress the final vcf
+        SortVcf sortVcfCommand = new SortVcf.Builder(dataDir)
                 .setInputFile(Iterables.getOnlyElement(finalFiles.keySet()))
                 .setOutputFileName(identifier)
                 .build();
-        Job sortMergedVcfJob = getWorkflow().createBashJob("SortMergedVcf")
-                .setMaxMemory(Integer.toString(4096))
-                .setQueue(queue)
-                .addParent(Iterables.getOnlyElement(finalFiles.values()));
-        sortMergedVcfJob.getCommand().setArguments(sortMergedVcfCommand.getCommand());
-
-        //GATK Variant Recalibrator (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_variantrecalibration_VariantRecalibrator.php) 
-        VariantRecalibrator.Builder variantRecalibratorBuilder = new VariantRecalibrator.Builder(java, Integer.toString(4) + "g", tmpDir, gatk, gatkKey, dataDir)
-                .setInputVcfFile(sortMergedVcfCommand.getOutputFile())
-                .setReferenceSequence(refFasta)
-                .addResources(vqsrResources)
-                .addAnnotations(vqsrAnnotations);
-        if (vqsrMaxGaussians != null) {
-            variantRecalibratorBuilder.setMaxGaussians(Integer.parseInt(vqsrMaxGaussians));
-        }
-        VariantRecalibrator variantRecalibratorCommand = variantRecalibratorBuilder.build();
-        Job variantRecalibratorJob = getWorkflow().createBashJob("GATKVariantRecalibrator")
-                .setMaxMemory(Integer.toString((4 + gatkOverhead) * 1024))
-                .setQueue(queue)
-                .addParent(sortMergedVcfJob);
-        variantRecalibratorJob.getCommand().setArguments(variantRecalibratorCommand.getCommand());
-        variantRecalibratorJob.addFile(createOutputFile(variantRecalibratorCommand.getRscriptOutputFile(), "text/plain", manualOutput));
-
-        //GATK Apply Recalibration (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_variantrecalibration_ApplyRecalibration.php)
-        ApplyRecalibration applyRecalibrationCommand = new ApplyRecalibration.Builder(java, Integer.toString(4) + "g", tmpDir, gatk, gatkKey, dataDir)
-                .setInputVcfFile(sortMergedVcfCommand.getOutputFile())
-                .setReferenceSequence(refFasta)
-                .setRecalFile(variantRecalibratorCommand.getRecalOutputFile())
-                .setTranchesFile(variantRecalibratorCommand.getTranchesOutputFile())
-                .setTruthSensitivityLevel(truthSensitivityLevel)
-                .build();
-        Job applyRecalibrationJob = getWorkflow().createBashJob("GATKApplyRecalibration")
-                .setMaxMemory(Integer.toString((4 + gatkOverhead) * 1024))
-                .setQueue(queue)
-                .addParent(variantRecalibratorJob);
-        applyRecalibrationJob.getCommand().setArguments(applyRecalibrationCommand.getCommand());
-
-        //Sort and compress the final vcf
-        SortVcf sortVcfCommand = new SortVcf.Builder(dataDir)
-                .setInputFile(applyRecalibrationCommand.getOutputFile())
-                .build();
-        CompressAndIndexVcf compressVcfCommand = new CompressAndIndexVcf.Builder(tabixDir, dataDir)
+        CompressAndIndexVcf compressIndexVcfCommand = new CompressAndIndexVcf.Builder(tabixDir, dataDir)
                 .setInputFile(sortVcfCommand.getOutputFile())
                 .build();
         List<String> cmd = new LinkedList<>();
         cmd.addAll(sortVcfCommand.getCommand());
         cmd.add("&&");
-        cmd.addAll(compressVcfCommand.getCommand());
-        Job sortCompressVcfJob = getWorkflow().createBashJob("SortCompressVcf")
+        cmd.addAll(compressIndexVcfCommand.getCommand());
+        Job sortCompressIndexVcfJob = getWorkflow().createBashJob("SortCompressIndexVcf")
                 .setMaxMemory(Integer.toString(4096))
                 .setQueue(queue)
-                .addParent(applyRecalibrationJob);
-        sortCompressVcfJob.getCommand().setArguments(cmd);
+                .addParent(Iterables.getOnlyElement(finalFiles.values()));
+        sortCompressIndexVcfJob.getCommand().setArguments(cmd);
 
         //final output file
-        SqwFile vcf = createOutputFile(compressVcfCommand.getOutputVcfFile(), "application/vcf-4-gzip", manualOutput);
-        SqwFile tbi = createOutputFile(compressVcfCommand.getOutputTabixFile(), "application/tbi", manualOutput);
+        SqwFile vcf = createOutputFile(compressIndexVcfCommand.getOutputVcfFile(), "application/vcf-4-gzip", manualOutput);
+        SqwFile tbi = createOutputFile(compressIndexVcfCommand.getOutputTabixFile(), "application/tbi", manualOutput);
         vcf.getAnnotations().put("variant_caller", variantCaller.toString());
         tbi.getAnnotations().put("variant_caller", variantCaller.toString());
-        sortCompressVcfJob.addFile(vcf);
-        sortCompressVcfJob.addFile(tbi);
+        sortCompressIndexVcfJob.addFile(vcf);
+        sortCompressIndexVcfJob.addFile(tbi);
     }
 
 }

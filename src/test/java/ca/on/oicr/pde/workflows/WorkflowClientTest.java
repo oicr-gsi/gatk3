@@ -60,8 +60,8 @@ public class WorkflowClientTest {
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
-        Assert.assertEquals(w.getWorkflow().getJobs().size(), 133);
-        Assert.assertEquals(getNumberOfExpectedJobs(4, 25, VariantCaller.UNIFIED_GENOTYPER), 133);
+        Assert.assertEquals(w.getWorkflow().getJobs().size(), 130);
+        Assert.assertEquals(getNumberOfExpectedJobs(4, 25, VariantCaller.UNIFIED_GENOTYPER), 130);
     }
 
     @Test(enabled = true)
@@ -138,13 +138,10 @@ public class WorkflowClientTest {
                 break;
         }
 
-        return //numInputFiles +//reorder
-                (parallelismLevel * 2) // for each chr_size interval: create targets + realign
+        return (parallelismLevel * 2) // for each chr_size interval: create targets + realign
                 + 1 //calculate base recalibration table
                 + variantCallingJobCount
                 + mergeJobCount
-                + 1 //sort
-                + 2 //VQSR: recalibrate + apply
                 + 1; //sort and compress
     }
 
