@@ -28,7 +28,6 @@ public class UnifiedGenotyper extends AbstractCommand {
         private String standardEmitConfidence;
         private String genotypeLikelihoodsModel;
         private String group;
-        private String outputFileName;
 
         public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
             super(javaPath, maxHeapSize, tmpDir, gatkJarPath, gatkKey, outputDir);
@@ -61,11 +60,6 @@ public class UnifiedGenotyper extends AbstractCommand {
 
         public Builder setGroup(String group) {
             this.group = group;
-            return this;
-        }
-
-        public Builder setOutputFileName(String outputFileName) {
-            this.outputFileName = outputFileName;
             return this;
         }
 

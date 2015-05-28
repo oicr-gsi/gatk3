@@ -45,7 +45,6 @@ public class VariantRecalibrator extends AbstractCommand {
 
         private final String rDir;
         private String inputVcfFile;
-        private String outputFileName;
         private final List<String> resources = new LinkedList<>();
         private final List<String> annotations = new LinkedList<>();
         private Integer maxGaussians;
@@ -57,11 +56,6 @@ public class VariantRecalibrator extends AbstractCommand {
 
         public Builder setInputVcfFile(String inputVcfFile) {
             this.inputVcfFile = inputVcfFile;
-            return this;
-        }
-
-        public Builder setOutputFileName(String outputFileName) {
-            this.outputFileName = outputFileName;
             return this;
         }
 
@@ -114,7 +108,7 @@ public class VariantRecalibrator extends AbstractCommand {
             }
 
             List<String> c = new LinkedList<>();
-            c.add("PATH=" + rDir + "bin/" + "$PATH");
+            c.add("PATH=" + rDir + "bin/" + ":" + "$PATH");
 
             c.addAll(build("VariantRecalibrator"));
 

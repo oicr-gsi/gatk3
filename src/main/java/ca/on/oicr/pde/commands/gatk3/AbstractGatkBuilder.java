@@ -17,6 +17,7 @@ public abstract class AbstractGatkBuilder<T> {
     protected final String gatkKey;
     protected final String outputDir;
 
+    protected String outputFileName;
     protected String referenceSequence;
     protected List<String> intervals = new LinkedList<>();
     protected List<String> intervalFiles = new LinkedList<>();
@@ -70,6 +71,11 @@ public abstract class AbstractGatkBuilder<T> {
 
     public T setNumCpuThreadsPerDataThread(int numCpuThreadsPerDataThread) {
         this.numCpuThreadsPerDataThread = numCpuThreadsPerDataThread;
+        return (T) this;
+    }
+
+    public T setOutputFileName(String outputFileName) {
+        this.outputFileName = outputFileName;
         return (T) this;
     }
 

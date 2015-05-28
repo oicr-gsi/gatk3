@@ -25,7 +25,6 @@ public class HaplotypeCaller extends AbstractCommand {
         private String dbsnpFilePath;
         private String standardCallConfidence;
         private String standardEmitConfidence;
-        private String outputFileName;
 
         public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
             super(javaPath, maxHeapSize, tmpDir, gatkJarPath, gatkKey, outputDir);
@@ -48,11 +47,6 @@ public class HaplotypeCaller extends AbstractCommand {
 
         public Builder setStandardEmitConfidence(String standardEmitConfidence) {
             this.standardEmitConfidence = standardEmitConfidence;
-            return this;
-        }
-
-        public Builder setOutputFileName(String outputFileName) {
-            this.outputFileName = outputFileName;
             return this;
         }
 

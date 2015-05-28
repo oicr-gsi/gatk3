@@ -22,7 +22,6 @@ public class VariantAnnotator extends AbstractCommand {
     public static class Builder extends AbstractGatkBuilder<Builder> {
 
         private String inputVcfFile;
-        private String outputFileName;
         private String additionalParams;
 
         public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
@@ -36,11 +35,6 @@ public class VariantAnnotator extends AbstractCommand {
 
         public Builder setAdditionalParams(String additionalParams) {
             this.additionalParams = additionalParams;
-            return this;
-        }
-
-        public Builder setOutputFileName(String outputFileName) {
-            this.outputFileName = outputFileName;
             return this;
         }
 

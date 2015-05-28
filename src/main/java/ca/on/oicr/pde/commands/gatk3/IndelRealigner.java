@@ -24,7 +24,6 @@ public class IndelRealigner extends AbstractCommand {
     public static class Builder extends AbstractGatkBuilder<Builder> {
 
         private String targetIntervalFile;
-        private String outputFileName;
         private final List<String> inputBamFiles = new LinkedList<>();
 
         public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
@@ -43,11 +42,6 @@ public class IndelRealigner extends AbstractCommand {
 
         public Builder setTargetIntervalFile(String targetIntervalFile) {
             this.targetIntervalFile = targetIntervalFile;
-            return this;
-        }
-
-        public Builder setOutputFileName(String outputFileName) {
-            this.outputFileName = outputFileName;
             return this;
         }
 

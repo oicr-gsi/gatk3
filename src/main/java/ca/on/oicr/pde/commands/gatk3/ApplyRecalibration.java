@@ -22,7 +22,6 @@ public class ApplyRecalibration extends AbstractCommand {
     public static class Builder extends AbstractGatkBuilder<Builder> {
 
         private String inputVcfFile;
-        private String outputFileName;
         private String recalFile;
         private String tranchesFile;
         private Double truthSensitivityLevel;
@@ -33,11 +32,6 @@ public class ApplyRecalibration extends AbstractCommand {
 
         public Builder setInputVcfFile(String inputVcfFile) {
             this.inputVcfFile = inputVcfFile;
-            return this;
-        }
-
-        public Builder setOutputFileName(String outputFileName) {
-            this.outputFileName = outputFileName;
             return this;
         }
 
