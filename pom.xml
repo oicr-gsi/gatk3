@@ -62,32 +62,8 @@
                             <dst>${bundleDirectory}/data/test</dst>
                             <src>${basedir}/links/test</src>
                         </link>
-                        <!--<link>
-                          <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/noarch/GenomeAnalysisTK-1.3-16-g6a5d5e7</dst>
-                          <src>${basedir}/links/GenomeAnalysisTK-1.3-16-g6a5d5e7</src>
-                        </link>-->
                     </links>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unpack-provided-dependencies</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${bundleDirectory}/bin</outputDirectory>
-                            <overWriteReleases>false</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                            <includeScope>provided</includeScope>
-                            <includeTypes>zip,tar.gz,gz</includeTypes>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
