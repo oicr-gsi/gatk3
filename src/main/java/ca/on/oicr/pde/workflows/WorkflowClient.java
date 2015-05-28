@@ -5,6 +5,7 @@ import ca.on.oicr.pde.commands.gatk3.UnifiedGenotyper;
 import ca.on.oicr.pde.commands.MergeVcf;
 import ca.on.oicr.pde.commands.SortVcf;
 import ca.on.oicr.pde.commands.gatk3.AbstractGatkBuilder;
+import ca.on.oicr.pde.commands.gatk3.AnalyzeCovariates;
 import ca.on.oicr.pde.commands.gatk3.BaseRecalibrator;
 import ca.on.oicr.pde.commands.gatk3.HaplotypeCaller;
 import ca.on.oicr.pde.commands.gatk3.IndelRealigner;
@@ -30,10 +31,11 @@ public class WorkflowClient extends OicrWorkflow {
     private boolean manualOutput;
     private String queue;
 
-    private String perl = null;
-    private String java = null;
+    private String perl;
+    private String java;
     private String tabixDir;
-    private String gatk = null;
+    private String gatk;
+    private String rDir;
     private String mergeVCFScript;
 
     private String gatkKey;
@@ -96,6 +98,7 @@ public class WorkflowClient extends OicrWorkflow {
         java = getProperty("java");
         tabixDir = getProperty("tabix_dir");
         gatk = getProperty("gatk_jar");
+        rDir = getProperty("r_dir");
         mergeVCFScript = binDir + "sw_module_merge_GATK_VCF.pl";
 
         gatkKey = getProperty("gatk_key");
@@ -272,6 +275,18 @@ public class WorkflowClient extends OicrWorkflow {
                 .setQueue(queue);
         baseRecalibratorJob.getParents().addAll(filesSplitsByIntervalJobs);
         baseRecalibratorJob.getCommand().setArguments(baseRecalibratorCommand.getCommand());
+
+        //GATK Analyze Covariates (https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_walkers_bqsr_AnalyzeCovariates.php)
+        AnalyzeCovariates analyzeCovariatesCommand = new AnalyzeCovariates.Builder(java, "4g", tmpDir, gatk, gatkKey, rDir, dataDir)
+                .setReferenceSequence(refFasta)
+                .setRecalibrationTable(baseRecalibratorCommand.getOutputFile())
+                .build();
+        Job analyzeCovariatesJob = getWorkflow().createBashJob("GATKAnalyzeCovariates")
+                .setMaxMemory(Integer.toString((4 + gatkOverhead) * 1024))
+                .setQueue(queue)
+                .addParent(baseRecalibratorJob);
+        analyzeCovariatesJob.getCommand().setArguments(analyzeCovariatesCommand.getCommand());
+        analyzeCovariatesJob.addFile(createOutputFile(analyzeCovariatesCommand.getPlotsReportFile(), "application/pdf", manualOutput));
 
         for (Entry<String, String> e : filesSplitByIntervals.entrySet()) {
 

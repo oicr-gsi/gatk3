@@ -60,8 +60,8 @@ public class WorkflowClientTest {
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
-        Assert.assertEquals(w.getWorkflow().getJobs().size(), 130);
-        Assert.assertEquals(getNumberOfExpectedJobs(4, 25, VariantCaller.UNIFIED_GENOTYPER), 130);
+        Assert.assertEquals(w.getWorkflow().getJobs().size(), 131);
+        Assert.assertEquals(getNumberOfExpectedJobs(4, 25, VariantCaller.UNIFIED_GENOTYPER), 131);
     }
 
     @Test(enabled = true)
@@ -139,7 +139,7 @@ public class WorkflowClientTest {
         }
 
         return (parallelismLevel * 2) // for each chr_size interval: create targets + realign
-                + 1 //calculate base recalibration table
+                + 2 //calculate base recalibration table + analyze covariates
                 + variantCallingJobCount
                 + mergeJobCount
                 + 1; //sort and compress
