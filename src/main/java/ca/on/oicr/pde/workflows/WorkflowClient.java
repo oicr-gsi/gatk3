@@ -269,7 +269,7 @@ public class WorkflowClient extends OicrWorkflow {
             baseRecalibratorBuilder.addIntervalFiles(intervalFiles);
         }
         BaseRecalibrator baseRecalibratorCommand = baseRecalibratorBuilder.build();
-        Job baseRecalibratorJob = getWorkflow().createBashJob("BaseRecalibrator")
+        Job baseRecalibratorJob = getWorkflow().createBashJob("GATKBaseRecalibrator")
                 .setMaxMemory(gatkBaseRecalibratorMem.toString())
                 .setThreads(gatkBaseRecalibratorSmp)
                 .setQueue(queue);
@@ -300,7 +300,7 @@ public class WorkflowClient extends OicrWorkflow {
                     .setPreserveQscoresLessThan(preserveQscoresLessThan)
                     .setInputFile(inputBam)
                     .build();
-            Job printReadsJob = getWorkflow().createBashJob("TableRecalibration")
+            Job printReadsJob = getWorkflow().createBashJob("GATKTableRecalibration")
                     .setMaxMemory(Integer.toString((gatkPrintReadsMem + gatkOverhead) * 1024))
                     .setQueue(queue)
                     .addParent(baseRecalibratorJob);
