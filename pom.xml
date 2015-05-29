@@ -11,7 +11,7 @@
 
     <groupId>ca.on.oicr.pde.workflows</groupId>
     <artifactId>GATK3</artifactId>
-    <version>1.0-beta.2-SNAPSHOT</version>
+    <version>1.0-beta.2</version>
     <packaging>jar</packaging>
 
     <name>${display-name}</name>
@@ -20,7 +20,7 @@
         <workflow-name>GATK3</workflow-name>
         <tabix-version>0.2.6</tabix-version>
         <gatk-version>3.3-0</gatk-version>
-        <workflow-description>Need a description</workflow-description>
+        <workflow-description>GATK3 variant calling workflow</workflow-description>
     </properties>
 
     <dependencies>
