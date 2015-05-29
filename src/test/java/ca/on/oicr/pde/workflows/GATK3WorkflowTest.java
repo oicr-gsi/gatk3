@@ -1,6 +1,6 @@
 package ca.on.oicr.pde.workflows;
 
-import ca.on.oicr.pde.workflows.WorkflowClient.VariantCaller;
+import ca.on.oicr.pde.workflows.GATK3Workflow.VariantCaller;
 import com.google.common.base.Joiner;
 import java.io.File;
 import java.io.IOException;
@@ -25,13 +25,13 @@ import org.testng.annotations.Test;
  *
  * @author mlaszloffy
  */
-public class WorkflowClientTest {
+public class GATK3WorkflowTest {
 
-    public WorkflowClientTest() {
+    public GATK3WorkflowTest() {
     }
 
-    private WorkflowClient getWorkflowClientObject(Map<String, String> config) throws IOException, IllegalAccessException {
-        WorkflowClient w = new WorkflowClient();
+    private GATK3Workflow getWorkflowClientObject(Map<String, String> config) throws IOException, IllegalAccessException {
+        GATK3Workflow w = new GATK3Workflow();
         w.setConfigs(config);
         buildWorkflowModel(System.getProperty("bundleDirectory"), w);
         return w;
@@ -43,14 +43,14 @@ public class WorkflowClientTest {
         config.put("identifier", "null");
         config.put("input_files", "/data/test/PCSI0022P.val.bam,/data/test/PCSI0022R.val.bam,/data/test/PCSI0022X.val.bam,/data/test/PCSI0022C.val.bam,"
                 + "/data/test/PCSI0022P.val.bai,/data/test/PCSI0022R.val.bai,/data/test/PCSI0022X.val.bai,/data/test/PCSI0022C.val.bai");
-        WorkflowClient w = getWorkflowClientObject(config);
+        GATK3Workflow w = getWorkflowClientObject(config);
         validateWorkflow(w);
     }
 
     @Test(enabled = true)
     public void checkJobNumber() throws IOException, IllegalAccessException {
         Map<String, String> config;
-        WorkflowClient w;
+        GATK3Workflow w;
 
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
@@ -76,7 +76,7 @@ public class WorkflowClientTest {
         }
 
         Map<String, String> config;
-        WorkflowClient w;
+        GATK3Workflow w;
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
         config.put("input_files", StringUtils.join(inputFiles, ","));
@@ -102,7 +102,7 @@ public class WorkflowClientTest {
     public void noSplit() throws IOException, IllegalAccessException {
 
         Map<String, String> config;
-        WorkflowClient w;
+        GATK3Workflow w;
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
         config.put("input_files", "/test/1.bam,/test/1.bai");
@@ -145,7 +145,7 @@ public class WorkflowClientTest {
                 + 1; //sort and compress
     }
 
-    private void validateWorkflow(WorkflowClient w) {
+    private void validateWorkflow(GATK3Workflow w) {
 
         //check for null string
         for (AbstractJob j : w.getWorkflow().getJobs()) {

@@ -22,7 +22,7 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 
-public class WorkflowClient extends OicrWorkflow {
+public class GATK3Workflow extends OicrWorkflow {
 
     private String binDir;
     private String tmpDir;
@@ -75,7 +75,7 @@ public class WorkflowClient extends OicrWorkflow {
         HAPLOTYPE_CALLER, UNIFIED_GENOTYPER;
     }
 
-    public WorkflowClient() {
+    public GATK3Workflow() {
         super();
     }
 
