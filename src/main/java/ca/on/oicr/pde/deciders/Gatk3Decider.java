@@ -1,27 +1,35 @@
 package ca.on.oicr.pde.deciders;
 
 import ca.on.oicr.pde.workflows.GATK3Workflow;
+import com.google.common.collect.Iterables;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.xml.parsers.ParserConfigurationException;
 import net.sourceforge.seqware.common.hibernate.FindAllTheFiles.Header;
 import net.sourceforge.seqware.common.model.WorkflowParam;
 import net.sourceforge.seqware.common.module.ReturnValue;
 import net.sourceforge.seqware.common.util.Log;
 import net.sourceforge.seqware.pipeline.workflowV2.AbstractWorkflowDataModel;
+import org.xml.sax.SAXException;
 
 public class Gatk3Decider extends OicrDecider {
 
     private final Map<String, BeSmall> fileSwaToSmall;
     private String templateType = null;
+    private String resequencingType = null;
     private List<String> tissueTypes = null;
     private List<String> tissueOrigins = null;
     private final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
     private String workflowName;
     private String workflowVersion;
     private final Map<String, WorkflowRun> workflowRuns = new HashMap<>();
+
+    String rsconfigXmlPath = "/.mounts/labs/PDE/data/rsconfig.xml";
+    private Rsconfig rsconfig;
 
     public Gatk3Decider() {
         super();
@@ -32,6 +40,9 @@ public class Gatk3Decider extends OicrDecider {
         defineArgument("stand-emit-conf", "Emission confidence threshold to pass to GATK. Default 1", false);
         defineArgument("stand-call-conf", "Calling confidence threshold to pass to GATK. Default 30.", false);
         defineArgument("chr-sizes", "Chr sizes", false);
+        defineArgument("rsconfig-file", "Optional: specify location of .xml file which should be used to configure references, "
+                + "will be used if resequencing-type is different from the default."
+                + "Default: " + rsconfigXmlPath, false);
 
         //mandatory filters
         defineArgument("library-template-type", "Restrict the processing to samples of a particular template type, e.g. WG, EX, TS", true);
@@ -41,6 +52,8 @@ public class Gatk3Decider extends OicrDecider {
                 + "e.g. P, R, X, C. Multiple values can be comma-separated. Default: no restriction", false);
         defineArgument("tissue-origin", "Restrict the processing to samples of particular tissue origin, "
                 + "e.g. Ly, Pa, Pr. Multiple values can be comma-separated. Default: no restriction", false);
+        defineArgument("resequencing-type", "Restrict the processing to samples of a particular resequecing type", false);
+
     }
 
     @Override
@@ -58,6 +71,11 @@ public class Gatk3Decider extends OicrDecider {
             tissueOrigins = Arrays.asList(getArgument("tissue-origin").split(","));
         }
 
+        if (!getArgument("resequencing-type").isEmpty()) {
+            resequencingType = getArgument("resequencing-type");
+        }
+
+        //load decider properties file
         Properties p = new Properties();
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("decider.properties")) {
             p.load(is);
@@ -67,6 +85,23 @@ public class Gatk3Decider extends OicrDecider {
         }
         workflowName = p.getProperty("workflow-name");
         workflowVersion = p.getProperty("workflow-version");
+
+        //rsconfig
+        if (options.has("rsconfig-file")) {
+            if (!options.hasArgument("rsconfig-file")) {
+                throw new RuntimeException("--rsconfig-file requires a file argument.");
+            }
+            rsconfigXmlPath = options.valueOf("rsconfig-file").toString();
+        }
+        File rsconfigFile = new File(rsconfigXmlPath);
+        if (!rsconfigFile.exists() || !rsconfigFile.canRead()) {
+            throw new RuntimeException("The rsconfig-file is not accessible.");
+        }
+        try {
+            rsconfig = new Rsconfig(rsconfigFile);
+        } catch (ParserConfigurationException | SAXException | IOException | Rsconfig.InvalidFileFormatException e) {
+            throw new RuntimeException("Rsconfig file did not load properly, exeception stack trace:\n" + Arrays.toString(e.getStackTrace()));
+        }
 
         return super.init();
     }
@@ -88,6 +123,12 @@ public class Gatk3Decider extends OicrDecider {
             //filter files by template type
             String currentTemplateType = fa.getLimsValue(Lims.LIBRARY_TEMPLATE_TYPE);
             if (!templateType.equals(currentTemplateType)) {
+                continue;
+            }
+
+            //filter files by resequencing type
+            String currentResequencingType = fa.getLimsValue(Lims.TARGETED_RESEQUENCING);
+            if (resequencingType != null && !resequencingType.equals(currentResequencingType)) {
                 continue;
             }
 
@@ -152,6 +193,26 @@ public class Gatk3Decider extends OicrDecider {
         ReturnValue rv = super.doFinalCheck(commaSeparatedFilePaths, commaSeparatedParentAccessions);
 
         WorkflowRun wr = new WorkflowRun(null, getFileAttributes(commaSeparatedFilePaths).toArray(new FileAttributes[0]));
+
+        Set<FileAttributes> fas = getFileAttributes(commaSeparatedFilePaths);
+        Set<String> groupTemplateType = new HashSet<>();
+        Set<String> groupResequencingType = new HashSet<>();
+        for (FileAttributes fa : fas) {
+            groupTemplateType.add(fa.getLimsValue(Lims.LIBRARY_TEMPLATE_TYPE));
+            groupResequencingType.add(fa.getLimsValue(Lims.TARGETED_RESEQUENCING));
+        }
+        if (groupTemplateType.size() == 1 && groupResequencingType.size() == 1) {
+            String file = rsconfig.get(Iterables.getOnlyElement(groupTemplateType), Iterables.getOnlyElement(groupResequencingType), "interval_file");
+            if (file == null) {
+                Log.error(String.format("Template type = %s and resequencing type = %s not found in rsconfig.xml", groupTemplateType, groupResequencingType));
+                rv.setExitStatus(ReturnValue.FAILURE);
+            }
+            wr.addProperty("interval_files", file);
+        } else {
+            Log.error(String.format("Unable to determine single interval file for template type = %s and resequencing type = %s.", groupTemplateType, groupResequencingType));
+            rv.setExitStatus(ReturnValue.FAILURE);
+
+        }
 
         wr.addProperty("input_files", commaSeparatedFilePaths);
         wr.addProperty("stand_emit_conf", getArgument("stand-emit-conf"), "1");
