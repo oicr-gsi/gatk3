@@ -73,6 +73,14 @@ public class GATK3Workflow extends OicrWorkflow {
     private Integer gatkBaseRecalibratorSmp;
     private Integer gatkOverhead;
 
+    private String realignerTargetCreatorParams;
+    private String indelRealignerParams;
+    private String baseRecalibratorParams;
+    private String analyzeCovariatesParams;
+    private String printReadsParams;
+    private String haplotypeCallerParams;
+    private String unifiedGenotyperParams;
+
     public enum VariantCaller {
 
         HAPLOTYPE_CALLER, UNIFIED_GENOTYPER;
@@ -133,6 +141,14 @@ public class GATK3Workflow extends OicrWorkflow {
         gatkBaseRecalibratorNct = Integer.parseInt(getProperty("gatk_baserecalibrator_nct"));
         gatkBaseRecalibratorSmp = Integer.parseInt(getProperty("gatk_baserecalibrator_smp"));
         gatkOverhead = Integer.parseInt(getProperty("gatk_sched_overhead_mem"));
+
+        realignerTargetCreatorParams = getOptionalProperty("gatk_realigner_target_creator_params", null);
+        indelRealignerParams = getOptionalProperty("gatk_indel_realigner_params", null);
+        baseRecalibratorParams = getOptionalProperty("gatk_base_recalibrator_params", null);
+        analyzeCovariatesParams = getOptionalProperty("gatk_analyze_covariates_params", null);
+        printReadsParams = getOptionalProperty("gatk_print_reads_params", null);
+        haplotypeCallerParams = getOptionalProperty("gatk_haplotype_caller_params", null);
+        unifiedGenotyperParams = getOptionalProperty("gatk_unified_genotyper_params", null);
 
         for (String s : StringUtils.split(getProperty("variant_caller"), ",")) {
             variantCallers.add(VariantCaller.valueOf(StringUtils.upperCase(s)));
@@ -221,7 +237,8 @@ public class GATK3Workflow extends OicrWorkflow {
             RealignerTargetCreator.Builder realignerTargetCreatorBuilder = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(inputBamFiles)
-                    .setKnownIndels(dbsnpVcf);
+                    .setKnownIndels(dbsnpVcf)
+                    .setExtraParameters(realignerTargetCreatorParams);
             if (chrSize != null) {
                 realignerTargetCreatorBuilder.addInterval(chrSize);
                 realignerTargetCreatorBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
@@ -247,7 +264,8 @@ public class GATK3Workflow extends OicrWorkflow {
             IndelRealigner.Builder indelRealignerBuilder = new IndelRealigner.Builder(java, gatkIndelRealignerMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(inputBamFiles)
-                    .setTargetIntervalFile(realignerTargetCreatorCommand.getOutputFile());
+                    .setTargetIntervalFile(realignerTargetCreatorCommand.getOutputFile())
+                    .setExtraParameters(indelRealignerParams);
             if (chrSize != null) {
                 indelRealignerBuilder.addInterval(chrSize);
                 indelRealignerBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
@@ -279,7 +297,8 @@ public class GATK3Workflow extends OicrWorkflow {
                 .addCovariate("ContextCovariate")
                 .addKnownSite(dbsnpVcf)
                 .addInputFiles(filesSplitByIntervals.values())
-                .setNumCpuThreadsPerDataThread(gatkBaseRecalibratorNct);
+                .setNumCpuThreadsPerDataThread(gatkBaseRecalibratorNct)
+                .setExtraParameters(baseRecalibratorParams);
         if (!intervalFiles.isEmpty()) {
             //"This excludes off-target sequences and sequences that may be poorly mapped, which have a higher error rate. 
             // Including them could lead to a skewed model and bad recalibration."
@@ -302,6 +321,7 @@ public class GATK3Workflow extends OicrWorkflow {
                 .setReferenceSequence(refFasta)
                 .setRecalibrationTable(baseRecalibratorCommand.getOutputFile())
                 .setOutputFileName(identifier)
+                .setExtraParameters(analyzeCovariatesParams)
                 .build();
         Job analyzeCovariatesJob = getWorkflow().createBashJob("GATKAnalyzeCovariates")
                 .setMaxMemory(Integer.toString((4 + gatkOverhead) * 1024))
@@ -323,7 +343,8 @@ public class GATK3Workflow extends OicrWorkflow {
             PrintReads.Builder printReadsBuilder = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
-                    .setInputFile(inputBam);
+                    .setInputFile(inputBam)
+                    .setExtraParameters(printReadsParams);
             if (preserveQscoresLessThan != null) {
                 printReadsBuilder.setPreserveQscoresLessThan(preserveQscoresLessThan);
             }
@@ -351,7 +372,8 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
-                                .setStandardEmitConfidence(standEmitConf);
+                                .setStandardEmitConfidence(standEmitConf)
+                                .setExtraParameters(haplotypeCallerParams);
                         if (chrSize != null) {
                             haplotypeCallerBuilder.addInterval(chrSize);
                             haplotypeCallerBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
@@ -386,7 +408,8 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setStandardCallConfidence(standCallConf)
                                 .setStandardEmitConfidence(standEmitConf)
                                 .setGenotypeLikelihoodsModel("INDEL")
-                                .setGroup("Standard");
+                                .setGroup("Standard")
+                                .setExtraParameters(unifiedGenotyperParams);
                         if (chrSize != null) {
                             indelsUnifiedGenotyperBuilder.addInterval(chrSize);
                             indelsUnifiedGenotyperBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
@@ -418,7 +441,8 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
                                 .setStandardEmitConfidence(standEmitConf)
-                                .setGenotypeLikelihoodsModel("SNP");
+                                .setGenotypeLikelihoodsModel("SNP")
+                                .setExtraParameters(unifiedGenotyperParams);
                         if (chrSize != null) {
                             snvsUnifiedGenotyperBuilder.addInterval(chrSize);
                             snvsUnifiedGenotyperBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));

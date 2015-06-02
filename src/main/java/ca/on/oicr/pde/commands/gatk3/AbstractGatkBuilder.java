@@ -26,6 +26,8 @@ public abstract class AbstractGatkBuilder<T> {
     protected Integer numDataThreads;
     protected Integer numCpuThreadsPerDataThread;
 
+    protected String extraParameters;
+
     public AbstractGatkBuilder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
         this.javaPath = javaPath;
         this.maxHeapSize = maxHeapSize;
@@ -85,6 +87,11 @@ public abstract class AbstractGatkBuilder<T> {
         return (T) this;
     }
 
+    public T setExtraParameters(String extraParameters) {
+        this.extraParameters = extraParameters;
+        return (T) this;
+    }
+
     protected List<String> build(String type) {
         List<String> c = new LinkedList<>();
 
@@ -137,6 +144,10 @@ public abstract class AbstractGatkBuilder<T> {
         if (numCpuThreadsPerDataThread != null) {
             c.add("--num_cpu_threads_per_data_thread"); //-nct
             c.add(numCpuThreadsPerDataThread.toString());
+        }
+
+        if (extraParameters != null) {
+            c.add(extraParameters);
         }
 
         return c;

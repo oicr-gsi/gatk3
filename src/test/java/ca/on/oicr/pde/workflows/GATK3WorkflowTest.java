@@ -158,6 +158,36 @@ public class GATK3WorkflowTest {
                 getExpectedJobCount(1, 0, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER)));
     }
 
+    @Test
+    public void extraParamSuccessTest() throws IOException, IllegalAccessException {
+        Map<String, String> config;
+        GATK3Workflow w;
+        config = getDefaultConfig();
+        config.put("identifier", "gatk.ex");
+        config.put("input_files", "/test/1.bam,/test/1.bai");
+        config.put("gatk_realigner_target_creator_params", "--param1 --param2");
+        config.put("gatk_indel_realigner_params", "--param1 --param2");
+        config.put("gatk_recalibrator_params", "--param1 --param2");
+        config.put("gatk_analyze_covariates_params", "--param1 --param2");
+        config.put("gatk_print_reads_params", "--param1 --param2");
+        config.put("gatk_haplotype_caller_params", "--param1 --param2");
+        config.put("gatk_unified_genotyper_params", "--param1 --param2");
+        w = getWorkflowClientObject(config);
+        validateWorkflow(w);
+    }
+
+    @Test(expectedExceptions = java.lang.AssertionError.class)
+    public void extraParamFailureTest() throws IOException, IllegalAccessException {
+        Map<String, String> config;
+        GATK3Workflow w;
+        config = getDefaultConfig();
+        config.put("identifier", "gatk.ex");
+        config.put("input_files", "/test/1.bam,/test/1.bai");
+        config.put("gatk_realigner_target_creator_params", "--param1--param2");
+        w = getWorkflowClientObject(config);
+        validateWorkflow(w);
+    }
+
     private int getExpectedJobCount(int numInputFiles, int parallelismLevel, VariantCaller vc) {
         return getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(vc));
     }
@@ -195,8 +225,14 @@ public class GATK3WorkflowTest {
 
         //check for null string
         for (AbstractJob j : w.getWorkflow().getJobs()) {
+
             String c = Joiner.on(" ").useForNull("null").join(j.getCommand().getArguments());
+
+            //check for null string
             Assert.assertFalse(c.contains("null"), "Warning: command contains \"null\":\n" + c + "\n");
+
+            // check for missing spaces
+            Assert.assertFalse(c.matches("(.*)[^ ]--(.*)"));
         }
 
         //verify bai is located in the correct provision directory
@@ -228,11 +264,7 @@ public class GATK3WorkflowTest {
         Assert.assertEquals(actualParentNodeCount, expectedParentNodeCount);
 
         //view output files
-        List<SqwFile> files = new LinkedList<>();
-        for (AbstractJob j : w.getWorkflow().getJobs()) {
-            files.addAll(j.getFiles());
-        }
-        for (SqwFile f : files) {
+        for (SqwFile f : w.getFiles().values()) {
             System.out.println(f.getProvisionedPath());
         }
     }
