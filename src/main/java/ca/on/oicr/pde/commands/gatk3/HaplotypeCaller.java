@@ -25,6 +25,8 @@ public class HaplotypeCaller extends AbstractCommand {
         private String dbsnpFilePath;
         private String standardCallConfidence;
         private String standardEmitConfidence;
+        private Integer downsamplingCoverageThreshold;
+        private String downsamplingType;
 
         public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
             super(javaPath, maxHeapSize, tmpDir, gatkJarPath, gatkKey, outputDir);
@@ -47,6 +49,12 @@ public class HaplotypeCaller extends AbstractCommand {
 
         public Builder setStandardEmitConfidence(String standardEmitConfidence) {
             this.standardEmitConfidence = standardEmitConfidence;
+            return this;
+        }
+
+        public Builder setDownsamplingCoverageThreshold(Integer downsamplingCoverageThreshold, String downsamplingType) {
+            this.downsamplingCoverageThreshold = downsamplingCoverageThreshold;
+            this.downsamplingType = downsamplingType;
             return this;
         }
 
@@ -74,6 +82,13 @@ public class HaplotypeCaller extends AbstractCommand {
             if (standardEmitConfidence != null) {
                 c.add("--standard_min_confidence_threshold_for_emitting");
                 c.add(standardEmitConfidence);
+            }
+
+            if (downsamplingCoverageThreshold != null) {
+                c.add("--downsample_to_coverage");
+                c.add(downsamplingCoverageThreshold.toString());
+                c.add("--downsampling_type");
+                c.add(downsamplingType);
             }
 
             c.add("--out");

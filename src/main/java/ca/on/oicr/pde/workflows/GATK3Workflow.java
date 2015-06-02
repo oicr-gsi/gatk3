@@ -254,6 +254,10 @@ public class GATK3Workflow extends OicrWorkflow {
             if (intervalPadding != null) {
                 realignerTargetCreatorBuilder.setIntervalPadding(intervalPadding);
             }
+            if (hasPropertyAndNotNull("downsampling_coverage")) {
+                realignerTargetCreatorBuilder.setDownsamplingCoverageThreshold(Integer.parseInt(getProperty("downsampling_coverage")),
+                        getOptionalProperty("downsample_type", "BY_SAMPLE"));
+            }
             RealignerTargetCreator realignerTargetCreatorCommand = realignerTargetCreatorBuilder.build();
             Job realignerTargetCreatorJob = getWorkflow().createBashJob("GATKRealignerTargetCreator")
                     .setMaxMemory(Integer.toString((gatkRealignTargetCreatorMem + gatkOverhead) * 1024))
@@ -389,6 +393,10 @@ public class GATK3Workflow extends OicrWorkflow {
                         if (intervalPadding != null) {
                             haplotypeCallerBuilder.setIntervalPadding(intervalPadding);
                         }
+                        if (hasPropertyAndNotNull("downsampling_coverage")) {
+                            haplotypeCallerBuilder.setDownsamplingCoverageThreshold(Integer.parseInt(getProperty("downsampling_coverage")),
+                                    getOptionalProperty("downsampling_type", "BY_SAMPLE"));
+                        }
                         HaplotypeCaller haplotypeCallerCommand = haplotypeCallerBuilder.build();
                         Job haplotypeCallerJob = this.getWorkflow().createBashJob("GATKHaplotypeCaller")
                                 .setMaxMemory(Integer.toString((gatkHaplotypeCallerMem + gatkOverhead) * 1024))
@@ -425,6 +433,10 @@ public class GATK3Workflow extends OicrWorkflow {
                         if (intervalPadding != null) {
                             indelsUnifiedGenotyperBuilder.setIntervalPadding(intervalPadding);
                         }
+                        if (hasPropertyAndNotNull("downsampling_coverage")) {
+                            indelsUnifiedGenotyperBuilder.setDownsamplingCoverageThreshold(Integer.parseInt(getProperty("downsampling_coverage")),
+                                    getOptionalProperty("downsampling_type", "BY_SAMPLE"));
+                        }
                         UnifiedGenotyper indelsUnifiedGenotyperCommand = indelsUnifiedGenotyperBuilder.build();
                         Job indelsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndel")
                                 .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
@@ -457,6 +469,10 @@ public class GATK3Workflow extends OicrWorkflow {
                         }
                         if (intervalPadding != null) {
                             snvsUnifiedGenotyperBuilder.setIntervalPadding(intervalPadding);
+                        }
+                        if (hasPropertyAndNotNull("downsampling_coverage")) {
+                            snvsUnifiedGenotyperBuilder.setDownsamplingCoverageThreshold(Integer.parseInt(getProperty("downsampling_coverage")),
+                                    getOptionalProperty("downsampling_type", "BY_SAMPLE"));
                         }
                         UnifiedGenotyper snvsUnifiedGenotyperCommand = snvsUnifiedGenotyperBuilder.build();
                         Job snvsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNV")

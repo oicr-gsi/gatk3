@@ -28,6 +28,8 @@ public class UnifiedGenotyper extends AbstractCommand {
         private String standardEmitConfidence;
         private String genotypeLikelihoodsModel;
         private String group;
+        private Integer downsamplingCoverageThreshold;
+        private String downsamplingType;
 
         public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
             super(javaPath, maxHeapSize, tmpDir, gatkJarPath, gatkKey, outputDir);
@@ -60,6 +62,12 @@ public class UnifiedGenotyper extends AbstractCommand {
 
         public Builder setGroup(String group) {
             this.group = group;
+            return this;
+        }
+
+        public Builder setDownsamplingCoverageThreshold(Integer downsamplingCoverageThreshold, String downsamplingType) {
+            this.downsamplingCoverageThreshold = downsamplingCoverageThreshold;
+            this.downsamplingType = downsamplingType;
             return this;
         }
 
@@ -99,6 +107,13 @@ public class UnifiedGenotyper extends AbstractCommand {
             if (group != null) {
                 c.add("--group");
                 c.add(group);
+            }
+
+            if (downsamplingCoverageThreshold != null) {
+                c.add("--downsample_to_coverage");
+                c.add(downsamplingCoverageThreshold.toString());
+                c.add("--downsampling_type");
+                c.add(downsamplingType);
             }
 
             c.add("--out");

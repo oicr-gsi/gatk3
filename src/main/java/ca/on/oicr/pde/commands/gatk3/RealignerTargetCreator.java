@@ -25,6 +25,8 @@ public class RealignerTargetCreator extends AbstractCommand {
 
         private String knownIndelsFile;
         private final List<String> inputBamFiles = new LinkedList<>();
+        private Integer downsamplingCoverageThreshold;
+        private String downsamplingType;
 
         public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
             super(javaPath, maxHeapSize, tmpDir, gatkJarPath, gatkKey, outputDir);
@@ -41,7 +43,13 @@ public class RealignerTargetCreator extends AbstractCommand {
         }
 
         public Builder setKnownIndels(String filePath) {
-            knownIndelsFile = filePath;
+            this.knownIndelsFile = filePath;
+            return this;
+        }
+
+        public Builder setDownsamplingCoverageThreshold(Integer downsamplingCoverageThreshold, String downsamplingType) {
+            this.downsamplingCoverageThreshold = downsamplingCoverageThreshold;
+            this.downsamplingType = downsamplingType;
             return this;
         }
 
@@ -66,6 +74,13 @@ public class RealignerTargetCreator extends AbstractCommand {
 
             c.add("--out");
             c.add(outputFilePath);
+
+            if (downsamplingCoverageThreshold != null) {
+                c.add("--downsample_to_coverage");
+                c.add(downsamplingCoverageThreshold.toString());
+                c.add("--downsampling_type");
+                c.add(downsamplingType);
+            }
 
             RealignerTargetCreator cmd = new RealignerTargetCreator();
             cmd.command.addAll(c);
