@@ -309,12 +309,16 @@ public class GATK3Workflow extends OicrWorkflow {
             String inputBam = e.getValue();
 
             //GATK Print Reads (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php)
-            PrintReads printReadsCommand = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            PrintReads.Builder printReadsBuilder = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
                     .setPreserveQscoresLessThan(preserveQscoresLessThan)
-                    .setInputFile(inputBam)
-                    .build();
+                    .setInputFile(inputBam);
+            if (chrSize != null) {
+                //the bam files have already been split by chrSize - adding the interval here will enable GATK to better estimate runtime
+                printReadsBuilder.addInterval(chrSize);
+            }
+            PrintReads printReadsCommand = printReadsBuilder.build();
             Job printReadsJob = getWorkflow().createBashJob("GATKTableRecalibration")
                     .setMaxMemory(Integer.toString((gatkPrintReadsMem + gatkOverhead) * 1024))
                     .setQueue(queue)
