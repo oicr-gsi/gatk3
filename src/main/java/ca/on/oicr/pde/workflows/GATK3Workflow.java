@@ -379,8 +379,8 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
                                 .setStandardEmitConfidence(standEmitConf)
-                                .setGenotypingMode(getOptionalProperty("haplotype_caller_output_mode", null))
-                                .setOutputMode(getOptionalProperty("haplotype_caller_genotyping_mode", null))
+                                .setGenotypingMode(getOptionalProperty("haplotype_caller_genotyping_mode", null))
+                                .setOutputMode(getOptionalProperty("haplotype_caller_output_mode", null))
                                 .setNumCpuThreadsPerDataThread(gatkHaplotypeCallerThreads)
                                 .setExtraParameters(haplotypeCallerParams);
                         if (chrSize != null) {
