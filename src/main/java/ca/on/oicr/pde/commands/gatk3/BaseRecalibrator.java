@@ -2,8 +2,10 @@ package ca.on.oicr.pde.commands.gatk3;
 
 import ca.on.oicr.pde.commands.AbstractCommand;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -23,7 +25,7 @@ public class BaseRecalibrator extends AbstractCommand {
     public static class Builder extends AbstractGatkBuilder<Builder> {
 
         List<String> knownSites = new LinkedList<>();
-        List<String> covariates = new LinkedList<>();
+        Set<String> covariates = new HashSet<>();
         List<String> inputFiles = new LinkedList<>();
 
         public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
@@ -40,6 +42,12 @@ public class BaseRecalibrator extends AbstractCommand {
             return this;
         }
 
+        public Builder setCovariates(Collection<String> covariates) {
+            covariates.clear();
+            covariates.addAll(covariates);
+            return this;
+        }
+
         public Builder addInputFile(String inputFile) {
             inputFiles.add(inputFile);
             return this;
@@ -49,7 +57,7 @@ public class BaseRecalibrator extends AbstractCommand {
             this.inputFiles.addAll(inputFiles);
             return this;
         }
-        
+
         public BaseRecalibrator build() {
 
             String outputFilePath = outputDir + "gatk.recalibration.csv";
@@ -70,7 +78,7 @@ public class BaseRecalibrator extends AbstractCommand {
                 c.add("--knownSites");
                 c.add(knownSite);
             }
-            
+
             c.add("--out");
             c.add(outputFilePath);
 

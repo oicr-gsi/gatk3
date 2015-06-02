@@ -15,6 +15,7 @@ import ca.on.oicr.pde.utilities.workflows.OicrWorkflow;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 import java.util.*;
 import java.util.Map.Entry;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
@@ -57,6 +58,8 @@ public class GATK3Workflow extends OicrWorkflow {
     private String standEmitConf = null;
 
     private Integer preserveQscoresLessThan;
+
+    private Set<String> bqsrCovariates;
 
     private final Set<VariantCaller> variantCallers = new HashSet<>();
 
@@ -128,6 +131,8 @@ public class GATK3Workflow extends OicrWorkflow {
         standCallConf = getProperty("stand_call_conf");
         standEmitConf = getProperty("stand_emit_conf");
         preserveQscoresLessThan = hasPropertyAndNotNull("preserve_qscores_less_than") ? Integer.parseInt(getProperty("preserve_qscores_less_than")) : null;
+
+        bqsrCovariates = Sets.newHashSet(StringUtils.split(getProperty("bqsr_covariates"), ","));
 
         gatkRealignTargetCreatorMem = Integer.parseInt(getProperty("gatk_realign_target_creator_mem"));
         gatkIndelRealignerMem = Integer.parseInt(getProperty("gatk_indel_realigner_mem"));
@@ -295,10 +300,7 @@ public class GATK3Workflow extends OicrWorkflow {
         //GATK Base Recalibrator (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_bqsr_BaseRecalibrator.php)
         BaseRecalibrator.Builder baseRecalibratorBuilder = new BaseRecalibrator.Builder(java, gatkBaseRecalibratorXmx + "m", tmpDir, gatk, gatkKey, dataDir)
                 .setReferenceSequence(refFasta)
-                .addCovariate("ReadGroupCovariate")
-                .addCovariate("QualityScoreCovariate")
-                .addCovariate("CycleCovariate")
-                .addCovariate("ContextCovariate")
+                .setCovariates(bqsrCovariates)
                 .addKnownSite(dbsnpVcf)
                 .addInputFiles(filesSplitByIntervals.values())
                 .setNumCpuThreadsPerDataThread(gatkBaseRecalibratorNct)
