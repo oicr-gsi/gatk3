@@ -2,6 +2,8 @@ package ca.on.oicr.pde.commands.gatk3;
 
 import ca.on.oicr.pde.commands.AbstractCommand;
 import java.util.List;
+import java.util.Locale;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 
 /**
@@ -27,6 +29,8 @@ public class HaplotypeCaller extends AbstractCommand {
         private String standardEmitConfidence;
         private Integer downsamplingCoverageThreshold;
         private String downsamplingType;
+        private String genotypingMode;
+        private String outputMode;
 
         public Builder(String javaPath, String maxHeapSize, String tmpDir, String gatkJarPath, String gatkKey, String outputDir) {
             super(javaPath, maxHeapSize, tmpDir, gatkJarPath, gatkKey, outputDir);
@@ -55,6 +59,16 @@ public class HaplotypeCaller extends AbstractCommand {
         public Builder setDownsamplingCoverageThreshold(Integer downsamplingCoverageThreshold, String downsamplingType) {
             this.downsamplingCoverageThreshold = downsamplingCoverageThreshold;
             this.downsamplingType = downsamplingType;
+            return this;
+        }
+
+        public Builder setGenotypingMode(String genotypingMode) {
+            this.genotypingMode = genotypingMode;
+            return this;
+        }
+
+        public Builder setOutputMode(String outputMode) {
+            this.outputMode = outputMode;
             return this;
         }
 
@@ -89,6 +103,16 @@ public class HaplotypeCaller extends AbstractCommand {
                 c.add(downsamplingCoverageThreshold.toString());
                 c.add("--downsampling_type");
                 c.add(downsamplingType);
+            }
+
+            if (genotypingMode != null) {
+                c.add("--genotyping_mode");
+                c.add(StringUtils.upperCase(genotypingMode));
+            }
+
+            if (outputMode != null) {
+                c.add("--output_mode");
+                c.add(StringUtils.upperCase(outputMode));
             }
 
             c.add("--out");
