@@ -51,6 +51,7 @@ public class GATK3Workflow extends OicrWorkflow {
 
     private final List<String> chrSizes = new LinkedList<>();
     private final List<String> intervalFiles = new LinkedList<>();
+    private Integer intervalPadding;
 
     private String standCallConf = null;
     private String standEmitConf = null;
@@ -114,6 +115,7 @@ public class GATK3Workflow extends OicrWorkflow {
 
         chrSizes.addAll(Arrays.asList(StringUtils.split(getProperty("chr_sizes"), ",")));
         intervalFiles.addAll(Arrays.asList(StringUtils.split(getOptionalProperty("interval_files", ""), ",")));
+        intervalPadding = hasPropertyAndNotNull("interval_padding") ? Integer.parseInt(getProperty("interval_padding")) : null;
 
         standCallConf = getProperty("stand_call_conf");
         standEmitConf = getProperty("stand_emit_conf");
@@ -232,6 +234,9 @@ public class GATK3Workflow extends OicrWorkflow {
             if (chrSize != null && !intervalFiles.isEmpty()) {
                 realignerTargetCreatorBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
             }
+            if (intervalPadding != null) {
+                realignerTargetCreatorBuilder.setIntervalPadding(intervalPadding);
+            }
             RealignerTargetCreator realignerTargetCreatorCommand = realignerTargetCreatorBuilder.build();
             Job realignerTargetCreatorJob = getWorkflow().createBashJob("GATKRealignerTargetCreator")
                     .setMaxMemory(Integer.toString((gatkRealignTargetCreatorMem + gatkOverhead) * 1024))
@@ -248,6 +253,9 @@ public class GATK3Workflow extends OicrWorkflow {
                 indelRealignerBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
             } else {
                 indelRealignerBuilder.setOutputFileName("gatk");
+            }
+            if (intervalPadding != null) {
+                indelRealignerBuilder.setIntervalPadding(intervalPadding);
             }
             IndelRealigner indelRealignerCommand = indelRealignerBuilder.build();
             Job indelRealignerJob = getWorkflow().createBashJob("GATKIndelRealigner")
@@ -277,6 +285,9 @@ public class GATK3Workflow extends OicrWorkflow {
             // Including them could lead to a skewed model and bad recalibration."
             // https://www.broadinstitute.org/gatk/guide/article?id=4133
             baseRecalibratorBuilder.addIntervalFiles(intervalFiles);
+        }
+        if (intervalPadding != null) {
+            baseRecalibratorBuilder.setIntervalPadding(intervalPadding);
         }
         BaseRecalibrator baseRecalibratorCommand = baseRecalibratorBuilder.build();
         Job baseRecalibratorJob = getWorkflow().createBashJob("GATKBaseRecalibrator")
@@ -318,6 +329,9 @@ public class GATK3Workflow extends OicrWorkflow {
                 //the bam files have already been split by chrSize - adding the interval here will enable GATK to better estimate runtime
                 printReadsBuilder.addInterval(chrSize);
             }
+            if (intervalPadding != null) {
+                printReadsBuilder.setIntervalPadding(intervalPadding);
+            }
             PrintReads printReadsCommand = printReadsBuilder.build();
             Job printReadsJob = getWorkflow().createBashJob("GATKTableRecalibration")
                     .setMaxMemory(Integer.toString((gatkPrintReadsMem + gatkOverhead) * 1024))
@@ -347,6 +361,9 @@ public class GATK3Workflow extends OicrWorkflow {
                         }
                         if (chrSize != null && !intervalFiles.isEmpty()) {
                             haplotypeCallerBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+                        }
+                        if (intervalPadding != null) {
+                            haplotypeCallerBuilder.setIntervalPadding(intervalPadding);
                         }
                         HaplotypeCaller haplotypeCallerCommand = haplotypeCallerBuilder.build();
                         Job haplotypeCallerJob = this.getWorkflow().createBashJob("GATKHaplotypeCaller")
@@ -380,6 +397,9 @@ public class GATK3Workflow extends OicrWorkflow {
                         if (chrSize != null && !intervalFiles.isEmpty()) {
                             indelsUnifiedGenotyperBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
                         }
+                        if (intervalPadding != null) {
+                            indelsUnifiedGenotyperBuilder.setIntervalPadding(intervalPadding);
+                        }
                         UnifiedGenotyper indelsUnifiedGenotyperCommand = indelsUnifiedGenotyperBuilder.build();
                         Job indelsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndel")
                                 .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
@@ -408,6 +428,9 @@ public class GATK3Workflow extends OicrWorkflow {
                         }
                         if (chrSize != null && !intervalFiles.isEmpty()) {
                             snvsUnifiedGenotyperBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
+                        }
+                        if (intervalPadding != null) {
+                            snvsUnifiedGenotyperBuilder.setIntervalPadding(intervalPadding);
                         }
                         UnifiedGenotyper snvsUnifiedGenotyperCommand = snvsUnifiedGenotyperBuilder.build();
                         Job snvsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNV")

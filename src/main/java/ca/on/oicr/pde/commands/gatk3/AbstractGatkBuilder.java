@@ -22,6 +22,7 @@ public abstract class AbstractGatkBuilder<T> {
     protected List<String> intervals = new LinkedList<>();
     protected List<String> intervalFiles = new LinkedList<>();
     protected SetRule intervalSetRule;// = SetRule.UNION;
+    protected Integer intervalPadding;
     protected Integer numDataThreads;
     protected Integer numCpuThreadsPerDataThread;
 
@@ -61,6 +62,11 @@ public abstract class AbstractGatkBuilder<T> {
 
     public T setIntervalSetRule(SetRule setRule) {
         this.intervalSetRule = setRule;
+        return (T) this;
+    }
+
+    public T setIntervalPadding(Integer intervalPadding) {
+        this.intervalPadding = intervalPadding;
         return (T) this;
     }
 
@@ -116,6 +122,11 @@ public abstract class AbstractGatkBuilder<T> {
         if (intervalSetRule != null) {
             c.add("--interval_set_rule");
             c.add(intervalSetRule.toString());
+        }
+
+        if (intervalPadding != null) {
+            c.add("--interval_padding");
+            c.add(intervalPadding.toString());
         }
 
         if (numDataThreads != null) {
