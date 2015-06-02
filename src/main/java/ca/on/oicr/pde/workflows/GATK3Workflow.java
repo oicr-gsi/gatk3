@@ -56,7 +56,7 @@ public class GATK3Workflow extends OicrWorkflow {
     private String standCallConf = null;
     private String standEmitConf = null;
 
-    private String preserveQscoresLessThan = null;
+    private Integer preserveQscoresLessThan;
 
     private final Set<VariantCaller> variantCallers = new HashSet<>();
 
@@ -119,7 +119,7 @@ public class GATK3Workflow extends OicrWorkflow {
 
         standCallConf = getProperty("stand_call_conf");
         standEmitConf = getProperty("stand_emit_conf");
-        preserveQscoresLessThan = getProperty("preserve_qscores_less_than");
+        preserveQscoresLessThan = hasPropertyAndNotNull("preserve_qscores_less_than") ? Integer.parseInt(getProperty("preserve_qscores_less_than")) : null;
 
         gatkRealignTargetCreatorMem = Integer.parseInt(getProperty("gatk_realign_target_creator_mem"));
         gatkIndelRealignerMem = Integer.parseInt(getProperty("gatk_indel_realigner_mem"));
@@ -323,8 +323,10 @@ public class GATK3Workflow extends OicrWorkflow {
             PrintReads.Builder printReadsBuilder = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
-                    .setPreserveQscoresLessThan(preserveQscoresLessThan)
                     .setInputFile(inputBam);
+            if (preserveQscoresLessThan != null) {
+                printReadsBuilder.setPreserveQscoresLessThan(preserveQscoresLessThan);
+            }
             if (chrSize != null) {
                 //the bam files have already been split by chrSize - adding the interval here will enable GATK to better estimate runtime
                 printReadsBuilder.addInterval(chrSize);
