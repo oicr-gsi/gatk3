@@ -66,22 +66,10 @@ public class UnifiedGenotyper extends AbstractCommand {
         public UnifiedGenotyper build() {
 
             String outputFilePath;
-            if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName + ".vcf";
-            } else {
-                outputFilePath = outputDir + "gatk";
-                if (genotypeLikelihoodsModel != null) {
-                    outputFilePath += "." + StringUtils.lowerCase(genotypeLikelihoodsModel) + ".raw";
-                }
-                if (!intervals.isEmpty()) {
-                    for (String interval : intervals) {
-                        outputFilePath += "." + interval.replace(":", "-");
-                    }
-                } else {
-                    outputFilePath += "." + RandomStringUtils.randomAlphanumeric(4);
-                }
-                outputFilePath += ".vcf";
+            if (outputFileName == null) {
+                outputFileName = "gatk." + RandomStringUtils.randomAlphanumeric(4);
             }
+            outputFilePath = outputDir + outputFileName + ".unified_genotyper." + StringUtils.lowerCase(genotypeLikelihoodsModel) + ".raw.vcf";
 
             List<String> c = build("UnifiedGenotyper");
 

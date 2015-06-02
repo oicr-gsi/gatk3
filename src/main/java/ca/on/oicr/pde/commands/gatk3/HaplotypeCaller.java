@@ -53,19 +53,10 @@ public class HaplotypeCaller extends AbstractCommand {
         public HaplotypeCaller build() {
 
             String outputFilePath;
-            if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName + ".vcf";
-            } else {
-                outputFilePath = outputDir + "gatk.raw.snps.indels";
-                if (!intervals.isEmpty()) {
-                    for (String interval : intervals) {
-                        outputFilePath += "." + interval.replace(":", "-");
-                    }
-                } else {
-                    outputFilePath += "." + RandomStringUtils.randomAlphanumeric(4);
-                }
-                outputFilePath += ".vcf";
+            if (outputFileName == null) {
+                outputFileName = "gatk." + RandomStringUtils.randomAlphanumeric(4);
             }
+            outputFilePath = outputDir + outputFileName + "haplotype_caller.raw.vcf";
 
             List<String> c = build("HaplotypeCaller");
 

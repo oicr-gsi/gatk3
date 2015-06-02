@@ -54,7 +54,7 @@ public class MergeVcf extends AbstractCommand {
 
             String outputFilePath;
             if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName + ".vcf";
+                outputFilePath = outputDir + outputFileName + ".merged.vcf";
             } else {
                 outputFilePath = outputDir + RandomStringUtils.randomAlphanumeric(4) + ".merged.vcf";
             }

@@ -222,6 +222,9 @@ public class GATK3Workflow extends OicrWorkflow {
                     .setKnownIndels(dbsnpVcf);
             if (chrSize != null) {
                 realignerTargetCreatorBuilder.addInterval(chrSize);
+                realignerTargetCreatorBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
+            } else {
+                realignerTargetCreatorBuilder.setOutputFileName("gatk");
             }
             if (!intervalFiles.isEmpty()) {
                 realignerTargetCreatorBuilder.addIntervalFiles(intervalFiles);
@@ -242,6 +245,9 @@ public class GATK3Workflow extends OicrWorkflow {
                     .setTargetIntervalFile(realignerTargetCreatorCommand.getOutputFile());
             if (chrSize != null) {
                 indelRealignerBuilder.addInterval(chrSize);
+                indelRealignerBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
+            } else {
+                indelRealignerBuilder.setOutputFileName("gatk");
             }
             IndelRealigner indelRealignerCommand = indelRealignerBuilder.build();
             Job indelRealignerJob = getWorkflow().createBashJob("GATKIndelRealigner")
@@ -284,6 +290,7 @@ public class GATK3Workflow extends OicrWorkflow {
         AnalyzeCovariates analyzeCovariatesCommand = new AnalyzeCovariates.Builder(java, "4g", tmpDir, gatk, gatkKey, rDir, dataDir)
                 .setReferenceSequence(refFasta)
                 .setRecalibrationTable(baseRecalibratorCommand.getOutputFile())
+                .setOutputFileName(identifier)
                 .build();
         Job analyzeCovariatesJob = getWorkflow().createBashJob("GATKAnalyzeCovariates")
                 .setMaxMemory(Integer.toString((4 + gatkOverhead) * 1024))
@@ -327,6 +334,9 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setStandardEmitConfidence(standEmitConf);
                         if (chrSize != null) {
                             haplotypeCallerBuilder.addInterval(chrSize);
+                            haplotypeCallerBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
+                        } else {
+                            haplotypeCallerBuilder.setOutputFileName("gatk");
                         }
                         if (!intervalFiles.isEmpty()) {
                             haplotypeCallerBuilder.addIntervalFiles(intervalFiles);
@@ -356,6 +366,9 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setGroup("Standard");
                         if (chrSize != null) {
                             indelsUnifiedGenotyperBuilder.addInterval(chrSize);
+                            indelsUnifiedGenotyperBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
+                        } else {
+                            indelsUnifiedGenotyperBuilder.setOutputFileName("gatk");
                         }
                         if (!intervalFiles.isEmpty()) {
                             indelsUnifiedGenotyperBuilder.addIntervalFiles(intervalFiles);
@@ -382,6 +395,9 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setGenotypeLikelihoodsModel("SNP");
                         if (chrSize != null) {
                             snvsUnifiedGenotyperBuilder.addInterval(chrSize);
+                            snvsUnifiedGenotyperBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
+                        } else {
+                            snvsUnifiedGenotyperBuilder.setOutputFileName("gatk");
                         }
                         if (!intervalFiles.isEmpty()) {
                             snvsUnifiedGenotyperBuilder.addIntervalFiles(intervalFiles);
@@ -414,7 +430,6 @@ public class GATK3Workflow extends OicrWorkflow {
             if (!snvs.isEmpty()) {
                 MergeVcf mergeSnvsCommand = new MergeVcf.Builder(perl, mergeVCFScript, workingDir)
                         .addInputFiles(getLeftCollection(snvs))
-                        //.setOutputFileName("gatk.snps.filtered.merged.vcf")
                         .build();
                 Job mergeSnvsJob = this.getWorkflow().createBashJob("MergeRawSNVs")
                         .setMaxMemory("4096")
@@ -429,7 +444,6 @@ public class GATK3Workflow extends OicrWorkflow {
             if (!indels.isEmpty()) {
                 MergeVcf mergeIndelsCommand = new MergeVcf.Builder(perl, mergeVCFScript, workingDir)
                         .addInputFiles(getLeftCollection(indels))
-                        //.setOutputFileName("gatk.indels.filtered.merged.vcf")
                         .build();
                 Job mergeIndelsJob = this.getWorkflow().createBashJob("MergeRawIndels")
                         .setMaxMemory("4096")
@@ -478,7 +492,7 @@ public class GATK3Workflow extends OicrWorkflow {
             //Sort and compress the final vcf
             SortVcf sortVcfCommand = new SortVcf.Builder(workingDir)
                     .setInputFile(Iterables.getOnlyElement(getLeftCollection(all)))
-                    .setOutputFileName(identifier + "." + StringUtils.lowerCase(vc.toString()))
+                    .setOutputFileName(identifier + "." + StringUtils.lowerCase(vc.toString()) + ".raw")
                     .build();
             CompressAndIndexVcf compressIndexVcfCommand = new CompressAndIndexVcf.Builder(tabixDir, workingDir)
                     .setInputFile(sortVcfCommand.getOutputFile())

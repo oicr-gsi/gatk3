@@ -38,15 +38,14 @@ public class AnalyzeCovariates extends AbstractCommand {
         public AnalyzeCovariates build() {
 
             String outputFilePath;
-            if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName + ".pdf";
-            } else {
-                outputFilePath = outputDir + FilenameUtils.getBaseName(recalibrationTableFile) + ".pdf";
+            if (outputFileName == null) {
+                outputFileName = FilenameUtils.getBaseName(recalibrationTableFile);
             }
+            outputFilePath = outputDir + outputFileName + ".bqsr.pdf";
 
             List<String> c = new LinkedList<>();
             c.add("PATH=" + rDir + "bin/" + ":" + "$PATH");
-            
+
             c.addAll(build("AnalyzeCovariates"));
 
             c.add("--BQSR");

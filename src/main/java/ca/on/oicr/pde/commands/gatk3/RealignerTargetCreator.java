@@ -51,15 +51,7 @@ public class RealignerTargetCreator extends AbstractCommand {
             if (outputFileName != null) {
                 outputFilePath = outputDir + outputFileName + ".intervals";
             } else {
-                outputFilePath = outputDir + "gatk";
-                if (!intervals.isEmpty()) {
-                    for (String interval : intervals) {
-                        outputFilePath += "." + interval.replace(":", "-");
-                    }
-                } else {
-                    outputFilePath += "." + RandomStringUtils.randomAlphanumeric(4);
-                }
-                outputFilePath += ".intervals";
+                outputFilePath = outputDir + "gatk." + RandomStringUtils.randomAlphanumeric(4) + ".intervals";
             }
 
             List<String> c = build("RealignerTargetCreator");

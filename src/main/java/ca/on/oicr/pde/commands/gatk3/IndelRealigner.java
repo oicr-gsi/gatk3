@@ -49,17 +49,9 @@ public class IndelRealigner extends AbstractCommand {
 
             String outputFilePath;
             if (outputFileName != null) {
-                outputFilePath = outputDir + outputFileName + ".bam";
+                outputFilePath = outputDir + outputFileName + "realigned.bam";
             } else {
-                outputFilePath = outputDir + "gatk.realigned";
-                if (intervals != null) {
-                    for (String interval : intervals) {
-                        outputFilePath += "." + interval.replace(":", "-");
-                    }
-                } else {
-                    outputFilePath += "." + RandomStringUtils.randomAlphanumeric(4);
-                }
-                outputFilePath += ".bam";
+                outputFilePath = outputDir + "gatk." + RandomStringUtils.randomAlphanumeric(4) + "realigned.bam";
             }
 
             List<String> c = build("IndelRealigner");

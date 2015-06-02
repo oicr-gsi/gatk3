@@ -226,6 +226,15 @@ public class GATK3WorkflowTest {
             }
         }
         Assert.assertEquals(actualParentNodeCount, expectedParentNodeCount);
+
+        //view output files
+        List<SqwFile> files = new LinkedList<>();
+        for (AbstractJob j : w.getWorkflow().getJobs()) {
+            files.addAll(j.getFiles());
+        }
+        for(SqwFile f : files){
+            System.out.println(f.getProvisionedPath());
+        }
     }
 
     private Map<String, String> getDefaultConfig() throws IOException {
