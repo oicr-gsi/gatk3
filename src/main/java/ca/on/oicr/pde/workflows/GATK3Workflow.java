@@ -379,6 +379,7 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
                                 .setStandardEmitConfidence(standEmitConf)
+                                .setNumCpuThreadsPerDataThread(gatkHaplotypeCallerThreads)
                                 .setExtraParameters(haplotypeCallerParams);
                         if (chrSize != null) {
                             haplotypeCallerBuilder.addInterval(chrSize);
@@ -419,6 +420,7 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setStandardEmitConfidence(standEmitConf)
                                 .setGenotypeLikelihoodsModel("INDEL")
                                 .setGroup("Standard")
+                                .setNumCpuThreadsPerDataThread(gatkUnifiedGenotyperThreads)
                                 .setExtraParameters(unifiedGenotyperParams);
                         if (chrSize != null) {
                             indelsUnifiedGenotyperBuilder.addInterval(chrSize);
@@ -456,6 +458,7 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setStandardCallConfidence(standCallConf)
                                 .setStandardEmitConfidence(standEmitConf)
                                 .setGenotypeLikelihoodsModel("SNP")
+                                .setNumCpuThreadsPerDataThread(gatkUnifiedGenotyperThreads)
                                 .setExtraParameters(unifiedGenotyperParams);
                         if (chrSize != null) {
                             snvsUnifiedGenotyperBuilder.addInterval(chrSize);
