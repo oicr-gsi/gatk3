@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Properties;
 import static net.sourceforge.seqware.pipeline.workflowV2.MockWorkflowDataModelFactory.buildWorkflowModel;
 import net.sourceforge.seqware.pipeline.workflowV2.model.AbstractJob;
+import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
 import net.sourceforge.seqware.pipeline.workflowV2.model.SqwFile;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -64,29 +65,29 @@ public class GATK3WorkflowTest {
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
-        Assert.assertEquals(w.getWorkflow().getJobs().size(), 131);
-        Assert.assertEquals(GATK3WorkflowTest.this.getExpectedJobCount(4, 25, VariantCaller.UNIFIED_GENOTYPER), 131);
+        Assert.assertEquals(w.getWorkflow().getJobs().size(), 206);
+        Assert.assertEquals(GATK3WorkflowTest.this.getExpectedJobCount(4, 25, VariantCaller.UNIFIED_GENOTYPER), 206);
 
         config.put("variant_caller", "haplotype_caller");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
-        Assert.assertEquals(w.getWorkflow().getJobs().size(), 104);
-        Assert.assertEquals(GATK3WorkflowTest.this.getExpectedJobCount(4, 25, VariantCaller.HAPLOTYPE_CALLER), 104);
+        Assert.assertEquals(w.getWorkflow().getJobs().size(), 179);
+        Assert.assertEquals(GATK3WorkflowTest.this.getExpectedJobCount(4, 25, VariantCaller.HAPLOTYPE_CALLER), 179);
 
         config.put("variant_caller", "haplotype_caller,unified_genotyper");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
-        Assert.assertEquals(w.getWorkflow().getJobs().size(), 158);
-        Assert.assertEquals(getExpectedJobCount(4, 25, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER)), 158);
+        Assert.assertEquals(w.getWorkflow().getJobs().size(), 233);
+        Assert.assertEquals(getExpectedJobCount(4, 25, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER)), 233);
 
     }
 
     @Test(enabled = true)
     public void splitByChromosome() throws IOException, IllegalAccessException {
 
-        int numInputFiles = 500;
+        int numInputFiles = 200;
         List<String> inputFiles = new LinkedList<>();
         for (int i = 0; i < numInputFiles; i++) {
             String fileName = RandomStringUtils.random(5, true, true);
@@ -192,9 +193,8 @@ public class GATK3WorkflowTest {
         return getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(vc));
     }
 
-    private int getExpectedJobCount(int numInputFiles, int parallelismLevel, Collection<VariantCaller> vcs) {
+    private int getExpectedJobCount(int numSamples, int parallelismLevel, Collection<VariantCaller> vcs) {
         parallelismLevel = Math.max(parallelismLevel, 1); //even if chr_sizes is empty, the workflow will run
-
         int variantCallingJobCount = 0;
         int mergeJobCount = 0;
         int sortCompressIndexJobCount = 0;
@@ -206,7 +206,7 @@ public class GATK3WorkflowTest {
                     sortCompressIndexJobCount += 1; //sort, compress, index
                     break;
                 case UNIFIED_GENOTYPER:
-                    variantCallingJobCount += parallelismLevel * 2; //recalibrate + indel UG + filter + snv UG + filter
+                    variantCallingJobCount += parallelismLevel * 2; //indel UG + snv UG
                     mergeJobCount += 3;  //merge snv + merge indel + merge
                     sortCompressIndexJobCount += 1; //sort, compress, index
                     break;
@@ -215,7 +215,7 @@ public class GATK3WorkflowTest {
 
         return (parallelismLevel * 2) // for each chr_size interval: create targets + realign
                 + 2 //calculate base recalibration table + analyze covariates
-                + parallelismLevel //recalibrate
+                + (numSamples * parallelismLevel) //print reads/recalibrate each realigned bam
                 + variantCallingJobCount
                 + mergeJobCount
                 + sortCompressIndexJobCount;
@@ -264,8 +264,12 @@ public class GATK3WorkflowTest {
         Assert.assertEquals(actualParentNodeCount, expectedParentNodeCount);
 
         //view output files
-        for (SqwFile f : w.getFiles().values()) {
-            System.out.println(f.getProvisionedPath());
+        for (AbstractJob j : w.getWorkflow().getJobs()) {
+            for (SqwFile f : j.getFiles()) {
+                if (f.isOutput()) {
+                    System.out.println(f.getProvisionedPath());
+                }
+            }
         }
     }
 

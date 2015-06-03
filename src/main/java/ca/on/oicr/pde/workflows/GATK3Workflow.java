@@ -228,7 +228,7 @@ public class GATK3Workflow extends OicrWorkflow {
 
     @Override
     public void buildWorkflow() {
-        Map<String, String> filesSplitByIntervals = new HashMap<>();
+        Multimap<String, String> filesSplitByIntervals = HashMultimap.create();
         List<Job> filesSplitsByIntervalJobs = new LinkedList<>();
 
         // one chrSize record is required, null will result in no parallelization
@@ -273,13 +273,11 @@ public class GATK3Workflow extends OicrWorkflow {
             IndelRealigner.Builder indelRealignerBuilder = new IndelRealigner.Builder(java, gatkIndelRealignerMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(inputBamFiles)
+                    .addKnownIndelFile(dbsnpVcf)
                     .setTargetIntervalFile(realignerTargetCreatorCommand.getOutputFile())
                     .setExtraParameters(indelRealignerParams);
             if (chrSize != null) {
                 indelRealignerBuilder.addInterval(chrSize);
-                indelRealignerBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
-            } else {
-                indelRealignerBuilder.setOutputFileName("gatk");
             }
             if (intervalPadding != null) {
                 indelRealignerBuilder.setIntervalPadding(intervalPadding);
@@ -291,9 +289,10 @@ public class GATK3Workflow extends OicrWorkflow {
                     .addParent(realignerTargetCreatorJob);
             indelRealignerJob.getCommand().setArguments(indelRealignerCommand.getCommand());
 
-            if (filesSplitByIntervals.put(chrSize, indelRealignerCommand.getOutputFile()) != null) {
+            if (filesSplitByIntervals.containsKey(chrSize)) {
                 throw new RuntimeException("Unexpected state: Duplicate interval key.");
             }
+            filesSplitByIntervals.putAll(chrSize, indelRealignerCommand.getOutputFiles());
             filesSplitsByIntervalJobs.add(indelRealignerJob);
         }
 
@@ -336,11 +335,8 @@ public class GATK3Workflow extends OicrWorkflow {
         analyzeCovariatesJob.getCommand().setArguments(analyzeCovariatesCommand.getCommand());
         analyzeCovariatesJob.addFile(createOutputFile(analyzeCovariatesCommand.getPlotsReportFile(), "application/pdf", manualOutput));
 
-        Multimap<VariantCaller, Pair<String, Job>> snvFiles = HashMultimap.create();
-        Multimap<VariantCaller, Pair<String, Job>> indelFiles = HashMultimap.create();
-        Multimap<VariantCaller, Pair<String, Job>> finalFiles = HashMultimap.create();
-
-        for (Entry<String, String> e : filesSplitByIntervals.entrySet()) {
+        Multimap<String, Pair<String, Job>> realignedBams = HashMultimap.create();
+        for (Entry<String, String> e : filesSplitByIntervals.entries()) {
 
             String chrSize = e.getKey();
             String inputBam = e.getValue();
@@ -368,13 +364,20 @@ public class GATK3Workflow extends OicrWorkflow {
                     .addParent(baseRecalibratorJob);
             printReadsJob.getCommand().setArguments(printReadsCommand.getCommand());
 
+            realignedBams.put(chrSize, Pair.of(printReadsCommand.getOutputFile(), printReadsJob));
+        }
+
+        Multimap<VariantCaller, Pair<String, Job>> snvFiles = HashMultimap.create();
+        Multimap<VariantCaller, Pair<String, Job>> indelFiles = HashMultimap.create();
+        Multimap<VariantCaller, Pair<String, Job>> finalFiles = HashMultimap.create();
+        for (String chrSize : chrSizes) {
             for (VariantCaller vc : variantCallers) {
                 String workingDir = dataDir + vc.toString() + "/";
                 switch (vc) {
                     case HAPLOTYPE_CALLER:
                         //GATK Haplotype Caller (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.php)
                         HaplotypeCaller.Builder haplotypeCallerBuilder = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerMem) + "g", tmpDir, gatk, gatkKey, workingDir)
-                                .setInputBamFile(printReadsCommand.getOutputFile())
+                                .setInputBamFiles(getLeftCollection(realignedBams.get(chrSize)))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
@@ -405,8 +408,8 @@ public class GATK3Workflow extends OicrWorkflow {
                         HaplotypeCaller haplotypeCallerCommand = haplotypeCallerBuilder.build();
                         Job haplotypeCallerJob = this.getWorkflow().createBashJob("GATKHaplotypeCaller")
                                 .setMaxMemory(Integer.toString((gatkHaplotypeCallerMem + gatkOverhead) * 1024))
-                                .setQueue(queue)
-                                .addParent(printReadsJob);
+                                .setQueue(queue);
+                        haplotypeCallerJob.getParents().addAll(getRightCollection(realignedBams.get(chrSize)));
                         haplotypeCallerJob.getCommand().setArguments(haplotypeCallerCommand.getCommand());
 
                         finalFiles.put(vc, Pair.of(haplotypeCallerCommand.getOutputFile(), haplotypeCallerJob));
@@ -415,7 +418,7 @@ public class GATK3Workflow extends OicrWorkflow {
                     case UNIFIED_GENOTYPER:
                         //GATK Unified Genotyper (INDELS) (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php)
                         UnifiedGenotyper.Builder indelsUnifiedGenotyperBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, workingDir)
-                                .setInputBamFile(printReadsCommand.getOutputFile())
+                                .setInputBamFiles(getLeftCollection(realignedBams.get(chrSize)))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
@@ -446,15 +449,15 @@ public class GATK3Workflow extends OicrWorkflow {
                         UnifiedGenotyper indelsUnifiedGenotyperCommand = indelsUnifiedGenotyperBuilder.build();
                         Job indelsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndel")
                                 .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
-                                .setQueue(queue)
-                                .addParent(printReadsJob);
+                                .setQueue(queue);
+                        indelsUnifiedGenotyperJob.getParents().addAll(getRightCollection(realignedBams.get(chrSize)));
                         indelsUnifiedGenotyperJob.getCommand().setArguments(indelsUnifiedGenotyperCommand.getCommand());
 
                         indelFiles.put(vc, Pair.of(indelsUnifiedGenotyperCommand.getOutputFile(), indelsUnifiedGenotyperJob));
 
                         //GATK Unified Genotyper (SNVS) (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php)
                         UnifiedGenotyper.Builder snvsUnifiedGenotyperBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, workingDir)
-                                .setInputBamFile(printReadsCommand.getOutputFile())
+                                .setInputBamFiles(getLeftCollection(realignedBams.get(chrSize)))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
@@ -484,8 +487,8 @@ public class GATK3Workflow extends OicrWorkflow {
                         UnifiedGenotyper snvsUnifiedGenotyperCommand = snvsUnifiedGenotyperBuilder.build();
                         Job snvsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNV")
                                 .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
-                                .setQueue(queue)
-                                .addParent(printReadsJob);
+                                .setQueue(queue);
+                        snvsUnifiedGenotyperJob.getParents().addAll(getRightCollection(realignedBams.get(chrSize)));
                         snvsUnifiedGenotyperJob.getCommand().setArguments(snvsUnifiedGenotyperCommand.getCommand());
 
                         snvFiles.put(vc, Pair.of(snvsUnifiedGenotyperCommand.getOutputFile(), snvsUnifiedGenotyperJob));

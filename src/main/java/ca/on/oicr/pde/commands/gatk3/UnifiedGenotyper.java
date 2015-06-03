@@ -1,6 +1,8 @@
 package ca.on.oicr.pde.commands.gatk3;
 
 import ca.on.oicr.pde.commands.AbstractCommand;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -22,7 +24,7 @@ public class UnifiedGenotyper extends AbstractCommand {
 
     public static class Builder extends AbstractGatkBuilder<Builder> {
 
-        private String inputBamFile;
+        private final List<String> inputBamFiles = new LinkedList<>();
         private String dbsnpFilePath;
         private String standardCallConfidence;
         private String standardEmitConfidence;
@@ -36,7 +38,14 @@ public class UnifiedGenotyper extends AbstractCommand {
         }
 
         public Builder setInputBamFile(String inputBamFile) {
-            this.inputBamFile = inputBamFile;
+            this.inputBamFiles.clear();
+            this.inputBamFiles.add(inputBamFile);
+            return this;
+        }
+
+        public Builder setInputBamFiles(Collection<String> inputBamFiles) {
+            this.inputBamFiles.clear();
+            this.inputBamFiles.addAll(inputBamFiles);
             return this;
         }
 
@@ -81,8 +90,10 @@ public class UnifiedGenotyper extends AbstractCommand {
 
             List<String> c = build("UnifiedGenotyper");
 
-            c.add("--input_file");
-            c.add(inputBamFile);
+            for (String inputBamFile : inputBamFiles) {
+                c.add("--input_file");
+                c.add(inputBamFile);
+            }
 
             c.add("--dbsnp");
             c.add(dbsnpFilePath);
