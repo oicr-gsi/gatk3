@@ -61,6 +61,8 @@ public class GATK3Workflow extends OicrWorkflow {
 
     private Set<String> bqsrCovariates;
 
+    private Boolean doBQSR;
+
     private final Set<VariantCaller> variantCallers = new HashSet<>();
 
     private Integer gatkRealignTargetCreatorMem;
@@ -133,6 +135,8 @@ public class GATK3Workflow extends OicrWorkflow {
         preserveQscoresLessThan = hasPropertyAndNotNull("preserve_qscores_less_than") ? Integer.parseInt(getProperty("preserve_qscores_less_than")) : null;
 
         bqsrCovariates = Sets.newHashSet(StringUtils.split(getProperty("bqsr_covariates"), ","));
+
+        doBQSR = Boolean.valueOf(getOptionalProperty("do_bqsr", "true"));
 
         gatkRealignTargetCreatorMem = Integer.parseInt(getProperty("gatk_realign_target_creator_mem"));
         gatkIndelRealignerMem = Integer.parseInt(getProperty("gatk_indel_realigner_mem"));
@@ -228,14 +232,13 @@ public class GATK3Workflow extends OicrWorkflow {
 
     @Override
     public void buildWorkflow() {
-        Multimap<String, String> filesSplitByIntervals = HashMultimap.create();
-        List<Job> filesSplitsByIntervalJobs = new LinkedList<>();
 
         // one chrSize record is required, null will result in no parallelization
         if (chrSizes.isEmpty()) {
             chrSizes.add(null);
         }
 
+        Multimap<String, Pair<String, Job>> realignedBams = HashMultimap.create();
         for (String chrSize : chrSizes) {
 
             //GATK Realigner Target Creator (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_RealignerTargetCreator.php)
@@ -289,82 +292,94 @@ public class GATK3Workflow extends OicrWorkflow {
                     .addParent(realignerTargetCreatorJob);
             indelRealignerJob.getCommand().setArguments(indelRealignerCommand.getCommand());
 
-            if (filesSplitByIntervals.containsKey(chrSize)) {
+            if (realignedBams.containsKey(chrSize)) {
                 throw new RuntimeException("Unexpected state: Duplicate interval key.");
             }
-            filesSplitByIntervals.putAll(chrSize, indelRealignerCommand.getOutputFiles());
-            filesSplitsByIntervalJobs.add(indelRealignerJob);
-        }
-
-        //GATK Base Recalibrator (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_bqsr_BaseRecalibrator.php)
-        BaseRecalibrator.Builder baseRecalibratorBuilder = new BaseRecalibrator.Builder(java, gatkBaseRecalibratorXmx + "m", tmpDir, gatk, gatkKey, dataDir)
-                .setReferenceSequence(refFasta)
-                .setCovariates(bqsrCovariates)
-                .addKnownSite(dbsnpVcf)
-                .addInputFiles(filesSplitByIntervals.values())
-                .setNumCpuThreadsPerDataThread(gatkBaseRecalibratorNct)
-                .setExtraParameters(baseRecalibratorParams);
-        if (!intervalFiles.isEmpty()) {
-            //"This excludes off-target sequences and sequences that may be poorly mapped, which have a higher error rate. 
-            // Including them could lead to a skewed model and bad recalibration."
-            // https://www.broadinstitute.org/gatk/guide/article?id=4133
-            baseRecalibratorBuilder.addIntervalFiles(intervalFiles);
-        }
-        if (intervalPadding != null) {
-            baseRecalibratorBuilder.setIntervalPadding(intervalPadding);
-        }
-        BaseRecalibrator baseRecalibratorCommand = baseRecalibratorBuilder.build();
-        Job baseRecalibratorJob = getWorkflow().createBashJob("GATKBaseRecalibrator")
-                .setMaxMemory(gatkBaseRecalibratorMem.toString())
-                .setThreads(gatkBaseRecalibratorSmp)
-                .setQueue(queue);
-        baseRecalibratorJob.getParents().addAll(filesSplitsByIntervalJobs);
-        baseRecalibratorJob.getCommand().setArguments(baseRecalibratorCommand.getCommand());
-
-        //GATK Analyze Covariates (https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_walkers_bqsr_AnalyzeCovariates.php)
-        AnalyzeCovariates analyzeCovariatesCommand = new AnalyzeCovariates.Builder(java, "4g", tmpDir, gatk, gatkKey, rDir, dataDir)
-                .setReferenceSequence(refFasta)
-                .setRecalibrationTable(baseRecalibratorCommand.getOutputFile())
-                .setOutputFileName(identifier)
-                .setExtraParameters(analyzeCovariatesParams)
-                .build();
-        Job analyzeCovariatesJob = getWorkflow().createBashJob("GATKAnalyzeCovariates")
-                .setMaxMemory(Integer.toString((4 + gatkOverhead) * 1024))
-                .setQueue(queue)
-                .addParent(baseRecalibratorJob);
-        analyzeCovariatesJob.getCommand().setArguments(analyzeCovariatesCommand.getCommand());
-        analyzeCovariatesJob.addFile(createOutputFile(analyzeCovariatesCommand.getPlotsReportFile(), "application/pdf", manualOutput));
-
-        Multimap<String, Pair<String, Job>> realignedBams = HashMultimap.create();
-        for (Entry<String, String> e : filesSplitByIntervals.entries()) {
-
-            String chrSize = e.getKey();
-            String inputBam = e.getValue();
-
-            //GATK Print Reads (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php)
-            PrintReads.Builder printReadsBuilder = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
-                    .setReferenceSequence(refFasta)
-                    .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
-                    .setInputFile(inputBam)
-                    .setExtraParameters(printReadsParams);
-            if (preserveQscoresLessThan != null) {
-                printReadsBuilder.setPreserveQscoresLessThan(preserveQscoresLessThan);
+            for (String outputFile : indelRealignerCommand.getOutputFiles()) {
+                realignedBams.put(chrSize, Pair.of(outputFile, indelRealignerJob));
             }
-            if (chrSize != null) {
-                //the bam files have already been split by chrSize - adding the interval here will enable GATK to better estimate runtime
-                printReadsBuilder.addInterval(chrSize);
+
+        }
+
+        Multimap<String, Pair<String, Job>> inputBams;
+        if (doBQSR) {
+            Multimap<String, Pair<String, Job>> recalibratedBams = HashMultimap.create();
+
+            //GATK Base Recalibrator (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_bqsr_BaseRecalibrator.php)
+            BaseRecalibrator.Builder baseRecalibratorBuilder = new BaseRecalibrator.Builder(java, gatkBaseRecalibratorXmx + "m", tmpDir, gatk, gatkKey, dataDir)
+                    .setReferenceSequence(refFasta)
+                    .setCovariates(bqsrCovariates)
+                    .addKnownSite(dbsnpVcf)
+                    .addInputFiles(getLeftCollection(realignedBams.values()))
+                    .setNumCpuThreadsPerDataThread(gatkBaseRecalibratorNct)
+                    .setExtraParameters(baseRecalibratorParams);
+            if (!intervalFiles.isEmpty()) {
+                //"This excludes off-target sequences and sequences that may be poorly mapped, which have a higher error rate. 
+                // Including them could lead to a skewed model and bad recalibration."
+                // https://www.broadinstitute.org/gatk/guide/article?id=4133
+                baseRecalibratorBuilder.addIntervalFiles(intervalFiles);
             }
             if (intervalPadding != null) {
-                printReadsBuilder.setIntervalPadding(intervalPadding);
+                baseRecalibratorBuilder.setIntervalPadding(intervalPadding);
             }
-            PrintReads printReadsCommand = printReadsBuilder.build();
-            Job printReadsJob = getWorkflow().createBashJob("GATKTableRecalibration")
-                    .setMaxMemory(Integer.toString((gatkPrintReadsMem + gatkOverhead) * 1024))
+            BaseRecalibrator baseRecalibratorCommand = baseRecalibratorBuilder.build();
+            Job baseRecalibratorJob = getWorkflow().createBashJob("GATKBaseRecalibrator")
+                    .setMaxMemory(gatkBaseRecalibratorMem.toString())
+                    .setThreads(gatkBaseRecalibratorSmp)
+                    .setQueue(queue);
+            baseRecalibratorJob.getParents().addAll(getRightCollection(realignedBams.values()));
+            baseRecalibratorJob.getCommand().setArguments(baseRecalibratorCommand.getCommand());
+
+            //GATK Analyze Covariates (https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_walkers_bqsr_AnalyzeCovariates.php)
+            AnalyzeCovariates analyzeCovariatesCommand = new AnalyzeCovariates.Builder(java, "4g", tmpDir, gatk, gatkKey, rDir, dataDir)
+                    .setReferenceSequence(refFasta)
+                    .setRecalibrationTable(baseRecalibratorCommand.getOutputFile())
+                    .setOutputFileName(identifier)
+                    .setExtraParameters(analyzeCovariatesParams)
+                    .build();
+            Job analyzeCovariatesJob = getWorkflow().createBashJob("GATKAnalyzeCovariates")
+                    .setMaxMemory(Integer.toString((4 + gatkOverhead) * 1024))
                     .setQueue(queue)
                     .addParent(baseRecalibratorJob);
-            printReadsJob.getCommand().setArguments(printReadsCommand.getCommand());
+            analyzeCovariatesJob.getCommand().setArguments(analyzeCovariatesCommand.getCommand());
+            analyzeCovariatesJob.addFile(createOutputFile(analyzeCovariatesCommand.getPlotsReportFile(), "application/pdf", manualOutput));
 
-            realignedBams.put(chrSize, Pair.of(printReadsCommand.getOutputFile(), printReadsJob));
+            for (Entry<String, Pair<String, Job>> e : realignedBams.entries()) {
+
+                String chrSize = e.getKey();
+                String inputBam = e.getValue().getLeft();
+
+                //GATK Print Reads (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php)
+                PrintReads.Builder printReadsBuilder = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
+                        .setReferenceSequence(refFasta)
+                        .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
+                        .setInputFile(inputBam)
+                        .setExtraParameters(printReadsParams);
+                if (preserveQscoresLessThan != null) {
+                    printReadsBuilder.setPreserveQscoresLessThan(preserveQscoresLessThan);
+                }
+                if (chrSize != null) {
+                    //the bam files have already been split by chrSize - adding the interval here will enable GATK to better estimate runtime
+                    printReadsBuilder.addInterval(chrSize);
+                }
+                if (intervalPadding != null) {
+                    printReadsBuilder.setIntervalPadding(intervalPadding);
+                }
+                PrintReads printReadsCommand = printReadsBuilder.build();
+                Job printReadsJob = getWorkflow().createBashJob("GATKTableRecalibration")
+                        .setMaxMemory(Integer.toString((gatkPrintReadsMem + gatkOverhead) * 1024))
+                        .setQueue(queue)
+                        .addParent(baseRecalibratorJob);
+                printReadsJob.getCommand().setArguments(printReadsCommand.getCommand());
+
+                recalibratedBams.put(chrSize, Pair.of(printReadsCommand.getOutputFile(), printReadsJob));
+            }
+
+            //BQSR enabled, pass recalibrated bams to variant calling
+            inputBams = recalibratedBams;
+        } else {
+            //BQSR disabled, pass realigned bams to variant calling
+            inputBams = realignedBams;
         }
 
         Multimap<VariantCaller, Pair<String, Job>> snvFiles = HashMultimap.create();
@@ -377,7 +392,7 @@ public class GATK3Workflow extends OicrWorkflow {
                     case HAPLOTYPE_CALLER:
                         //GATK Haplotype Caller (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.php)
                         HaplotypeCaller.Builder haplotypeCallerBuilder = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerMem) + "g", tmpDir, gatk, gatkKey, workingDir)
-                                .setInputBamFiles(getLeftCollection(realignedBams.get(chrSize)))
+                                .setInputBamFiles(getLeftCollection(inputBams.get(chrSize)))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
@@ -409,7 +424,7 @@ public class GATK3Workflow extends OicrWorkflow {
                         Job haplotypeCallerJob = this.getWorkflow().createBashJob("GATKHaplotypeCaller")
                                 .setMaxMemory(Integer.toString((gatkHaplotypeCallerMem + gatkOverhead) * 1024))
                                 .setQueue(queue);
-                        haplotypeCallerJob.getParents().addAll(getRightCollection(realignedBams.get(chrSize)));
+                        haplotypeCallerJob.getParents().addAll(getRightCollection(inputBams.get(chrSize)));
                         haplotypeCallerJob.getCommand().setArguments(haplotypeCallerCommand.getCommand());
 
                         finalFiles.put(vc, Pair.of(haplotypeCallerCommand.getOutputFile(), haplotypeCallerJob));
@@ -418,7 +433,7 @@ public class GATK3Workflow extends OicrWorkflow {
                     case UNIFIED_GENOTYPER:
                         //GATK Unified Genotyper (INDELS) (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php)
                         UnifiedGenotyper.Builder indelsUnifiedGenotyperBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, workingDir)
-                                .setInputBamFiles(getLeftCollection(realignedBams.get(chrSize)))
+                                .setInputBamFiles(getLeftCollection(inputBams.get(chrSize)))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
@@ -450,14 +465,14 @@ public class GATK3Workflow extends OicrWorkflow {
                         Job indelsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndel")
                                 .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
                                 .setQueue(queue);
-                        indelsUnifiedGenotyperJob.getParents().addAll(getRightCollection(realignedBams.get(chrSize)));
+                        indelsUnifiedGenotyperJob.getParents().addAll(getRightCollection(inputBams.get(chrSize)));
                         indelsUnifiedGenotyperJob.getCommand().setArguments(indelsUnifiedGenotyperCommand.getCommand());
 
                         indelFiles.put(vc, Pair.of(indelsUnifiedGenotyperCommand.getOutputFile(), indelsUnifiedGenotyperJob));
 
                         //GATK Unified Genotyper (SNVS) (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php)
                         UnifiedGenotyper.Builder snvsUnifiedGenotyperBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, workingDir)
-                                .setInputBamFiles(getLeftCollection(realignedBams.get(chrSize)))
+                                .setInputBamFiles(getLeftCollection(inputBams.get(chrSize)))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
@@ -488,7 +503,7 @@ public class GATK3Workflow extends OicrWorkflow {
                         Job snvsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNV")
                                 .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
                                 .setQueue(queue);
-                        snvsUnifiedGenotyperJob.getParents().addAll(getRightCollection(realignedBams.get(chrSize)));
+                        snvsUnifiedGenotyperJob.getParents().addAll(getRightCollection(inputBams.get(chrSize)));
                         snvsUnifiedGenotyperJob.getCommand().setArguments(snvsUnifiedGenotyperCommand.getCommand());
 
                         snvFiles.put(vc, Pair.of(snvsUnifiedGenotyperCommand.getOutputFile(), snvsUnifiedGenotyperJob));
@@ -596,16 +611,16 @@ public class GATK3Workflow extends OicrWorkflow {
         }
     }
 
-    private <T, S> Collection<T> getLeftCollection(Collection<Pair<T, S>> pairs) {
-        List<T> ts = new LinkedList<>();
+    private <T, S> Set<T> getLeftCollection(Collection<Pair<T, S>> pairs) {
+        Set<T> ts = new HashSet<>();
         for (Pair<T, S> p : pairs) {
             ts.add(p.getLeft());
         }
         return ts;
     }
 
-    private <S, T> Collection<T> getRightCollection(Collection<Pair<S, T>> pairs) {
-        List<T> ts = new LinkedList<>();
+    private <S, T> Set<T> getRightCollection(Collection<Pair<S, T>> pairs) {
+        Set<T> ts = new HashSet<>();
         for (Pair<S, T> p : pairs) {
             ts.add(p.getRight());
         }
