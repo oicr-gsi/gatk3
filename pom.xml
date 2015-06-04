@@ -11,14 +11,14 @@
 
     <groupId>ca.on.oicr.pde.deciders</groupId>
     <artifactId>GATK3</artifactId>
-    <version>1.0-beta.1</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>${display-name}</name>
 
     <properties>
         <workflow-name>GATK3</workflow-name>
-        <workflow-version>1.0-beta.2</workflow-version>
+        <workflow-version>1.0</workflow-version>
         <main-class>ca.on.oicr.pde.deciders.Gatk3Decider</main-class>
     </properties>
     
