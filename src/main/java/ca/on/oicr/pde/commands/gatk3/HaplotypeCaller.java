@@ -64,8 +64,12 @@ public class HaplotypeCaller extends AbstractCommand {
             return this;
         }
 
-        public Builder setDownsamplingCoverageThreshold(Integer downsamplingCoverageThreshold, String downsamplingType) {
+        public Builder setDownsamplingCoverageThreshold(Integer downsamplingCoverageThreshold) {
             this.downsamplingCoverageThreshold = downsamplingCoverageThreshold;
+            return this;
+        }
+
+        public Builder setDownsamplingType(String downsamplingType) {
             this.downsamplingType = downsamplingType;
             return this;
         }
@@ -111,6 +115,9 @@ public class HaplotypeCaller extends AbstractCommand {
             if (downsamplingCoverageThreshold != null) {
                 c.add("--downsample_to_coverage");
                 c.add(downsamplingCoverageThreshold.toString());
+            }
+
+            if (downsamplingType != null) {
                 c.add("--downsampling_type");
                 c.add(downsamplingType);
             }
