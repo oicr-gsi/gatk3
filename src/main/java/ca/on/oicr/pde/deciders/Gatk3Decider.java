@@ -39,20 +39,24 @@ public class Gatk3Decider extends OicrDecider {
         //settings
         defineArgument("stand-emit-conf", "Emission confidence threshold to pass to GATK. Default 1", false);
         defineArgument("stand-call-conf", "Calling confidence threshold to pass to GATK. Default 30.", false);
-        defineArgument("chr-sizes", "Chr sizes", false);
-        defineArgument("rsconfig-file", "Optional: specify location of .xml file which should be used to configure references, "
+        defineArgument("chr-sizes", "Comma separated list of chromosome intervals used to parallelize indel realigning and variant calling. Default: By chromosome", false);
+        parser.accepts("disable-bqsr", "Disable BQSR (BaseRecalibrator + PrintReads steps) and pass indel realigned BAMs directly to variant calling.");
+        defineArgument("interval-padding", "Amount of padding to add to each interval (chr-sizes and interval-file determined by decider) in bp. Default: 100", false);
+        defineArgument("id", "Override final filename prefix (eg. ID_123.haplotype_caller.raw.vcf.gz, ID_123.unified_genotyper.raw.vcf.gz). Default: gatk3", false);
+        defineArgument("downsampling", "Set whether or not the variant caller should downsample the reads. Default: false for TS, true for everything else", false);
+        defineArgument("rsconfig-file", "Specify location of .xml file which should be used to configure references, "
                 + "will be used if resequencing-type is different from the default."
                 + "Default: " + rsconfigXmlPath, false);
 
         //mandatory filters
-        defineArgument("library-template-type", "Restrict the processing to samples of a particular template type, e.g. WG, EX, TS", true);
+        defineArgument("library-template-type", "Restrict the processing to samples of a particular template type, e.g. WG, EX, TS.", true);
 
         //optional filters
         defineArgument("tissue-type", "Restrict the processing to samples of particular tissue types, "
                 + "e.g. P, R, X, C. Multiple values can be comma-separated. Default: no restriction", false);
         defineArgument("tissue-origin", "Restrict the processing to samples of particular tissue origin, "
                 + "e.g. Ly, Pa, Pr. Multiple values can be comma-separated. Default: no restriction", false);
-        defineArgument("resequencing-type", "Restrict the processing to samples of a particular resequecing type", false);
+        defineArgument("resequencing-type", "Restrict the processing to samples of a particular resequencing type", false);
 
     }
 
@@ -207,7 +211,9 @@ public class Gatk3Decider extends OicrDecider {
                 Log.error(String.format("Template type = %s and resequencing type = %s not found in rsconfig.xml", groupTemplateType, groupResequencingType));
                 rv.setExitStatus(ReturnValue.FAILURE);
             }
-            wr.addProperty("interval_files", file);
+            if (!"WG".equals(templateType)) {
+                wr.addProperty("interval_files", file);
+            }
         } else {
             Log.error(String.format("Unable to determine single interval file for template type = %s and resequencing type = %s.", groupTemplateType, groupResequencingType));
             rv.setExitStatus(ReturnValue.FAILURE);
@@ -217,9 +223,45 @@ public class Gatk3Decider extends OicrDecider {
         wr.addProperty("input_files", commaSeparatedFilePaths);
         wr.addProperty("stand_emit_conf", getArgument("stand-emit-conf"), "1");
         wr.addProperty("stand_call_conf", getArgument("stand-call-conf"), "30");
-        wr.addProperty("identifier", "raw");
+
         if (options.has("chr-sizes")) {
             wr.addProperty("chr_sizes", getArgument("chr-sizes"));
+        }
+
+        if (options.has("disable-bqsr")) {
+            wr.addProperty("do_bqsr", "false");
+        }
+
+        wr.addProperty("interval_padding", getArgument("interval-padding"), "100");
+
+        if (options.has("id")) {
+            wr.addProperty("identifier", getArgument("id"));
+        } else {
+            wr.addProperty("identifier", "gatk3");
+        }
+
+        if (options.has("downsampling")) {
+            if (getArgument("downsampling").equalsIgnoreCase("false")) {
+                wr.addProperty("downsampling_type", "NONE");
+            } else if (getArgument("downsampling").equalsIgnoreCase("true")) {
+                //do nothing, downsampling is performed by default
+            } else {
+                throw new RuntimeException("--downsampling parameter expects true/false.");
+            }
+        } else {
+            switch (templateType) {
+                case "WG":
+                    //do nothing, downsampling is performed by default
+                    break;
+                case "EX":
+                    //do nothing, downsampling is performed by default
+                    break;
+                case "TS":
+                    wr.addProperty("downsampling_type", "NONE");  //TS, do not downsample
+                    break;
+                default:
+                    throw new RuntimeException("Unsupported template type = [" + templateType + "]");
+            }
         }
 
         if (!isWorkflowRunValid(wr)) {
