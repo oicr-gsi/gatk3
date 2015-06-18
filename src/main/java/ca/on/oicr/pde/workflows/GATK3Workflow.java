@@ -98,6 +98,7 @@ public class GATK3Workflow extends OicrWorkflow {
     @Override
     public void setupDirectory() {
         init();
+	this.addDirectory(tmpDir);
         this.addDirectory(dataDir);
         for (VariantCaller vc : variantCallers) {
             this.addDirectory(dataDir + vc.toString());
