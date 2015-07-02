@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ca.on.oicr.pde.config</groupId>
+        <artifactId>deciders</artifactId>
+        <version>3</version>
+    </parent>
+
+    <groupId>ca.on.oicr.pde.deciders</groupId>
+    <artifactId>GATK3</artifactId>
+    <version>1.0.1</version>
+    <packaging>jar</packaging>
+
+    <name>${display-name}</name>
+
+    <properties>
+        <workflow-name>GATK3</workflow-name>
+        <workflow-version>1.0.1</workflow-version>
+        <main-class>ca.on.oicr.pde.deciders.Gatk3Decider</main-class>
+    </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>ca.on.oicr.pde.workflows</groupId>
+            <artifactId>${workflow-name}</artifactId>
+            <version>${workflow-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-reflect</artifactId>
+            <version>1.6.2</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+</project>
