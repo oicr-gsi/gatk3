@@ -34,6 +34,14 @@
                 "--study-name": "BartlettTS",
                 "--library-template-type": "TS"
             }
+        },
+        {
+            "id": "Group-by Test",
+            "parameters": {
+                "--study-name": "BartlettTS",
+                "--library-template-type": "TS",
+                "--group-by": "ROOT_SAMPLE_NAME"
+            }
         }
     ]
 }
