@@ -63,7 +63,6 @@ public class Gatk3Decider extends OicrDecider {
     @Override
     public ReturnValue init() {
         setMetaType(Arrays.asList("application/bam", "application/bam-index"));
-        setGroupBy(Group.FILE, false);
 
         templateType = getArgument("library-template-type");
 
@@ -150,7 +149,7 @@ public class Gatk3Decider extends OicrDecider {
 
             //set aside information needed for subsequent processing
             BeSmall currentSmall = new BeSmall(currentRV);
-            fileSwaToSmall.put(currentRV.getAttribute(groupBy), currentSmall);
+            fileSwaToSmall.put(currentRV.getAttribute(Header.FILE_SWA.getTitle()), currentSmall);
 
             //make sure you only have the most recent single file for each
             //sequencer run + lane + barcode + meta-type
@@ -181,10 +180,19 @@ public class Gatk3Decider extends OicrDecider {
                 }
             }
         }
+        
         //only use those files that entered into the iusDeetsToRV
         //since it's a map, only the most recent values
         List<ReturnValue> newValues = new ArrayList<>(iusDeetsToRV.values());
-        return super.separateFiles(newValues, null);
+
+        Map<String, List<ReturnValue>> groupedFiles;
+        if (options.hasArgument("group-by")) {
+            groupedFiles = super.separateFiles(newValues, groupBy);
+        } else {
+            groupedFiles = super.separateFiles(newValues, null); //do not group files
+    }
+
+        return groupedFiles;
     }
 
     @Override
