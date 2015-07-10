@@ -1,4 +1,4 @@
-package ca.on.oicr.pde.commands.picard;
+package ca.on.oicr.pde.tools.picard;
 
 import java.util.LinkedList;
 import java.util.List;

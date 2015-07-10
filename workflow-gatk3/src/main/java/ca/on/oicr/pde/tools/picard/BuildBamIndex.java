@@ -1,6 +1,6 @@
-package ca.on.oicr.pde.commands.picard;
+package ca.on.oicr.pde.tools.picard;
 
-import ca.on.oicr.pde.commands.AbstractCommand;
+import ca.on.oicr.pde.tools.common.AbstractCommand;
 import java.util.List;
 import org.apache.commons.io.FilenameUtils;
 

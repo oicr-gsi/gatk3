@@ -7,11 +7,12 @@
         <groupId>ca.on.oicr.pde.config</groupId>
         <artifactId>workflows</artifactId>
         <version>3</version>
+        <relativePath/>
     </parent>
 
     <groupId>ca.on.oicr.pde.workflows</groupId>
     <artifactId>GATK3</artifactId>
-    <version>1.0.1</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>${display-name}</name>
@@ -25,18 +26,20 @@
 
     <dependencies>
         <dependency>
-            <groupId>GenomeAnalysisTK</groupId>
-            <artifactId>GenomeAnalysisTK</artifactId>
-            <version>${gatk-version}</version>
-            <type>zip</type>
-            <scope>provided</scope>
+            <groupId>ca.on.oicr.pde.tools</groupId>
+            <artifactId>gatk3</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.on.oicr.pde.tools</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>tabix</groupId>
             <artifactId>tabix</artifactId>
             <version>${tabix-version}</version>
             <type>zip</type>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.powermock</groupId>

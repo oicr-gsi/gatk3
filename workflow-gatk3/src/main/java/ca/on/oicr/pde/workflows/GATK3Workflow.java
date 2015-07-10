@@ -1,16 +1,16 @@
 package ca.on.oicr.pde.workflows;
 
-import ca.on.oicr.pde.commands.CompressAndIndexVcf;
-import ca.on.oicr.pde.commands.gatk3.UnifiedGenotyper;
-import ca.on.oicr.pde.commands.MergeVcf;
-import ca.on.oicr.pde.commands.SortVcf;
-import ca.on.oicr.pde.commands.gatk3.AbstractGatkBuilder;
-import ca.on.oicr.pde.commands.gatk3.AnalyzeCovariates;
-import ca.on.oicr.pde.commands.gatk3.BaseRecalibrator;
-import ca.on.oicr.pde.commands.gatk3.HaplotypeCaller;
-import ca.on.oicr.pde.commands.gatk3.IndelRealigner;
-import ca.on.oicr.pde.commands.gatk3.PrintReads;
-import ca.on.oicr.pde.commands.gatk3.RealignerTargetCreator;
+import ca.on.oicr.pde.tools.CompressAndIndexVcf;
+import ca.on.oicr.pde.tools.gatk3.UnifiedGenotyper;
+import ca.on.oicr.pde.tools.MergeVcf;
+import ca.on.oicr.pde.tools.SortVcf;
+import ca.on.oicr.pde.tools.gatk3.AbstractGatkBuilder;
+import ca.on.oicr.pde.tools.gatk3.AnalyzeCovariates;
+import ca.on.oicr.pde.tools.gatk3.BaseRecalibrator;
+import ca.on.oicr.pde.tools.gatk3.HaplotypeCaller;
+import ca.on.oicr.pde.tools.gatk3.IndelRealigner;
+import ca.on.oicr.pde.tools.gatk3.PrintReads;
+import ca.on.oicr.pde.tools.gatk3.RealignerTargetCreator;
 import ca.on.oicr.pde.utilities.workflows.OicrWorkflow;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
@@ -27,64 +27,10 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class GATK3Workflow extends OicrWorkflow {
 
-    private String binDir;
-    private String tmpDir;
-    private String dataDir;
-
-    private boolean manualOutput;
-    private String queue;
-
-    private String perl;
-    private String java;
-    private String tabixDir;
-    private String gatk;
-    private String rDir;
-    private String mergeVCFScript;
-
-    private String gatkKey;
-
-    private String identifier = null;
-
-    private final List<String> inputBamFiles = new LinkedList<>();
-
-    private String refFasta = null;
-    private String dbsnpVcf = null;
-
-    private final List<String> chrSizes = new LinkedList<>();
-    private final List<String> intervalFiles = new LinkedList<>();
-    private Integer intervalPadding;
-
-    private String standCallConf = null;
-    private String standEmitConf = null;
-
-    private Integer preserveQscoresLessThan;
-
-    private Set<String> bqsrCovariates;
-
-    private Boolean doBQSR;
-
+    private final String tmpDir = "tmp/";
+    private final String dataDir = "data/";
     private final Set<VariantCaller> variantCallers = new HashSet<>();
-
-    private Integer gatkRealignTargetCreatorMem;
-    private Integer gatkIndelRealignerMem;
-    private Integer gatkPrintReadsMem;
-    private Integer gatkHaplotypeCallerMem;
-    private Integer gatkHaplotypeCallerThreads;
-    private Integer gatkUnifiedGenotyperMem;
-    private Integer gatkUnifiedGenotyperThreads;
-    private Integer gatkBaseRecalibratorXmx;
-    private Integer gatkBaseRecalibratorMem;
-    private Integer gatkBaseRecalibratorNct;
-    private Integer gatkBaseRecalibratorSmp;
-    private Integer gatkOverhead;
-
-    private String realignerTargetCreatorParams;
-    private String indelRealignerParams;
-    private String baseRecalibratorParams;
-    private String analyzeCovariatesParams;
-    private String printReadsParams;
-    private String haplotypeCallerParams;
-    private String unifiedGenotyperParams;
+    private final List<String> inputBamFiles = new LinkedList<>();
 
     public enum VariantCaller {
 
@@ -106,64 +52,9 @@ public class GATK3Workflow extends OicrWorkflow {
     }
 
     public void init() {
-
-        binDir = this.getWorkflowBaseDir() + "/bin/";
-        tmpDir = "tmp/";
-        dataDir = "data/";
-
-        manualOutput = BooleanUtils.toBoolean(getProperty("manual_output"), "true", "false");
-        queue = getOptionalProperty("queue", "");
-
-        perl = getProperty("perl");
-        java = getProperty("java");
-        tabixDir = getProperty("tabix_dir");
-        gatk = getProperty("gatk_jar");
-        rDir = getProperty("r_dir");
-        mergeVCFScript = binDir + "sw_module_merge_GATK_VCF.pl";
-
-        gatkKey = getProperty("gatk_key");
-
-        identifier = getProperty("identifier");
-        refFasta = getProperty("ref_fasta");
-        dbsnpVcf = getProperty("gatk_dbsnp_vcf");
-
-        chrSizes.addAll(Arrays.asList(StringUtils.split(getProperty("chr_sizes"), ",")));
-        intervalFiles.addAll(Arrays.asList(StringUtils.split(getOptionalProperty("interval_files", ""), ",")));
-        intervalPadding = hasPropertyAndNotNull("interval_padding") ? Integer.parseInt(getProperty("interval_padding")) : null;
-
-        standCallConf = getProperty("stand_call_conf");
-        standEmitConf = getProperty("stand_emit_conf");
-        preserveQscoresLessThan = hasPropertyAndNotNull("preserve_qscores_less_than") ? Integer.parseInt(getProperty("preserve_qscores_less_than")) : null;
-
-        bqsrCovariates = Sets.newHashSet(StringUtils.split(getProperty("bqsr_covariates"), ","));
-
-        doBQSR = Boolean.valueOf(getOptionalProperty("do_bqsr", "true"));
-
-        gatkRealignTargetCreatorMem = Integer.parseInt(getProperty("gatk_realign_target_creator_mem"));
-        gatkIndelRealignerMem = Integer.parseInt(getProperty("gatk_indel_realigner_mem"));
-        gatkPrintReadsMem = Integer.parseInt(getProperty("gatk_print_reads_mem"));
-        gatkHaplotypeCallerThreads = Integer.parseInt(getProperty("gatk_haplotype_caller_threads"));
-        gatkHaplotypeCallerMem = Integer.parseInt(getProperty("gatk_haplotype_caller_mem"));
-        gatkUnifiedGenotyperMem = Integer.parseInt(getProperty("gatk_unified_genotyper_mem"));
-        gatkUnifiedGenotyperThreads = Integer.parseInt(getProperty("gatk_unified_genotyper_threads"));
-        gatkBaseRecalibratorXmx = Integer.parseInt(getProperty("gatk_baserecalibrator_xmx"));
-        gatkBaseRecalibratorMem = Integer.parseInt(getProperty("gatk_baserecalibrator_mem"));
-        gatkBaseRecalibratorNct = Integer.parseInt(getProperty("gatk_baserecalibrator_nct"));
-        gatkBaseRecalibratorSmp = Integer.parseInt(getProperty("gatk_baserecalibrator_smp"));
-        gatkOverhead = Integer.parseInt(getProperty("gatk_sched_overhead_mem"));
-
-        realignerTargetCreatorParams = getOptionalProperty("gatk_realigner_target_creator_params", null);
-        indelRealignerParams = getOptionalProperty("gatk_indel_realigner_params", null);
-        baseRecalibratorParams = getOptionalProperty("gatk_base_recalibrator_params", null);
-        analyzeCovariatesParams = getOptionalProperty("gatk_analyze_covariates_params", null);
-        printReadsParams = getOptionalProperty("gatk_print_reads_params", null);
-        haplotypeCallerParams = getOptionalProperty("gatk_haplotype_caller_params", null);
-        unifiedGenotyperParams = getOptionalProperty("gatk_unified_genotyper_params", null);
-
         for (String s : StringUtils.split(getProperty("variant_caller"), ",")) {
             variantCallers.add(VariantCaller.valueOf(StringUtils.upperCase(s)));
         }
-
     }
 
     @Override
@@ -234,6 +125,59 @@ public class GATK3Workflow extends OicrWorkflow {
     @Override
     public void buildWorkflow() {
 
+        final String binDir = this.getWorkflowBaseDir() + "/bin/";
+        final Boolean manualOutput = BooleanUtils.toBoolean(getProperty("manual_output"), "true", "false");
+        final String queue = getOptionalProperty("queue", "");
+        final String perl = getProperty("perl");
+        final String java = getProperty("java");
+        final String tabixDir = getProperty("tabix_dir");
+        final String gatk = getOptionalProperty("gatk_jar", binDir);
+        final String rDir = getProperty("r_dir");
+        final String mergeVCFScript = binDir + "sw_module_merge_GATK_VCF.pl";
+        final String gatkKey = getProperty("gatk_key");
+        final String identifier = getProperty("identifier");
+        final String refFasta = getProperty("ref_fasta");
+        final String dbsnpVcf = getProperty("gatk_dbsnp_vcf");
+        final Integer intervalPadding = hasPropertyAndNotNull("interval_padding") ? Integer.parseInt(getProperty("interval_padding")) : null;
+        final String standCallConf = getProperty("stand_call_conf");
+        final String standEmitConf = getProperty("stand_emit_conf");
+        final Integer downsamplingCoverage = hasPropertyAndNotNull("downsampling_coverage") ? Integer.parseInt(getProperty("downsampling_coverage")) : null;
+        final String downsamplingType = getOptionalProperty("downsampling_type", null);
+        final Integer preserveQscoresLessThan = hasPropertyAndNotNull("preserve_qscores_less_than") ? Integer.parseInt(getProperty("preserve_qscores_less_than")) : null;
+        final Set<String> bqsrCovariates = Sets.newHashSet(StringUtils.split(getProperty("bqsr_covariates"), ","));
+        final Boolean doBQSR = Boolean.valueOf(getOptionalProperty("do_bqsr", "true"));
+        final Integer gatkRealignTargetCreatorMem = Integer.parseInt(getProperty("gatk_realign_target_creator_mem"));
+        final Integer gatkIndelRealignerMem = Integer.parseInt(getProperty("gatk_indel_realigner_mem"));
+        final Integer gatkPrintReadsMem = Integer.parseInt(getProperty("gatk_print_reads_mem"));
+        final Integer gatkBaseRecalibratorXmx = Integer.parseInt(getProperty("gatk_baserecalibrator_xmx"));
+        final Integer gatkBaseRecalibratorMem = Integer.parseInt(getProperty("gatk_baserecalibrator_mem"));
+        final Integer gatkBaseRecalibratorNct = Integer.parseInt(getProperty("gatk_baserecalibrator_nct"));
+        final Integer gatkBaseRecalibratorSmp = Integer.parseInt(getProperty("gatk_baserecalibrator_smp"));
+        final Integer gatkHaplotypeCallerThreads = Integer.parseInt(getProperty("gatk_haplotype_caller_threads"));
+        final Integer gatkHaplotypeCallerMem = Integer.parseInt(getProperty("gatk_haplotype_caller_mem"));
+        final Integer gatkUnifiedGenotyperMem = Integer.parseInt(getProperty("gatk_unified_genotyper_mem"));
+        final Integer gatkUnifiedGenotyperThreads = Integer.parseInt(getProperty("gatk_unified_genotyper_threads"));
+        final Integer gatkOverhead = Integer.parseInt(getProperty("gatk_sched_overhead_mem"));
+        final String realignerTargetCreatorParams = getOptionalProperty("gatk_realigner_target_creator_params", null);
+        final String indelRealignerParams = getOptionalProperty("gatk_indel_realigner_params", null);
+        final String baseRecalibratorParams = getOptionalProperty("gatk_base_recalibrator_params", null);
+        final String analyzeCovariatesParams = getOptionalProperty("gatk_analyze_covariates_params", null);
+        final String printReadsParams = getOptionalProperty("gatk_print_reads_params", null);
+        final String haplotypeCallerParams = getOptionalProperty("gatk_haplotype_caller_params", null);
+        final String unifiedGenotyperParams = getOptionalProperty("gatk_unified_genotyper_params", null);
+
+        final List<String> chrSizesList = Arrays.asList(StringUtils.split(getProperty("chr_sizes"), ","));
+        final Set<String> chrSizes = new HashSet<>(chrSizesList);
+        if (chrSizes.size() != chrSizesList.size()) {
+            throw new RuntimeException("Duplicate chr_sizes detected.");
+        }
+
+        final List<String> intervalFilesList = Arrays.asList(StringUtils.split(getOptionalProperty("interval_files", ""), ","));
+        final Set<String> intervalFiles = new HashSet<>(intervalFilesList);
+        if (intervalFiles.size() != intervalFilesList.size()) {
+            throw new RuntimeException("Duplicate interval_files detected");
+        }
+
         // one chrSize record is required, null will result in no parallelization
         if (chrSizes.isEmpty()) {
             chrSizes.add(null);
@@ -242,53 +186,34 @@ public class GATK3Workflow extends OicrWorkflow {
         Multimap<String, Pair<String, Job>> realignedBams = HashMultimap.create();
         for (String chrSize : chrSizes) {
 
-            //GATK Realigner Target Creator (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_RealignerTargetCreator.php)
-            RealignerTargetCreator.Builder realignerTargetCreatorBuilder = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            //GATK Realigner Target Creator ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_RealignerTargetCreator.php )
+            RealignerTargetCreator realignerTargetCreatorCommand = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(inputBamFiles)
                     .setKnownIndels(dbsnpVcf)
-                    .setExtraParameters(realignerTargetCreatorParams);
-            if (chrSize != null) {
-                realignerTargetCreatorBuilder.addInterval(chrSize);
-                realignerTargetCreatorBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
-            } else {
-                realignerTargetCreatorBuilder.setOutputFileName("gatk");
-            }
-            if (!intervalFiles.isEmpty()) {
-                realignerTargetCreatorBuilder.addIntervalFiles(intervalFiles);
-            }
-            if (chrSize != null && !intervalFiles.isEmpty()) {
-                realignerTargetCreatorBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
-            }
-            if (intervalPadding != null) {
-                realignerTargetCreatorBuilder.setIntervalPadding(intervalPadding);
-            }
-            if (hasPropertyAndNotNull("downsampling_coverage")) {
-                realignerTargetCreatorBuilder.setDownsamplingCoverageThreshold(Integer.parseInt(getProperty("downsampling_coverage")));
-            }
-            if (hasPropertyAndNotNull("downsampling_type")) {
-                realignerTargetCreatorBuilder.setDownsamplingType(getProperty("downsampling_type"));
-            }
-            RealignerTargetCreator realignerTargetCreatorCommand = realignerTargetCreatorBuilder.build();
+                    .addInterval(chrSize)
+                    .addIntervalFiles(intervalFiles)
+                    .setIntervalPadding(intervalPadding)
+                    .setDownsamplingCoverageThreshold(downsamplingCoverage)
+                    .setDownsamplingType(downsamplingType)
+                    .setOutputFileName("gatk" + (chrSize != null ? "." + chrSize.replace(":", "-") : ""))
+                    .setExtraParameters(realignerTargetCreatorParams)
+                    .build();
             Job realignerTargetCreatorJob = getWorkflow().createBashJob("GATKRealignerTargetCreator")
                     .setMaxMemory(Integer.toString((gatkRealignTargetCreatorMem + gatkOverhead) * 1024))
                     .setQueue(queue);
             realignerTargetCreatorJob.getCommand().setArguments(realignerTargetCreatorCommand.getCommand());
 
-            //GATK Indel Realigner (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_IndelRealigner.php)
-            IndelRealigner.Builder indelRealignerBuilder = new IndelRealigner.Builder(java, gatkIndelRealignerMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            //GATK Indel Realigner ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_IndelRealigner.php )
+            IndelRealigner indelRealignerCommand = new IndelRealigner.Builder(java, gatkIndelRealignerMem + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(inputBamFiles)
                     .addKnownIndelFile(dbsnpVcf)
+                    .addInterval(chrSize)
+                    .setIntervalPadding(intervalPadding)
                     .setTargetIntervalFile(realignerTargetCreatorCommand.getOutputFile())
-                    .setExtraParameters(indelRealignerParams);
-            if (chrSize != null) {
-                indelRealignerBuilder.addInterval(chrSize);
-            }
-            if (intervalPadding != null) {
-                indelRealignerBuilder.setIntervalPadding(intervalPadding);
-            }
-            IndelRealigner indelRealignerCommand = indelRealignerBuilder.build();
+                    .setExtraParameters(indelRealignerParams)
+                    .build();
             Job indelRealignerJob = getWorkflow().createBashJob("GATKIndelRealigner")
                     .setMaxMemory(Integer.toString((gatkIndelRealignerMem + gatkOverhead) * 1024))
                     .setQueue(queue)
@@ -308,24 +233,17 @@ public class GATK3Workflow extends OicrWorkflow {
         if (doBQSR) {
             Multimap<String, Pair<String, Job>> recalibratedBams = HashMultimap.create();
 
-            //GATK Base Recalibrator (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_bqsr_BaseRecalibrator.php)
-            BaseRecalibrator.Builder baseRecalibratorBuilder = new BaseRecalibrator.Builder(java, gatkBaseRecalibratorXmx + "m", tmpDir, gatk, gatkKey, dataDir)
+            //GATK Base Recalibrator ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_bqsr_BaseRecalibrator.php )
+            BaseRecalibrator baseRecalibratorCommand = new BaseRecalibrator.Builder(java, gatkBaseRecalibratorXmx + "m", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .setCovariates(bqsrCovariates)
                     .addKnownSite(dbsnpVcf)
                     .addInputFiles(getLeftCollection(realignedBams.values()))
+                    .addIntervalFiles(intervalFiles)
+                    .setIntervalPadding(intervalPadding)
                     .setNumCpuThreadsPerDataThread(gatkBaseRecalibratorNct)
-                    .setExtraParameters(baseRecalibratorParams);
-            if (!intervalFiles.isEmpty()) {
-                //"This excludes off-target sequences and sequences that may be poorly mapped, which have a higher error rate. 
-                // Including them could lead to a skewed model and bad recalibration."
-                // https://www.broadinstitute.org/gatk/guide/article?id=4133
-                baseRecalibratorBuilder.addIntervalFiles(intervalFiles);
-            }
-            if (intervalPadding != null) {
-                baseRecalibratorBuilder.setIntervalPadding(intervalPadding);
-            }
-            BaseRecalibrator baseRecalibratorCommand = baseRecalibratorBuilder.build();
+                    .setExtraParameters(baseRecalibratorParams)
+                    .build();
             Job baseRecalibratorJob = getWorkflow().createBashJob("GATKBaseRecalibrator")
                     .setMaxMemory(gatkBaseRecalibratorMem.toString())
                     .setThreads(gatkBaseRecalibratorSmp)
@@ -333,7 +251,7 @@ public class GATK3Workflow extends OicrWorkflow {
             baseRecalibratorJob.getParents().addAll(getRightCollection(realignedBams.values()));
             baseRecalibratorJob.getCommand().setArguments(baseRecalibratorCommand.getCommand());
 
-            //GATK Analyze Covariates (https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_walkers_bqsr_AnalyzeCovariates.php)
+            //GATK Analyze Covariates ( https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_walkers_bqsr_AnalyzeCovariates.php )
             AnalyzeCovariates analyzeCovariatesCommand = new AnalyzeCovariates.Builder(java, "4g", tmpDir, gatk, gatkKey, rDir, dataDir)
                     .setReferenceSequence(refFasta)
                     .setRecalibrationTable(baseRecalibratorCommand.getOutputFile())
@@ -352,23 +270,16 @@ public class GATK3Workflow extends OicrWorkflow {
                 String chrSize = e.getKey();
                 String inputBam = e.getValue().getLeft();
 
-                //GATK Print Reads (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php)
-                PrintReads.Builder printReadsBuilder = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
+                //GATK Print Reads ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php )
+                PrintReads printReadsCommand = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
                         .setReferenceSequence(refFasta)
                         .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
                         .setInputFile(inputBam)
-                        .setExtraParameters(printReadsParams);
-                if (preserveQscoresLessThan != null) {
-                    printReadsBuilder.setPreserveQscoresLessThan(preserveQscoresLessThan);
-                }
-                if (chrSize != null) {
-                    //the bam files have already been split by chrSize - adding the interval here will enable GATK to better estimate runtime
-                    printReadsBuilder.addInterval(chrSize);
-                }
-                if (intervalPadding != null) {
-                    printReadsBuilder.setIntervalPadding(intervalPadding);
-                }
-                PrintReads printReadsCommand = printReadsBuilder.build();
+                        .setPreserveQscoresLessThan(preserveQscoresLessThan)
+                        .addInterval(chrSize)
+                        .setIntervalPadding(intervalPadding)
+                        .setExtraParameters(printReadsParams)
+                        .build();
                 Job printReadsJob = getWorkflow().createBashJob("GATKTableRecalibration")
                         .setMaxMemory(Integer.toString((gatkPrintReadsMem + gatkOverhead) * 1024))
                         .setQueue(queue)
@@ -393,39 +304,25 @@ public class GATK3Workflow extends OicrWorkflow {
                 String workingDir = dataDir + vc.toString() + "/";
                 switch (vc) {
                     case HAPLOTYPE_CALLER:
-                        //GATK Haplotype Caller (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.php)
-                        HaplotypeCaller.Builder haplotypeCallerBuilder = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerMem) + "g", tmpDir, gatk, gatkKey, workingDir)
-                                .setInputBamFiles(getLeftCollection(inputBams.get(chrSize)))
+                        //GATK Haplotype Caller ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.php )
+                        HaplotypeCaller haplotypeCallerCommand = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerMem) + "g", tmpDir, gatk, gatkKey, dataDir)
+                                .setInputBamFiles(getLeftCollection(inputBams.values()))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
                                 .setStandardEmitConfidence(standEmitConf)
                                 .setGenotypingMode(getOptionalProperty("haplotype_caller_genotyping_mode", null))
                                 .setOutputMode(getOptionalProperty("haplotype_caller_output_mode", null))
+                                .setOperatingMode(HaplotypeCaller.OperatingMode.VCF)
+                                .addInterval(chrSize)
+                                .addIntervalFiles(intervalFiles)
+                                .setIntervalPadding(intervalPadding)
+                                .setDownsamplingCoverageThreshold(downsamplingCoverage)
+                                .setDownsamplingType(downsamplingType)
+                                .setOutputFileName("gatk" + (chrSize != null ? "." + chrSize.replace(":", "-") : ""))
                                 .setNumCpuThreadsPerDataThread(gatkHaplotypeCallerThreads)
-                                .setExtraParameters(haplotypeCallerParams);
-                        if (chrSize != null) {
-                            haplotypeCallerBuilder.addInterval(chrSize);
-                            haplotypeCallerBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
-                        } else {
-                            haplotypeCallerBuilder.setOutputFileName("gatk");
-                        }
-                        if (!intervalFiles.isEmpty()) {
-                            haplotypeCallerBuilder.addIntervalFiles(intervalFiles);
-                        }
-                        if (chrSize != null && !intervalFiles.isEmpty()) {
-                            haplotypeCallerBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
-                        }
-                        if (intervalPadding != null) {
-                            haplotypeCallerBuilder.setIntervalPadding(intervalPadding);
-                        }
-                        if (hasPropertyAndNotNull("downsampling_coverage")) {
-                            haplotypeCallerBuilder.setDownsamplingCoverageThreshold(Integer.parseInt(getProperty("downsampling_coverage")));
-                        }
-                        if (hasPropertyAndNotNull("downsampling_type")) {
-                            haplotypeCallerBuilder.setDownsamplingType(getProperty("downsampling_type"));
-                        }
-                        HaplotypeCaller haplotypeCallerCommand = haplotypeCallerBuilder.build();
+                                .setExtraParameters(haplotypeCallerParams)
+                                .build();
                         Job haplotypeCallerJob = this.getWorkflow().createBashJob("GATKHaplotypeCaller")
                                 .setMaxMemory(Integer.toString((gatkHaplotypeCallerMem + gatkOverhead) * 1024))
                                 .setQueue(queue);
@@ -436,8 +333,8 @@ public class GATK3Workflow extends OicrWorkflow {
                         break;
 
                     case UNIFIED_GENOTYPER:
-                        //GATK Unified Genotyper (INDELS) (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php)
-                        UnifiedGenotyper.Builder indelsUnifiedGenotyperBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, workingDir)
+                        //GATK Unified Genotyper (INDELS) ( https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php )
+                        UnifiedGenotyper indelsUnifiedGenotyperCommand = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, workingDir)
                                 .setInputBamFiles(getLeftCollection(inputBams.get(chrSize)))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
@@ -445,30 +342,15 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setStandardEmitConfidence(standEmitConf)
                                 .setGenotypeLikelihoodsModel("INDEL")
                                 .setGroup("Standard")
+                                .addInterval(chrSize)
+                                .addIntervalFiles(intervalFiles)
+                                .setIntervalPadding(intervalPadding)
+                                .setDownsamplingCoverageThreshold(downsamplingCoverage)
+                                .setDownsamplingType(downsamplingType)
+                                .setOutputFileName("gatk" + (chrSize != null ? "." + chrSize.replace(":", "-") : ""))
                                 .setNumCpuThreadsPerDataThread(gatkUnifiedGenotyperThreads)
-                                .setExtraParameters(unifiedGenotyperParams);
-                        if (chrSize != null) {
-                            indelsUnifiedGenotyperBuilder.addInterval(chrSize);
-                            indelsUnifiedGenotyperBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
-                        } else {
-                            indelsUnifiedGenotyperBuilder.setOutputFileName("gatk");
-                        }
-                        if (!intervalFiles.isEmpty()) {
-                            indelsUnifiedGenotyperBuilder.addIntervalFiles(intervalFiles);
-                        }
-                        if (chrSize != null && !intervalFiles.isEmpty()) {
-                            indelsUnifiedGenotyperBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
-                        }
-                        if (intervalPadding != null) {
-                            indelsUnifiedGenotyperBuilder.setIntervalPadding(intervalPadding);
-                        }
-                        if (hasPropertyAndNotNull("downsampling_coverage")) {
-                            indelsUnifiedGenotyperBuilder.setDownsamplingCoverageThreshold(Integer.parseInt(getProperty("downsampling_coverage")));
-                        }
-                        if (hasPropertyAndNotNull("downsampling_type")) {
-                            indelsUnifiedGenotyperBuilder.setDownsamplingType(getProperty("downsampling_type"));
-                        }
-                        UnifiedGenotyper indelsUnifiedGenotyperCommand = indelsUnifiedGenotyperBuilder.build();
+                                .setExtraParameters(unifiedGenotyperParams)
+                                .build();
                         Job indelsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndel")
                                 .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
                                 .setQueue(queue);
@@ -477,38 +359,23 @@ public class GATK3Workflow extends OicrWorkflow {
 
                         indelFiles.put(vc, Pair.of(indelsUnifiedGenotyperCommand.getOutputFile(), indelsUnifiedGenotyperJob));
 
-                        //GATK Unified Genotyper (SNVS) (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php)
-                        UnifiedGenotyper.Builder snvsUnifiedGenotyperBuilder = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, workingDir)
+                        //GATK Unified Genotyper (SNVS) ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php )
+                        UnifiedGenotyper snvsUnifiedGenotyperCommand = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, workingDir)
                                 .setInputBamFiles(getLeftCollection(inputBams.get(chrSize)))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
                                 .setStandardCallConfidence(standCallConf)
                                 .setStandardEmitConfidence(standEmitConf)
                                 .setGenotypeLikelihoodsModel("SNP")
+                                .addInterval(chrSize)
+                                .addIntervalFiles(intervalFiles)
+                                .setIntervalPadding(intervalPadding)
+                                .setDownsamplingCoverageThreshold(downsamplingCoverage)
+                                .setDownsamplingType(downsamplingType)
+                                .setOutputFileName("gatk" + (chrSize != null ? "." + chrSize.replace(":", "-") : ""))
                                 .setNumCpuThreadsPerDataThread(gatkUnifiedGenotyperThreads)
-                                .setExtraParameters(unifiedGenotyperParams);
-                        if (chrSize != null) {
-                            snvsUnifiedGenotyperBuilder.addInterval(chrSize);
-                            snvsUnifiedGenotyperBuilder.setOutputFileName("gatk." + chrSize.replace(":", "-"));
-                        } else {
-                            snvsUnifiedGenotyperBuilder.setOutputFileName("gatk");
-                        }
-                        if (!intervalFiles.isEmpty()) {
-                            snvsUnifiedGenotyperBuilder.addIntervalFiles(intervalFiles);
-                        }
-                        if (chrSize != null && !intervalFiles.isEmpty()) {
-                            snvsUnifiedGenotyperBuilder.setIntervalSetRule(AbstractGatkBuilder.SetRule.INTERSECTION);
-                        }
-                        if (intervalPadding != null) {
-                            snvsUnifiedGenotyperBuilder.setIntervalPadding(intervalPadding);
-                        }
-                        if (hasPropertyAndNotNull("downsampling_coverage")) {
-                            snvsUnifiedGenotyperBuilder.setDownsamplingCoverageThreshold(Integer.parseInt(getProperty("downsampling_coverage")));
-                        }
-                        if (hasPropertyAndNotNull("downsampling_type")) {
-                            snvsUnifiedGenotyperBuilder.setDownsamplingType(getProperty("downsampling_type"));
-                        }
-                        UnifiedGenotyper snvsUnifiedGenotyperCommand = snvsUnifiedGenotyperBuilder.build();
+                                .setExtraParameters(unifiedGenotyperParams)
+                                .build();
                         Job snvsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNV")
                                 .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
                                 .setQueue(queue);
