@@ -1,6 +1,7 @@
 package ca.on.oicr.pde.deciders;
 
 import ca.on.oicr.pde.workflows.GATK3Workflow;
+import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import net.sourceforge.seqware.common.hibernate.FindAllTheFiles.Header;
 import net.sourceforge.seqware.common.model.WorkflowParam;
 import net.sourceforge.seqware.common.module.ReturnValue;
 import net.sourceforge.seqware.common.util.Log;
+import net.sourceforge.seqware.pipeline.plugins.fileprovenance.ProvenanceUtility.HumanProvenanceFilters;
 import net.sourceforge.seqware.pipeline.workflowV2.AbstractWorkflowDataModel;
 import org.xml.sax.SAXException;
 
@@ -27,6 +29,7 @@ public class Gatk3Decider extends OicrDecider {
     private String workflowName;
     private String workflowVersion;
     private final Map<String, WorkflowRun> workflowRuns = new HashMap<>();
+    private String identifierFromFilters;
 
     String rsconfigXmlPath = "/.mounts/labs/PDE/data/rsconfig.xml";
     private Rsconfig rsconfig;
@@ -64,19 +67,43 @@ public class Gatk3Decider extends OicrDecider {
     public ReturnValue init() {
         setMetaType(Arrays.asList("application/bam", "application/bam-index"));
 
+        List<String> filters = new LinkedList<>();
+
+        if (options.hasArgument("all")) {
+            filters.add("ALL");
+        }
+
+        if (options.hasArgument(HumanProvenanceFilters.STUDY_NAME.toString())) {
+            filters.add(getArgument(HumanProvenanceFilters.STUDY_NAME.toString()));
+        }
+
+        if (options.hasArgument(HumanProvenanceFilters.ROOT_SAMPLE_NAME.toString())) {
+            filters.add(getArgument(HumanProvenanceFilters.ROOT_SAMPLE_NAME.toString()));
+        }
+
+        if (options.hasArgument(HumanProvenanceFilters.SAMPLE_NAME.toString())) {
+            filters.add(getArgument(HumanProvenanceFilters.SAMPLE_NAME.toString()));
+        }
+
         templateType = getArgument("library-template-type");
+        filters.add(templateType);
 
         if (!getArgument("tissue-type").isEmpty()) {
             tissueTypes = Arrays.asList(getArgument("tissue-type").split(","));
+            filters.add(Joiner.on("+").join(tissueTypes));
         }
 
         if (!getArgument("tissue-origin").isEmpty()) {
             tissueOrigins = Arrays.asList(getArgument("tissue-origin").split(","));
+            filters.add(Joiner.on("+").join(tissueOrigins));
         }
 
         if (!getArgument("resequencing-type").isEmpty()) {
             resequencingType = getArgument("resequencing-type");
+            filters.add(resequencingType);
         }
+
+        identifierFromFilters = Joiner.on("_").join(filters);
 
         //load decider properties file
         Properties p = new Properties();
@@ -180,7 +207,7 @@ public class Gatk3Decider extends OicrDecider {
                 }
             }
         }
-        
+
         //only use those files that entered into the iusDeetsToRV
         //since it's a map, only the most recent values
         List<ReturnValue> newValues = new ArrayList<>(iusDeetsToRV.values());
@@ -190,7 +217,7 @@ public class Gatk3Decider extends OicrDecider {
             groupedFiles = super.separateFiles(newValues, groupBy);
         } else {
             groupedFiles = super.separateFiles(newValues, null); //do not group files
-    }
+        }
 
         return groupedFiles;
     }
@@ -244,8 +271,14 @@ public class Gatk3Decider extends OicrDecider {
 
         if (options.has("id")) {
             wr.addProperty("identifier", getArgument("id"));
+        } else if (options.hasArgument("group-by")) {
+            Set<String> groupByValues = new HashSet<>();
+            for (FileAttributes fa : fas) {
+                groupByValues.add(fa.getOtherAttribute(Header.valueOf(getArgument("group-by"))));
+            }
+            wr.addProperty("identifier", Iterables.getOnlyElement(groupByValues) + "_" + templateType);
         } else {
-            wr.addProperty("identifier", "gatk3");
+            wr.addProperty("identifier", identifierFromFilters);
         }
 
         if (options.has("downsampling")) {
