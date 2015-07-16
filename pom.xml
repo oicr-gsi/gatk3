@@ -8,6 +8,8 @@
     <modules>
         <module>decider-gatk3</module>
         <module>workflow-gatk3</module>
+        <module>decider-gatk-haplotype-caller</module>
+        <module>workflow-gatk-haplotype-caller</module>
         <module>common</module>
     </modules>
     <properties>
