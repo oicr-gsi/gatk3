@@ -6,7 +6,7 @@
     <parent>
         <groupId>ca.on.oicr.pde.config</groupId>
         <artifactId>workflows</artifactId>
-        <version>3</version>
+        <version>3.1</version>
         <relativePath/>
     </parent>
 
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>ca.on.oicr.pde.tools</groupId>
             <artifactId>gatk3</artifactId>
-            <version>1.0</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>ca.on.oicr.pde.tools</groupId>
