@@ -30,6 +30,11 @@
             <version>${workflow-version}</version>
         </dependency>
         <dependency>
+            <groupId>ca.on.oicr.pde.deciders.gatk3</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-reflect</artifactId>
             <version>1.6.2</version>

@@ -8,6 +8,7 @@
     <modules>
         <module>decider-gatk3</module>
         <module>workflow-gatk3</module>
+        <module>common</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
