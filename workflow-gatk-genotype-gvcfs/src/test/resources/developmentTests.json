@@ -1,0 +1,24 @@
+{
+    "defaults": {
+        "description": "GATK GenotypeGVCFs workflow test",
+        "metrics_calculate": "calculate.sh",
+        "metrics_compare": "compare.sh",
+        "output_metrics_dir": "/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/output_expectation/"
+    },
+    "tests": [
+        {
+            "id": "EX_gatk3_parallel",
+            "parameters": {
+                "identifier": "gatk.ex",
+                "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022C.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022C.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022P.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022P.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022R.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022R.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022X.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022X.g.vcf.gz.tbi"
+            }
+        }, {
+            "id": "EX_gatk3_serial",
+            "parameters": {
+                "identifier": "gatk.ex",
+                "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022C.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022C.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022P.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022P.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022R.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022R.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022X.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022X.g.vcf.gz.tbi",
+                "chr_sizes": ""
+            }
+        }
+    ]
+}
