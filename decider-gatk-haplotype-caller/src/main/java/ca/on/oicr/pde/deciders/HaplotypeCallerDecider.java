@@ -30,6 +30,8 @@ public class HaplotypeCallerDecider extends AbstractGatkDecider<GATKHaplotypeCal
         setGroupBy(Group.FILE, true);
 
         //settings
+        defineArgument("chr-sizes", "Comma separated list of chromosome intervals used to parallelize indel realigning and variant calling. Default: By chromosome", false);
+        defineArgument("interval-padding", "Amount of padding to add to each interval (chr-sizes and interval-file determined by decider) in bp. Default: 100", false);
         parser.accepts("disable-bqsr", "Disable BQSR (BaseRecalibrator + PrintReads steps) and pass indel realigned BAMs directly to variant calling.");
         defineArgument("downsampling", "Set whether or not the variant caller should downsample the reads. Default: false for TS, true for everything else", false);
         defineArgument("rsconfig-file", "Specify location of .xml file which should be used to configure references, "
@@ -75,6 +77,14 @@ public class HaplotypeCallerDecider extends AbstractGatkDecider<GATKHaplotypeCal
         } else {
             throw new AbstractGatkDecider.InvalidWorkflowRunException(String.format("Unable to determine single interval file for template type = %s and resequencing type = %s.",
                     groupTemplateType, groupResequencingType));
+        }
+
+        if (options.has("chr-sizes")) {
+            wr.addProperty("chr_sizes", getArgument("chr-sizes"));
+        }
+
+        if (options.has("interval-padding")) {
+            wr.addProperty("interval_padding", getArgument("interval-padding"));
         }
 
         if (options.has("disable-bqsr")) {

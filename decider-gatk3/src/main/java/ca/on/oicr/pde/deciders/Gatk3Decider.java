@@ -9,7 +9,7 @@ import java.util.*;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
-public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow>  {
+public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
 
     private String rsconfigXmlPath = "/.mounts/labs/PDE/data/rsconfig.xml";
     private Rsconfig rsconfig;
@@ -23,6 +23,8 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow>  {
         setMetaType(Arrays.asList("application/bam", "application/bam-index"));
 
         //settings
+        defineArgument("chr-sizes", "Comma separated list of chromosome intervals used to parallelize indel realigning and variant calling. Default: By chromosome", false);
+        defineArgument("interval-padding", "Amount of padding to add to each interval (chr-sizes and interval-file determined by decider) in bp. Default: 100", false);
         defineArgument("stand-emit-conf", "Emission confidence threshold to pass to GATK. Default 1", false);
         defineArgument("stand-call-conf", "Calling confidence threshold to pass to GATK. Default 30.", false);
         parser.accepts("disable-bqsr", "Disable BQSR (BaseRecalibrator + PrintReads steps) and pass indel realigned BAMs directly to variant calling.");
@@ -70,6 +72,14 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow>  {
         } else {
             throw new InvalidWorkflowRunException(String.format("Unable to determine single interval file for template type = %s and resequencing type = %s.",
                     groupTemplateType, groupResequencingType));
+        }
+
+        if (options.has("chr-sizes")) {
+            wr.addProperty("chr_sizes", getArgument("chr-sizes"));
+        }
+
+        if (options.has("interval-padding")) {
+            wr.addProperty("interval_padding", getArgument("interval-padding"));
         }
 
         wr.addProperty("stand_emit_conf", getArgument("stand-emit-conf"), "1");

@@ -45,9 +45,7 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
         this.workflowClass = workflowClass;
 
         //settings
-        defineArgument("chr-sizes", "Comma separated list of chromosome intervals used to parallelize indel realigning and variant calling. Default: By chromosome", false);
-        defineArgument("interval-padding", "Amount of padding to add to each interval (chr-sizes and interval-file determined by decider) in bp. Default: 100", false);
-        defineArgument("id", "Override final filename prefix (eg. ID_123.haplotype_caller.raw.vcf.gz, ID_123.unified_genotyper.raw.vcf.gz). Default: gatk3", false);
+        defineArgument("id", "Override final filename prefix (eg. ID_123.haplotype_caller.raw.vcf.gz, ID_123.unified_genotyper.raw.vcf.gz).", false);
 
         //mandatory filters
         defineArgument("library-template-type", "Restrict the processing to samples of a particular template type, e.g. WG, EX, TS.", true);
@@ -239,14 +237,6 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
         WorkflowRun wr = new WorkflowRun(null, getFileAttributes(commaSeparatedFilePaths).toArray(new FileAttributes[0]));
 
         wr.addProperty("input_files", commaSeparatedFilePaths);
-
-        if (options.has("chr-sizes")) {
-            wr.addProperty("chr_sizes", getArgument("chr-sizes"));
-        }
-
-        if (options.has("interval-padding")) {
-            wr.addProperty("interval_padding", getArgument("interval-padding"));
-        }
 
         Set<String> groupByValues = new HashSet<>();
         for (FileAttributes fa : fas) {
