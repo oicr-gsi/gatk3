@@ -2,7 +2,7 @@
 <suite name="WorkflowTests" parallel="instances" thread-count="20">
     <test name="WorkflowRunTests">
         <classes>
-            <parameter name="testDefinition" value="/tests.json"/>
+            <parameter name="testDefinition" value="/developmentTests.json"/>
             <class name="ca.on.oicr.pde.testing.WorkflowRunTestFactory"/>
         </classes>
     </test>
