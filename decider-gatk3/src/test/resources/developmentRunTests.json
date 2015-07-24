@@ -2,9 +2,9 @@
     "defaultDescription": "GATK3 decider test",
     "defaultMetricsResources": "/expected_output/development/",
     "defaultParameters": {
-        "--output-path": "./",
-        "--before-date": "2015-05-12",
-        "--parent-wf-accessions": "1326996,1757073"
+        "--output-path": ["./"],
+        "--parent-wf-accessions": ["1326996,1757073"],
+        "--before-date": ["2015-07-23"]
     },
     "defaultIniExclusions": ["parent-accessions", "workflow_run_accession", "workflow-run-accession",
         "unique_string", "parent_accessions", "parent_accession", "input_file", "input_files", "workflow_bundle_dir",
@@ -13,34 +13,26 @@
         {
             "id": "FGICA study test 1",
             "parameters": {
-                "--study-name": "SteveGallingerEarlyCRCAshton",
-                "--library-template-type": "EX"
+                "--study-name": ["SteveGallingerEarlyCRCAshton"],
+                "--library-template-type": ["EX"]
             }
         },
         {
             "id": "FGICA study test 2",
             "description": "Test filters",
             "parameters": {
-                "--study-name": "SteveGallingerEarlyCRCAshton",
-                "--library-template-type": "EX",
-                "--tissue-type": "R",
-                "--tissue-origin": "Le"
-
+                "--study-name": ["SteveGallingerEarlyCRCAshton"],
+                "--library-template-type": ["EX"],
+                "--tissue-type": ["R"],
+                "--tissue-origin": ["Le"]
             }
         },
         {
-            "id": "TS test",
+            "id": "HALT sample test",
             "parameters": {
-                "--study-name": "BartlettTS",
-                "--library-template-type": "TS"
-            }
-        },
-        {
-            "id": "Group-by Test",
-            "parameters": {
-                "--study-name": "BartlettTS",
-                "--library-template-type": "TS",
-                "--group-by": "ROOT_SAMPLE_NAME"
+                "--root-sample-name": ["HALT_0078"],
+                "--library-template-type": ["EX"],
+                "--group-by": ["ROOT_SAMPLE_NAME"]
             }
         }
     ]
