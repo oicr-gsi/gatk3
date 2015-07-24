@@ -1,6 +1,8 @@
 ## Unreleased
 - Upgrade to workflow-gatk3 1.1
 - [GP-318](https://jira.oicr.on.ca/browse/GP-318) - Upgrade to GATK 3.4-0
+## 1.0.4 - 2015-07-23
+- [GP-406](https://jira.oicr.on.ca/browse/GP-406) - Restrict workflow runs to having one interval file
 ## 1.0.3 - 2015-07-14
 - [GP-386](https://jira.oicr.on.ca/browse/GP-386) - Use "group-by" or filters to produce identifier/output file name prefix
   - If "--id" is provided, set identifier to "--id" value

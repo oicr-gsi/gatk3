@@ -54,24 +54,26 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
     @Override
     protected void configureWorkflowRun(WorkflowRun wr, Set<FileAttributes> inputFileAttributes) throws InvalidWorkflowRunException {
 
-        Set<String> groupTemplateType = new HashSet<>();
-        Set<String> groupResequencingType = new HashSet<>();
+        Set<String> intervalFiles = new HashSet<>();
         for (FileAttributes fa : inputFileAttributes) {
-            groupTemplateType.add(fa.getLimsValue(Lims.LIBRARY_TEMPLATE_TYPE));
-            groupResequencingType.add(fa.getLimsValue(Lims.TARGETED_RESEQUENCING));
-        }
-        if (groupTemplateType.size() == 1 && groupResequencingType.size() == 1) {
-            String file = rsconfig.get(Iterables.getOnlyElement(groupTemplateType), Iterables.getOnlyElement(groupResequencingType), "interval_file");
-            if (file == null) {
+            String groupTemplateType = fa.getLimsValue(Lims.LIBRARY_TEMPLATE_TYPE);
+            String groupResequencingType = fa.getLimsValue(Lims.TARGETED_RESEQUENCING);
+            String intervalFile = rsconfig.get(groupTemplateType, groupResequencingType, "interval_file");
+            if (intervalFile == null) {
                 throw new InvalidWorkflowRunException(String.format("Template type = %s and resequencing type = %s not found in rsconfig.xml",
                         groupTemplateType, groupResequencingType));
+            } else {
+                intervalFiles.add(intervalFile);
             }
+        }
+
+        if (intervalFiles.size() == 1) {
+            String intervalFile = Iterables.getOnlyElement(intervalFiles);
             if (!"WG".equals(templateType)) {
-                wr.addProperty("interval_files", file);
+                wr.addProperty("interval_files", intervalFile);
             }
         } else {
-            throw new InvalidWorkflowRunException(String.format("Unable to determine single interval file for template type = %s and resequencing type = %s.",
-                    groupTemplateType, groupResequencingType));
+            throw new InvalidWorkflowRunException(String.format("Found [%s] interval files, expected one.", intervalFiles.size()));
         }
 
         if (options.has("chr-sizes")) {
