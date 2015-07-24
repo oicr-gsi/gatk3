@@ -1,0 +1,302 @@
+{
+  "workflowRunCount" : 3,
+  "studies" : [ "JDRT" ],
+  "sequencerRuns" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX" ],
+  "lanes" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3", "150325_D00343_0082_BC6DRRANXX_lane_5" ],
+  "samples" : [ "JDRT_0058_nn_R_PE_289_EX", "JDRT_0058_nn_T_PE_289_EX", "JDRT_0063_nn_T_PE_358_EX" ],
+  "workflows" : [ "BamFilterMergeCollapse" ],
+  "processingAlgorithms" : [ "ProvisionFiles" ],
+  "fileMetaTypes" : [ "application/bam", "application/bam-index" ],
+  "maxInputFiles" : 2,
+  "minInputFiles" : 2,
+  "totalInputFiles" : 6,
+  "workflowRuns" : [ {
+    "workflowIni" : {
+      "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "gatk_baserecalibrator_mem" : "9728",
+      "gatk_baserecalibrator_nct" : "24",
+      "gatk_baserecalibrator_smp" : "20",
+      "gatk_baserecalibrator_xmx" : "8192",
+      "gatk_combine_gvcfs_mem" : "4",
+      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_haplotype_caller_mem" : "12",
+      "gatk_haplotype_caller_threads" : "8",
+      "gatk_indel_realigner_mem" : "12",
+      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/data/resources/GATK_public.key",
+      "gatk_print_reads_mem" : "12",
+      "gatk_realign_target_creator_mem" : "12",
+      "gatk_sched_overhead_mem" : "4",
+      "identifier" : "JDRT_0058_nn_P_EX",
+      "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V4/SureSelect_All_Exon_V4_Covered_Sorted.bed",
+      "interval_padding" : "100",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/bin/jre1.7.0_51/bin/java",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "output_dir" : "seqware-results",
+      "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
+      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/data/resources/hg19_random.fa"
+    },
+    "files" : [ {
+      "studyTitle" : [ "JDRT" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "191" ] ]
+      },
+      "experimentName" : [ "Geo_JDRT_ILLUMINA_EX_{F*126}{..}{R*126}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "JDRT_0058_nn_T_PE_289_EX" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "EX" ] ],
+        "sample.geo_prep_kit" : [ [ "Agilent SureSelect XT2" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2246_1_1", "2249_3_2" ] ],
+        "sample.geo_targeted_resequencing" : [ [ "SureSelect v4" ] ],
+        "sample.geo_template_id" : [ [ "72093" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "P" ] ]
+      },
+      "sequencerRunName" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2246" ], [ "2249" ] ]
+      },
+      "laneName" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ], [ "3" ] ]
+      },
+      "iusTag" : [ "AGAGTCAA" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "BamFilterMergeCollapse" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam-index" ],
+      "fileAttributes" : { },
+      "fileId" : -1815052887
+    }, {
+      "studyTitle" : [ "JDRT" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "191" ] ]
+      },
+      "experimentName" : [ "Geo_JDRT_ILLUMINA_EX_{F*126}{..}{R*126}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "JDRT_0058_nn_T_PE_289_EX" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "EX" ] ],
+        "sample.geo_prep_kit" : [ [ "Agilent SureSelect XT2" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2246_1_1", "2249_3_2" ] ],
+        "sample.geo_targeted_resequencing" : [ [ "SureSelect v4" ] ],
+        "sample.geo_template_id" : [ [ "72093" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "P" ] ]
+      },
+      "sequencerRunName" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2246" ], [ "2249" ] ]
+      },
+      "laneName" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ], [ "3" ] ]
+      },
+      "iusTag" : [ "AGAGTCAA" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "BamFilterMergeCollapse" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : -1815052883
+    } ]
+  }, {
+    "workflowIni" : {
+      "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "gatk_baserecalibrator_mem" : "9728",
+      "gatk_baserecalibrator_nct" : "24",
+      "gatk_baserecalibrator_smp" : "20",
+      "gatk_baserecalibrator_xmx" : "8192",
+      "gatk_combine_gvcfs_mem" : "4",
+      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_haplotype_caller_mem" : "12",
+      "gatk_haplotype_caller_threads" : "8",
+      "gatk_indel_realigner_mem" : "12",
+      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/data/resources/GATK_public.key",
+      "gatk_print_reads_mem" : "12",
+      "gatk_realign_target_creator_mem" : "12",
+      "gatk_sched_overhead_mem" : "4",
+      "identifier" : "JDRT_0058_nn_R_EX",
+      "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V4/SureSelect_All_Exon_V4_Covered_Sorted.bed",
+      "interval_padding" : "100",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/bin/jre1.7.0_51/bin/java",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "output_dir" : "seqware-results",
+      "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
+      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/data/resources/hg19_random.fa"
+    },
+    "files" : [ {
+      "studyTitle" : [ "JDRT" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "191" ] ]
+      },
+      "experimentName" : [ "Geo_JDRT_ILLUMINA_EX_{F*126}{..}{R*126}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "JDRT_0058_nn_R_PE_289_EX" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "EX" ] ],
+        "sample.geo_prep_kit" : [ [ "Agilent SureSelect XT2" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2246_1_1", "2249_3_2" ] ],
+        "sample.geo_targeted_resequencing" : [ [ "SureSelect v4" ] ],
+        "sample.geo_template_id" : [ [ "72092" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "R" ] ]
+      },
+      "sequencerRunName" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2246" ], [ "2249" ] ]
+      },
+      "laneName" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ], [ "3" ] ]
+      },
+      "iusTag" : [ "ACACAGAA" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "BamFilterMergeCollapse" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam-index" ],
+      "fileAttributes" : { },
+      "fileId" : 1809716084
+    }, {
+      "studyTitle" : [ "JDRT" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "191" ] ]
+      },
+      "experimentName" : [ "Geo_JDRT_ILLUMINA_EX_{F*126}{..}{R*126}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "JDRT_0058_nn_R_PE_289_EX" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "EX" ] ],
+        "sample.geo_prep_kit" : [ [ "Agilent SureSelect XT2" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2246_1_1", "2249_3_2" ] ],
+        "sample.geo_targeted_resequencing" : [ [ "SureSelect v4" ] ],
+        "sample.geo_template_id" : [ [ "72092" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "R" ] ]
+      },
+      "sequencerRunName" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2246" ], [ "2249" ] ]
+      },
+      "laneName" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ], [ "3" ] ]
+      },
+      "iusTag" : [ "ACACAGAA" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "BamFilterMergeCollapse" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : 1809716088
+    } ]
+  }, {
+    "workflowIni" : {
+      "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "gatk_baserecalibrator_mem" : "9728",
+      "gatk_baserecalibrator_nct" : "24",
+      "gatk_baserecalibrator_smp" : "20",
+      "gatk_baserecalibrator_xmx" : "8192",
+      "gatk_combine_gvcfs_mem" : "4",
+      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_haplotype_caller_mem" : "12",
+      "gatk_haplotype_caller_threads" : "8",
+      "gatk_indel_realigner_mem" : "12",
+      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/data/resources/GATK_public.key",
+      "gatk_print_reads_mem" : "12",
+      "gatk_realign_target_creator_mem" : "12",
+      "gatk_sched_overhead_mem" : "4",
+      "identifier" : "JDRT_0063_nn_P_EX",
+      "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V4/SureSelect_All_Exon_V4_Covered_Sorted.bed",
+      "interval_padding" : "100",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/bin/jre1.7.0_51/bin/java",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "output_dir" : "seqware-results",
+      "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
+      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0-SNAPSHOT/data/resources/hg19_random.fa"
+    },
+    "files" : [ {
+      "studyTitle" : [ "JDRT" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "191" ] ]
+      },
+      "experimentName" : [ "Geo_JDRT_ILLUMINA_EX_{F*126}{..}{R*126}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "JDRT_0063_nn_T_PE_358_EX" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "EX" ] ],
+        "sample.geo_prep_kit" : [ [ "Agilent SureSelect XT2" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2249_5_2", "2255_6_2" ] ],
+        "sample.geo_targeted_resequencing" : [ [ "SureSelect v4" ] ],
+        "sample.geo_template_id" : [ [ "72922" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "P" ] ]
+      },
+      "sequencerRunName" : [ "150325_D00343_0082_BC6DRRANXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2249" ] ]
+      },
+      "laneName" : [ "150325_D00343_0082_BC6DRRANXX_lane_5" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "5" ] ]
+      },
+      "iusTag" : [ "GAACAGGC" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "BamFilterMergeCollapse" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam-index" ],
+      "fileAttributes" : { },
+      "fileId" : 566170745
+    }, {
+      "studyTitle" : [ "JDRT" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "191" ] ]
+      },
+      "experimentName" : [ "Geo_JDRT_ILLUMINA_EX_{F*126}{..}{R*126}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "JDRT_0063_nn_T_PE_358_EX" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "EX" ] ],
+        "sample.geo_prep_kit" : [ [ "Agilent SureSelect XT2" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2249_5_2", "2255_6_2" ] ],
+        "sample.geo_targeted_resequencing" : [ [ "SureSelect v4" ] ],
+        "sample.geo_template_id" : [ [ "72922" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "P" ] ]
+      },
+      "sequencerRunName" : [ "150325_D00343_0082_BC6DRRANXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2249" ] ]
+      },
+      "laneName" : [ "150325_D00343_0082_BC6DRRANXX_lane_5" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "5" ] ]
+      },
+      "iusTag" : [ "GAACAGGC" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "BamFilterMergeCollapse" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : 566170749
+    } ]
+  } ]
+}
