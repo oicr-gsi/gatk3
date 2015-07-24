@@ -1,4 +1,4 @@
-## Unreleased
+## 1.1 - 2015-07-24
 - [GP-318](https://jira.oicr.on.ca/browse/GP-318) - Upgrade to GATK 3.4-0
 - GATK3 command builders moved into a separate project
 ## 1.0.1 - 2015-06-18

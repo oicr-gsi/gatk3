@@ -10,7 +10,7 @@
     
     <groupId>ca.on.oicr.pde.deciders.gatk3</groupId>
     <artifactId>common</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
     
     <properties>

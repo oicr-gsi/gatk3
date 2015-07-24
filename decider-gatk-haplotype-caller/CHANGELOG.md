@@ -1,4 +1,4 @@
-## Unreleased
+## 1.0 - 2015-07-24
 - Initial release of the GATK Haplotype Caller decider
 - Schedules one workflow run for each unique 
     <root sample name, tissue origin + type + prep + region, template type, group id> 

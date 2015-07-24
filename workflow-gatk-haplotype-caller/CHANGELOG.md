@@ -1,4 +1,4 @@
-## Unreleased
+## 1.0 - 2015-07-24
 - Initial release of the GATK Haplotype Caller workflow
 - GATK 3.4-0
 - SeqWare 1.1.0

@@ -12,14 +12,14 @@
 
     <groupId>ca.on.oicr.pde.deciders</groupId>
     <artifactId>GATKHaplotypeCaller</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>${display-name}</name>
 
     <properties>
         <workflow-name>GATKHaplotypeCaller</workflow-name>
-        <workflow-version>1.0-SNAPSHOT</workflow-version>
+        <workflow-version>1.0</workflow-version>
         <main-class>ca.on.oicr.pde.deciders.HaplotypeCallerDecider</main-class>
     </properties>
     
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>ca.on.oicr.pde.deciders.gatk3</groupId>
             <artifactId>common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>org.powermock</groupId>
