@@ -73,15 +73,18 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
         }
 
         if (options.hasArgument(ProvenanceUtility.HumanProvenanceFilters.STUDY_NAME.toString())) {
-            filters.add(getArgument(ProvenanceUtility.HumanProvenanceFilters.STUDY_NAME.toString()));
+            List<?> vs = options.valuesOf(ProvenanceUtility.HumanProvenanceFilters.STUDY_NAME.toString());
+            filters.add(Joiner.on("+").join(vs));
         }
 
         if (options.hasArgument(ProvenanceUtility.HumanProvenanceFilters.ROOT_SAMPLE_NAME.toString())) {
-            filters.add(getArgument(ProvenanceUtility.HumanProvenanceFilters.ROOT_SAMPLE_NAME.toString()));
+            List<?> vs = options.valuesOf(ProvenanceUtility.HumanProvenanceFilters.ROOT_SAMPLE_NAME.toString());
+            filters.add(Joiner.on("+").join(vs));
         }
 
         if (options.hasArgument(ProvenanceUtility.HumanProvenanceFilters.SAMPLE_NAME.toString())) {
-            filters.add(getArgument(ProvenanceUtility.HumanProvenanceFilters.SAMPLE_NAME.toString()));
+            List<?> vs = options.valuesOf(ProvenanceUtility.HumanProvenanceFilters.SAMPLE_NAME.toString());
+            filters.add(Joiner.on("+").join(vs));
         }
 
         if (!getArgument("tissue-origin").isEmpty()) {
@@ -254,12 +257,16 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
         }
 
         if (options.has("id")) {
+            //set user requested identifier
             wr.addProperty("identifier", getArgument("id"));
         } else if (Group.FILE == getGroupBy()) {
+            //when using group by file, file to BeSmall grouping is used - so use BeSmall's group name
             wr.addProperty("identifier", Iterables.getOnlyElement(groupByValues));
         } else if (options.hasArgument("group-by") || getGroupBy() != null) {
+            //use the user defined "group-by" value (eg, --group-by study -> id=STUDY1_{templateType})
             wr.addProperty("identifier", Iterables.getOnlyElement(groupByValues) + "_" + templateType);
         } else {
+            //use the aggregation of the user provided filters as the identifier
             wr.addProperty("identifier", identifierFromFilters);
         }
 
