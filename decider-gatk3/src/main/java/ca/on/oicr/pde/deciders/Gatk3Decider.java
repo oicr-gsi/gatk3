@@ -234,25 +234,27 @@ public class Gatk3Decider extends OicrDecider {
         WorkflowRun wr = new WorkflowRun(null, getFileAttributes(commaSeparatedFilePaths).toArray(new FileAttributes[0]));
 
         Set<FileAttributes> fas = getFileAttributes(commaSeparatedFilePaths);
-        Set<String> groupTemplateType = new HashSet<>();
-        Set<String> groupResequencingType = new HashSet<>();
+        Set<String> intervalFiles = new HashSet<>();
         for (FileAttributes fa : fas) {
-            groupTemplateType.add(fa.getLimsValue(Lims.LIBRARY_TEMPLATE_TYPE));
-            groupResequencingType.add(fa.getLimsValue(Lims.TARGETED_RESEQUENCING));
-        }
-        if (groupTemplateType.size() == 1 && groupResequencingType.size() == 1) {
-            String file = rsconfig.get(Iterables.getOnlyElement(groupTemplateType), Iterables.getOnlyElement(groupResequencingType), "interval_file");
-            if (file == null) {
+            String groupTemplateType = fa.getLimsValue(Lims.LIBRARY_TEMPLATE_TYPE);
+            String groupResequencingType = fa.getLimsValue(Lims.TARGETED_RESEQUENCING);
+            String intervalFile = rsconfig.get(groupTemplateType, groupResequencingType, "interval_file");
+            if (intervalFile == null) {
                 Log.error(String.format("Template type = %s and resequencing type = %s not found in rsconfig.xml", groupTemplateType, groupResequencingType));
                 rv.setExitStatus(ReturnValue.FAILURE);
+            } else {
+                intervalFiles.add(intervalFile);
             }
+        }
+
+        if (intervalFiles.size() == 1) {
+            String intervalFile = Iterables.getOnlyElement(intervalFiles);
             if (!"WG".equals(templateType)) {
-                wr.addProperty("interval_files", file);
+                wr.addProperty("interval_files", intervalFile);
             }
         } else {
-            Log.error(String.format("Unable to determine single interval file for template type = %s and resequencing type = %s.", groupTemplateType, groupResequencingType));
+            Log.error(String.format("Found [%s] interval files, expected one.", intervalFiles.size()));
             rv.setExitStatus(ReturnValue.FAILURE);
-
         }
 
         wr.addProperty("input_files", commaSeparatedFilePaths);
