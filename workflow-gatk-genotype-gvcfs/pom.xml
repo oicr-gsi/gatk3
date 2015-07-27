@@ -30,21 +30,4 @@
         </dependency>
     </dependencies>
 
-    <build>       
-        <plugins>
-            <plugin>
-                <groupId>com.pyx4j</groupId>
-                <artifactId>maven-junction-plugin</artifactId>
-                <configuration>
-                    <links>
-                        <link>
-                            <dst>${bundleDirectory}/data</dst>
-                            <src>${basedir}/links</src>
-                        </link>
-                    </links>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
