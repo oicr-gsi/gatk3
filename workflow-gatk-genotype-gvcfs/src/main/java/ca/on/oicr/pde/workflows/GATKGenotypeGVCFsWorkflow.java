@@ -103,7 +103,6 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
         final String gatkKey = getProperty("gatk_key");
         final String identifier = getProperty("identifier");
         final String refFasta = getProperty("ref_fasta");
-        final Integer intervalPadding = hasPropertyAndNotNull("interval_padding") ? Integer.parseInt(getProperty("interval_padding")) : null;
         final Integer gatkGenotypeGvcfsXmx = Integer.parseInt(getProperty("gatk_genotype_gvcfs_xmx"));
         final String gatkGenotypeGvcfsParams = getOptionalProperty("gatk_genotype_gvcfs_params", null);
         final Integer gatkCombineGVCFsXmx = Integer.parseInt(getProperty("gatk_combine_gvcfs_xmx"));
