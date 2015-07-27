@@ -106,7 +106,7 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
         final Integer intervalPadding = hasPropertyAndNotNull("interval_padding") ? Integer.parseInt(getProperty("interval_padding")) : null;
         final Integer gatkGenotypeGvcfsXmx = Integer.parseInt(getProperty("gatk_genotype_gvcfs_xmx"));
         final String gatkGenotypeGvcfsParams = getOptionalProperty("gatk_genotype_gvcfs_params", null);
-        final Integer gatkCombineGVCFsMem = Integer.parseInt(getProperty("gatk_combine_gvcfs_mem"));
+        final Integer gatkCombineGVCFsXmx = Integer.parseInt(getProperty("gatk_combine_gvcfs_xmx"));
         final Integer gatkOverhead = Integer.parseInt(getProperty("gatk_sched_overhead_mem"));
         final Integer maxGenotypeGVCFsInputFiles = Integer.parseInt(getProperty("gatk_genotype_gvcfs_max_input_files"));
         final Integer maxCombineGVCFsInputFiles = Integer.parseInt(getProperty("gatk_combine_gvcfs_max_input_files"));
@@ -123,7 +123,7 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
         }
 
         List<Pair<String, Job>> combineGvcfs = batchGVCFs(inputFiles, maxGenotypeGVCFsInputFiles, maxCombineGVCFsInputFiles,
-                java, gatkCombineGVCFsMem, gatkOverhead, tmpDir, gatk, gatkKey, tmpGVCFsDir, refFasta, queue);
+                java, gatkCombineGVCFsXmx, gatkOverhead, tmpDir, gatk, gatkKey, tmpGVCFsDir, refFasta, queue);
 
         //use linked hashmap to keep "pairs" in sort order determined by chr_sizes
         LinkedHashMap<String, Pair<GenotypeGVCFs, Job>> vcfs = new LinkedHashMap<>();
@@ -159,7 +159,7 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
 
         if (vcfs.size() > 1) {
             //GATK CatVariants ( https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_CatVariants.php )
-            CatVariants.Builder catVariantsBuilder = new CatVariants.Builder(java, gatkCombineGVCFsMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            CatVariants.Builder catVariantsBuilder = new CatVariants.Builder(java, gatkCombineGVCFsXmx + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     //individual vcf files sorted by genotype gvcfs; order of input vcf concatenation is determined by chr_sizes order (assumed to be sorted)
                     .disableSorting()
@@ -170,7 +170,7 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
             CatVariants catVariantsCommand = catVariantsBuilder.build();
 
             Job combineGVCFsJob = getWorkflow().createBashJob("GATKCombineGVCFs")
-                    .setMaxMemory(Integer.toString((gatkCombineGVCFsMem + gatkOverhead) * 1024))
+                    .setMaxMemory(Integer.toString((gatkCombineGVCFsXmx + gatkOverhead) * 1024))
                     .setQueue(queue);
             combineGVCFsJob.getParents().addAll(getRightCollection(vcfs.values()));
             combineGVCFsJob.getCommand().setArguments(catVariantsCommand.getCommand());
