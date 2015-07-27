@@ -1,0 +1,67 @@
+{
+    "defaults": {
+        "description": "GATKHaplotypeCaller workflow test",
+        "metrics_calculate": "calculate.sh",
+        "metrics_compare": "compare.sh",
+        "input_config_dir": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_config/",
+        "output_metrics_dir": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/output_expectation/"
+    },
+    "tests": [
+        {
+            "id": "EX_HC_no_intervals",
+            "parameters": {
+                "identifier": "gatk.ex",
+                "input_files": "${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bai",
+                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY",
+                "gatk_baserecalibrator_smp": "8"
+            }
+        }, {
+            "id": "EX_HC",
+            "parameters": {
+                "identifier": "gatk.ex",
+                "input_files": "${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bai",
+                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
+                "interval_files": "${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022.val.bed",
+                "gatk_baserecalibrator_smp": "8"
+            }
+        }, {
+            "id": "EX_HC_no_parallelism",
+            "parameters": {
+                "identifier": "gatk.ex",
+                "input_files": "${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bai",
+                "chr_sizes": "",
+                "interval_files": "${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022.val.bed",
+                "gatk_baserecalibrator_smp": "8"
+            }
+        }, {
+            "id": "EX_HC_no_intervals_no_BQSR",
+            "parameters": {
+                "identifier": "gatk.ex",
+                "input_files": "${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bai",
+                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY",
+                "gatk_baserecalibrator_smp": "8",
+                "do_bqsr": "false"
+            }
+        }, {
+            "id": "EX_HC_no_BQSR",
+            "parameters": {
+                "identifier": "gatk.ex",
+                "input_files": "${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bai",
+                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
+                "interval_files": "${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022.val.bed",
+                "gatk_baserecalibrator_smp": "8",
+                "do_bqsr": "false"
+            }
+        }, {
+            "id": "EX_HC_no_parallelism_no_BQSR",
+            "parameters": {
+                "identifier": "gatk.ex",
+                "input_files": "${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bam,${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022P.val.bai",
+                "chr_sizes": "",
+                "interval_files": "${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022.val.bed",
+                "gatk_baserecalibrator_smp": "8",
+                "do_bqsr": "false"
+            }
+        }
+    ]
+}

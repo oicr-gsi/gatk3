@@ -1,0 +1,11 @@
+{
+    "defaultDescription": "GATK3 decider test",
+    "defaultMetricsResources": "/expected_output/development/",
+    "defaultParameters": {
+    },
+    "defaultIniExclusions": ["parent-accessions", "workflow_run_accession", "workflow-run-accession",
+        "unique_string", "parent_accessions", "parent_accession", "input_file", "input_files", "workflow_bundle_dir",
+        "output_prefix"],
+    "tests": [
+    ]
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ca.on.oicr.pde.config</groupId>
+        <artifactId>workflows</artifactId>
+        <version>3.1</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>ca.on.oicr.pde.workflows</groupId>
+    <artifactId>GATKHaplotypeCaller</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <name>${display-name}</name>
+    <description>GATK Haplotype Caller variant caller workflow</description>
+
+    <properties>
+        <workflow-name>GATKHaplotypeCaller</workflow-name>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>ca.on.oicr.pde.tools</groupId>
+            <artifactId>gatk3</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>       
+        <plugins>
+            <plugin>
+                <groupId>com.pyx4j</groupId>
+                <artifactId>maven-junction-plugin</artifactId>
+                <configuration>
+                    <links>
+                        <link>
+                            <dst>${bundleDirectory}/data</dst>
+                            <src>${basedir}/links</src>
+                        </link>
+                    </links>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

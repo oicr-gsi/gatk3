@@ -12,14 +12,14 @@
 
     <groupId>ca.on.oicr.pde.deciders</groupId>
     <artifactId>GATK3</artifactId>
-    <version>1.0.4</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>${display-name}</name>
 
     <properties>
         <workflow-name>GATK3</workflow-name>
-        <workflow-version>1.0.1</workflow-version>
+        <workflow-version>1.1</workflow-version>
         <main-class>ca.on.oicr.pde.deciders.Gatk3Decider</main-class>
     </properties>
     
@@ -30,9 +30,9 @@
             <version>${workflow-version}</version>
         </dependency>
         <dependency>
-            <groupId>ca.on.oicr.pde</groupId>
-            <artifactId>decider-utilities</artifactId>
-            <version>1.6.1</version>
+            <groupId>ca.on.oicr.pde.deciders.gatk3</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>org.powermock</groupId>

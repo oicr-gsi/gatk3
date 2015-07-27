@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="GATKHaplotypeCallerSuite" parallel="instances" thread-count="20">
+    <test name="GATKHaplotypeCallerWorkflowRunTests">
+        <classes>
+            <parameter name="testDefinition" value="/developmentTests.json"/>
+            <class name="ca.on.oicr.pde.testing.WorkflowRunTestFactory"/>
+        </classes>
+    </test>
+</suite>
