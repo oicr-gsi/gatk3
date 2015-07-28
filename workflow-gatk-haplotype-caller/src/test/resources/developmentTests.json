@@ -8,7 +8,8 @@
         "parameters": {
             "input_files": "/.mounts/labs/PDE/data/GATK/PCSI0022P.val.bam,/.mounts/labs/PDE/data/GATK/PCSI0022P.val.bai",
             "gatk_baserecalibrator_smp": "8",
-            "identifier": "gatk.ex"
+            "identifier": "gatk.ex",
+            "gatk_dbsnp_vcf": "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf"
         }
     },
     "tests": [
@@ -48,6 +49,13 @@
                 "chr_sizes": "",
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
                 "do_bqsr": "false"
+            }
+        }, {
+            "id": "EX_HC_dbSNP144",
+            "parameters": {
+                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
+                "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
+                "gatk_dbsnp_vcf": "/oicr/data/reference/genomes/homo_sapiens_mc/dbSNP/hg19_random/Genomic/dbSNP144/dbsnp144_chr_noINS_noDup.vcf.gz"
             }
         }
     ]
