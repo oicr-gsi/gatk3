@@ -75,6 +75,7 @@ public class GATK3WorkflowTest {
         config.put("identifier", "null");
         config.put("input_files", "/data/test/PCSI0022P.val.bam,/data/test/PCSI0022R.val.bam,/data/test/PCSI0022X.val.bam,/data/test/PCSI0022C.val.bam,"
                 + "/data/test/PCSI0022P.val.bai,/data/test/PCSI0022R.val.bai,/data/test/PCSI0022X.val.bai,/data/test/PCSI0022C.val.bai");
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
         GATK3Workflow w = getWorkflowClientObject(config);
         validateWorkflow(w);
     }
@@ -89,6 +90,7 @@ public class GATK3WorkflowTest {
         config.put("input_files", "/data/test/PCSI0022P.val.bam,/data/test/PCSI0022R.val.bam,/data/test/PCSI0022X.val.bam,/data/test/PCSI0022C.val.bam,"
                 + "/data/test/PCSI0022P.val.bai,/data/test/PCSI0022R.val.bai,/data/test/PCSI0022X.val.bai,/data/test/PCSI0022C.val.bai");
         config.put("variant_caller", "Unified_GeNoTyPeR");
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
@@ -127,6 +129,7 @@ public class GATK3WorkflowTest {
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
         config.put("input_files", StringUtils.join(inputFiles, ","));
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
 //        config.put("chr_sizes", "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,"
 //                + "chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,"
 //                + "chr21,chr22,chrX,chrY,chrM");
@@ -157,6 +160,7 @@ public class GATK3WorkflowTest {
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
         config.put("input_files", StringUtils.join(inputFiles, ","));
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
 
         //no BQSR
         //haplotype caller and unified genotyper
@@ -192,6 +196,7 @@ public class GATK3WorkflowTest {
         config.put("identifier", "gatk.ex");
         config.put("input_files", "/test/1.bam,/test/1.bai");
         config.put("chr_sizes", "");
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
 
         //unified gentotyper
         config.put("variant_caller", "unified_genotyper");
@@ -222,6 +227,7 @@ public class GATK3WorkflowTest {
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
         config.put("input_files", "/test/1.bam,/test/1.bai");
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
         config.put("gatk_realigner_target_creator_params", "--param1 --param2");
         config.put("gatk_indel_realigner_params", "--param1 --param2");
         config.put("gatk_recalibrator_params", "--param1 --param2");
@@ -240,6 +246,7 @@ public class GATK3WorkflowTest {
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
         config.put("input_files", "/test/1.bam,/test/1.bai");
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
         config.put("gatk_realigner_target_creator_params", "--param1--param2");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);

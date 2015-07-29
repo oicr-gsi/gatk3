@@ -1,6 +1,7 @@
 ## 1.1 - 2015-07-24
 - Upgrade to workflow-gatk3 1.1
 - [GP-318](https://jira.oicr.on.ca/browse/GP-318) - Upgrade to GATK 3.4-0
+- [GP-417](https://jira.oicr.on.ca/browse/GP-417) - Remove GATK3 dbsnp default value
 ## 1.0.4 - 2015-07-23
 - [GP-406](https://jira.oicr.on.ca/browse/GP-406) - Restrict workflow runs to having one interval file
 ## 1.0.3 - 2015-07-14

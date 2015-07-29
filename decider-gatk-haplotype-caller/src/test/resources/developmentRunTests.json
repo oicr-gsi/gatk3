@@ -4,7 +4,8 @@
     "defaultParameters": {
         "--output-path": "./",
         "--parent-wf-accessions": "1326996,1757073",
-        "--before-date": "2015-07-23"
+        "--before-date": "2015-07-23",
+        "--dbsnp": "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf"
     },
     "defaultIniExclusions": ["parent-accessions", "workflow_run_accession", "workflow-run-accession",
         "unique_string", "parent_accessions", "parent_accession", "input_file", "input_files", "workflow_bundle_dir",
