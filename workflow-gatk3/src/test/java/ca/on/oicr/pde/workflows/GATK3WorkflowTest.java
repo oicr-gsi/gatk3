@@ -136,11 +136,11 @@ public class GATK3WorkflowTest {
 
         int parallelismLevel = Arrays.asList(StringUtils.split(config.get("chr_sizes"), ",")).size();
 
-        //haplotype caller and unified genotyper
+        //haplotype caller
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
-                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER), true));
+                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER), true));
 
         //unified genotyper
         config.put("variant_caller", "unified_genotyper");
@@ -149,12 +149,12 @@ public class GATK3WorkflowTest {
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
                 getExpectedJobCount(numInputFiles, parallelismLevel, VariantCaller.UNIFIED_GENOTYPER, true));
 
-        //haplotype caller
-        config.put("variant_caller", "haplotype_caller");
+        //haplotype caller and unified genotyper
+        config.put("variant_caller", "haplotype_caller,unified_genotyper");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
-                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER), true));
+                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER), true));
 
         //reset
         config = getDefaultConfig();
@@ -168,7 +168,7 @@ public class GATK3WorkflowTest {
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
-                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER), false));
+                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER), false));
 
         //unified genotyper
         config.put("variant_caller", "unified_genotyper");
@@ -178,13 +178,13 @@ public class GATK3WorkflowTest {
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
                 getExpectedJobCount(numInputFiles, parallelismLevel, VariantCaller.UNIFIED_GENOTYPER, false));
 
-        //haplotype caller
-        config.put("variant_caller", "haplotype_caller");
+        //haplotype caller and unified genotyper
+        config.put("variant_caller", "haplotype_caller,unified_genotyper");
         config.put("do_bqsr", "false");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
-                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER), false));
+                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER), false));
     }
 
     @Test(enabled = true)
