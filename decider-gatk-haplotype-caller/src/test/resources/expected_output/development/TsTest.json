@@ -20,11 +20,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -36,7 +36,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -115,11 +115,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -131,7 +131,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -210,11 +210,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -226,7 +226,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -305,11 +305,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -321,7 +321,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -400,11 +400,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -416,7 +416,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -495,11 +495,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -511,7 +511,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -590,11 +590,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -606,7 +606,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -685,11 +685,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -701,7 +701,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -780,11 +780,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -796,7 +796,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -875,11 +875,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -891,7 +891,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -970,11 +970,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -986,7 +986,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -1065,11 +1065,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -1081,7 +1081,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -1160,11 +1160,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -1176,7 +1176,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -1255,11 +1255,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -1271,7 +1271,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -1350,11 +1350,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -1366,7 +1366,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -1445,11 +1445,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -1461,7 +1461,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -1540,11 +1540,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -1556,7 +1556,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -1635,11 +1635,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -1651,7 +1651,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -1730,11 +1730,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -1746,7 +1746,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -1825,11 +1825,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -1841,7 +1841,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -1920,11 +1920,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -1936,7 +1936,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2015,11 +2015,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2031,7 +2031,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2110,11 +2110,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2126,7 +2126,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2205,11 +2205,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2221,7 +2221,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2300,11 +2300,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2316,7 +2316,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2395,11 +2395,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2411,7 +2411,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2490,11 +2490,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2506,7 +2506,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2585,11 +2585,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2601,7 +2601,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2680,11 +2680,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2696,7 +2696,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2775,11 +2775,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2791,7 +2791,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2870,11 +2870,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2886,7 +2886,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -2965,11 +2965,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -2981,7 +2981,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -3060,11 +3060,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -3076,7 +3076,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -3155,11 +3155,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -3171,7 +3171,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -3250,11 +3250,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -3266,7 +3266,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -3345,11 +3345,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -3361,7 +3361,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -3440,11 +3440,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -3456,7 +3456,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -3535,11 +3535,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -3551,7 +3551,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -3630,11 +3630,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -3646,7 +3646,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -3725,11 +3725,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -3741,7 +3741,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -3820,11 +3820,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -3836,7 +3836,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -3915,11 +3915,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -3931,7 +3931,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4010,11 +4010,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4026,7 +4026,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4105,11 +4105,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4121,7 +4121,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4200,11 +4200,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4216,7 +4216,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4295,11 +4295,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4311,7 +4311,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4390,11 +4390,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4406,7 +4406,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4485,11 +4485,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4501,7 +4501,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4580,11 +4580,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4596,7 +4596,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4675,11 +4675,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4691,7 +4691,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4770,11 +4770,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4786,7 +4786,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4865,11 +4865,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4881,7 +4881,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -4960,11 +4960,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -4976,7 +4976,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -5055,11 +5055,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -5071,7 +5071,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -5150,11 +5150,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -5166,7 +5166,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -5245,11 +5245,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -5261,7 +5261,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -5340,11 +5340,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -5356,7 +5356,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -5435,11 +5435,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -5451,7 +5451,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -5530,11 +5530,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -5546,7 +5546,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -5625,11 +5625,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -5641,7 +5641,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -5720,11 +5720,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -5736,7 +5736,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -5815,11 +5815,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -5831,7 +5831,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -5910,11 +5910,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -5926,7 +5926,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6005,11 +6005,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6021,7 +6021,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6100,11 +6100,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6116,7 +6116,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6195,11 +6195,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6211,7 +6211,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6290,11 +6290,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6306,7 +6306,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6385,11 +6385,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6401,7 +6401,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6480,11 +6480,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6496,7 +6496,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6575,11 +6575,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6591,7 +6591,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6670,11 +6670,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6686,7 +6686,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6765,11 +6765,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6781,7 +6781,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6860,11 +6860,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6876,7 +6876,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -6955,11 +6955,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -6971,7 +6971,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -7050,11 +7050,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -7066,7 +7066,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -7145,11 +7145,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -7161,7 +7161,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -7240,11 +7240,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -7256,7 +7256,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -7335,11 +7335,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -7351,7 +7351,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -7430,11 +7430,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -7446,7 +7446,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -7525,11 +7525,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -7541,7 +7541,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -7620,11 +7620,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -7636,7 +7636,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -7715,11 +7715,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -7731,7 +7731,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -7810,11 +7810,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -7826,7 +7826,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -7905,11 +7905,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -7921,7 +7921,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8000,11 +8000,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8016,7 +8016,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8095,11 +8095,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8111,7 +8111,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8190,11 +8190,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8206,7 +8206,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8285,11 +8285,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8301,7 +8301,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8380,11 +8380,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8396,7 +8396,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8475,11 +8475,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8491,7 +8491,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8570,11 +8570,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8586,7 +8586,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8665,11 +8665,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8681,7 +8681,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8760,11 +8760,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8776,7 +8776,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8855,11 +8855,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8871,7 +8871,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -8950,11 +8950,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -8966,7 +8966,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -9045,11 +9045,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -9061,7 +9061,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -9140,11 +9140,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -9156,7 +9156,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -9235,11 +9235,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -9251,7 +9251,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],
@@ -9330,11 +9330,11 @@
       "gatk_baserecalibrator_smp" : "20",
       "gatk_baserecalibrator_xmx" : "8192",
       "gatk_combine_gvcfs_mem" : "4",
-      "gatk_dbsnp_vcf" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/dbsnp_137.hg19.vcf",
+      "gatk_dbsnp_vcf" : "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
       "gatk_haplotype_caller_mem" : "12",
       "gatk_haplotype_caller_threads" : "8",
       "gatk_indel_realigner_mem" : "12",
-      "gatk_key" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/GATK_public.key",
+      "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
       "gatk_print_reads_mem" : "12",
       "gatk_realign_target_creator_mem" : "12",
       "gatk_sched_overhead_mem" : "4",
@@ -9346,7 +9346,7 @@
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
       "r_dir" : "/oicr/local/analysis/sw/R/R-3.1.0/",
-      "ref_fasta" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/data/resources/hg19_random.fa"
+      "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa"
     },
     "files" : [ {
       "studyTitle" : [ "BartlettTS" ],

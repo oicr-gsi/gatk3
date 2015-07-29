@@ -32,6 +32,8 @@ import ca.on.oicr.pde.workflows.GATK3Workflow;
 import com.google.common.collect.Iterables;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
@@ -43,11 +45,6 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
 
     public Gatk3Decider() {
         super(GATK3Workflow.class);
-    }
-
-    @Override
-    protected void configureDecider() {
-        setMetaType(Arrays.asList("application/bam", "application/bam-index"));
 
         //settings
         defineArgument("chr-sizes", "Comma separated list of chromosome intervals used to parallelize indel realigning and variant calling. Default: By chromosome", false);
@@ -59,6 +56,12 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
         defineArgument("rsconfig-file", "Specify location of .xml file which should be used to configure references, "
                 + "will be used if resequencing-type is different from the default."
                 + "Default: " + rsconfigXmlPath, false);
+        defineArgument("dbsnp", "Specify the absolute path to the dbSNP vcf.", true);
+    }
+
+    @Override
+    protected void configureDecider() {
+        setMetaType(Arrays.asList("application/bam", "application/bam-index"));
 
         //rsconfig
         if (options.has("rsconfig-file")) {
@@ -75,6 +78,13 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
             rsconfig = new Rsconfig(rsconfigFile);
         } catch (ParserConfigurationException | SAXException | IOException | Rsconfig.InvalidFileFormatException e) {
             throw new RuntimeException("Rsconfig file did not load properly, exeception stack trace:\n" + Arrays.toString(e.getStackTrace()));
+        }
+
+        //check user defined input files
+        if (options.hasArgument("check-files-exist")) {
+            if (!Files.exists(Paths.get(getArgument("dbsnp"))) || !Files.isReadable(Paths.get(getArgument("dbsnp")))) {
+                throw new RuntimeException("The dbsnp file [ " + getArgument("dbsnp") + "] is not accessible.");
+            }
         }
     }
 
@@ -102,6 +112,8 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
         } else {
             throw new InvalidWorkflowRunException(String.format("Found [%s] interval files, expected one.", intervalFiles.size()));
         }
+
+        wr.addProperty("gatk_dbsnp_vcf", getArgument("dbsnp"));
 
         if (options.has("chr-sizes")) {
             wr.addProperty("chr_sizes", getArgument("chr-sizes"));
