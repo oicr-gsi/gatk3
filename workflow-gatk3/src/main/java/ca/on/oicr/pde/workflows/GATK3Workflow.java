@@ -31,7 +31,6 @@ import ca.on.oicr.pde.tools.CompressAndIndexVcf;
 import ca.on.oicr.pde.tools.gatk3.UnifiedGenotyper;
 import ca.on.oicr.pde.tools.MergeVcf;
 import ca.on.oicr.pde.tools.SortVcf;
-import ca.on.oicr.pde.tools.gatk3.AbstractGatkBuilder;
 import ca.on.oicr.pde.tools.gatk3.AnalyzeCovariates;
 import ca.on.oicr.pde.tools.gatk3.BaseRecalibrator;
 import ca.on.oicr.pde.tools.gatk3.HaplotypeCaller;
@@ -71,7 +70,7 @@ public class GATK3Workflow extends OicrWorkflow {
     @Override
     public void setupDirectory() {
         init();
-	this.addDirectory(tmpDir);
+        this.addDirectory(tmpDir);
         this.addDirectory(dataDir);
         for (VariantCaller vc : variantCallers) {
             this.addDirectory(dataDir + vc.toString());
@@ -173,16 +172,16 @@ public class GATK3Workflow extends OicrWorkflow {
         final Integer preserveQscoresLessThan = hasPropertyAndNotNull("preserve_qscores_less_than") ? Integer.parseInt(getProperty("preserve_qscores_less_than")) : null;
         final Set<String> bqsrCovariates = Sets.newHashSet(StringUtils.split(getProperty("bqsr_covariates"), ","));
         final Boolean doBQSR = Boolean.valueOf(getOptionalProperty("do_bqsr", "true"));
-        final Integer gatkRealignTargetCreatorMem = Integer.parseInt(getProperty("gatk_realign_target_creator_mem"));
-        final Integer gatkIndelRealignerMem = Integer.parseInt(getProperty("gatk_indel_realigner_mem"));
-        final Integer gatkPrintReadsMem = Integer.parseInt(getProperty("gatk_print_reads_mem"));
-        final Integer gatkBaseRecalibratorXmx = Integer.parseInt(getProperty("gatk_baserecalibrator_xmx"));
-        final Integer gatkBaseRecalibratorMem = Integer.parseInt(getProperty("gatk_baserecalibrator_mem"));
-        final Integer gatkBaseRecalibratorNct = Integer.parseInt(getProperty("gatk_baserecalibrator_nct"));
-        final Integer gatkBaseRecalibratorSmp = Integer.parseInt(getProperty("gatk_baserecalibrator_smp"));
+        final Integer gatkRealignTargetCreatorXmx = Integer.parseInt(getProperty("gatk_realign_target_creator_xmx"));
+        final Integer gatkIndelRealignerXmx = Integer.parseInt(getProperty("gatk_indel_realigner_xmx"));
+        final Integer gatkPrintReadsXmx = Integer.parseInt(getProperty("gatk_print_reads_xmx"));
+        final Integer gatkBaseRecalibratorXmx = Integer.parseInt(getProperty("gatk_base_recalibrator_xmx"));
+        final Integer gatkBaseRecalibratorMem = Integer.parseInt(getProperty("gatk_base_recalibrator_mem"));
+        final Integer gatkBaseRecalibratorNct = Integer.parseInt(getProperty("gatk_base_recalibrator_nct"));
+        final Integer gatkBaseRecalibratorSmp = Integer.parseInt(getProperty("gatk_base_recalibrator_smp"));
         final Integer gatkHaplotypeCallerThreads = Integer.parseInt(getProperty("gatk_haplotype_caller_threads"));
-        final Integer gatkHaplotypeCallerMem = Integer.parseInt(getProperty("gatk_haplotype_caller_mem"));
-        final Integer gatkUnifiedGenotyperMem = Integer.parseInt(getProperty("gatk_unified_genotyper_mem"));
+        final Integer gatkHaplotypeCallerXmx = Integer.parseInt(getProperty("gatk_haplotype_caller_xmx"));
+        final Integer gatkUnifiedGenotyperXmx = Integer.parseInt(getProperty("gatk_unified_genotyper_xmx"));
         final Integer gatkUnifiedGenotyperThreads = Integer.parseInt(getProperty("gatk_unified_genotyper_threads"));
         final Integer gatkOverhead = Integer.parseInt(getProperty("gatk_sched_overhead_mem"));
         final String realignerTargetCreatorParams = getOptionalProperty("gatk_realigner_target_creator_params", null);
@@ -214,7 +213,7 @@ public class GATK3Workflow extends OicrWorkflow {
         for (String chrSize : chrSizes) {
 
             //GATK Realigner Target Creator ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_RealignerTargetCreator.php )
-            RealignerTargetCreator realignerTargetCreatorCommand = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            RealignerTargetCreator realignerTargetCreatorCommand = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorXmx + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(inputBamFiles)
                     .setKnownIndels(dbsnpVcf)
@@ -227,12 +226,12 @@ public class GATK3Workflow extends OicrWorkflow {
                     .setExtraParameters(realignerTargetCreatorParams)
                     .build();
             Job realignerTargetCreatorJob = getWorkflow().createBashJob("GATKRealignerTargetCreator")
-                    .setMaxMemory(Integer.toString((gatkRealignTargetCreatorMem + gatkOverhead) * 1024))
+                    .setMaxMemory(Integer.toString((gatkRealignTargetCreatorXmx + gatkOverhead) * 1024))
                     .setQueue(queue);
             realignerTargetCreatorJob.getCommand().setArguments(realignerTargetCreatorCommand.getCommand());
 
             //GATK Indel Realigner ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_IndelRealigner.php )
-            IndelRealigner indelRealignerCommand = new IndelRealigner.Builder(java, gatkIndelRealignerMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            IndelRealigner indelRealignerCommand = new IndelRealigner.Builder(java, gatkIndelRealignerXmx + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(inputBamFiles)
                     .addKnownIndelFile(dbsnpVcf)
@@ -242,7 +241,7 @@ public class GATK3Workflow extends OicrWorkflow {
                     .setExtraParameters(indelRealignerParams)
                     .build();
             Job indelRealignerJob = getWorkflow().createBashJob("GATKIndelRealigner")
-                    .setMaxMemory(Integer.toString((gatkIndelRealignerMem + gatkOverhead) * 1024))
+                    .setMaxMemory(Integer.toString((gatkIndelRealignerXmx + gatkOverhead) * 1024))
                     .setQueue(queue)
                     .addParent(realignerTargetCreatorJob);
             indelRealignerJob.getCommand().setArguments(indelRealignerCommand.getCommand());
@@ -298,7 +297,7 @@ public class GATK3Workflow extends OicrWorkflow {
                 String inputBam = e.getValue().getLeft();
 
                 //GATK Print Reads ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php )
-                PrintReads printReadsCommand = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
+                PrintReads printReadsCommand = new PrintReads.Builder(java, gatkPrintReadsXmx + "g", tmpDir, gatk, gatkKey, dataDir)
                         .setReferenceSequence(refFasta)
                         .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
                         .setInputFile(inputBam)
@@ -308,7 +307,7 @@ public class GATK3Workflow extends OicrWorkflow {
                         .setExtraParameters(printReadsParams)
                         .build();
                 Job printReadsJob = getWorkflow().createBashJob("GATKTableRecalibration")
-                        .setMaxMemory(Integer.toString((gatkPrintReadsMem + gatkOverhead) * 1024))
+                        .setMaxMemory(Integer.toString((gatkPrintReadsXmx + gatkOverhead) * 1024))
                         .setQueue(queue)
                         .addParent(baseRecalibratorJob);
                 printReadsJob.getCommand().setArguments(printReadsCommand.getCommand());
@@ -332,7 +331,7 @@ public class GATK3Workflow extends OicrWorkflow {
                 switch (vc) {
                     case HAPLOTYPE_CALLER:
                         //GATK Haplotype Caller ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.php )
-                        HaplotypeCaller haplotypeCallerCommand = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerMem) + "g", tmpDir, gatk, gatkKey, dataDir)
+                        HaplotypeCaller haplotypeCallerCommand = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerXmx) + "g", tmpDir, gatk, gatkKey, dataDir)
                                 .setInputBamFiles(getLeftCollection(inputBams.values()))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
@@ -351,7 +350,7 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setExtraParameters(haplotypeCallerParams)
                                 .build();
                         Job haplotypeCallerJob = this.getWorkflow().createBashJob("GATKHaplotypeCaller")
-                                .setMaxMemory(Integer.toString((gatkHaplotypeCallerMem + gatkOverhead) * 1024))
+                                .setMaxMemory(Integer.toString((gatkHaplotypeCallerXmx + gatkOverhead) * 1024))
                                 .setQueue(queue);
                         haplotypeCallerJob.getParents().addAll(getRightCollection(inputBams.get(chrSize)));
                         haplotypeCallerJob.getCommand().setArguments(haplotypeCallerCommand.getCommand());
@@ -361,7 +360,7 @@ public class GATK3Workflow extends OicrWorkflow {
 
                     case UNIFIED_GENOTYPER:
                         //GATK Unified Genotyper (INDELS) ( https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php )
-                        UnifiedGenotyper indelsUnifiedGenotyperCommand = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, workingDir)
+                        UnifiedGenotyper indelsUnifiedGenotyperCommand = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperXmx) + "g", tmpDir, gatk, gatkKey, workingDir)
                                 .setInputBamFiles(getLeftCollection(inputBams.get(chrSize)))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
@@ -379,7 +378,7 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setExtraParameters(unifiedGenotyperParams)
                                 .build();
                         Job indelsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperIndel")
-                                .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
+                                .setMaxMemory(Integer.toString((gatkUnifiedGenotyperXmx + gatkOverhead) * 1024))
                                 .setQueue(queue);
                         indelsUnifiedGenotyperJob.getParents().addAll(getRightCollection(inputBams.get(chrSize)));
                         indelsUnifiedGenotyperJob.getCommand().setArguments(indelsUnifiedGenotyperCommand.getCommand());
@@ -387,7 +386,7 @@ public class GATK3Workflow extends OicrWorkflow {
                         indelFiles.put(vc, Pair.of(indelsUnifiedGenotyperCommand.getOutputFile(), indelsUnifiedGenotyperJob));
 
                         //GATK Unified Genotyper (SNVS) ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php )
-                        UnifiedGenotyper snvsUnifiedGenotyperCommand = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperMem) + "g", tmpDir, gatk, gatkKey, workingDir)
+                        UnifiedGenotyper snvsUnifiedGenotyperCommand = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperXmx) + "g", tmpDir, gatk, gatkKey, workingDir)
                                 .setInputBamFiles(getLeftCollection(inputBams.get(chrSize)))
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
@@ -404,7 +403,7 @@ public class GATK3Workflow extends OicrWorkflow {
                                 .setExtraParameters(unifiedGenotyperParams)
                                 .build();
                         Job snvsUnifiedGenotyperJob = this.getWorkflow().createBashJob("GATKUnifiedGenotyperSNV")
-                                .setMaxMemory(Integer.toString((gatkUnifiedGenotyperMem + gatkOverhead) * 1024))
+                                .setMaxMemory(Integer.toString((gatkUnifiedGenotyperXmx + gatkOverhead) * 1024))
                                 .setQueue(queue);
                         snvsUnifiedGenotyperJob.getParents().addAll(getRightCollection(inputBams.get(chrSize)));
                         snvsUnifiedGenotyperJob.getCommand().setArguments(snvsUnifiedGenotyperCommand.getCommand());
