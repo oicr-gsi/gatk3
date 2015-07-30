@@ -53,7 +53,7 @@ import net.sourceforge.seqware.pipeline.workflowV2.AbstractWorkflowDataModel;
 public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> extends OicrDecider {
 
     protected String templateType = null;
-    protected String resequencingType = null;
+    protected List<String> resequencingTypes = null;
     protected List<String> tissueTypes = null;
     protected List<String> tissueOrigins = null;
     protected List<String> groupIds = null;
@@ -82,7 +82,8 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
                 + "e.g. P, R, X, C. Multiple values can be comma-separated. Default: no restriction", false);
         defineArgument("tissue-origin", "Restrict the processing to samples of particular tissue origin, "
                 + "e.g. Ly, Pa, Pr. Multiple values can be comma-separated. Default: no restriction", false);
-        defineArgument("resequencing-type", "Restrict the processing to samples of a particular resequencing type", false);
+        defineArgument("resequencing-type", "Restrict the processing to samples of a particular resequencing type. Multiple values can be comma-separated. Default: no restriction", false);
+        defineArgument("group-id", "Restrict the processing to samples of a particular group-id. Multiple values can be comma-separated. Default: no restriction", false);
 
     }
 
@@ -125,8 +126,8 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
         }
 
         if (!getArgument("resequencing-type").isEmpty()) {
-            resequencingType = getArgument("resequencing-type");
-            filters.add(resequencingType);
+            resequencingTypes = Arrays.asList(getArgument("resequencing-type").split(","));
+            filters.add(Joiner.on("+").join(resequencingTypes));
         }
 
         if (!getArgument("group-id").isEmpty()) {
@@ -179,7 +180,7 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
 
             //filter files by resequencing type
             String currentResequencingType = fa.getLimsValue(Lims.TARGETED_RESEQUENCING);
-            if (resequencingType != null && !resequencingType.equals(currentResequencingType)) {
+            if (resequencingTypes != null && !resequencingTypes.contains(currentResequencingType)) {
                 continue;
             }
 
@@ -192,6 +193,12 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
             //filter files by tissue origin
             String currentTissueOrigin = fa.getLimsValue(Lims.TISSUE_ORIGIN);
             if (tissueOrigins != null && !tissueOrigins.contains(currentTissueOrigin)) {
+                continue;
+            }
+
+            //filter files by group id
+            String currentGroupId = fa.getLimsValue(Lims.GROUP_ID);
+            if (groupIds != null && !groupIds.contains(currentGroupId)) {
                 continue;
             }
 
@@ -285,16 +292,16 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
 
         if (options.has("id")) {
             //set user requested identifier
-            wr.addProperty("identifier", getArgument("id"));
+            wr.addProperty("identifier", sanitize(getArgument("id")));
         } else if (Group.FILE == getGroupBy()) {
             //when using group by file, file to BeSmall grouping is used - so use BeSmall's group name
-            wr.addProperty("identifier", Iterables.getOnlyElement(groupByValues));
+            wr.addProperty("identifier", sanitize(Iterables.getOnlyElement(groupByValues)));
         } else if (options.hasArgument("group-by") || getGroupBy() != null) {
             //use the user defined "group-by" value (eg, --group-by study -> id=STUDY1_{templateType})
-            wr.addProperty("identifier", Iterables.getOnlyElement(groupByValues) + "_" + templateType);
+            wr.addProperty("identifier", sanitize(Iterables.getOnlyElement(groupByValues) + "_" + templateType));
         } else {
             //use the aggregation of the user provided filters as the identifier
-            wr.addProperty("identifier", identifierFromFilters);
+            wr.addProperty("identifier", sanitize(identifierFromFilters));
         }
 
         try {
@@ -489,6 +496,10 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
             return false;
         }
         return true;
+    }
+    
+    public static String sanitize(String s){
+        return s.replaceAll("[^a-zA-Z0-9.+_-]", "");
     }
 
     public static class InvalidWorkflowRunException extends Exception {
