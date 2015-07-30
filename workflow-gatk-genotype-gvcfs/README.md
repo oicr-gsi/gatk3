@@ -4,7 +4,11 @@ Version 1.0
 
 ###Overview
 
+Uses [gVCF](https://www.broadinstitute.org/gatk/guide/article?id=4017) (g.vcf.gz) files produced by GATK Haplotype Caller (3.0+) as input and produces a VCF (vcf.gz) with raw indel and SNV variant calls using GATK Genotype GVCFs.
+
 ###Process
+
+![genotype gvcfs](docs/genotype_gvcfs.png)
 
 ###Dependencies
 
@@ -21,17 +25,18 @@ This workflow requires:
 
 After compilation, [test](http://seqware.github.io/docs/3-getting-started/developer-tutorial/#testing-the-workflow), [bundle](http://seqware.github.io/docs/3-getting-started/developer-tutorial/#packaging-the-workflow-into-a-workflow-bundle) and [install](http://seqware.github.io/docs/3-getting-started/admin-tutorial/#how-to-install-a-workflow) the workflow using the techniques described in the SeqWare documentation.
 
-####Options
+###Options
+
 These parameters can be overridden either in the INI file on on the command line using `--override` when [directly scheduling workflow runs](http://seqware.github.io/docs/3-getting-started/user-tutorial/#listing-available-workflows-and-their-parameters) (not using a decider).
 
-####Required Parameters:
+#####Required:
 
 Parameter | Description
 ---|---
 identifier | The prefix for all output files
 input_files | The comma-separated absolute paths of the input BAM and BAI files
 
-####Optional Parameters:
+#####Optional:
 
 Parameter | Description | Default
 ---|---|---
@@ -64,4 +69,5 @@ gatk_genotype_gvcfs_xmx | The java max heap size for GATK Genotype GVCFs command
 * TBI file - index file for corresponding vcf.gz file
 
 ###Support
+
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .

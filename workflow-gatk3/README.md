@@ -4,7 +4,11 @@ Version 1.1
 
 ###Overview
 
+Uses BAM files (filtered, merged, and collapsed/duplicates marked) as input, performs indel realignment, base quality score recalibration, and produces a VCF (vcf.gz) with raw indel and SNV variant calls using GATK Haplotype Caller and/or GATK Unified Genotyper.
+
 ###Process
+
+![gatk3](docs/gatk3.png)
 
 ###Dependencies
 
@@ -23,10 +27,11 @@ This workflow requires:
 
 After compilation, [test](http://seqware.github.io/docs/3-getting-started/developer-tutorial/#testing-the-workflow), [bundle](http://seqware.github.io/docs/3-getting-started/developer-tutorial/#packaging-the-workflow-into-a-workflow-bundle) and [install](http://seqware.github.io/docs/3-getting-started/admin-tutorial/#how-to-install-a-workflow) the workflow using the techniques described in the SeqWare documentation.
 
-####Options
+###Options
+
 These parameters can be overridden either in the INI file on on the command line using `--override` when [directly scheduling workflow runs](http://seqware.github.io/docs/3-getting-started/user-tutorial/#listing-available-workflows-and-their-parameters) (not using a decider).
 
-####Required Parameters:
+#####Required:
 
 Parameter | Description
 ---|---
@@ -34,7 +39,7 @@ identifier | The prefix for all output files
 input_files	| The comma-separated absolute paths of the input BAM and BAI files
 gatk_dbsnp_vcf | The absolute path to the dbSNP VCF file
 
-####Optional Parameters:
+#####Optional:
 
 Parameter | Description | Default
 ---|---|---
