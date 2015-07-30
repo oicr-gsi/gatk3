@@ -7,7 +7,7 @@
         "output_metrics_dir": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/output_expectation/",
         "parameters": {
             "input_files": "/.mounts/labs/PDE/data/GATK/PCSI0022P.val.bam,/.mounts/labs/PDE/data/GATK/PCSI0022P.val.bai",
-            "gatk_baserecalibrator_smp": "8",
+            "gatk_base_recalibrator_smp": "8",
             "identifier": "gatk.ex",
             "gatk_dbsnp_vcf": "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf"
         }
