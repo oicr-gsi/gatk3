@@ -10,7 +10,7 @@ The decider identifies files to operate on by:
 
 * Selects all files from the parent workflow (parent-wf-accessions) of type **application/bam** or **application/bam-index**
 * Filters out files that do not match the filter criteria (e.g. --study-name, --root-sample-name, --before-date, --tissue-type, see #options for all possible filters)
-* If there are multiple BAMs with metadata = <ROOT_SAMPLE_NAME + TISSUE_ORIGIN + TISSUE_TYPE + TISSUE_PREP + TISSUE_REGION + LIBRARY_TEMPLATE_TYPE + GROUP_ID>, the most recently created BAM is selected
+* If there are multiple BAMs with metadata = \<ROOT_SAMPLE_NAME + TISSUE_ORIGIN + TISSUE_TYPE + TISSUE_PREP + TISSUE_REGION + LIBRARY_TEMPLATE_TYPE + GROUP_ID\>, the most recently created BAM is selected
 * Groups files (--group-by) into workflow run(s) (default: no grouping)
 
 For each workflow run, the decider:
@@ -36,7 +36,7 @@ java -jar Decider.jar --wf-accession <gatk-haplotype-caller-workflow-accession> 
 
 ###Options
 
-Please see [basic deciders](http://seqware.github.io/docs/17-plugins/#basicdecider) for general decider options.
+Please see [basic deciders](http://seqware.github.io/docs/17-plugins/#basicdecider) and [oicr deciders](https://github.com/oicr-gsi/pipedev/tree/master/deciders#options) for general decider options.
 
 #####Required:
 
@@ -49,7 +49,7 @@ Parameter | Description
 
 Parameter | Description | Default
 ---|---|---
---group-by | Specify how files that pass filter criteria will be grouped into workflow runs | <ROOT_SAMPLE_NAME + TISSUE_ORIGIN + TISSUE_TYPE + TISSUE_PREP + TISSUE_REGION + LIBRARY_TEMPLATE_TYPE + GROUP_ID>
+--group-by | Specify how files that pass filter criteria will be grouped into workflow runs | \<ROOT_SAMPLE_NAME + TISSUE_ORIGIN + TISSUE_TYPE + TISSUE_PREP + TISSUE_REGION + LIBRARY_TEMPLATE_TYPE + GROUP_ID\>
 --id | Override final filename prefix |
 --tissue-type | Restrict the processing to samples of particular tissue types (e.g. P, R, X, C) | (no restriction)
 --tissue-origin | Restrict the processing to samples of particular tissue origin (e.g. Ly, Pa, Pr) | (no restriction)
@@ -62,7 +62,7 @@ Parameter | Description | Default
 --rsconfig-file | Specify location of .xml file which should be used to configure references, will be used if resequencing-type is different from the default | /.mounts/labs/PDE/data/rsconfig.xml
 --verbose | Log all SeqWare (debug) information |
 
-Additional [workflow properties](../workflow-gatk-haplotype-caller/README.md#options) can be overridden by adding pairs of <property, value> pairs (for example: `-- --property1 value --property2 "value1,value2"`) to the end of the command line.
+Additional [workflow properties](../workflow-gatk-haplotype-caller/README.md#options) can be overridden by adding \<property, value\> pairs (for example: `-- --property1 value --property2 "value1,value2"`) to the end of the command line.
 
 ###Support
 
