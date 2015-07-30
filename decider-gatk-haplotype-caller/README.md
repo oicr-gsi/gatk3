@@ -31,7 +31,12 @@ mvn clean install
 ###Usage
 
 ```
-java -jar Decider.jar --wf-accession <gatk-haplotype-caller-workflow-accession> --parent-wf-accessions <bam-filter-merge-collapse-workflow-accession> --study-name <study-name> --library-template-type <WG/EX/TS> --dbsnp <path-to-dbsnp-vcf>
+java -jar Decider.jar \
+--wf-accession <gatk-haplotype-caller-workflow-accession> \
+--parent-wf-accessions <bam-filter-merge-collapse-workflow-accession> \
+--study-name <study-name> \
+--library-template-type <WG/EX/TS> \
+--dbsnp <path-to-dbsnp-vcf>
 ```
 
 ###Options
