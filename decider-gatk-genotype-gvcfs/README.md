@@ -8,8 +8,8 @@ This decider launches the [GATK Genotype GVCFs workflow](../workflow-gatk-genoty
 
 The decider identifies files to operate on by:
 
-* Selects all files from the parent workflow (parent-wf-accessions) of type **application/g-vcf-gz** or **application/tbi**
-* Filters out files that do not match the filter criteria (e.g. --study-name, --root-sample-name, --before-date, --tissue-type, see #options for all possible filters)
+* Selects all files from the parent workflow (--parent-wf-accessions) of type **application/g-vcf-gz** or **application/tbi**
+* Filters out files that do not match the filter criteria (e.g. --study-name, --root-sample-name, --before-date, --tissue-type, see [options](#options) for all possible filters)
 * If there are multiple GVCFs with metadata = \<ROOT_SAMPLE_NAME + TISSUE_ORIGIN + TISSUE_TYPE + TISSUE_PREP + TISSUE_REGION + LIBRARY_TEMPLATE_TYPE + GROUP_ID\>, the most recently created GVCF is selected
 * Groups files (--group-by) into workflow run(s) (default: no grouping)
 

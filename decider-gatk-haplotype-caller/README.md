@@ -8,10 +8,10 @@ This decider launches the [GATK Haplotype Caller workflow](../workflow-gatk-hapl
 
 The decider identifies files to operate on by:
 
-* Selects all files from the parent workflow (parent-wf-accessions) of type **application/bam** or **application/bam-index**
-* Filters out files that do not match the filter criteria (e.g. --study-name, --root-sample-name, --before-date, --tissue-type, see #options for all possible filters)
+* Selects all files from the parent workflow (--parent-wf-accessions) of type **application/bam** or **application/bam-index**
+* Filters out files that do not match the filter criteria (e.g. --study-name, --root-sample-name, --before-date, --tissue-type, see [options](#options) for all possible filters)
 * If there are multiple BAMs with metadata = \<ROOT_SAMPLE_NAME + TISSUE_ORIGIN + TISSUE_TYPE + TISSUE_PREP + TISSUE_REGION + LIBRARY_TEMPLATE_TYPE + GROUP_ID\>, the most recently created BAM is selected
-* Groups files (--group-by) into workflow run(s) (default: no grouping)
+* Groups files (--group-by) into workflow run(s) (default: group by \<ROOT_SAMPLE_NAME + TISSUE_ORIGIN + TISSUE_TYPE + TISSUE_PREP + TISSUE_REGION + LIBRARY_TEMPLATE_TYPE + GROUP_ID\>)
 
 For each workflow run, the decider:
 

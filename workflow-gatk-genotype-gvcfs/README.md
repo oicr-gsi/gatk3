@@ -34,7 +34,7 @@ These parameters can be overridden either in the INI file on on the command line
 Parameter | Description
 ---|---
 identifier | The prefix for all output files
-input_files | The comma-separated absolute paths of the input BAM and BAI files
+input_files | The comma-separated absolute paths of the input GVCF and TBI files
 
 #####Optional:
 
