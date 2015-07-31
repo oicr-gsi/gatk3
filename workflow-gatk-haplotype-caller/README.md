@@ -40,14 +40,19 @@ gatk_dbsnp_vcf | The absolute path to the dbSNP VCF file
 
 #####Optional:
 
+
+Input/Output:
+
 Parameter | Description | Default
 ---|---|---
-Input/Output: ||
 output_dir | A standard SeqWare parameter specifying the sub-directory where the output files will be moved | seqware-results
 output_prefix | A standard SeqWare parameter specifying the root directory where the output files will be moved | ./
 manual_output | Whether or not to use manual output. When false, a random integer will be inserted into the path of the file in order to ensure uniqueness. When true, the output files will be moved to the location of output_prefix/output_dir | false
-||
-Dependency configuration: ||
+
+Dependency configuration:
+
+Parameter | Description | Default
+---|---|---
 gatk_jar | The GATK jar path | $\{workflow_bundle_dir}/Workflow_Bundle_$\{project.artifactId}/$\{project.version}/bin/
 r_dir | The R installation directory (required for AnalyzeCovariates) | /oicr/local/analysis/sw/R/R-3.1.0/
 java | The java executable path | $\{workflow_bundle_dir}/Workflow_Bundle_$\{project.artifactId}/$\{project.version}/bin/
@@ -69,8 +74,11 @@ gatk_baserecalibrator_params | Additional params to pass directly to BaseRecalib
 gatk_analyze_covariates_params | Additional params to pass directly to AnalyzeCovariates | 
 gatk_print_reads_params	 | Additional params to pass directly to PrintReads | 
 gatk_haplotype_caller_params | Additional params to pass directly to HaplotypeCaller |	 
-||
-Memory/HPC configuration: ||
+
+Memory/HPC configuration:
+
+Parameter | Description | Default
+---|---|---
 queue | The HPC queue to submit jobs to |
 gatk_sched_overhead_mem |  Additional memory to add to Xmx settings to calculate the requested memory for a HPC job (GB) | 4
 gatk_realign_target_creator_xmx | The java max heap size for GATK RealignTargetCreator jobs (GB) | 12
@@ -91,4 +99,4 @@ gatk_base_recalibrator_smp | The number of slots to request for GATK BaseRecalib
 * PDF file - report visualizing the quality of a recalibration run (only if do_bqsr = true)
 
 ###Support
-For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
+For support, please file an issue on the [Github project](https://github.com/oicr-gsi/gatk3) or send an email to gsi@oicr.on.ca .
