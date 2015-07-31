@@ -40,7 +40,6 @@ gatk_dbsnp_vcf | The absolute path to the dbSNP VCF file
 
 #####Optional:
 
-
 Input/Output:
 
 Parameter | Description | Default
@@ -56,8 +55,11 @@ Parameter | Description | Default
 gatk_jar | The GATK jar path | $\{workflow_bundle_dir}/Workflow_Bundle_$\{project.artifactId}/$\{project.version}/bin/
 r_dir | The R installation directory (required for AnalyzeCovariates) | /oicr/local/analysis/sw/R/R-3.1.0/
 java | The java executable path | $\{workflow_bundle_dir}/Workflow_Bundle_$\{project.artifactId}/$\{project.version}/bin/
-||
-GATK configuration: ||
+
+GATK configuration:
+
+Parameter | Description | Default
+---|---|---
 gatk_key | The absolute path to the GATK key to prevent "phoning home" | /.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key
 ref_fasta | The reference genome against which the sequence data was mapped | /oicr/data/reference/genomes/homo_sapiens_mc/UCSC/hg19_random/Genomic/references/fasta/original/hg19_random.fa
 chr_sizes | The numbers and sizes of the chromosomes. These values are used for parallelization across chromosomes and chromosome intervals. The format is: chromosome_name1:start-endinterval1,chromosome_name2:start-endinterval2 | chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM

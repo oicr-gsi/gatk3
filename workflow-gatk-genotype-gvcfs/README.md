@@ -38,7 +38,6 @@ input_files | The comma-separated absolute paths of the input GVCF and TBI files
 
 #####Optional:
 
-
 Input/Output:
 
 Parameter | Description | Default
@@ -69,10 +68,10 @@ Memory/HPC configuration:
 
 Parameter | Description | Default
 ---|---|---
-queue | The HPC queue to submit jobs to | N |
-gatk_sched_overhead_mem |  Additional memory to add to Xmx settings to calculate the requested memory for a HPC job (GB) | N | 4
-gatk_combine_gvcfs_xmx | The java max heap size for GATK Combine/Cat GVCFs commands (GB) | N | 4
-gatk_genotype_gvcfs_xmx | The java max heap size for GATK Genotype GVCFs commands (GB) | N | 8
+queue | The HPC queue to submit jobs to |
+gatk_sched_overhead_mem |  Additional memory to add to Xmx settings to calculate the requested memory for a HPC job (GB) | 4
+gatk_combine_gvcfs_xmx | The java max heap size for GATK Combine/Cat GVCFs commands (GB) | 4
+gatk_genotype_gvcfs_xmx | The java max heap size for GATK Genotype GVCFs commands (GB) | 8
 
 ###Output files
 
