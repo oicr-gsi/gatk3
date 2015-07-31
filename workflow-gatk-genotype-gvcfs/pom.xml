@@ -26,25 +26,8 @@
         <dependency>
             <groupId>ca.on.oicr.pde.tools</groupId>
             <artifactId>gatk3</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.1</version>
         </dependency>
     </dependencies>
-
-    <build>       
-        <plugins>
-            <plugin>
-                <groupId>com.pyx4j</groupId>
-                <artifactId>maven-junction-plugin</artifactId>
-                <configuration>
-                    <links>
-                        <link>
-                            <dst>${bundleDirectory}/data</dst>
-                            <src>${basedir}/links</src>
-                        </link>
-                    </links>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

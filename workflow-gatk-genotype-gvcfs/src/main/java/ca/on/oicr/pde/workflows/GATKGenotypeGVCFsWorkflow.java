@@ -1,3 +1,30 @@
+/**
+ * Copyright (C) 2015 Ontario Institute of Cancer Research
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Contact us:
+ *
+ * Ontario Institute for Cancer Research
+ * MaRS Centre, West Tower
+ * 661 University Avenue, Suite 510
+ * Toronto, Ontario, Canada M5G 0A3
+ * Phone: 416-977-7599
+ * Toll-free: 1-866-678-6427
+ * www.oicr.on.ca
+ *
+ */
 package ca.on.oicr.pde.workflows;
 
 import ca.on.oicr.pde.tools.gatk3.CatVariants;
@@ -103,10 +130,9 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
         final String gatkKey = getProperty("gatk_key");
         final String identifier = getProperty("identifier");
         final String refFasta = getProperty("ref_fasta");
-        final Integer intervalPadding = hasPropertyAndNotNull("interval_padding") ? Integer.parseInt(getProperty("interval_padding")) : null;
         final Integer gatkGenotypeGvcfsXmx = Integer.parseInt(getProperty("gatk_genotype_gvcfs_xmx"));
         final String gatkGenotypeGvcfsParams = getOptionalProperty("gatk_genotype_gvcfs_params", null);
-        final Integer gatkCombineGVCFsMem = Integer.parseInt(getProperty("gatk_combine_gvcfs_mem"));
+        final Integer gatkCombineGVCFsXmx = Integer.parseInt(getProperty("gatk_combine_gvcfs_xmx"));
         final Integer gatkOverhead = Integer.parseInt(getProperty("gatk_sched_overhead_mem"));
         final Integer maxGenotypeGVCFsInputFiles = Integer.parseInt(getProperty("gatk_genotype_gvcfs_max_input_files"));
         final Integer maxCombineGVCFsInputFiles = Integer.parseInt(getProperty("gatk_combine_gvcfs_max_input_files"));
@@ -123,7 +149,7 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
         }
 
         List<Pair<String, Job>> combineGvcfs = batchGVCFs(inputFiles, maxGenotypeGVCFsInputFiles, maxCombineGVCFsInputFiles,
-                java, gatkCombineGVCFsMem, gatkOverhead, tmpDir, gatk, gatkKey, tmpGVCFsDir, refFasta, queue);
+                java, gatkCombineGVCFsXmx, gatkOverhead, tmpDir, gatk, gatkKey, tmpGVCFsDir, refFasta, queue);
 
         //use linked hashmap to keep "pairs" in sort order determined by chr_sizes
         LinkedHashMap<String, Pair<GenotypeGVCFs, Job>> vcfs = new LinkedHashMap<>();
@@ -159,7 +185,7 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
 
         if (vcfs.size() > 1) {
             //GATK CatVariants ( https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_CatVariants.php )
-            CatVariants.Builder catVariantsBuilder = new CatVariants.Builder(java, gatkCombineGVCFsMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            CatVariants.Builder catVariantsBuilder = new CatVariants.Builder(java, gatkCombineGVCFsXmx + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     //individual vcf files sorted by genotype gvcfs; order of input vcf concatenation is determined by chr_sizes order (assumed to be sorted)
                     .disableSorting()
@@ -170,7 +196,7 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
             CatVariants catVariantsCommand = catVariantsBuilder.build();
 
             Job combineGVCFsJob = getWorkflow().createBashJob("GATKCombineGVCFs")
-                    .setMaxMemory(Integer.toString((gatkCombineGVCFsMem + gatkOverhead) * 1024))
+                    .setMaxMemory(Integer.toString((gatkCombineGVCFsXmx + gatkOverhead) * 1024))
                     .setQueue(queue);
             combineGVCFsJob.getParents().addAll(getRightCollection(vcfs.values()));
             combineGVCFsJob.getCommand().setArguments(catVariantsCommand.getCommand());

@@ -1,3 +1,30 @@
+/**
+ * Copyright (C) 2015 Ontario Institute of Cancer Research
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Contact us:
+ *
+ * Ontario Institute for Cancer Research
+ * MaRS Centre, West Tower
+ * 661 University Avenue, Suite 510
+ * Toronto, Ontario, Canada M5G 0A3
+ * Phone: 416-977-7599
+ * Toll-free: 1-866-678-6427
+ * www.oicr.on.ca
+ *
+ */
 package ca.on.oicr.pde.workflows;
 
 import ca.on.oicr.pde.tools.gatk3.AnalyzeCovariates;
@@ -121,16 +148,16 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
         final Integer preserveQscoresLessThan = hasPropertyAndNotNull("preserve_qscores_less_than") ? Integer.parseInt(getProperty("preserve_qscores_less_than")) : null;
         final Set<String> bqsrCovariates = Sets.newHashSet(StringUtils.split(getProperty("bqsr_covariates"), ","));
         final Boolean doBQSR = Boolean.valueOf(getOptionalProperty("do_bqsr", "true"));
-        final Integer gatkRealignTargetCreatorMem = Integer.parseInt(getProperty("gatk_realign_target_creator_mem"));
-        final Integer gatkIndelRealignerMem = Integer.parseInt(getProperty("gatk_indel_realigner_mem"));
-        final Integer gatkPrintReadsMem = Integer.parseInt(getProperty("gatk_print_reads_mem"));
-        final Integer gatkBaseRecalibratorXmx = Integer.parseInt(getProperty("gatk_baserecalibrator_xmx"));
-        final Integer gatkBaseRecalibratorMem = Integer.parseInt(getProperty("gatk_baserecalibrator_mem"));
-        final Integer gatkBaseRecalibratorNct = Integer.parseInt(getProperty("gatk_baserecalibrator_nct"));
-        final Integer gatkBaseRecalibratorSmp = Integer.parseInt(getProperty("gatk_baserecalibrator_smp"));
+        final Integer gatkRealignTargetCreatorXmx = Integer.parseInt(getProperty("gatk_realign_target_creator_xmx"));
+        final Integer gatkIndelRealignerXmx = Integer.parseInt(getProperty("gatk_indel_realigner_xmx"));
+        final Integer gatkPrintReadsXmx = Integer.parseInt(getProperty("gatk_print_reads_xmx"));
+        final Integer gatkBaseRecalibratorXmx = Integer.parseInt(getProperty("gatk_base_recalibrator_xmx"));
+        final Integer gatkBaseRecalibratorMem = Integer.parseInt(getProperty("gatk_base_recalibrator_mem"));
+        final Integer gatkBaseRecalibratorNct = Integer.parseInt(getProperty("gatk_base_recalibrator_nct"));
+        final Integer gatkBaseRecalibratorSmp = Integer.parseInt(getProperty("gatk_base_recalibrator_smp"));
         final Integer gatkHaplotypeCallerThreads = Integer.parseInt(getProperty("gatk_haplotype_caller_threads"));
-        final Integer gatkHaplotypeCallerMem = Integer.parseInt(getProperty("gatk_haplotype_caller_mem"));
-        final Integer gatkCombineGVCFsMem = Integer.parseInt(getProperty("gatk_combine_gvcfs_mem"));
+        final Integer gatkHaplotypeCallerXmx = Integer.parseInt(getProperty("gatk_haplotype_caller_xmx"));
+        final Integer gatkCombineGVCFsXmx = Integer.parseInt(getProperty("gatk_combine_gvcfs_xmx"));
         final Integer gatkOverhead = Integer.parseInt(getProperty("gatk_sched_overhead_mem"));
         final String realignerTargetCreatorParams = getOptionalProperty("gatk_realigner_target_creator_params", null);
         final String indelRealignerParams = getOptionalProperty("gatk_indel_realigner_params", null);
@@ -160,7 +187,7 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
         for (String chrSize : chrSizes) {
 
             //GATK Realigner Target Creator ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_RealignerTargetCreator.php )
-            RealignerTargetCreator realignerTargetCreatorCommand = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            RealignerTargetCreator realignerTargetCreatorCommand = new RealignerTargetCreator.Builder(java, gatkRealignTargetCreatorXmx + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(inputBamFiles)
                     .setKnownIndels(dbsnpVcf)
@@ -173,12 +200,12 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
                     .setExtraParameters(realignerTargetCreatorParams)
                     .build();
             Job realignerTargetCreatorJob = getWorkflow().createBashJob("GATKRealignerTargetCreator")
-                    .setMaxMemory(Integer.toString((gatkRealignTargetCreatorMem + gatkOverhead) * 1024))
+                    .setMaxMemory(Integer.toString((gatkRealignTargetCreatorXmx + gatkOverhead) * 1024))
                     .setQueue(queue);
             realignerTargetCreatorJob.getCommand().setArguments(realignerTargetCreatorCommand.getCommand());
 
             //GATK Indel Realigner ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_indels_IndelRealigner.php )
-            IndelRealigner indelRealignerCommand = new IndelRealigner.Builder(java, gatkIndelRealignerMem + "g", tmpDir, gatk, gatkKey, dataDir)
+            IndelRealigner indelRealignerCommand = new IndelRealigner.Builder(java, gatkIndelRealignerXmx + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .addInputBamFiles(inputBamFiles)
                     .addKnownIndelFile(dbsnpVcf)
@@ -188,7 +215,7 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
                     .setExtraParameters(indelRealignerParams)
                     .build();
             Job indelRealignerJob = getWorkflow().createBashJob("GATKIndelRealigner")
-                    .setMaxMemory(Integer.toString((gatkIndelRealignerMem + gatkOverhead) * 1024))
+                    .setMaxMemory(Integer.toString((gatkIndelRealignerXmx + gatkOverhead) * 1024))
                     .setQueue(queue)
                     .addParent(realignerTargetCreatorJob);
             indelRealignerJob.getCommand().setArguments(indelRealignerCommand.getCommand());
@@ -243,7 +270,7 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
                 String inputBam = e.getValue().getLeft();
 
                 //GATK Print Reads ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php )
-                PrintReads printReadsCommand = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
+                PrintReads printReadsCommand = new PrintReads.Builder(java, gatkPrintReadsXmx + "g", tmpDir, gatk, gatkKey, dataDir)
                         .setReferenceSequence(refFasta)
                         .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
                         .setInputFile(inputBam)
@@ -253,7 +280,7 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
                         .setExtraParameters(printReadsParams)
                         .build();
                 Job printReadsJob = getWorkflow().createBashJob("GATKTableRecalibration")
-                        .setMaxMemory(Integer.toString((gatkPrintReadsMem + gatkOverhead) * 1024))
+                        .setMaxMemory(Integer.toString((gatkPrintReadsXmx + gatkOverhead) * 1024))
                         .setQueue(queue)
                         .addParent(baseRecalibratorJob);
                 printReadsJob.getCommand().setArguments(printReadsCommand.getCommand());
@@ -271,7 +298,7 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
         Map<String, Pair<HaplotypeCaller, Job>> gvcfs = new HashMap<>();
         for (String chrSize : chrSizes) {
             //GATK Haplotype Caller ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.php )
-            HaplotypeCaller haplotypeCallerCommand = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerMem) + "g", tmpDir, gatk, gatkKey, dataDir)
+            HaplotypeCaller haplotypeCallerCommand = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerXmx) + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setInputBamFiles(getLeftCollection(inputBams.values()))
                     .setReferenceSequence(refFasta)
                     .setDbsnpFilePath(dbsnpVcf)
@@ -285,7 +312,7 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
                     .setExtraParameters(haplotypeCallerParams)
                     .build();
             Job haplotypeCallerJob = this.getWorkflow().createBashJob("GATKHaplotypeCaller")
-                    .setMaxMemory(Integer.toString((gatkHaplotypeCallerMem + gatkOverhead) * 1024))
+                    .setMaxMemory(Integer.toString((gatkHaplotypeCallerXmx + gatkOverhead) * 1024))
                     .setQueue(queue);
             haplotypeCallerJob.getParents().addAll(getRightCollection(inputBams.values()));
             haplotypeCallerJob.getCommand().setArguments(haplotypeCallerCommand.getCommand());
@@ -297,7 +324,7 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
 
         if (gvcfs.size() > 1) {
             //GATK CatVariants ( https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_CatVariants.php )
-            CatVariants.Builder catVariantsBuilder = new CatVariants.Builder(java, Integer.toString(gatkCombineGVCFsMem) + "g", tmpDir, gatk, gatkKey, dataDir)
+            CatVariants.Builder catVariantsBuilder = new CatVariants.Builder(java, Integer.toString(gatkCombineGVCFsXmx) + "g", tmpDir, gatk, gatkKey, dataDir)
                     .setReferenceSequence(refFasta)
                     .setOutputFileName(identifier);
             for (HaplotypeCaller hc : getLeftCollection(gvcfs.values())) {
@@ -305,7 +332,7 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
             }
             CatVariants catvariantsCommand = catVariantsBuilder.build();
             Job combineGVCFsJob = getWorkflow().createBashJob("GATKCombineGVCFs")
-                    .setMaxMemory(Integer.toString((gatkCombineGVCFsMem + gatkOverhead) * 1024))
+                    .setMaxMemory(Integer.toString((gatkCombineGVCFsXmx + gatkOverhead) * 1024))
                     .setQueue(queue);
             combineGVCFsJob.getParents().addAll(getRightCollection(gvcfs.values()));
             combineGVCFsJob.getCommand().setArguments(catvariantsCommand.getCommand());

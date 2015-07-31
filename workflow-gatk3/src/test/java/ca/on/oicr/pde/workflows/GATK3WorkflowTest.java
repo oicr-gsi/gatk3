@@ -1,3 +1,30 @@
+/**
+ * Copyright (C) 2015 Ontario Institute of Cancer Research
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Contact us:
+ *
+ * Ontario Institute for Cancer Research
+ * MaRS Centre, West Tower
+ * 661 University Avenue, Suite 510
+ * Toronto, Ontario, Canada M5G 0A3
+ * Phone: 416-977-7599
+ * Toll-free: 1-866-678-6427
+ * www.oicr.on.ca
+ *
+ */
 package ca.on.oicr.pde.workflows;
 
 import ca.on.oicr.pde.workflows.GATK3Workflow.VariantCaller;
@@ -48,6 +75,7 @@ public class GATK3WorkflowTest {
         config.put("identifier", "null");
         config.put("input_files", "/data/test/PCSI0022P.val.bam,/data/test/PCSI0022R.val.bam,/data/test/PCSI0022X.val.bam,/data/test/PCSI0022C.val.bam,"
                 + "/data/test/PCSI0022P.val.bai,/data/test/PCSI0022R.val.bai,/data/test/PCSI0022X.val.bai,/data/test/PCSI0022C.val.bai");
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
         GATK3Workflow w = getWorkflowClientObject(config);
         validateWorkflow(w);
     }
@@ -62,6 +90,7 @@ public class GATK3WorkflowTest {
         config.put("input_files", "/data/test/PCSI0022P.val.bam,/data/test/PCSI0022R.val.bam,/data/test/PCSI0022X.val.bam,/data/test/PCSI0022C.val.bam,"
                 + "/data/test/PCSI0022P.val.bai,/data/test/PCSI0022R.val.bai,/data/test/PCSI0022X.val.bai,/data/test/PCSI0022C.val.bai");
         config.put("variant_caller", "Unified_GeNoTyPeR");
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
@@ -100,17 +129,18 @@ public class GATK3WorkflowTest {
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
         config.put("input_files", StringUtils.join(inputFiles, ","));
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
 //        config.put("chr_sizes", "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,"
 //                + "chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,"
 //                + "chr21,chr22,chrX,chrY,chrM");
 
         int parallelismLevel = Arrays.asList(StringUtils.split(config.get("chr_sizes"), ",")).size();
 
-        //haplotype caller and unified genotyper
+        //haplotype caller
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
-                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER), true));
+                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER), true));
 
         //unified genotyper
         config.put("variant_caller", "unified_genotyper");
@@ -119,17 +149,18 @@ public class GATK3WorkflowTest {
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
                 getExpectedJobCount(numInputFiles, parallelismLevel, VariantCaller.UNIFIED_GENOTYPER, true));
 
-        //haplotype caller
-        config.put("variant_caller", "haplotype_caller");
+        //haplotype caller and unified genotyper
+        config.put("variant_caller", "haplotype_caller,unified_genotyper");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
-                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER), true));
+                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER), true));
 
         //reset
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
         config.put("input_files", StringUtils.join(inputFiles, ","));
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
 
         //no BQSR
         //haplotype caller and unified genotyper
@@ -137,7 +168,7 @@ public class GATK3WorkflowTest {
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
-                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER), false));
+                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER), false));
 
         //unified genotyper
         config.put("variant_caller", "unified_genotyper");
@@ -147,13 +178,13 @@ public class GATK3WorkflowTest {
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
                 getExpectedJobCount(numInputFiles, parallelismLevel, VariantCaller.UNIFIED_GENOTYPER, false));
 
-        //haplotype caller
-        config.put("variant_caller", "haplotype_caller");
+        //haplotype caller and unified genotyper
+        config.put("variant_caller", "haplotype_caller,unified_genotyper");
         config.put("do_bqsr", "false");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
         Assert.assertEquals(w.getWorkflow().getJobs().size(),
-                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER), false));
+                getExpectedJobCount(numInputFiles, parallelismLevel, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER), false));
     }
 
     @Test(enabled = true)
@@ -165,6 +196,7 @@ public class GATK3WorkflowTest {
         config.put("identifier", "gatk.ex");
         config.put("input_files", "/test/1.bam,/test/1.bai");
         config.put("chr_sizes", "");
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
 
         //unified gentotyper
         config.put("variant_caller", "unified_genotyper");
@@ -195,6 +227,7 @@ public class GATK3WorkflowTest {
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
         config.put("input_files", "/test/1.bam,/test/1.bai");
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
         config.put("gatk_realigner_target_creator_params", "--param1 --param2");
         config.put("gatk_indel_realigner_params", "--param1 --param2");
         config.put("gatk_recalibrator_params", "--param1 --param2");
@@ -213,6 +246,7 @@ public class GATK3WorkflowTest {
         config = getDefaultConfig();
         config.put("identifier", "gatk.ex");
         config.put("input_files", "/test/1.bam,/test/1.bai");
+        config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
         config.put("gatk_realigner_target_creator_params", "--param1--param2");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);

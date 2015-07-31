@@ -1,3 +1,30 @@
+/**
+ * Copyright (C) 2015 Ontario Institute of Cancer Research
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Contact us:
+ *
+ * Ontario Institute for Cancer Research
+ * MaRS Centre, West Tower
+ * 661 University Avenue, Suite 510
+ * Toronto, Ontario, Canada M5G 0A3
+ * Phone: 416-977-7599
+ * Toll-free: 1-866-678-6427
+ * www.oicr.on.ca
+ *
+ */
 package ca.on.oicr.pde.deciders.gatk3;
 
 import ca.on.oicr.pde.deciders.FileAttributes;
@@ -26,7 +53,7 @@ import net.sourceforge.seqware.pipeline.workflowV2.AbstractWorkflowDataModel;
 public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> extends OicrDecider {
 
     protected String templateType = null;
-    protected String resequencingType = null;
+    protected List<String> resequencingTypes = null;
     protected List<String> tissueTypes = null;
     protected List<String> tissueOrigins = null;
     protected List<String> groupIds = null;
@@ -55,7 +82,8 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
                 + "e.g. P, R, X, C. Multiple values can be comma-separated. Default: no restriction", false);
         defineArgument("tissue-origin", "Restrict the processing to samples of particular tissue origin, "
                 + "e.g. Ly, Pa, Pr. Multiple values can be comma-separated. Default: no restriction", false);
-        defineArgument("resequencing-type", "Restrict the processing to samples of a particular resequencing type", false);
+        defineArgument("resequencing-type", "Restrict the processing to samples of a particular resequencing type. Multiple values can be comma-separated. Default: no restriction", false);
+        defineArgument("group-id", "Restrict the processing to samples of a particular group-id. Multiple values can be comma-separated. Default: no restriction", false);
 
     }
 
@@ -98,8 +126,8 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
         }
 
         if (!getArgument("resequencing-type").isEmpty()) {
-            resequencingType = getArgument("resequencing-type");
-            filters.add(resequencingType);
+            resequencingTypes = Arrays.asList(getArgument("resequencing-type").split(","));
+            filters.add(Joiner.on("+").join(resequencingTypes));
         }
 
         if (!getArgument("group-id").isEmpty()) {
@@ -152,7 +180,7 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
 
             //filter files by resequencing type
             String currentResequencingType = fa.getLimsValue(Lims.TARGETED_RESEQUENCING);
-            if (resequencingType != null && !resequencingType.equals(currentResequencingType)) {
+            if (resequencingTypes != null && !resequencingTypes.contains(currentResequencingType)) {
                 continue;
             }
 
@@ -165,6 +193,12 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
             //filter files by tissue origin
             String currentTissueOrigin = fa.getLimsValue(Lims.TISSUE_ORIGIN);
             if (tissueOrigins != null && !tissueOrigins.contains(currentTissueOrigin)) {
+                continue;
+            }
+
+            //filter files by group id
+            String currentGroupId = fa.getLimsValue(Lims.GROUP_ID);
+            if (groupIds != null && !groupIds.contains(currentGroupId)) {
                 continue;
             }
 
@@ -258,16 +292,16 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
 
         if (options.has("id")) {
             //set user requested identifier
-            wr.addProperty("identifier", getArgument("id"));
+            wr.addProperty("identifier", sanitize(getArgument("id")));
         } else if (Group.FILE == getGroupBy()) {
             //when using group by file, file to BeSmall grouping is used - so use BeSmall's group name
-            wr.addProperty("identifier", Iterables.getOnlyElement(groupByValues));
+            wr.addProperty("identifier", sanitize(Iterables.getOnlyElement(groupByValues)));
         } else if (options.hasArgument("group-by") || getGroupBy() != null) {
             //use the user defined "group-by" value (eg, --group-by study -> id=STUDY1_{templateType})
-            wr.addProperty("identifier", Iterables.getOnlyElement(groupByValues) + "_" + templateType);
+            wr.addProperty("identifier", sanitize(Iterables.getOnlyElement(groupByValues) + "_" + templateType));
         } else {
             //use the aggregation of the user provided filters as the identifier
-            wr.addProperty("identifier", identifierFromFilters);
+            wr.addProperty("identifier", sanitize(identifierFromFilters));
         }
 
         try {
@@ -462,6 +496,10 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
             return false;
         }
         return true;
+    }
+    
+    public static String sanitize(String s){
+        return s.replaceAll("[^a-zA-Z0-9.+_-]", "");
     }
 
     public static class InvalidWorkflowRunException extends Exception {
