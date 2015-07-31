@@ -73,4 +73,4 @@ Additional [workflow properties](../workflow-gatk3/README.md#options) can be ove
 
 ###Support
 
-For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
+For support, please file an issue on the [Github project](https://github.com/oicr-gsi/gatk3) or send an email to gsi@oicr.on.ca .

@@ -1,8 +1,8 @@
 ## GATK3
 
-This [SeqWare](http://seqware.github.io/) workflow performs indel and SNV variant calling using [GATK](https://www.broadinstitute.org/gatk/).
+This [SeqWare](http://seqware.github.io/) workflow performs indel and SNV variant calling using [GATK](https://www.broadinstitute.org/gatk/) 3.x.
 
-Two methods of GATK's best practices are supported:
+Two methods of [GATK's best practices for DNAseq](https://www.broadinstitute.org/gatk/guide/best-practices?bpm=DNAseq) are supported:
 - joint variant calling: perform preprocessing and variant calling for all samples in one workflow run
 - joint genotyping: preprocess individual samples in separate workflow runs, combine preprocessed output for variant calls
 
