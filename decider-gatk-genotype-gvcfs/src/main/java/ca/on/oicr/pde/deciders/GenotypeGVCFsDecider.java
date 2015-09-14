@@ -35,6 +35,9 @@ public class GenotypeGVCFsDecider extends AbstractGatkDecider<GATKGenotypeGVCFsW
 
     public GenotypeGVCFsDecider() {
         super(GATKGenotypeGVCFsWorkflow.class);
+        defineArgument("stand-emit-conf", "Emission confidence threshold to pass to GATK. Default 1", false);
+        defineArgument("stand-call-conf", "Calling confidence threshold to pass to GATK. Default 30.", false);
+        defineArgument("dbsnp", "Specify the absolute path to the dbSNP vcf.", true);
     }
 
     @Override
@@ -44,7 +47,15 @@ public class GenotypeGVCFsDecider extends AbstractGatkDecider<GATKGenotypeGVCFsW
 
     @Override
     protected void configureWorkflowRun(WorkflowRun wr, Set<FileAttributes> inputFileAttributes) throws AbstractGatkDecider.InvalidWorkflowRunException {
-
+        if (options.has("stand-emit-conf")) {
+            wr.addProperty("stand_emit_conf", getArgument("stand-emit-conf"));
+        }
+        if (options.has("stand-call-conf")) {
+            wr.addProperty("stand_call_conf", getArgument("stand-call-conf"));
+        }
+        if (options.has("dbsnp")) {
+            wr.addProperty("gatk_dbsnp_vcf", getArgument("dbsnp"));
+        }
     }
 
     public static void main(String args[]) {
