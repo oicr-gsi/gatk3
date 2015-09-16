@@ -1,15 +1,15 @@
 {
   "workflowRunCount" : 1,
   "studies" : [ "JDRT" ],
-  "sequencerRuns" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX" ],
-  "lanes" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3", "150325_D00343_0082_BC6DRRANXX_lane_5" ],
-  "samples" : [ "JDRT_0058_nn_R_PE_289_EX", "JDRT_0058_nn_T_PE_289_EX", "JDRT_0063_nn_T_PE_358_EX" ],
+  "sequencerRuns" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX", "150407_D00355_0083_AC6C9LANXX", "150408_D00355_0084_BC6DB1ANXX", "150423_D00353_0101_AC6JH4ANXX", "150707_D00355_0087_AC6VT8ANXX", "150721_D00355_0089_AC6C9UANXX" ],
+  "lanes" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3", "150325_D00343_0082_BC6DRRANXX_lane_5", "150407_D00355_0083_AC6C9LANXX_lane_2", "150408_D00355_0084_BC6DB1ANXX_lane_6", "150423_D00353_0101_AC6JH4ANXX_lane_7", "150707_D00355_0087_AC6VT8ANXX_lane_7", "150721_D00355_0089_AC6C9UANXX_lane_2" ],
+  "samples" : [ "JDRT_0058_nn_R_PE_289_EX", "JDRT_0058_nn_R_PE_366_EX", "JDRT_0058_nn_T_PE_289_EX", "JDRT_0063_nn_R_PE_346_EX", "JDRT_0063_nn_R_PE_366_EX", "JDRT_0063_nn_T_PE_358_EX" ],
   "workflows" : [ "BamFilterMergeCollapse" ],
   "processingAlgorithms" : [ "ProvisionFiles" ],
   "fileMetaTypes" : [ "application/bam", "application/bam-index" ],
-  "maxInputFiles" : 6,
-  "minInputFiles" : 6,
-  "totalInputFiles" : 6,
+  "maxInputFiles" : 8,
+  "minInputFiles" : 8,
+  "totalInputFiles" : 8,
   "workflowRuns" : [ {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
@@ -52,33 +52,33 @@
       },
       "experimentName" : [ "Geo_JDRT_ILLUMINA_EX_{F*126}{..}{R*126}" ],
       "experimentAttributes" : { },
-      "sampleName" : [ "JDRT_0058_nn_R_PE_289_EX" ],
+      "sampleName" : [ "JDRT_0058_nn_R_PE_289_EX", "JDRT_0058_nn_R_PE_366_EX" ],
       "sampleAttributes" : {
         "sample.geo_library_source_template_type" : [ [ "EX" ] ],
         "sample.geo_prep_kit" : [ [ "Agilent SureSelect XT2" ] ],
-        "sample.geo_run_id_and_position_and_slot" : [ [ "2246_1_1", "2249_3_2" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2246_1_1", "2249_3_2" ], [ "2287_7_1", "2296_2_1" ] ],
         "sample.geo_targeted_resequencing" : [ [ "SureSelect v4" ] ],
-        "sample.geo_template_id" : [ [ "72092" ] ],
+        "sample.geo_template_id" : [ [ "72092" ], [ "78918" ] ],
         "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
         "sample.geo_tissue_origin" : [ [ "nn" ] ],
         "sample.geo_tissue_type" : [ [ "R" ] ]
       },
-      "sequencerRunName" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX" ],
+      "sequencerRunName" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX", "150707_D00355_0087_AC6VT8ANXX", "150721_D00355_0089_AC6C9UANXX" ],
       "sequencerRunAttributes" : {
-        "sequencerrun.geo_instrument_run_id" : [ [ "2246" ], [ "2249" ] ]
+        "sequencerrun.geo_instrument_run_id" : [ [ "2246" ], [ "2249" ], [ "2287" ], [ "2296" ] ]
       },
-      "laneName" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3" ],
+      "laneName" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3", "150707_D00355_0087_AC6VT8ANXX_lane_7", "150721_D00355_0089_AC6C9UANXX_lane_2" ],
       "laneAttributes" : {
-        "lane.geo_lane" : [ [ "1" ], [ "3" ] ]
+        "lane.geo_lane" : [ [ "1" ], [ "2" ], [ "3" ], [ "7" ] ]
       },
-      "iusTag" : [ "ACACAGAA" ],
+      "iusTag" : [ "ACACAGAA", "ATGCCTAA" ],
       "iusAttributes" : { },
       "workflowName" : [ "BamFilterMergeCollapse" ],
       "processingAlgorithm" : [ "ProvisionFiles" ],
       "processingAttributes" : { },
       "fileMetaType" : [ "application/bam-index" ],
       "fileAttributes" : { },
-      "fileId" : 1809716084
+      "fileId" : -122383514
     }, {
       "studyTitle" : [ "JDRT" ],
       "studyAttributes" : {
@@ -86,33 +86,33 @@
       },
       "experimentName" : [ "Geo_JDRT_ILLUMINA_EX_{F*126}{..}{R*126}" ],
       "experimentAttributes" : { },
-      "sampleName" : [ "JDRT_0058_nn_R_PE_289_EX" ],
+      "sampleName" : [ "JDRT_0058_nn_R_PE_289_EX", "JDRT_0058_nn_R_PE_366_EX" ],
       "sampleAttributes" : {
         "sample.geo_library_source_template_type" : [ [ "EX" ] ],
         "sample.geo_prep_kit" : [ [ "Agilent SureSelect XT2" ] ],
-        "sample.geo_run_id_and_position_and_slot" : [ [ "2246_1_1", "2249_3_2" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2246_1_1", "2249_3_2" ], [ "2287_7_1", "2296_2_1" ] ],
         "sample.geo_targeted_resequencing" : [ [ "SureSelect v4" ] ],
-        "sample.geo_template_id" : [ [ "72092" ] ],
+        "sample.geo_template_id" : [ [ "72092" ], [ "78918" ] ],
         "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
         "sample.geo_tissue_origin" : [ [ "nn" ] ],
         "sample.geo_tissue_type" : [ [ "R" ] ]
       },
-      "sequencerRunName" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX" ],
+      "sequencerRunName" : [ "150305_D00353_0095_AC6DN8ANXX", "150325_D00343_0082_BC6DRRANXX", "150707_D00355_0087_AC6VT8ANXX", "150721_D00355_0089_AC6C9UANXX" ],
       "sequencerRunAttributes" : {
-        "sequencerrun.geo_instrument_run_id" : [ [ "2246" ], [ "2249" ] ]
+        "sequencerrun.geo_instrument_run_id" : [ [ "2246" ], [ "2249" ], [ "2287" ], [ "2296" ] ]
       },
-      "laneName" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3" ],
+      "laneName" : [ "150305_D00353_0095_AC6DN8ANXX_lane_1", "150325_D00343_0082_BC6DRRANXX_lane_3", "150707_D00355_0087_AC6VT8ANXX_lane_7", "150721_D00355_0089_AC6C9UANXX_lane_2" ],
       "laneAttributes" : {
-        "lane.geo_lane" : [ [ "1" ], [ "3" ] ]
+        "lane.geo_lane" : [ [ "1" ], [ "2" ], [ "3" ], [ "7" ] ]
       },
-      "iusTag" : [ "ACACAGAA" ],
+      "iusTag" : [ "ACACAGAA", "ATGCCTAA" ],
       "iusAttributes" : { },
       "workflowName" : [ "BamFilterMergeCollapse" ],
       "processingAlgorithm" : [ "ProvisionFiles" ],
       "processingAttributes" : { },
       "fileMetaType" : [ "application/bam" ],
       "fileAttributes" : { },
-      "fileId" : 1809716088
+      "fileId" : -122383510
     }, {
       "studyTitle" : [ "JDRT" ],
       "studyAttributes" : {
@@ -146,7 +146,7 @@
       "processingAttributes" : { },
       "fileMetaType" : [ "application/bam-index" ],
       "fileAttributes" : { },
-      "fileId" : -1815052887
+      "fileId" : -1190397707
     }, {
       "studyTitle" : [ "JDRT" ],
       "studyAttributes" : {
@@ -180,7 +180,75 @@
       "processingAttributes" : { },
       "fileMetaType" : [ "application/bam" ],
       "fileAttributes" : { },
-      "fileId" : -1815052883
+      "fileId" : -1190397703
+    }, {
+      "studyTitle" : [ "JDRT" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "191" ] ]
+      },
+      "experimentName" : [ "Geo_JDRT_ILLUMINA_EX_{F*126}{..}{R*126}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "JDRT_0063_nn_R_PE_346_EX", "JDRT_0063_nn_R_PE_366_EX" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "EX" ] ],
+        "sample.geo_prep_kit" : [ [ "Agilent SureSelect XT2" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2254_2_1", "2264_7_1" ], [ "2287_7_1", "2296_2_1" ] ],
+        "sample.geo_targeted_resequencing" : [ [ "SureSelect v4" ] ],
+        "sample.geo_template_id" : [ [ "75115" ], [ "78920" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "R" ] ]
+      },
+      "sequencerRunName" : [ "150407_D00355_0083_AC6C9LANXX", "150423_D00353_0101_AC6JH4ANXX", "150707_D00355_0087_AC6VT8ANXX", "150721_D00355_0089_AC6C9UANXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2254" ], [ "2264" ], [ "2287" ], [ "2296" ] ]
+      },
+      "laneName" : [ "150407_D00355_0083_AC6C9LANXX_lane_2", "150423_D00353_0101_AC6JH4ANXX_lane_7", "150707_D00355_0087_AC6VT8ANXX_lane_7", "150721_D00355_0089_AC6C9UANXX_lane_2" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "2" ], [ "7" ] ]
+      },
+      "iusTag" : [ "AACGTGAT", "ACAGATTC" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "BamFilterMergeCollapse" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam-index" ],
+      "fileAttributes" : { },
+      "fileId" : -2091012046
+    }, {
+      "studyTitle" : [ "JDRT" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "191" ] ]
+      },
+      "experimentName" : [ "Geo_JDRT_ILLUMINA_EX_{F*126}{..}{R*126}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "JDRT_0063_nn_R_PE_346_EX", "JDRT_0063_nn_R_PE_366_EX" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "EX" ] ],
+        "sample.geo_prep_kit" : [ [ "Agilent SureSelect XT2" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2254_2_1", "2264_7_1" ], [ "2287_7_1", "2296_2_1" ] ],
+        "sample.geo_targeted_resequencing" : [ [ "SureSelect v4" ] ],
+        "sample.geo_template_id" : [ [ "75115" ], [ "78920" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "R" ] ]
+      },
+      "sequencerRunName" : [ "150407_D00355_0083_AC6C9LANXX", "150423_D00353_0101_AC6JH4ANXX", "150707_D00355_0087_AC6VT8ANXX", "150721_D00355_0089_AC6C9UANXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2254" ], [ "2264" ], [ "2287" ], [ "2296" ] ]
+      },
+      "laneName" : [ "150407_D00355_0083_AC6C9LANXX_lane_2", "150423_D00353_0101_AC6JH4ANXX_lane_7", "150707_D00355_0087_AC6VT8ANXX_lane_7", "150721_D00355_0089_AC6C9UANXX_lane_2" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "2" ], [ "7" ] ]
+      },
+      "iusTag" : [ "AACGTGAT", "ACAGATTC" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "BamFilterMergeCollapse" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : -2091012042
     }, {
       "studyTitle" : [ "JDRT" ],
       "studyAttributes" : {
@@ -199,13 +267,13 @@
         "sample.geo_tissue_origin" : [ [ "nn" ] ],
         "sample.geo_tissue_type" : [ [ "P" ] ]
       },
-      "sequencerRunName" : [ "150325_D00343_0082_BC6DRRANXX" ],
+      "sequencerRunName" : [ "150325_D00343_0082_BC6DRRANXX", "150408_D00355_0084_BC6DB1ANXX" ],
       "sequencerRunAttributes" : {
-        "sequencerrun.geo_instrument_run_id" : [ [ "2249" ] ]
+        "sequencerrun.geo_instrument_run_id" : [ [ "2249" ], [ "2255" ] ]
       },
-      "laneName" : [ "150325_D00343_0082_BC6DRRANXX_lane_5" ],
+      "laneName" : [ "150325_D00343_0082_BC6DRRANXX_lane_5", "150408_D00355_0084_BC6DB1ANXX_lane_6" ],
       "laneAttributes" : {
-        "lane.geo_lane" : [ [ "5" ] ]
+        "lane.geo_lane" : [ [ "5" ], [ "6" ] ]
       },
       "iusTag" : [ "GAACAGGC" ],
       "iusAttributes" : { },
@@ -214,7 +282,7 @@
       "processingAttributes" : { },
       "fileMetaType" : [ "application/bam-index" ],
       "fileAttributes" : { },
-      "fileId" : 566170745
+      "fileId" : 2067568250
     }, {
       "studyTitle" : [ "JDRT" ],
       "studyAttributes" : {
@@ -233,13 +301,13 @@
         "sample.geo_tissue_origin" : [ [ "nn" ] ],
         "sample.geo_tissue_type" : [ [ "P" ] ]
       },
-      "sequencerRunName" : [ "150325_D00343_0082_BC6DRRANXX" ],
+      "sequencerRunName" : [ "150325_D00343_0082_BC6DRRANXX", "150408_D00355_0084_BC6DB1ANXX" ],
       "sequencerRunAttributes" : {
-        "sequencerrun.geo_instrument_run_id" : [ [ "2249" ] ]
+        "sequencerrun.geo_instrument_run_id" : [ [ "2249" ], [ "2255" ] ]
       },
-      "laneName" : [ "150325_D00343_0082_BC6DRRANXX_lane_5" ],
+      "laneName" : [ "150325_D00343_0082_BC6DRRANXX_lane_5", "150408_D00355_0084_BC6DB1ANXX_lane_6" ],
       "laneAttributes" : {
-        "lane.geo_lane" : [ [ "5" ] ]
+        "lane.geo_lane" : [ [ "5" ], [ "6" ] ]
       },
       "iusTag" : [ "GAACAGGC" ],
       "iusAttributes" : { },
@@ -248,7 +316,7 @@
       "processingAttributes" : { },
       "fileMetaType" : [ "application/bam" ],
       "fileAttributes" : { },
-      "fileId" : 566170749
+      "fileId" : 2067568254
     } ]
   } ]
 }
