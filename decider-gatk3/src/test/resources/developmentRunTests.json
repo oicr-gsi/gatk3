@@ -39,6 +39,7 @@
         {
             "id": "Multiple sample test",
             "parameters": {
+                "--before-date": "2015-09-11",
                 "--root-sample-name": ["JDRT_0058", "JDRT_0063"],
                 "--library-template-type": "EX"
             }

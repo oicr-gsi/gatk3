@@ -130,6 +130,9 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
         final String gatkKey = getProperty("gatk_key");
         final String identifier = getProperty("identifier");
         final String refFasta = getProperty("ref_fasta");
+        final Double standCallConf = Double.valueOf(getProperty("stand_call_conf"));
+        final Double standEmitConf = Double.valueOf(getProperty("stand_emit_conf"));
+        final String dbsnpVcf = getOptionalProperty("gatk_dbsnp_vcf", null);
         final Integer gatkGenotypeGvcfsXmx = Integer.parseInt(getProperty("gatk_genotype_gvcfs_xmx"));
         final String gatkGenotypeGvcfsParams = getOptionalProperty("gatk_genotype_gvcfs_params", null);
         final Integer gatkCombineGVCFsXmx = Integer.parseInt(getProperty("gatk_combine_gvcfs_xmx"));
@@ -160,6 +163,9 @@ public class GATKGenotypeGVCFsWorkflow extends OicrWorkflow {
                     .setReferenceSequence(refFasta)
                     .setOutputFileName(identifier + (chrSize != null ? "." + chrSize.replace(":", "-") : "") + ".raw")
                     .addInterval(chrSize)
+                    .setStandardCallConfidence(standCallConf)
+                    .setStandardEmitConfidence(standEmitConf)
+                    .setDbsnpFilePath(dbsnpVcf)
                     .setExtraParameters(gatkGenotypeGvcfsParams);
             for (String f : getLeftCollection(combineGvcfs)) {
                 genotypeGvcfsBuilder.addInputFile(f);
