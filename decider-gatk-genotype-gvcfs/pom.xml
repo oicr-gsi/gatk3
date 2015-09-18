@@ -12,14 +12,14 @@
 
     <groupId>ca.on.oicr.pde.deciders</groupId>
     <artifactId>GATKGenotypeGVCFs</artifactId>
-    <version>1.0.1</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>${display-name}</name>
 
     <properties>
         <workflow-name>GATKGenotypeGVCFs</workflow-name>
-        <workflow-version>1.0.1</workflow-version>
+        <workflow-version>1.1</workflow-version>
         <main-class>ca.on.oicr.pde.deciders.GenotypeGVCFsDecider</main-class>
     </properties>
     
@@ -30,16 +30,9 @@
             <version>${workflow-version}</version>
         </dependency>
         <dependency>
-            <groupId>ca.on.oicr.pde.deciders.gatk3</groupId>
+            <groupId>ca.on.oicr.pde.gatk3</groupId>
             <artifactId>common</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-reflect</artifactId>
-            <version>1.6.2</version>
-            <scope>test</scope>
-            <type>jar</type>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 
