@@ -43,7 +43,6 @@ import java.util.Map;
 import java.util.Properties;
 import static net.sourceforge.seqware.pipeline.workflowV2.MockWorkflowDataModelFactory.buildWorkflowModel;
 import net.sourceforge.seqware.pipeline.workflowV2.model.AbstractJob;
-import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
 import net.sourceforge.seqware.pipeline.workflowV2.model.SqwFile;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -91,6 +90,7 @@ public class GATK3WorkflowTest {
                 + "/data/test/PCSI0022P.val.bai,/data/test/PCSI0022R.val.bai,/data/test/PCSI0022X.val.bai,/data/test/PCSI0022C.val.bai");
         config.put("variant_caller", "Unified_GeNoTyPeR");
         config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
+        config.put("chr_sizes", "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
@@ -130,6 +130,7 @@ public class GATK3WorkflowTest {
         config.put("identifier", "gatk.ex");
         config.put("input_files", StringUtils.join(inputFiles, ","));
         config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
+        config.put("chr_sizes", "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM");
 //        config.put("chr_sizes", "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,"
 //                + "chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,"
 //                + "chr21,chr22,chrX,chrY,chrM");
@@ -161,6 +162,7 @@ public class GATK3WorkflowTest {
         config.put("identifier", "gatk.ex");
         config.put("input_files", StringUtils.join(inputFiles, ","));
         config.put("gatk_dbsnp_vcf", "/tmp/dbsnp.vcf");
+        config.put("chr_sizes", "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM");
 
         //no BQSR
         //haplotype caller and unified genotyper
@@ -235,6 +237,7 @@ public class GATK3WorkflowTest {
         config.put("gatk_print_reads_params", "--param1 --param2");
         config.put("gatk_haplotype_caller_params", "--param1 --param2");
         config.put("gatk_unified_genotyper_params", "--param1 --param2");
+        config.put("chr_sizes", "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
     }
