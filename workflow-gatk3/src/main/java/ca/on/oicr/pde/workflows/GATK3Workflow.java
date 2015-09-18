@@ -27,6 +27,7 @@
  */
 package ca.on.oicr.pde.workflows;
 
+import ca.on.oicr.pde.tools.BEDFileUtils;
 import ca.on.oicr.pde.tools.CompressAndIndexVcf;
 import ca.on.oicr.pde.tools.gatk3.UnifiedGenotyper;
 import ca.on.oicr.pde.tools.MergeVcf;
@@ -42,6 +43,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
+import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
@@ -192,16 +194,30 @@ public class GATK3Workflow extends OicrWorkflow {
         final String haplotypeCallerParams = getOptionalProperty("gatk_haplotype_caller_params", null);
         final String unifiedGenotyperParams = getOptionalProperty("gatk_unified_genotyper_params", null);
 
-        final List<String> chrSizesList = Arrays.asList(StringUtils.split(getProperty("chr_sizes"), ","));
-        final Set<String> chrSizes = new HashSet<>(chrSizesList);
-        if (chrSizes.size() != chrSizesList.size()) {
-            throw new RuntimeException("Duplicate chr_sizes detected.");
-        }
-
         final List<String> intervalFilesList = Arrays.asList(StringUtils.split(getOptionalProperty("interval_files", ""), ","));
         final Set<String> intervalFiles = new HashSet<>(intervalFilesList);
         if (intervalFiles.size() != intervalFilesList.size()) {
             throw new RuntimeException("Duplicate interval_files detected");
+        }
+
+        final Set<String> chrSizes;
+        if (hasProperty("chr_sizes")) {
+            //chr_sizes has been set
+            List<String> chrSizesList = Arrays.asList(StringUtils.split(getProperty("chr_sizes"), ","));
+            chrSizes = new HashSet<>(chrSizesList);
+            if (chrSizes.size() != chrSizesList.size()) {
+                throw new RuntimeException("Duplicate chr_sizes detected.");
+            }
+        } else if (!intervalFiles.isEmpty()) {
+            //chr_sizes not set, interval_files has been set - use interval files to calculate chrSizes
+            try {
+                chrSizes = BEDFileUtils.getChromosomes(intervalFiles);
+            } catch (IOException ioe) {
+                throw new RuntimeException(ioe);
+            }
+        } else {
+            //chr_sizes and interval_files not set - can not calculate chrSizes
+            chrSizes = new HashSet<>();
         }
 
         // one chrSize record is required, null will result in no parallelization
