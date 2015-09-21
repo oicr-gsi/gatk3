@@ -98,7 +98,7 @@ public class GATK3Workflow extends OicrWorkflow {
     @Override
     public void setupDirectory() {
         init();
-	this.addDirectory(tmpDir);
+        this.addDirectory(tmpDir);
         this.addDirectory(dataDir);
         for (VariantCaller vc : variantCallers) {
             this.addDirectory(dataDir + vc.toString());
@@ -347,35 +347,37 @@ public class GATK3Workflow extends OicrWorkflow {
             analyzeCovariatesJob.getCommand().setArguments(analyzeCovariatesCommand.getCommand());
             analyzeCovariatesJob.addFile(createOutputFile(analyzeCovariatesCommand.getPlotsReportFile(), "application/pdf", manualOutput));
 
-            for (Entry<String, Pair<String, Job>> e : realignedBams.entries()) {
+            for (String chrSize : chrSizes) {
 
-                String chrSize = e.getKey();
-                String inputBam = e.getValue().getLeft();
-
-                //GATK Print Reads (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php)
-                PrintReads.Builder printReadsBuilder = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
-                        .setReferenceSequence(refFasta)
-                        .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
-                        .setInputFile(inputBam)
-                        .setExtraParameters(printReadsParams);
-                if (preserveQscoresLessThan != null) {
-                    printReadsBuilder.setPreserveQscoresLessThan(preserveQscoresLessThan);
-                }
-                if (chrSize != null) {
-                    //the bam files have already been split by chrSize - adding the interval here will enable GATK to better estimate runtime
-                    printReadsBuilder.addInterval(chrSize);
-                }
-                if (intervalPadding != null) {
-                    printReadsBuilder.setIntervalPadding(intervalPadding);
-                }
-                PrintReads printReadsCommand = printReadsBuilder.build();
                 Job printReadsJob = getWorkflow().createBashJob("GATKTableRecalibration")
                         .setMaxMemory(Integer.toString((gatkPrintReadsMem + gatkOverhead) * 1024))
                         .setQueue(queue)
                         .addParent(baseRecalibratorJob);
-                printReadsJob.getCommand().setArguments(printReadsCommand.getCommand());
 
-                recalibratedBams.put(chrSize, Pair.of(printReadsCommand.getOutputFile(), printReadsJob));
+                List<String> command = new LinkedList<>();
+                for (String inputBam : getLeftCollection(realignedBams.get(chrSize))) {
+                    //GATK Print Reads (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php)
+                    PrintReads.Builder printReadsBuilder = new PrintReads.Builder(java, gatkPrintReadsMem + "g", tmpDir, gatk, gatkKey, dataDir)
+                            .setReferenceSequence(refFasta)
+                            .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
+                            .setInputFile(inputBam)
+                            .setExtraParameters(printReadsParams);
+                    if (preserveQscoresLessThan != null) {
+                        printReadsBuilder.setPreserveQscoresLessThan(preserveQscoresLessThan);
+                    }
+                    if (chrSize != null) {
+                        //the bam files have already been split by chrSize - adding the interval here will enable GATK to better estimate runtime
+                        printReadsBuilder.addInterval(chrSize);
+                    }
+                    if (intervalPadding != null) {
+                        printReadsBuilder.setIntervalPadding(intervalPadding);
+                    }
+                    PrintReads printReadsCommand = printReadsBuilder.build();
+                    command.addAll(printReadsCommand.getCommand());
+                    command.add(";\n");
+                    recalibratedBams.put(chrSize, Pair.of(printReadsCommand.getOutputFile(), printReadsJob));
+                }
+                printReadsJob.getCommand().setArguments(command);
             }
 
             //BQSR enabled, pass recalibrated bams to variant calling

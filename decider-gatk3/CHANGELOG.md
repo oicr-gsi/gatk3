@@ -1,3 +1,5 @@
+## 1.0.5 - 2015-09-21
+- [GP-508](https://jira.oicr.on.ca/browse/GP-508) - Reduce the number of PrintReads/GATKTableRecalibration jobs
 ## 1.0.4 - 2015-07-23
 - [GP-406](https://jira.oicr.on.ca/browse/GP-406) - Restrict workflow runs to having one interval file
 ## 1.0.3 - 2015-07-14

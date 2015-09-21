@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.Properties;
 import static net.sourceforge.seqware.pipeline.workflowV2.MockWorkflowDataModelFactory.buildWorkflowModel;
 import net.sourceforge.seqware.pipeline.workflowV2.model.AbstractJob;
-import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
 import net.sourceforge.seqware.pipeline.workflowV2.model.SqwFile;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -65,22 +64,22 @@ public class GATK3WorkflowTest {
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
-        Assert.assertEquals(w.getWorkflow().getJobs().size(), 206);
-        Assert.assertEquals(GATK3WorkflowTest.this.getExpectedJobCount(4, 25, VariantCaller.UNIFIED_GENOTYPER, true), 206);
+        Assert.assertEquals(w.getWorkflow().getJobs().size(), 131);
+        Assert.assertEquals(GATK3WorkflowTest.this.getExpectedJobCount(4, 25, VariantCaller.UNIFIED_GENOTYPER, true), 131);
 
         config.put("variant_caller", "haplotype_caller");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
-        Assert.assertEquals(w.getWorkflow().getJobs().size(), 179);
-        Assert.assertEquals(GATK3WorkflowTest.this.getExpectedJobCount(4, 25, VariantCaller.HAPLOTYPE_CALLER, true), 179);
+        Assert.assertEquals(w.getWorkflow().getJobs().size(), 104);
+        Assert.assertEquals(GATK3WorkflowTest.this.getExpectedJobCount(4, 25, VariantCaller.HAPLOTYPE_CALLER, true), 104);
 
         config.put("variant_caller", "haplotype_caller,unified_genotyper");
         w = getWorkflowClientObject(config);
         validateWorkflow(w);
 
-        Assert.assertEquals(w.getWorkflow().getJobs().size(), 233);
-        Assert.assertEquals(getExpectedJobCount(4, 25, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER), true), 233);
+        Assert.assertEquals(w.getWorkflow().getJobs().size(), 158);
+        Assert.assertEquals(getExpectedJobCount(4, 25, Sets.newHashSet(VariantCaller.HAPLOTYPE_CALLER, VariantCaller.UNIFIED_GENOTYPER), true), 158);
 
     }
 
@@ -246,7 +245,7 @@ public class GATK3WorkflowTest {
         numJobs += (parallelismLevel * 2); // for each chr_size interval: create targets + realign
         if (doBQSR) {
             numJobs += 2; //calculate base recalibration table + analyze covariates
-            numJobs += (numSamples * parallelismLevel); //print reads/recalibrate each realigned bam
+            numJobs += parallelismLevel; //print reads/recalibrate each realigned bam
         }
         numJobs += variantCallingJobCount;
         numJobs += mergeJobCount;
