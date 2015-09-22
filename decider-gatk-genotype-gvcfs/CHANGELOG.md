@@ -1,3 +1,5 @@
+## 1.1
+- [GP-485](https://jira.oicr.on.ca/browse/GP-485) - Calculate chr-sizes from bed file
 ## 1.0.1 - 2015-09-14
 - [GP-487](https://jira.oicr.on.ca/browse/GP-487)
     - Add standard call and emit confidence support and default values

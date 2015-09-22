@@ -1,6 +1,6 @@
 ##GATK3 decider
 
-Version 1.1
+Version 1.2
 
 ###Overview
 
