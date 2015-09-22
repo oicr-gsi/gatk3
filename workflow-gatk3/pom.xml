@@ -46,11 +46,10 @@
             <type>zip</type>
         </dependency>
         <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito</artifactId>
-            <version>1.6.2</version>
+            <groupId>ca.on.oicr.pde</groupId>
+            <artifactId>common-utilities</artifactId>
+            <version>1.6.4</version>
             <scope>test</scope>
-            <type>jar</type>
         </dependency>
     </dependencies>
 
