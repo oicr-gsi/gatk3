@@ -13,7 +13,7 @@
   "workflowRuns" : [ {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -31,7 +31,7 @@
       "identifier" : "BART_0001_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -108,7 +108,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -126,7 +126,7 @@
       "identifier" : "BART_0002_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -203,7 +203,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -221,7 +221,7 @@
       "identifier" : "BART_0003_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -298,7 +298,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -316,7 +316,7 @@
       "identifier" : "BART_0004_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -393,7 +393,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -411,7 +411,7 @@
       "identifier" : "BART_0005_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -488,7 +488,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -506,7 +506,7 @@
       "identifier" : "BART_0006_Br_C_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -583,7 +583,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -601,7 +601,7 @@
       "identifier" : "BART_0007_Br_C_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -678,7 +678,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -696,7 +696,7 @@
       "identifier" : "BART_0008_Br_C_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -773,7 +773,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -791,7 +791,7 @@
       "identifier" : "BART_0009_Br_C_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -868,7 +868,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -886,7 +886,7 @@
       "identifier" : "BART_0010_Br_C_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -963,7 +963,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -981,7 +981,7 @@
       "identifier" : "BART_0011_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1058,7 +1058,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -1076,7 +1076,7 @@
       "identifier" : "BART_0012_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1153,7 +1153,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -1171,7 +1171,7 @@
       "identifier" : "BART_0013_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1248,7 +1248,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -1266,7 +1266,7 @@
       "identifier" : "BART_0014_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1343,7 +1343,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -1361,7 +1361,7 @@
       "identifier" : "BART_0015_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1438,7 +1438,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -1456,7 +1456,7 @@
       "identifier" : "BART_0016_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1533,7 +1533,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -1551,7 +1551,7 @@
       "identifier" : "BART_0017_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1628,7 +1628,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -1646,7 +1646,7 @@
       "identifier" : "BART_0018_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1723,7 +1723,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -1741,7 +1741,7 @@
       "identifier" : "BART_0019_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1818,7 +1818,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -1836,7 +1836,7 @@
       "identifier" : "BART_0020_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1913,7 +1913,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -1931,7 +1931,7 @@
       "identifier" : "BART_0021_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2008,7 +2008,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2026,7 +2026,7 @@
       "identifier" : "BART_0022_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2103,7 +2103,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2121,7 +2121,7 @@
       "identifier" : "BART_0023_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2198,7 +2198,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2216,7 +2216,7 @@
       "identifier" : "BART_0024_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2293,7 +2293,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2311,7 +2311,7 @@
       "identifier" : "BART_0025_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2388,7 +2388,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2406,7 +2406,7 @@
       "identifier" : "BART_0026_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2483,7 +2483,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2501,7 +2501,7 @@
       "identifier" : "BART_0027_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2578,7 +2578,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2596,7 +2596,7 @@
       "identifier" : "BART_0028_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2673,7 +2673,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2691,7 +2691,7 @@
       "identifier" : "BART_0029_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2768,7 +2768,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2786,7 +2786,7 @@
       "identifier" : "BART_0030_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2863,7 +2863,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2881,7 +2881,7 @@
       "identifier" : "BART_0031_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2958,7 +2958,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -2976,7 +2976,7 @@
       "identifier" : "BART_0032_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3053,7 +3053,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -3071,7 +3071,7 @@
       "identifier" : "BART_0033_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3148,7 +3148,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -3166,7 +3166,7 @@
       "identifier" : "BART_0034_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3243,7 +3243,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -3261,7 +3261,7 @@
       "identifier" : "BART_0035_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3338,7 +3338,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -3356,7 +3356,7 @@
       "identifier" : "BART_0036_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3433,7 +3433,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -3451,7 +3451,7 @@
       "identifier" : "BART_0037_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3528,7 +3528,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -3546,7 +3546,7 @@
       "identifier" : "BART_0038_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3623,7 +3623,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -3641,7 +3641,7 @@
       "identifier" : "BART_0039_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3718,7 +3718,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -3736,7 +3736,7 @@
       "identifier" : "BART_0040_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3813,7 +3813,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -3831,7 +3831,7 @@
       "identifier" : "BART_0041_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3908,7 +3908,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -3926,7 +3926,7 @@
       "identifier" : "BART_0042_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4003,7 +4003,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4021,7 +4021,7 @@
       "identifier" : "BART_0043_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4098,7 +4098,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4116,7 +4116,7 @@
       "identifier" : "BART_0044_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4193,7 +4193,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4211,7 +4211,7 @@
       "identifier" : "BART_0045_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4288,7 +4288,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4306,7 +4306,7 @@
       "identifier" : "BART_0046_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4383,7 +4383,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4401,7 +4401,7 @@
       "identifier" : "BART_0047_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4478,7 +4478,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4496,7 +4496,7 @@
       "identifier" : "BART_0048_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4573,7 +4573,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4591,7 +4591,7 @@
       "identifier" : "BART_0049_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4668,7 +4668,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4686,7 +4686,7 @@
       "identifier" : "BART_0050_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4763,7 +4763,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4781,7 +4781,7 @@
       "identifier" : "BART_0051_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4858,7 +4858,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4876,7 +4876,7 @@
       "identifier" : "BART_0052_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4953,7 +4953,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -4971,7 +4971,7 @@
       "identifier" : "BART_0053_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5048,7 +5048,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -5066,7 +5066,7 @@
       "identifier" : "BART_0054_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5143,7 +5143,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -5161,7 +5161,7 @@
       "identifier" : "BART_0055_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5238,7 +5238,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -5256,7 +5256,7 @@
       "identifier" : "BART_0056_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5333,7 +5333,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -5351,7 +5351,7 @@
       "identifier" : "BART_0057_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5428,7 +5428,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -5446,7 +5446,7 @@
       "identifier" : "BART_0058_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5523,7 +5523,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -5541,7 +5541,7 @@
       "identifier" : "BART_0059_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5618,7 +5618,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -5636,7 +5636,7 @@
       "identifier" : "BART_0060_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5713,7 +5713,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -5731,7 +5731,7 @@
       "identifier" : "BART_0061_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5808,7 +5808,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -5826,7 +5826,7 @@
       "identifier" : "BART_0062_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5903,7 +5903,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -5921,7 +5921,7 @@
       "identifier" : "BART_0063_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5998,7 +5998,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6016,7 +6016,7 @@
       "identifier" : "BART_0064_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6093,7 +6093,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6111,7 +6111,7 @@
       "identifier" : "BART_0065_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6188,7 +6188,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6206,7 +6206,7 @@
       "identifier" : "BART_0066_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6283,7 +6283,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6301,7 +6301,7 @@
       "identifier" : "BART_0067_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6378,7 +6378,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6396,7 +6396,7 @@
       "identifier" : "BART_0068_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6473,7 +6473,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6491,7 +6491,7 @@
       "identifier" : "BART_0069_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6568,7 +6568,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6586,7 +6586,7 @@
       "identifier" : "BART_0070_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6663,7 +6663,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6681,7 +6681,7 @@
       "identifier" : "BART_0071_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6758,7 +6758,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6776,7 +6776,7 @@
       "identifier" : "BART_0072_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6853,7 +6853,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6871,7 +6871,7 @@
       "identifier" : "BART_0073_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6948,7 +6948,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -6966,7 +6966,7 @@
       "identifier" : "BART_0074_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7043,7 +7043,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -7061,7 +7061,7 @@
       "identifier" : "BART_0075_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7138,7 +7138,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -7156,7 +7156,7 @@
       "identifier" : "BART_0076_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7233,7 +7233,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -7251,7 +7251,7 @@
       "identifier" : "BART_0077_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7328,7 +7328,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -7346,7 +7346,7 @@
       "identifier" : "BART_0078_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7423,7 +7423,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -7441,7 +7441,7 @@
       "identifier" : "BART_0079_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7518,7 +7518,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -7536,7 +7536,7 @@
       "identifier" : "BART_0080_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7613,7 +7613,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -7631,7 +7631,7 @@
       "identifier" : "BART_0081_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7708,7 +7708,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -7726,7 +7726,7 @@
       "identifier" : "BART_0082_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7803,7 +7803,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -7821,7 +7821,7 @@
       "identifier" : "BART_0083_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7898,7 +7898,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -7916,7 +7916,7 @@
       "identifier" : "BART_0084_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7993,7 +7993,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8011,7 +8011,7 @@
       "identifier" : "BART_0085_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8088,7 +8088,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8106,7 +8106,7 @@
       "identifier" : "BART_0086_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8183,7 +8183,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8201,7 +8201,7 @@
       "identifier" : "BART_0087_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8278,7 +8278,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8296,7 +8296,7 @@
       "identifier" : "BART_0088_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8373,7 +8373,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8391,7 +8391,7 @@
       "identifier" : "BART_0089_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8468,7 +8468,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8486,7 +8486,7 @@
       "identifier" : "BART_0090_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8563,7 +8563,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8581,7 +8581,7 @@
       "identifier" : "BART_0091_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8658,7 +8658,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8676,7 +8676,7 @@
       "identifier" : "BART_0092_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8753,7 +8753,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8771,7 +8771,7 @@
       "identifier" : "BART_0093_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8848,7 +8848,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8866,7 +8866,7 @@
       "identifier" : "BART_0094_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8943,7 +8943,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -8961,7 +8961,7 @@
       "identifier" : "BART_0095_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -9038,7 +9038,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -9056,7 +9056,7 @@
       "identifier" : "BART_0096_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -9133,7 +9133,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -9151,7 +9151,7 @@
       "identifier" : "BART_0097_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -9228,7 +9228,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -9246,7 +9246,7 @@
       "identifier" : "BART_0098_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -9323,7 +9323,7 @@
   }, {
     "workflowIni" : {
       "bqsr_covariates" : "ReadGroupCovariate,QualityScoreCovariate,CycleCovariate,ContextCovariate,RepeatLengthCovariate,RepeatUnitCovariate,RepeatUnitAndLengthCovariate",
-      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+      "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22,chrX",
       "downsampling_type" : "NONE",
       "gatk_base_recalibrator_mem" : "9728",
       "gatk_base_recalibrator_nct" : "24",
@@ -9341,7 +9341,7 @@
       "identifier" : "BART_0099_Br_P_TS",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/IAD40521_23_Amplicons/IAD40521_23_Amplicons.sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.0/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.1/bin/jre1.7.0_51/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
