@@ -91,10 +91,12 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
     @Override
     protected void configureWorkflowRun(WorkflowRun wr, Set<FileAttributes> inputFileAttributes) throws InvalidWorkflowRunException {
 
+        String intervalFileChromosomes = null;
         Set<String> intervalFiles = new HashSet<>();
         for (FileAttributes fa : inputFileAttributes) {
             String groupTemplateType = fa.getLimsValue(Lims.LIBRARY_TEMPLATE_TYPE);
             String groupResequencingType = fa.getLimsValue(Lims.TARGETED_RESEQUENCING);
+
             String intervalFile = rsconfig.get(groupTemplateType, groupResequencingType, "interval_file");
             if (intervalFile == null) {
                 throw new InvalidWorkflowRunException(String.format("Template type = %s and resequencing type = %s not found in rsconfig.xml",
@@ -102,15 +104,23 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
             } else {
                 intervalFiles.add(intervalFile);
             }
+
+            intervalFileChromosomes = rsconfig.get(groupTemplateType, groupResequencingType, "chromosomes");
         }
 
-        if (intervalFiles.size() == 1) {
-            String intervalFile = Iterables.getOnlyElement(intervalFiles);
-            if (!"WG".equals(templateType)) {
-                wr.addProperty("interval_files", intervalFile);
-            }
+        if ("WG".equals(templateType)) {
+            // do not use interval file
+            wr.addProperty("chr_sizes", "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM");
         } else {
-            throw new InvalidWorkflowRunException(String.format("Found [%s] interval files, expected one.", intervalFiles.size()));
+            if (intervalFiles.size() == 1) {
+                wr.addProperty("interval_files", Iterables.getOnlyElement(intervalFiles));
+            } else {
+                throw new InvalidWorkflowRunException(String.format("Found [%s] interval files, expected one.", intervalFiles.size()));
+            }
+
+            if (intervalFileChromosomes != null) {
+                wr.addProperty("chr_sizes", intervalFileChromosomes);
+            }
         }
 
         wr.addProperty("gatk_dbsnp_vcf", getArgument("dbsnp"));
