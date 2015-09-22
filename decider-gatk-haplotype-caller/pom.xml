@@ -6,7 +6,7 @@
     <parent>
         <groupId>ca.on.oicr.pde.config</groupId>
         <artifactId>deciders</artifactId>
-        <version>3.1</version>
+        <version>3.1.1</version>
         <relativePath/>
     </parent>
 
