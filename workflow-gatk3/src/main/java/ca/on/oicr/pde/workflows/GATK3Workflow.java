@@ -307,28 +307,30 @@ public class GATK3Workflow extends OicrWorkflow {
             analyzeCovariatesJob.getCommand().setArguments(analyzeCovariatesCommand.getCommand());
             analyzeCovariatesJob.addFile(createOutputFile(analyzeCovariatesCommand.getPlotsReportFile(), "application/pdf", manualOutput));
 
-            for (Entry<String, Pair<String, Job>> e : realignedBams.entries()) {
+            for (String chrSize : chrSizes) {
 
-                String chrSize = e.getKey();
-                String inputBam = e.getValue().getLeft();
-
-                //GATK Print Reads ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php )
-                PrintReads printReadsCommand = new PrintReads.Builder(java, gatkPrintReadsXmx + "g", tmpDir, gatk, gatkKey, dataDir)
-                        .setReferenceSequence(refFasta)
-                        .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
-                        .setInputFile(inputBam)
-                        .setPreserveQscoresLessThan(preserveQscoresLessThan)
-                        .addInterval(chrSize)
-                        .setIntervalPadding(intervalPadding)
-                        .setExtraParameters(printReadsParams)
-                        .build();
                 Job printReadsJob = getWorkflow().createBashJob("GATKTableRecalibration")
                         .setMaxMemory(Integer.toString((gatkPrintReadsXmx + gatkOverhead) * 1024))
                         .setQueue(queue)
                         .addParent(baseRecalibratorJob);
-                printReadsJob.getCommand().setArguments(printReadsCommand.getCommand());
 
-                recalibratedBams.put(chrSize, Pair.of(printReadsCommand.getOutputFile(), printReadsJob));
+                List<String> command = new LinkedList<>();
+                for (String inputBam : getLeftCollection(realignedBams.get(chrSize))) {
+                    //GATK Print Reads (https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_readutils_PrintReads.php)
+                    PrintReads printReadsCommand = new PrintReads.Builder(java, gatkPrintReadsXmx + "g", tmpDir, gatk, gatkKey, dataDir)
+                            .setReferenceSequence(refFasta)
+                            .setCovariatesTablesFile(baseRecalibratorCommand.getOutputFile())
+                            .setInputFile(inputBam)
+                            .setPreserveQscoresLessThan(preserveQscoresLessThan)
+                            .addInterval(chrSize)
+                            .setIntervalPadding(intervalPadding)
+                            .setExtraParameters(printReadsParams)
+                            .build();
+                    command.addAll(printReadsCommand.getCommand());
+                    command.add(";\n");
+                    recalibratedBams.put(chrSize, Pair.of(printReadsCommand.getOutputFile(), printReadsJob));
+                }
+                printReadsJob.getCommand().setArguments(command);
             }
 
             //BQSR enabled, pass recalibrated bams to variant calling
