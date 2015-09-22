@@ -1,4 +1,4 @@
-## 1.0.1 - 2015-09-14
+## 1.1
 - [GP-487](https://jira.oicr.on.ca/browse/GP-487)
     - Add standard call and emit confidence support and default values
     - Add support for populating the vcf's ID column using dbSNP
