@@ -27,9 +27,14 @@
  */
 package ca.on.oicr.pde.workflows;
 
+import ca.on.oicr.pde.testing.workflow.DryRun;
+import ca.on.oicr.pde.testing.workflow.TestDefinition;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -58,6 +63,17 @@ public class GATKGenotypeGVCFsWorkflowTest {
             } else {
                 Assert.assertEquals(combinedInputFiles.size(), nInputFiles);
             }
+        }
+    }
+
+    @Test
+    public void dryRunRegressionTests() throws IOException, Exception {
+        TestDefinition td = TestDefinition.buildFromJson(FileUtils.readFileToString(new File("src/test/resources/developmentTests.json")));
+
+        for (TestDefinition.Test t : td.getTests()) {
+            DryRun d = new DryRun(System.getProperty("bundleDirectory"), t.getParameters(), GATKGenotypeGVCFsWorkflow.class);
+            d.buildWorkflowModel();
+            d.validateWorkflow();
         }
     }
 

@@ -1,6 +1,6 @@
 ##GATK Haplotype Caller decider
 
-Version 1.0
+Version 1.1
 
 ###Overview
 

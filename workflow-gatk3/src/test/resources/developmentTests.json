@@ -22,7 +22,6 @@
         }, {
             "id": "EX_gatk3_UG",
             "parameters": {
-                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
                 "variant_caller": "unified_genotyper"
             }
@@ -43,7 +42,6 @@
         }, {
             "id": "EX_gatk3_HC",
             "parameters": {
-                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
                 "variant_caller": "haplotype_caller"
             }
@@ -57,7 +55,6 @@
         }, {
             "id": "EX_gatk3_HC_UG",
             "parameters": {
-                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
                 "variant_caller": "haplotype_caller,unified_genotyper"
             }
@@ -71,7 +68,6 @@
         }, {
             "id": "EX_gatk3_UG_No_BQSR",
             "parameters": {
-                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
                 "variant_caller": "unified_genotyper",
                 "do_bqsr": "false"
@@ -95,7 +91,6 @@
         }, {
             "id": "EX_gatk3_HC_No_BQSR",
             "parameters": {
-                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
                 "variant_caller": "haplotype_caller",
                 "do_bqsr": "false"
@@ -111,7 +106,6 @@
         }, {
             "id": "EX_gatk3_HC_UG_No_BQSR",
             "parameters": {
-                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
                 "variant_caller": "haplotype_caller,unified_genotyper",
                 "do_bqsr": "false"
@@ -119,7 +113,6 @@
         }, {
             "id": "EX_gatk3_HC_UG_dbSNP144",
             "parameters": {
-                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr9,chr10,chr11,chr12,chr14,chr16,chr17,chr18,chr19,chrX",
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
                 "variant_caller": "haplotype_caller,unified_genotyper",
                 "gatk_dbsnp_vcf": "/oicr/data/reference/genomes/homo_sapiens_mc/dbSNP/hg19_random/Genomic/dbSNP144/dbsnp144_chr_noINS_noDup.vcf.gz"

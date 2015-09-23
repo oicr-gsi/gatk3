@@ -1,3 +1,8 @@
+## 1.2 - 2015-09-21
+- [GP-485](https://jira.oicr.on.ca/browse/GP-485) - Calculate chr-sizes from bed file
+- Update to workflow-gatk3 1.2
+## 1.0.5 - 2015-09-21
+- Update to workflow-gatk3 1.0.2
 ## 1.1 - 2015-07-24
 - Upgrade to workflow-gatk3 1.1
 - [GP-318](https://jira.oicr.on.ca/browse/GP-318) - Upgrade to GATK 3.4-0

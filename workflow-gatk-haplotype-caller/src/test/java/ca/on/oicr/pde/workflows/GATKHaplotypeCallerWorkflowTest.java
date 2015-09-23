@@ -27,13 +27,13 @@
  */
 package ca.on.oicr.pde.workflows;
 
+import ca.on.oicr.pde.testing.workflow.DryRun;
+import ca.on.oicr.pde.testing.workflow.TestDefinition;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import net.sourceforge.seqware.common.util.maptools.MapTools;
 import org.apache.commons.io.FileUtils;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class GATKHaplotypeCallerWorkflowTest {
@@ -42,28 +42,20 @@ public class GATKHaplotypeCallerWorkflowTest {
 
     }
 
-//    private GATKHaplotypeCallerWorkflow getWorkflow() throws IOException {
-//        File defaultIniFile = new File(System.getProperty("bundleDirectory") + "/config/defaults.ini");
-//        String defaultIniFileContents = FileUtils.readFileToString(defaultIniFile);
-//        
-//        GATKHaplotypeCallerWorkflow wf = new GATKHaplotypeCallerWorkflow();
-//        wf.setConfigs(MapTools.iniString2Map(defaultIniFileContents));
-//        
-//        return wf;
-//    }
-//
-//    @Test
-//    public void testInit() throws IOException {
-//
-//        Map<String, String> config = new HashMap<String, String>();
-//        config.put("greeting", "new greeting");
-//
-//        GATKHaplotypeCallerWorkflow wf = getWorkflow();
-//        wf.getConfigs().putAll(config);
-//        wf.setupDirectory();
-//
-//        Assert.assertEquals(wf.getProperty("greeting"), "new greeting");
-//        Assert.assertEquals(wf.getProperty("output_prefix"), "./");
-//        Assert.assertEquals(wf.getProperty("manual_output"), "false");
-//    }
+    @Test
+    public void dryRunRegressionTests() throws IOException, Exception {
+        TestDefinition td = TestDefinition.buildFromJson(FileUtils.readFileToString(new File("src/test/resources/developmentTests.json")));
+
+        for (TestDefinition.Test t : td.getTests()) {
+            //disable getting chr_sizes from interval_files
+            Map<String, String> params = new HashMap<>(t.getParameters());
+            if (!params.containsKey("chr_sizes")) {
+                params.put("chr_sizes", "");
+            }
+
+            DryRun d = new DryRun(System.getProperty("bundleDirectory"), params, GATKHaplotypeCallerWorkflow.class);
+            d.buildWorkflowModel();
+            d.validateWorkflow();
+        }
+    }
 }

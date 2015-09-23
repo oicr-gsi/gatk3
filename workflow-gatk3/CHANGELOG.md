@@ -1,3 +1,8 @@
+## 1.2 - 2015-09-22
+- [GP-485](https://jira.oicr.on.ca/browse/GP-485) - Calculate chr-sizes from bed file
+- [GP-508](https://jira.oicr.on.ca/browse/GP-508) - Reduce the number of PrintReads/GATKTableRecalibration jobs
+## 1.0.2 - 2015-09-21
+- [GP-508](https://jira.oicr.on.ca/browse/GP-508) - Reduce the number of PrintReads/GATKTableRecalibration jobs
 ## 1.1 - 2015-07-24
 - GATK 3.4-46
 - [GP-318](https://jira.oicr.on.ca/browse/GP-318) - Upgrade to GATK 3.4

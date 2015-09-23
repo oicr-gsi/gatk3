@@ -1,6 +1,6 @@
 ##GATK Genotype GVCFs decider
 
-Version 1.0
+Version 1.1
 
 ###Overview
 
@@ -45,6 +45,7 @@ Please see [basic deciders](http://seqware.github.io/docs/17-plugins/#basicdecid
 Parameter | Description
 ---|---
 --library-template-type | Restrict the processing to samples of a particular template type (WG/EX/TS)
+--dbsnp | Specify the absolute path to the dbSNP vcf
 
 #####Optional:
 
@@ -55,6 +56,8 @@ Parameter | Description | Default
 --tissue-type | Restrict the processing to samples of particular tissue types (e.g. P, R, X, C) | (no restriction)
 --tissue-origin | Restrict the processing to samples of particular tissue origin (e.g. Ly, Pa, Pr) | (no restriction)
 --resequencing-type | Restrict the processing to samples of a particular resequencing type | (no restriction)
+--stand-emit-conf | Emission confidence threshold to pass to GATK | 1
+--stand-call-conf | Calling confidence threshold to pass to GATK | 30
 --group-id | Restrict the processing to samples of a particular group-id | (no restriction)
 --verbose | Log all SeqWare (debug) information |
 
