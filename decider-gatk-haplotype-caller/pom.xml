@@ -12,14 +12,14 @@
 
     <groupId>ca.on.oicr.pde.deciders</groupId>
     <artifactId>GATKHaplotypeCaller</artifactId>
-    <version>1.1</version>
+    <version>1.1.1</version>
     <packaging>jar</packaging>
 
     <name>${display-name}</name>
 
     <properties>
         <workflow-name>GATKHaplotypeCaller</workflow-name>
-        <workflow-version>1.1</workflow-version>
+        <workflow-version>1.1.1</workflow-version>
         <main-class>ca.on.oicr.pde.deciders.HaplotypeCallerDecider</main-class>
     </properties>
     

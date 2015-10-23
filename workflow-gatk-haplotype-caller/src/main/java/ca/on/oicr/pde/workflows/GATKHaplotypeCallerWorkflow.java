@@ -91,6 +91,9 @@ public class GATKHaplotypeCallerWorkflow extends OicrWorkflow {
                         bams.put(fileKey, f);
                         break;
                     case "bai":
+			if (fileKey.endsWith(".bam")) {
+			    fileKey = FilenameUtils.removeExtension(fileKey);
+			}
                         bais.put(fileKey, f);
                         break;
                     default:
