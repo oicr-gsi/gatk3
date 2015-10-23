@@ -54,6 +54,11 @@
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
                 "gatk_dbsnp_vcf": "/oicr/data/reference/genomes/homo_sapiens_mc/dbSNP/hg19_random/Genomic/dbSNP144/dbsnp144_chr_noINS_noDup.vcf.gz"
             }
-        }
+        }, {
+            "id": "BAI_Test",
+            "parameters": {
+		"input_files": "/.mounts/labs/PDE/data/testdata/genomic/bam/art-sim/NA12877_art_10x_WG_hg19_random.bam,/.mounts/labs/PDE/data/testdata/genomic/bam/art-sim/NA12877_art_10x_WG_hg19_random.bam.bai"
+            }
+	}
     ]
 }

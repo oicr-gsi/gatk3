@@ -1,3 +1,5 @@
+## 1.1.1 - 2015-10-23
+- FIXED [GP-562](https://jira.oicr.on.ca/browse/GP-562) GATKHaptlotypeCaller incorrectly handles files with bam.bai extension
 ## 1.1 - 2015-09-22
 - [GP-485](https://jira.oicr.on.ca/browse/GP-485) - Calculate chr-sizes from bed file
 ## 1.0 - 2015-07-24
