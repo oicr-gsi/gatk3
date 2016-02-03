@@ -1,3 +1,5 @@
+## 1.3 - 2016-02-03
+- [GP-691](https://jira.oicr.on.ca/browse/GP-691) - Remove indel realignment and BQSR steps. This is performed by the BAM Merge Preprocessing workflow.
 ## 1.2 - 2015-09-22
 - [GP-485](https://jira.oicr.on.ca/browse/GP-485) - Calculate chr-sizes from bed file
 - [GP-508](https://jira.oicr.on.ca/browse/GP-508) - Reduce the number of PrintReads/GATKTableRecalibration jobs

@@ -1,3 +1,6 @@
+## 1.2 - 2016-02-03
+- [GP-691](https://jira.oicr.on.ca/browse/GP-691) - Remove "disable-bqsr" parameter - indel realignment and BQSR steps have been removed from workflow.
+- Update to workflow-gatk-haplotype-caller 1.2
 ## 1.1 - 2015-09-22
 - [GP-485](https://jira.oicr.on.ca/browse/GP-485) - Calculate chr-sizes from bed file
 - Update to workflow-gatk-haplotype-caller 1.1

@@ -49,7 +49,6 @@ public class HaplotypeCallerDecider extends AbstractGatkDecider<GATKHaplotypeCal
         //settings
         defineArgument("chr-sizes", "Comma separated list of chromosome intervals used to parallelize indel realigning and variant calling. Default: By chromosome", false);
         defineArgument("interval-padding", "Amount of padding to add to each interval (chr-sizes and interval-file determined by decider) in bp. Default: 100", false);
-        parser.accepts("disable-bqsr", "Disable BQSR (BaseRecalibrator + PrintReads steps) and pass indel realigned BAMs directly to variant calling.");
         defineArgument("downsampling", "Set whether or not the variant caller should downsample the reads. Default: false for TS, true for everything else", false);
         defineArgument("rsconfig-file", "Specify location of .xml file which should be used to configure references, "
                 + "will be used if resequencing-type is different from the default."
@@ -136,10 +135,6 @@ public class HaplotypeCallerDecider extends AbstractGatkDecider<GATKHaplotypeCal
 
         if (options.has("interval-padding")) {
             wr.addProperty("interval_padding", getArgument("interval-padding"));
-        }
-
-        if (options.has("disable-bqsr")) {
-            wr.addProperty("do_bqsr", "false");
         }
 
         if (options.has("downsampling")) {
