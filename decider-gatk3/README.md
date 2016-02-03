@@ -1,10 +1,10 @@
 ##GATK3 decider
 
-Version 1.2
+Version 1.3
 
 ###Overview
 
-This decider launches the [GATK3 workflow](../workflow-gatk3) on BAM files produced by the [BAM Filter Merge Collapse workflow](https://github.com/oicr-gsi/bam-filter-merge-collapse/tree/master/workflow-bam-filter-merge-collapse).
+This decider launches the [GATK3 workflow](../workflow-gatk3) on BAM files produced by the [BAM Merge Preprocessing workflow](https://github.com/oicr-gsi/bam-merge-preprocessing/tree/master/workflow-bam-merge-preprocessing).
 
 The decider identifies files to operate on by:
 
@@ -64,7 +64,6 @@ Parameter | Description | Default
 --interval-padding | Amount of padding to add to each interval (chr-sizes and interval-file determined by decider) in bp | 100
 --stand-emit-conf | Emission confidence threshold to pass to GATK | 1
 --stand-call-conf | Calling confidence threshold to pass to GATK | 30
---disable-bqsr | Disable BQSR (BaseRecalibrator + PrintReads steps) and pass indel realigned BAMs directly to variant calling | (bqsr enabled)
 --downsampling | Set whether or not the variant caller should downsample the reads | (false for TS, true for WG and EX)
 --rsconfig-file | Specify location of .xml file which should be used to configure references, will be used if resequencing-type is different from the default | /.mounts/labs/PDE/data/rsconfig.xml
 --verbose | Log all SeqWare (debug) information |

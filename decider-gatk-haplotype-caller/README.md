@@ -1,10 +1,10 @@
 ##GATK Haplotype Caller decider
 
-Version 1.1
+Version 1.2
 
 ###Overview
 
-This decider launches the [GATK Haplotype Caller workflow](../workflow-gatk-haplotype-caller) on BAM files produced by the [BAM Filter Merge Collapse workflow](https://github.com/oicr-gsi/bam-filter-merge-collapse/tree/master/workflow-bam-filter-merge-collapse).
+This decider launches the [GATK Haplotype Caller workflow](../workflow-gatk-haplotype-caller) on BAM files produced by the [BAM Merge Preprocessing workflow](https://github.com/oicr-gsi/bam-merge-preprocessing/tree/master/workflow-bam-merge-preprocessing).
 
 The decider identifies files to operate on by:
 
@@ -62,7 +62,6 @@ Parameter | Description | Default
 --group-id | Restrict the processing to samples of a particular group-id | (no restriction)
 --chr-sizes | Comma separated list of chromosome intervals used to parallelize indel realigning and variant calling | (by chromosome)
 --interval-padding | Amount of padding to add to each interval (chr-sizes and interval-file determined by decider) in bp | 100
---disable-bqsr | Disable BQSR (BaseRecalibrator + PrintReads steps) and pass indel realigned BAMs directly to variant calling | (bqsr enabled)
 --downsampling | Set whether or not the variant caller should downsample the reads | (false for TS, true for WG and EX)
 --rsconfig-file | Specify location of .xml file which should be used to configure references, will be used if resequencing-type is different from the default | /.mounts/labs/PDE/data/rsconfig.xml
 --verbose | Log all SeqWare (debug) information |

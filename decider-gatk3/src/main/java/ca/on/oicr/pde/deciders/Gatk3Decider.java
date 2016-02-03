@@ -51,7 +51,6 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
         defineArgument("interval-padding", "Amount of padding to add to each interval (chr-sizes and interval-file determined by decider) in bp. Default: 100", false);
         defineArgument("stand-emit-conf", "Emission confidence threshold to pass to GATK. Default 1", false);
         defineArgument("stand-call-conf", "Calling confidence threshold to pass to GATK. Default 30.", false);
-        parser.accepts("disable-bqsr", "Disable BQSR (BaseRecalibrator + PrintReads steps) and pass indel realigned BAMs directly to variant calling.");
         defineArgument("downsampling", "Set whether or not the variant caller should downsample the reads. Default: false for TS, true for everything else", false);
         defineArgument("rsconfig-file", "Specify location of .xml file which should be used to configure references, "
                 + "will be used if resequencing-type is different from the default."
@@ -136,10 +135,6 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
         wr.addProperty("stand_emit_conf", getArgument("stand-emit-conf"), "1");
 
         wr.addProperty("stand_call_conf", getArgument("stand-call-conf"), "30");
-
-        if (options.has("disable-bqsr")) {
-            wr.addProperty("do_bqsr", "false");
-        }
 
         if (options.has("downsampling")) {
             if (getArgument("downsampling").equalsIgnoreCase("false")) {

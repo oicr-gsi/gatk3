@@ -6,7 +6,6 @@
         "input_config_dir": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_config/",
         "output_metrics_dir": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/output_expectation/",
         "parameters": {
-            "input_files": "/.mounts/labs/PDE/data/GATK/PCSI0022P.val.bam,/.mounts/labs/PDE/data/GATK/PCSI0022P.val.bai",
             "gatk_base_recalibrator_smp": "8",
             "identifier": "gatk.ex",
             "gatk_dbsnp_vcf": "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf"
@@ -16,43 +15,53 @@
         {
             "id": "EX_HC_no_intervals",
             "parameters": {
-                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY"
+                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY",
+                "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.recal.bam,/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.recal.bai"
             }
         }, {
             "id": "EX_HC",
             "parameters": {
-                "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed"
+                "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
+                "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.recal.bam,/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.recal.bai"
             }
         }, {
             "id": "EX_HC_no_parallelism",
             "parameters": {
                 "chr_sizes": "",
-                "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed"
+                "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
+                "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.recal.bam,/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.recal.bai"
             }
         }, {
             "id": "EX_HC_no_intervals_no_BQSR",
             "parameters": {
                 "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY",
-                "do_bqsr": "false"
+                "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.bam,/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.bai"
             }
         }, {
             "id": "EX_HC_no_BQSR",
             "parameters": {
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
-                "do_bqsr": "false"
+                "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.bam,/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.bai"
             }
         }, {
             "id": "EX_HC_no_parallelism_no_BQSR",
             "parameters": {
                 "chr_sizes": "",
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
-                "do_bqsr": "false"
+                "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.bam,/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.bai"
             }
         }, {
             "id": "EX_HC_dbSNP144",
             "parameters": {
                 "interval_files": "/.mounts/labs/PDE/data/GATK/PCSI0022.val.bed",
-                "gatk_dbsnp_vcf": "/oicr/data/reference/genomes/homo_sapiens_mc/dbSNP/hg19_random/Genomic/dbSNP144/dbsnp144_chr_noINS_noDup.vcf.gz"
+                "gatk_dbsnp_vcf": "/oicr/data/reference/genomes/homo_sapiens_mc/dbSNP/hg19_random/Genomic/dbSNP144/dbsnp144_chr_noINS_noDup.vcf.gz",
+                "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.recal.bam,/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.recal.bai"
+            }
+        }, {
+            "id": "BAI_Test",
+            "parameters": {
+                "chr_sizes": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY",
+                "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.recal.bam,/.mounts/labs/PDE/data/RegressionTests/GATKHaplotypeCaller/workflow/development/input_data/PCSI0022P.sorted.filter.deduped.realigned.recal.bam.bai"
             }
         }
     ]
