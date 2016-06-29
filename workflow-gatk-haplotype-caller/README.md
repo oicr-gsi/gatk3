@@ -64,7 +64,7 @@ chr_sizes | The numbers and sizes of the chromosomes. These values are used for 
 interval_files | Absolute path(s) to interval BED file(s) that GATK will operate on | 
 interval_padding | Amount of padding to add it each interval | 100
 downsampling_coverage | Target coverage for downsampling |
-downsampling_type | Method for downsampling | 
+downsampling_type | [Method for downsampling](https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_engine_CommandLineGATK.php#--downsampling_type) | 
 gatk_haplotype_caller_params | Additional params to pass directly to HaplotypeCaller |	 
 
 Memory/HPC configuration:
