@@ -401,6 +401,11 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
                 groupNames.add(fa.getLimsValue(Lims.GROUP_ID));
             }
 
+            if (fa.getLimsValue(Lims.TARGETED_RESEQUENCING) != null) {
+                groupByAttributes.add(fa.getLimsValue(Lims.TARGETED_RESEQUENCING));
+                groupNames.add(fa.getLimsValue(Lims.TARGETED_RESEQUENCING));
+            }
+
             this.groupByAttribute = Joiner.on("_").join(groupByAttributes);
             this.groupName = Joiner.on("_").join(groupNames);
 
