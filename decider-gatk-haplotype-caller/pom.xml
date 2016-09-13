@@ -32,7 +32,7 @@
         <dependency>
             <groupId>ca.on.oicr.pde.gatk3</groupId>
             <artifactId>common</artifactId>
-            <version>1.1.1</version>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 
