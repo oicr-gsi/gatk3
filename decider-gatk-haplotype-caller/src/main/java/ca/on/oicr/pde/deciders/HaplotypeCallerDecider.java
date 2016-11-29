@@ -168,10 +168,6 @@ public class HaplotypeCallerDecider extends AbstractGatkDecider<GATKHaplotypeCal
         List<String> arguments = new ArrayList<>(Arrays.asList(args));
         params.add("--plugin");
         params.add(HaplotypeCallerDecider.class.getCanonicalName());
-        if (arguments.contains("--verbose")) {
-            params.add("--verbose");
-            arguments.remove("--verbose");
-        }
         params.add("--");
         params.addAll(arguments);
         System.out.println("Parameters: " + Arrays.deepToString(params.toArray()));

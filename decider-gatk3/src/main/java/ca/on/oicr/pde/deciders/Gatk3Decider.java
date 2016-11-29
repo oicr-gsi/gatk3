@@ -167,10 +167,6 @@ public class Gatk3Decider extends AbstractGatkDecider<GATK3Workflow> {
         List<String> arguments = new ArrayList<>(Arrays.asList(args));
         params.add("--plugin");
         params.add(Gatk3Decider.class.getCanonicalName());
-        if (arguments.contains("--verbose")) {
-            params.add("--verbose");
-            arguments.remove("--verbose");
-        }
         params.add("--");
         params.addAll(arguments);
         System.out.println("Parameters: " + Arrays.deepToString(params.toArray()));
