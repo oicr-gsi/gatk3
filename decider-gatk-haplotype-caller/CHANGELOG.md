@@ -1,5 +1,8 @@
 ## 1.3 - 2017-01-30
 - [GP-875](https://jira.oicr.on.ca/browse/GP-875) - Update decider to SeqWare 1.1.1-gsi
+## 1.2.1 - 2016-09-13
+- [GP-904](https://jira.oicr.on.ca/browse/GP-904)
+    - Include Lims.TARGETED_RESEQUENCING (geo_targeted_resequencing) in group-by
 ## 1.2 - 2016-02-03
 - [GP-691](https://jira.oicr.on.ca/browse/GP-691) - Remove "disable-bqsr" parameter - indel realignment and BQSR steps have been removed from workflow.
 - [GP-562](https://jira.oicr.on.ca/browse/GP-562) - GATKHaptlotypeCaller incorrectly handles files with bam.bai extension
