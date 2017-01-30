@@ -49,6 +49,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "2008/441" ] ],
         "geo_library_source_template_type" : [ [ "TS" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_purpose" : [ [ "Ion Torrent", "Stock" ] ],
         "geo_run_id_and_position_and_slot" : [ [ "1568_1_1" ] ],
         "geo_str_result" : [ [ "Not Submitted" ] ],
@@ -85,6 +86,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "2008/441" ] ],
         "geo_library_source_template_type" : [ [ "TS" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_purpose" : [ [ "Ion Torrent", "Stock" ] ],
         "geo_run_id_and_position_and_slot" : [ [ "1568_1_1" ] ],
         "geo_str_result" : [ [ "Not Submitted" ] ],

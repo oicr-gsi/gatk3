@@ -56,6 +56,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2456" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -94,6 +95,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2456" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -132,6 +134,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2452" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -170,6 +173,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2452" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -208,6 +212,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2443" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -246,6 +251,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2443" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -284,6 +290,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2434" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -322,6 +329,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2434" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -360,6 +368,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2433" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -398,6 +407,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2433" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -436,6 +446,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2446" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -474,6 +485,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2446" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -512,6 +524,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2430" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
@@ -550,6 +563,7 @@
       "sampleAttributes" : {
         "geo_external_name" : [ [ "RD-2430" ] ],
         "geo_library_source_template_type" : [ [ "EX" ] ],
+        "geo_organism" : [ [ "Homo sapiens" ] ],
         "geo_prep_kit" : [ [ "Agilent SureSelect XT" ] ],
         "geo_purpose" : [ [ "Library", "Stock" ] ],
         "geo_receive_date" : [ [ "2015-03-23" ] ],
