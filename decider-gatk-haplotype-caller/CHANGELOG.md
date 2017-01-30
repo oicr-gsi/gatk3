@@ -1,3 +1,5 @@
+## 1.1.99 - 2017-01-30
+- [GP-875](https://jira.oicr.on.ca/browse/GP-875) - Update decider to SeqWare 1.1.1-gsi
 ## 1.1 - 2015-09-22
 - [GP-485](https://jira.oicr.on.ca/browse/GP-485) - Calculate chr-sizes from bed file
 - Update to workflow-gatk-haplotype-caller 1.1
