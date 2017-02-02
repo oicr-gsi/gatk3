@@ -1,23 +1,19 @@
 {
-    "defaultDescription": "GenotypeGVCFs decider test",
-    "defaultMetricsResources": "/expected_output/development/",
-    "defaultParameters": {
-        "--output-path": "./",
-        "--parent-wf-accessions": "2820118",
-        "--before-date": "2016-01-29",
-        "--dbsnp": "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf"
+    "defaults": {
+        "description": "GenotypeGVCFs decider test",
+        "metricsResources": "/expected_output/development/",
+        "parameters": {
+            "--output-path": "./",
+            "--parent-wf-accessions": "2820118",
+            "--before-date": "2016-01-29",
+            "--dbsnp": "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf"
+        },
+        "iniExclusions": ["parent-accessions", "workflow_run_accession", "workflow-run-accession",
+            "unique_string", "parent_accessions", "parent_accession", "input_file", "input_files", "workflow_bundle_dir",
+            "output_prefix"]
     },
-    "defaultIniExclusions": ["parent-accessions", "workflow_run_accession", "workflow-run-accession",
-        "unique_string", "parent_accessions", "parent_accession", "input_file", "input_files", "workflow_bundle_dir",
-        "output_prefix"],
     "tests": [
         {
-            "id": "Study test",
-            "parameters": {
-                "--study-name": "JDRT",
-                "--library-template-type": "EX"
-            }
-        }, {
             "id": "Per sample grouping test",
             "parameters": {
                 "--study-name": "JDRT",

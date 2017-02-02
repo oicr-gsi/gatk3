@@ -244,7 +244,7 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
         if (options.hasArgument("group-by") || getGroupBy() != null) {
             groupedFiles = super.separateFiles(newValues, groupBy);
         } else {
-            groupedFiles = super.separateFiles(newValues, null); //do not group files
+            groupedFiles = super.separateFiles(newValues, Collections.EMPTY_LIST); //do not group files
         }
 
         return groupedFiles;

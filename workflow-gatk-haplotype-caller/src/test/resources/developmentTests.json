@@ -8,7 +8,8 @@
         "parameters": {
             "gatk_base_recalibrator_smp": "8",
             "identifier": "gatk.ex",
-            "gatk_dbsnp_vcf": "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf"
+            "gatk_dbsnp_vcf": "/oicr/data/genomes/homo_sapiens_mc/gatkResourceBundle/2.5/dbsnp_137.hg19.vcf",
+            "r_dir": "/.mounts/labs/PDE/Modules/sw/R/R-3.3.0/"
         }
     },
     "tests": [

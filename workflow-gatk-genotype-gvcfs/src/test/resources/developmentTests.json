@@ -6,7 +6,8 @@
         "output_metrics_dir": "/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/output_expectation/",
         "parameters": {
             "identifier": "gatk.ex",
-            "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022C.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022C.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022P.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022P.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022R.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022R.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022X.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022X.g.vcf.gz.tbi"
+            "input_files": "/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022C.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022C.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022P.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022P.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022R.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022R.g.vcf.gz.tbi,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022X.g.vcf.gz,/.mounts/labs/PDE/data/RegressionTests/GATKGenotypeGVCFs/workflow/input_data/PCSI0022X.g.vcf.gz.tbi",
+            "r_dir": "/.mounts/labs/PDE/Modules/sw/R/R-3.3.0/"
         }
     },
     "tests": [

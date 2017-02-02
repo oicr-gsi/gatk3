@@ -1,3 +1,5 @@
+## 1.3 - 2017-01-30
+- [GP-875](https://jira.oicr.on.ca/browse/GP-875) - Update decider to SeqWare 1.1.1-gsi
 ## 1.2.1 - 2016-09-13
 - [GP-904](https://jira.oicr.on.ca/browse/GP-904)
     - Include Lims.TARGETED_RESEQUENCING (geo_targeted_resequencing) in group-by
