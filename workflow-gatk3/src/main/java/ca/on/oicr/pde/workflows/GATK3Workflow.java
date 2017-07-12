@@ -407,11 +407,4 @@ public class GATK3Workflow extends OicrWorkflow {
         return ts;
     }
 
-    // TODO remove me after sonarcloud does its thing
-    public void junkMethodIsJunk(String unusedParam) throws Exception {
-        if (true) {
-            throw new Exception("this is garbage");
-        }
-    }
-
 }
