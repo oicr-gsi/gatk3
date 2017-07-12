@@ -1,0 +1,29 @@
+language: java
+git:
+  depth: 3
+sudo: required
+env: ' MAVEN_SETTINGS="${TRAVIS_BUILD_DIR}/gsi-config"  MAVEN_OPTS=''-Xms1g -Xmx2g''  SEQWARE_SETTINGS="${TRAVIS_BUILD_DIR}/seqware_settings" '
+
+addons:
+  sonarcloud:
+    organization: "oicr-gsi"
+    token: 
+      secure: "Oy9FmBHP4VqRHBIHLdN2kwWJvWdctRHn6pDYJhqCuxP9f80RCAOFkiaq3jJEUhm3HH2vx96QuHApXDTl3jSbtxIYEJ4+A5Ufgki3cGgWi2C5ucze4VfFM/YddF3EzR7I50rDRqQdcTqPFkqwv/md5jF7xTQ7SotSYQKqV3SscPtZV0ySXuDK4nojuIKVM0+h5Qx2fBxoFcgGewmxFr/UL872TNJwsoffHG2a0tNkGm09PseaDXc1QWr46VwRBP8xOUIDJeBwIb5C3Ok50Y5un5zsq7aTOFBXHICfJkSSzzcp/E8ZZIZnSgPy6pQ1pyMKr74F48o8LkuOvsxRQb8x/jFwb/bbHyQzETWRd4bplPIkfHEZ+ykStobAmDMYxQgG3W7qIkBiwW1c4vWTnr8VTKGLgj6Skyl74OwJSoKoc1ilxEYqShkPJlLnp+akIFTVqOhUX/qMn81HgOeXD5nEdRUwtc8CFEZCVfe28SfIcgOnJv2uBTrLCI495GCw/FDtIcf284iwyVBkPEREIwCpvjkEWKVLh3kvEd0/jT/RGoci2GkPHvnIVoj3ttV6p8qvHTMT06/FPGEkY5Vjl6EwemWVIiJye7QJVDhnjmcf7LPxD5tO/Bx4RebFQzxlrdo6WuAsxCiT3Im1nnyBDRGLyO5ThVyAyaxwaQkqGTm3Af8="
+    github_token:
+      secure: "Dw84KwlvZ6dyuGhuywBAE6GrJDtbpUDjJA+KFYvjwkFMLASNH3wPp6QaQACQdpOybTG5tPiVgpYK2MQRX5kX/tm8QA+rFN9DcXiQdmr4JnCDnsNVKKFeP06FNZpeVdNxNgxvw3pKAHt+jz2FuRXqHc/scEvlzTzFrkG0FF6HpyYq9t7BnBcWrWnYOzgHRBOOrGI8XBkSOrYioFj9VqisZ7UzECVdged2SNvFB+MRy9jy1OB6ZmsFG14RNSOg1Vm8IBF2nXLP53/uWbsRGdAW5L/zI3Ouys6rhcjZRg1Cfi+blo58o3bEE/KsoPJ7LoROZ8mNyEulmSRfePfHoxxDWMHjYHCPhLy3aUw9Jy3gGwn70Hx1HrkI27TNv6ZQxfnMoucyJExhrpA1SfhAi1orUFICwnN1kUfawa2x1819LdBexjsA2YGgfgClg2mmrpli9lf+XqRq6lF7k51HZ3Cap7o12ASS96hYtGqI7I3NMKBXMNtdSKUE+P3wGLcxj2uLR5jgTXC3k6tz/+VvBI60Gzqc0oJHJmDwQG7LZX6/TXk/D22aVy+J+m8pd5B7qSbbjhO/lBHkDJobSxwVkTudRM4o1zrb3j+Z7x5Ks3T904i7XY5AAyt/WlNwpjGeZ1CcGW+13SQzuTdJB/kjrDxqRgqngKKOrs5quDhzUhb/I+c="
+jdk:
+- oraclejdk8
+before_install:
+- git clone https://github.com/oicr-gsi/gsi-config.git "${MAVEN_SETTINGS}"
+- cp "${MAVEN_SETTINGS}/settings.xml" "${HOME}/.m2/settings.xml"
+before_script:
+- touch "${SEQWARE_SETTINGS}"
+
+
+script:
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+
+cache:
+  directories:
+  - "$HOME/.m2"
+  - "$HOME/.sonar/cache"
