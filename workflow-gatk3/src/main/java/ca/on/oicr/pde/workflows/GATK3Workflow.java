@@ -53,6 +53,7 @@ public class GATK3Workflow extends OicrWorkflow {
     private final String dataDir = "data/";
     private final Set<VariantCaller> variantCallers = new HashSet<>();
     private final List<String> inputBamFiles = new LinkedList<>();
+    private final String annotKey = "variant_caller";
 
     public enum VariantCaller {
 
@@ -74,7 +75,7 @@ public class GATK3Workflow extends OicrWorkflow {
     }
 
     public void init() {
-        for (String s : StringUtils.split(getProperty("variant_caller"), ",")) {
+        for (String s : StringUtils.split(getProperty(annotKey), ",")) {
             variantCallers.add(VariantCaller.valueOf(StringUtils.upperCase(s)));
         }
     }
@@ -384,8 +385,8 @@ public class GATK3Workflow extends OicrWorkflow {
             //final output file
             SqwFile vcf = createOutputFile(compressIndexVcfCommand.getOutputVcfFile(), "application/vcf-4-gzip", manualOutput);
             SqwFile tbi = createOutputFile(compressIndexVcfCommand.getOutputTabixFile(), "application/tbi", manualOutput);
-            vcf.getAnnotations().put("variant_caller", vc.toString());
-            tbi.getAnnotations().put("variant_caller", vc.toString());
+            vcf.getAnnotations().put(annotKey, vc.toString());
+            tbi.getAnnotations().put(annotKey, vc.toString());
             sortCompressIndexVcfJob.addFile(vcf);
             sortCompressIndexVcfJob.addFile(tbi);
         }
@@ -406,5 +407,4 @@ public class GATK3Workflow extends OicrWorkflow {
         }
         return ts;
     }
-
 }
