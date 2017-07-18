@@ -49,11 +49,11 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class GATK3Workflow extends OicrWorkflow {
 
-    private final String tmpDir = "tmp/";
-    private final String dataDir = "data/";
+    private final static String TMPDIR = "tmp/";
+    private final static String DATADIR = "data/";
     private final Set<VariantCaller> variantCallers = new HashSet<>();
     private final List<String> inputBamFiles = new LinkedList<>();
-    private final String annotKey = "variant_caller";
+    private final static String ANNOTKEY = "variant_caller";
 
     public enum VariantCaller {
 
@@ -67,15 +67,15 @@ public class GATK3Workflow extends OicrWorkflow {
     @Override
     public void setupDirectory() {
         init();
-        this.addDirectory(tmpDir);
-        this.addDirectory(dataDir);
+        this.addDirectory(TMPDIR);
+        this.addDirectory(DATADIR);
         for (VariantCaller vc : variantCallers) {
-            this.addDirectory(dataDir + vc.toString());
+            this.addDirectory(DATADIR + vc.toString());
         }
     }
 
     public void init() {
-        for (String s : StringUtils.split(getProperty(annotKey), ",")) {
+        for (String s : StringUtils.split(getProperty(ANNOTKEY), ",")) {
             variantCallers.add(VariantCaller.valueOf(StringUtils.upperCase(s)));
         }
     }
@@ -209,11 +209,11 @@ public class GATK3Workflow extends OicrWorkflow {
         Multimap<VariantCaller, Pair<String, Job>> finalFiles = HashMultimap.create();
         for (String chrSize : chrSizes) {
             for (VariantCaller vc : variantCallers) {
-                String workingDir = dataDir + vc.toString() + "/";
+                String workingDir = DATADIR + vc.toString() + "/";
                 switch (vc) {
                     case HAPLOTYPE_CALLER:
                         //GATK Haplotype Caller ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.php )
-                        HaplotypeCaller haplotypeCallerCommand = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerXmx) + "g", tmpDir, gatk, gatkKey, dataDir)
+                        HaplotypeCaller haplotypeCallerCommand = new HaplotypeCaller.Builder(java, Integer.toString(gatkHaplotypeCallerXmx) + "g", TMPDIR, gatk, gatkKey, DATADIR)
                                 .setInputBamFiles(inputBamFiles)
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
@@ -241,7 +241,7 @@ public class GATK3Workflow extends OicrWorkflow {
 
                     case UNIFIED_GENOTYPER:
                         //GATK Unified Genotyper (INDELS) ( https://www.broadinstitute.org/gatk/guide/tooldocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php )
-                        UnifiedGenotyper indelsUnifiedGenotyperCommand = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperXmx) + "g", tmpDir, gatk, gatkKey, workingDir)
+                        UnifiedGenotyper indelsUnifiedGenotyperCommand = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperXmx) + "g", TMPDIR, gatk, gatkKey, workingDir)
                                 .setInputBamFiles(inputBamFiles)
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
@@ -266,7 +266,7 @@ public class GATK3Workflow extends OicrWorkflow {
                         indelFiles.put(vc, Pair.of(indelsUnifiedGenotyperCommand.getOutputFile(), indelsUnifiedGenotyperJob));
 
                         //GATK Unified Genotyper (SNVS) ( https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_gatk_tools_walkers_genotyper_UnifiedGenotyper.php )
-                        UnifiedGenotyper snvsUnifiedGenotyperCommand = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperXmx) + "g", tmpDir, gatk, gatkKey, workingDir)
+                        UnifiedGenotyper snvsUnifiedGenotyperCommand = new UnifiedGenotyper.Builder(java, Integer.toString(gatkUnifiedGenotyperXmx) + "g", TMPDIR, gatk, gatkKey, workingDir)
                                 .setInputBamFiles(inputBamFiles)
                                 .setReferenceSequence(refFasta)
                                 .setDbsnpFilePath(dbsnpVcf)
@@ -300,7 +300,7 @@ public class GATK3Workflow extends OicrWorkflow {
             Collection<Pair<String, Job>> snvs = snvFiles.get(vc);
             Collection<Pair<String, Job>> indels = indelFiles.get(vc);
             Collection<Pair<String, Job>> all = finalFiles.get(vc);
-            String workingDir = dataDir + vc.toString() + "/";
+            String workingDir = DATADIR + vc.toString() + "/";
 
             if (!snvs.isEmpty()) {
                 MergeVcf mergeSnvsCommand = new MergeVcf.Builder(perl, mergeVCFScript, workingDir)
@@ -385,8 +385,8 @@ public class GATK3Workflow extends OicrWorkflow {
             //final output file
             SqwFile vcf = createOutputFile(compressIndexVcfCommand.getOutputVcfFile(), "application/vcf-4-gzip", manualOutput);
             SqwFile tbi = createOutputFile(compressIndexVcfCommand.getOutputTabixFile(), "application/tbi", manualOutput);
-            vcf.getAnnotations().put(annotKey, vc.toString());
-            tbi.getAnnotations().put(annotKey, vc.toString());
+            vcf.getAnnotations().put(ANNOTKEY, vc.toString());
+            tbi.getAnnotations().put(ANNOTKEY, vc.toString());
             sortCompressIndexVcfJob.addFile(vcf);
             sortCompressIndexVcfJob.addFile(tbi);
         }
