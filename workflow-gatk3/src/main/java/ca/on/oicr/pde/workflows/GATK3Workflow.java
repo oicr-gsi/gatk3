@@ -49,11 +49,11 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class GATK3Workflow extends OicrWorkflow {
 
-    private final static String TMPDIR = "tmp/";
-    private final static String DATADIR = "data/";
+    private static final String TMPDIR = "tmp/";
+    private static final String DATADIR = "data/";
     private final Set<VariantCaller> variantCallers = new HashSet<>();
     private final List<String> inputBamFiles = new LinkedList<>();
-    private final static String ANNOTKEY = "variant_caller";
+    private static final String ANNOTKEY = "variant_caller";
 
     public enum VariantCaller {
 
