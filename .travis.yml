@@ -1,0 +1,38 @@
+dist: trusty
+language: java
+git:
+  depth: 3
+sudo: required
+env: ' MAVEN_SETTINGS="${TRAVIS_BUILD_DIR}/gsi-config"  MAVEN_OPTS=''-Xms1g -Xmx2g''  SEQWARE_SETTINGS="${TRAVIS_BUILD_DIR}/seqware_settings" '
+
+addons:
+  sonarcloud:
+    organization: "oicr-gsi"
+    token: 
+        secure: "rMeFydTZgp7i9s86jqARAhM+GXpfKiFKUsHKBoEMyJhMaFZCtu4+rW6Oy3drBRTlHBPfBjK8oZlFcB/FJMcOpDFDqRo72Io3vcnP3T6HPV/DNAwmYlpUYqbLVybORkhShiuh/PTHkLrjXuttSjbR3X+ypwbo4FwmmW6Q9AStrrPnYcfFpV0Eo8YpOOH4zy1NRBOVCeezu6ByblZw+E84xFp9IwSOv+G6qLq5LXFLYumb+5MwHDQk8Bo8MeVT5Jr4YMPX7rkeP+NjFHb/eSSjTpwDSf0rcvrFZ3KgYyMtHCN58gtk0WM0IIgJI8zhmvb3ZzzVuXkxjhs3e0WFWZ7nwEfMSWUAE1w/OBCSrm8hbuMkSHwlUMF8lLeCQp/bLgpfzI9+VCauV88+mRoI1zqbnCY41+zl78P6lVqABMcpGEJed4lzd0SUOgvXKLlOA4uKnTMVI1UyntYSUnR9pw6l8LYvn5CVVGoB2zk3tOV6tKkBFTuPrbI2/fKjygDFS/hulU9kyMZkts0rxIO1gd0W18r+LN6ttRJaH3L66PAdYFdL6d+f2rYnzAi076LP70GBFA5F93hzGTOWK3/60vvZ0EQiGGwzC5Yg6memUxMXLS6NJ/P/hK0QmCFDL3lNiLwyiuYE+0VNeX3M7PVmLOUaX9UUCU5/ur93WN1mAGPPgrM="
+    github_token:
+        secure: "k5I7QadnGF4Krb+pet3vbcRr242UWdEg5oNlHdxS7pwP6O++OPdxqQpSUAyNjOpgIEniRAfaNgyWtqrEjiMTNcMiJ+hssXPDqx3NIANKhrX7dbJU4RWP6YXr/FPmE80KmTqigAfYAI+1VPLXwAawE4VZ/Sq8H08IFn4aIlh4Yv9VaU6eaIvG7lHUNgG6GKOII4f9ERrpT2AiuXvQBYTTZzlKSTP2slDlH3raijJQ5IvBjXcxh9f9ey49dndwUeQFxlCLrht9yg34an/GSORJ1dX8tSFeHx5sx05Vnaia8b+WcYhxJKP26WmrRJgElYrUJrzTUDpyQgxCZheXVPKyip3vCysVaEJTzGr3CPlchVIxlIWx8lj6SuqevdfoASsGktufRF+XOl5t9ObQrx1Lpplal7udbP+VcywgbQpStjvIPgDjWCf/daXE07gWdICHhuHPbPmqwet3IucCoRFglO06K0iDJaQfqad43lJr+iAXBV1KZxntgLjSBy3zly2daah9BXG6Pc/KdR3infZv06V6Z2hOuuTUN8k5nZTnc/CY/YcsRDjdsCUhDQIuE356KEGvLCYuCovOhelpiQssTHaN212hSJYq+XJ2MUOotLd0wN5z8KDynfsTOYNeob3ede/nOHJUuD3oP7vQY1ZhbmJl9ywFKpUrB+NP82TK25A="
+
+
+jdk:
+- oraclejdk8
+
+before_install:
+- git clone https://github.com/oicr-gsi/gsi-config.git "${MAVEN_SETTINGS}"
+- cp "${MAVEN_SETTINGS}/settings.xml" "${HOME}/.m2/settings.xml"
+
+before_script:
+- touch "${SEQWARE_SETTINGS}"
+
+script:
+- mvn clean install
+- 'if [[ ${TRAVIS_PULL_REQUEST_SLUG} == ${TRAVIS_REPO_SLUG} ]] ; then
+     mvn org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar ;
+   else
+     echo "[WARN] SonarCloud cannot run on pull requests from forks." ;
+   fi'
+
+cache:
+  directories:
+  - "$HOME/.m2"
+  - "$HOME/.sonar/cache"
