@@ -13,9 +13,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
+ * <p>
  * Contact us:
- *
+ * <p>
  * Ontario Institute for Cancer Research
  * MaRS Centre, West Tower
  * 661 University Avenue, Suite 510
@@ -23,7 +23,7 @@
  * Phone: 416-977-7599
  * Toll-free: 1-866-678-6427
  * www.oicr.on.ca
- *
+ * <p>
  */
 package ca.on.oicr.pde.tools;
 
@@ -53,8 +53,6 @@ public class BEDFileUtils {
      * @param bedFiles A collection of bed file paths
      *
      * @return The set of chromosomes (no duplicates)
-     *
-     * @throws FileNotFoundException, IOException
      */
     public static Set<String> getChromosomes(Collection<String> bedFiles) throws FileNotFoundException, IOException {
         Set<String> chrs = new LinkedHashSet<>();
@@ -70,8 +68,6 @@ public class BEDFileUtils {
      * @param bedFilePath Path to the bed file.
      *
      * @return The set of chromosomes (no duplicates)
-     *
-     * @throws FileNotFoundException, IOException
      */
     public static Set<String> getChromosomes(String bedFilePath) throws FileNotFoundException, IOException {
         Set<String> chrs = new LinkedHashSet<>();

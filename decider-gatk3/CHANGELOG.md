@@ -1,3 +1,5 @@
+## 1.4.1 - 2019-08-12
+- [GP-2049](https://jira.oicr.on.ca/browse/GP-2049) - Include sample name in selection of latest input file for a run+lane+barcode.
 ## 1.4 - 2017-01-30
 - [GP-875](https://jira.oicr.on.ca/browse/GP-875) - Update decider to SeqWare 1.1.1-gsi
 ## 1.3 - 2016-02-03
@@ -25,5 +27,5 @@
 - Update decider to use latest version of workflow-gatk3 (1.0.1)
 ## 1.0 - 2015-06-04
 - Initial release of the GATK3 decider based off of the OICR GATK3 helper script and workflow-gatk
-- Schedules one workflow run for all files that pass the required filter library-template-type and 
+- Schedules one workflow run for all files that pass the required filter library-template-type and
     the optional filters: tissue-type, tissue-origin, and resequencing type

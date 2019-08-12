@@ -10,6 +10,9 @@
   "maxInputFiles" : 2,
   "minInputFiles" : 2,
   "totalInputFiles" : 4,
+  "maxOutputFileProvenanceRecords" : 2,
+  "minOutputFileProvenanceRecords" : 2,
+  "totalOutputFileProvenanceRecords" : 4,
   "workflowRuns" : [ {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY",
@@ -22,7 +25,7 @@
       "identifier" : "JDRT_0058_nn_P_EX",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V4/SureSelect_All_Exon_V4_Covered_Sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.2/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.2/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -106,7 +109,8 @@
       "fileMetaType" : [ "application/bam" ],
       "fileAttributes" : { },
       "fileId" : -1190397703
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 2
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY",
@@ -119,7 +123,7 @@
       "identifier" : "JDRT_0063_nn_P_EX",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V4/SureSelect_All_Exon_V4_Covered_Sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.2/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKHaplotypeCaller/1.2/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -201,6 +205,7 @@
       "fileMetaType" : [ "application/bam" ],
       "fileAttributes" : { },
       "fileId" : 2067568254
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 2
   } ]
 }

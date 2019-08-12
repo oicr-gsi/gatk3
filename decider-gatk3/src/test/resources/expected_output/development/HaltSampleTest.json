@@ -10,6 +10,9 @@
   "maxInputFiles" : 8,
   "minInputFiles" : 8,
   "totalInputFiles" : 8,
+  "maxOutputFileProvenanceRecords" : 4,
+  "minOutputFileProvenanceRecords" : 4,
+  "totalOutputFileProvenanceRecords" : 4,
   "workflowRuns" : [ {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY",
@@ -26,7 +29,7 @@
       "identifier" : "HALT_0078_EX",
       "interval_files" : "/.mounts/labs/PDE/data/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V4/SureSelect_All_Exon_V4_Covered_Sorted.bed",
       "interval_padding" : "100",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATK3/1.3/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATK3/1.3/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -345,6 +348,7 @@
       "fileMetaType" : [ "application/bam" ],
       "fileAttributes" : { },
       "fileId" : 1723536401
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   } ]
 }
