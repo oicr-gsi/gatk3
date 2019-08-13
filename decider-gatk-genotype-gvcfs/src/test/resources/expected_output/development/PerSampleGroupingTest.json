@@ -10,6 +10,9 @@
   "maxInputFiles" : 6,
   "minInputFiles" : 4,
   "totalInputFiles" : 346,
+  "maxOutputFileProvenanceRecords" : 8,
+  "minOutputFileProvenanceRecords" : 2,
+  "totalOutputFileProvenanceRecords" : 435,
   "workflowRuns" : [ {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -19,9 +22,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0004_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -181,7 +184,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -172652965
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -191,9 +195,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0005_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -353,7 +357,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1147597863
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -363,9 +368,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0007_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -527,7 +532,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -914731695
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 5
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -537,9 +543,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0008_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -701,7 +707,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1255486140
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -711,9 +718,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0009_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -873,7 +880,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 373663656
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 5
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -883,9 +891,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0010_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1047,7 +1055,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1703923757
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -1057,9 +1066,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0011_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1219,7 +1228,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -2115908021
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -1229,9 +1239,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0014_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1391,7 +1401,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 31639745
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -1401,9 +1412,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0015_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1567,7 +1578,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1099619628
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 8
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -1577,9 +1589,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0016_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1739,7 +1751,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 817046776
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -1749,9 +1762,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0017_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -1911,7 +1924,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 449810167
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -1921,9 +1935,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0019_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2083,7 +2097,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -512714712
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -2093,9 +2108,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0022_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2255,7 +2270,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1684731992
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -2265,9 +2281,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0023_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2427,7 +2443,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -463564601
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -2437,9 +2454,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0024_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2603,7 +2620,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1436529672
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -2613,9 +2631,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0025_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2775,7 +2793,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -504430213
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -2785,9 +2804,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0026_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -2951,7 +2970,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1812786721
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -2961,9 +2981,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0027_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3123,7 +3143,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1677049320
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -3133,9 +3154,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0028_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3297,7 +3318,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -471433535
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 5
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -3307,9 +3329,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0029_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3473,7 +3495,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1292749757
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 8
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -3483,9 +3506,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0030_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3645,7 +3668,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1104713411
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -3655,9 +3679,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0032_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3821,7 +3845,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1074562963
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -3831,9 +3856,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0033_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -3993,7 +4018,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1324378658
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -4003,9 +4029,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0035_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4169,7 +4195,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1674681478
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -4179,9 +4206,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0036_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4341,7 +4368,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -17538586
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 8
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -4351,9 +4379,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0037_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4513,7 +4541,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1490505892
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -4523,9 +4552,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0040_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4685,7 +4714,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -933600390
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -4695,9 +4725,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0041_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -4857,7 +4887,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1590522940
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -4867,9 +4898,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0042_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5033,7 +5064,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1007986902
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -5043,9 +5075,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0043_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5205,7 +5237,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -820729453
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -5215,9 +5248,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0044_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5379,7 +5412,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -700385883
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 5
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -5389,9 +5423,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0045_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5555,7 +5589,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1306051616
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -5565,9 +5600,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0046_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5727,7 +5762,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1933976744
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -5737,9 +5773,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0048_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -5899,7 +5935,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 518954123
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -5909,9 +5946,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0050_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6073,7 +6110,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -825135922
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 3
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -6083,9 +6121,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0051_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6247,7 +6285,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1498913127
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 5
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -6257,9 +6296,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0052_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6419,7 +6458,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 884550463
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 8
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -6429,9 +6469,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0053_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6595,7 +6635,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1638640550
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 8
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -6605,9 +6646,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0054_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6767,7 +6808,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -185798690
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 3
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -6777,9 +6819,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0055_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -6941,7 +6983,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -281282265
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 5
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -6951,9 +6994,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0056_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7113,7 +7156,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1168170730
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -7123,9 +7167,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0057_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7285,7 +7329,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1827821411
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -7295,9 +7340,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0058_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7461,7 +7506,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 479909370
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -7471,9 +7517,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0059_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7633,7 +7679,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1239352815
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -7643,9 +7690,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0060_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7805,7 +7852,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1677328826
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -7815,9 +7863,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0061_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -7977,7 +8025,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -377971124
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -7987,9 +8036,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0062_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8149,7 +8198,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -245509297
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 3
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -8159,9 +8209,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0063_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8321,7 +8371,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1818403267
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -8331,9 +8382,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0064_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8493,7 +8544,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 24058980
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -8503,9 +8555,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0065_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8665,7 +8717,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1391941801
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -8675,9 +8728,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0067_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -8837,7 +8890,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1200690556
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -8847,9 +8901,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0069_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -9009,7 +9063,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1139978551
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -9019,9 +9074,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0070_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -9183,7 +9238,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 648124526
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 5
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -9193,9 +9249,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0071_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -9355,7 +9411,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 519499261
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 3
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -9365,9 +9422,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0072_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -9527,7 +9584,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -404215608
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 3
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -9537,9 +9595,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0074_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -9701,7 +9759,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1133267025
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -9711,9 +9770,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0075_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -9873,7 +9932,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -270197828
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -9883,9 +9943,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0076_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -10045,7 +10105,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -926486052
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 3
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -10055,9 +10116,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0077_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -10217,7 +10278,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -603778467
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -10227,9 +10289,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0078_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -10389,7 +10451,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1340809326
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -10399,9 +10462,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0079_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -10561,7 +10624,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -539607913
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -10571,9 +10635,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0080_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -10733,7 +10797,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1628206062
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -10743,9 +10808,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0081_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -10905,7 +10970,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1878463547
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -10915,9 +10981,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0082_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -11077,7 +11143,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 360352520
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -11087,9 +11154,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0083_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -11335,7 +11402,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1566698242
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 5
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -11345,9 +11413,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0084_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -11507,7 +11575,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1531844833
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -11517,9 +11586,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0085_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -11679,7 +11748,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 891399583
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 8
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -11689,9 +11759,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0086_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -11851,7 +11921,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 205224327
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 8
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -11861,9 +11932,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0087_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -12023,7 +12094,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 577385657
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -12033,9 +12105,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0088_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -12195,7 +12267,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -972906269
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -12205,9 +12278,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0089_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -12371,7 +12444,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1160672240
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -12381,9 +12455,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0090_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -12543,7 +12617,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1585934412
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 8
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -12553,9 +12628,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0092_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -12715,7 +12790,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 321576781
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -12725,9 +12801,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0093_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -12889,7 +12965,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 184292324
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -12899,9 +12976,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0094_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -13063,7 +13140,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -120490068
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -13073,9 +13151,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0095_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -13235,7 +13313,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -222611218
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -13245,9 +13324,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0096_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -13407,7 +13486,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -233797787
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -13417,9 +13497,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0097_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -13581,7 +13661,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -60786182
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -13591,9 +13672,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0098_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -13753,7 +13834,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1996243014
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 3
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -13763,9 +13845,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0099_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -13925,7 +14007,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1638290101
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -13935,9 +14018,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0100_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -14099,7 +14182,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 2115414121
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 5
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -14109,9 +14193,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0101_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -14273,7 +14357,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1913782118
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 5
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -14283,9 +14368,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0102_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -14445,7 +14530,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -837818238
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -14455,9 +14541,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0103_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -14617,7 +14703,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : 1123067840
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 6
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -14627,9 +14714,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0105_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -14789,7 +14876,8 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -1935972798
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 4
   }, {
     "workflowIni" : {
       "chr_sizes" : "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
@@ -14799,9 +14887,9 @@
       "gatk_genotype_gvcfs_max_input_files" : "200",
       "gatk_genotype_gvcfs_xmx" : "8",
       "gatk_key" : "/.mounts/labs/PDE/data/gatkAnnotationResources/GATK_public.key",
-      "gatk_sched_overhead_mem" : "4",
+       "gatk_sched_overhead_mem" : "6",
       "identifier" : "JDRT_0106_EX",
-      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.7.0_51/bin/java",
+      "java" : "${workflow_bundle_dir}/Workflow_Bundle_GATKGenotypeGVCFs/1.1/bin/jre1.8.0_45/bin/java",
       "manual_output" : "false",
       "metadata" : "metadata",
       "output_dir" : "seqware-results",
@@ -14965,6 +15053,7 @@
       "fileMetaType" : [ "application/tbi" ],
       "fileAttributes" : { },
       "fileId" : -995305865
-    } ]
+    } ],
+    "outputFileProvenanceRecords" : 2
   } ]
 }

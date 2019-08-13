@@ -13,9 +13,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
+ * <p>
  * Contact us:
- *
+ * <p>
  * Ontario Institute for Cancer Research
  * MaRS Centre, West Tower
  * 661 University Avenue, Suite 510
@@ -23,7 +23,7 @@
  * Phone: 416-977-7599
  * Toll-free: 1-866-678-6427
  * www.oicr.on.ca
- *
+ * <p>
  */
 package ca.on.oicr.pde.deciders.gatk3;
 
@@ -39,8 +39,8 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Map.Entry;
 import net.sourceforge.seqware.common.hibernate.FindAllTheFiles.Header;
-import net.sourceforge.seqware.common.model.WorkflowParam;
 import net.sourceforge.seqware.common.module.ReturnValue;
 import net.sourceforge.seqware.common.util.Log;
 import net.sourceforge.seqware.pipeline.plugins.fileprovenance.ProvenanceUtility;
@@ -347,7 +347,7 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
                 throw new RuntimeException(ex);
             }
             FileAttributes fa = new FileAttributes(rv, rv.getFiles().get(0));
-            this.iusDetails = fa.getSequencerRun() + fa.getLane() + fa.getBarcode() + fa.getMetatype();
+            this.iusDetails = fa.getLibrarySample() + fa.getSequencerRun() + fa.getLane() + fa.getBarcode() + fa.getMetatype();
 
             List<String> groupByAttributes = new LinkedList<>();
             List<String> groupNames = new LinkedList<>();
@@ -472,8 +472,8 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
         //get the default workflow ini
         if (defaultWorkflowRunIni == null) {
             defaultWorkflowRunIni = new HashMap<>();
-            for (WorkflowParam wp : metadata.getWorkflowParams(this.getWorkflowAccession())) {
-                defaultWorkflowRunIni.put(wp.getKey(), wp.getDefaultValue() == null ? "" : wp.getDefaultValue());
+            for (Entry<String, String> e : metadata.getWorkflow(Integer.valueOf(this.getWorkflowAccession())).getParameterDefaults().entrySet()) {
+                defaultWorkflowRunIni.put(e.getKey(), e.getValue() == null ? "" : e.getValue());
             }
         }
 
@@ -501,8 +501,8 @@ public abstract class AbstractGatkDecider<T extends AbstractWorkflowDataModel> e
         }
         return true;
     }
-    
-    public static String sanitize(String s){
+
+    public static String sanitize(String s) {
         return s.replaceAll("[^a-zA-Z0-9.+_-]", "");
     }
 
